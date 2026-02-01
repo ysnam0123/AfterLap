@@ -46,8 +46,6 @@ export default function DriverHero({
           className="mb-0 sm:mb-0"
         />
       </div>
-      {/*
-      <p className="px-1 sm:px-2.5">{seasonData?.driver_number}</p> */}
       <div className="mb-5 flex w-full items-center justify-between">
         <div className="flex flex-col gap-1 select-none">
           <div className="flex items-center justify-between">
