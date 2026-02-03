@@ -7,23 +7,31 @@ interface PageProps {
 export default function AboutCircuit({ circuitData }: PageProps) {
   return (
     <>
-      <div className="flex w-full flex-col rounded-4xl bg-[#212121] px-5 py-7">
-        <h1 className="border-b border-[#474747] pb-2 text-[18px] text-[#c4c4c4]">
+      <div className="flex w-full flex-col rounded-4xl bg-[#212121] px-3 py-5 sm:px-5 sm:py-7">
+        <h1 className="border-b border-[#474747] pb-2 text-[14px] text-[#c4c4c4] sm:text-[18px]">
           서킷 정보
         </h1>
         <div className="flex items-center gap-10 pt-2">
           <div className="flex flex-col gap-1">
-            <p className="text-[16px] text-[#838383]">서킷 길이</p>
-            <p className="text-[18px]">{circuitData.circuit_length} km</p>
+            <p className="text-[12px] text-[#838383] sm:text-[16px]">
+              서킷 길이
+            </p>
+            <p className="text-[14px] sm:text-[18px]">
+              {circuitData.circuit_length} km
+            </p>
           </div>
           <div className="flex flex-col gap-1">
-            <p className="text-[16px] text-[#838383]">랩 수</p>
-            <p className="text-[18px]">{circuitData.laps} Laps</p>
+            <p className="text-[12px] text-[#838383] sm:text-[16px]">랩 수</p>
+            <p className="text-[14px] sm:text-[18px]">
+              {circuitData.laps} Laps
+            </p>
           </div>
         </div>
         <div className="flex flex-col gap-1 pt-2">
-          <p className="text-[16px] text-[#838383]">난이도 요약</p>
-          <p className="text-[18px]">
+          <p className="text-[12px] text-[#838383] sm:text-[16px]">
+            난이도 요약
+          </p>
+          <p className="text-[14px] sm:text-[16px] lg:text-[18px]">
             {!circuitData.difficulty_summary && (
               <p>아직 충분히 진행되지 않은 레이스입니다. </p>
             )}

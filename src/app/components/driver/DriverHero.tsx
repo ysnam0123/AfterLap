@@ -70,10 +70,10 @@ export default function DriverHero({
             </div>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <p
             style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-            className="text-[18px] sm:text-[30px] md:text-[40px]"
+            className="hidden text-[18px] sm:block sm:text-[20px] md:text-[30px]"
           >
             {seasonData?.team.team_kr_name
               ? seasonData?.team.team_kr_name
@@ -106,14 +106,14 @@ export default function DriverHero({
             ? seasonData.team.team_colour
             : data2026?.team_colour,
         }}
-        className="relative flex w-full flex-col items-center gap-6 rounded-xl border border-[#4C4C4C] px-4 py-6 select-none sm:flex-row sm:gap-20 sm:px-10"
+        className="relative flex items-center justify-center gap-6 rounded-xl select-none sm:flex-row sm:gap-20"
       >
-        <div className="absolute z-20 h-full w-full bg-black/50" />
+        <div className="absolute z-20 h-full w-full rounded-xl bg-black/30" />
         <DriverCard
           teamColor={seasonData?.team.team_colour}
           headshot={findHeadshot(fullName, selectedYear)}
         />
-        <div className="flex flex-col items-center">
+        {/* <div className="flex flex-col items-center">
           {seasonData?.team.car_img ? (
             <Image
               src={seasonData.team.car_img}
@@ -133,7 +133,7 @@ export default function DriverHero({
               priority
             />
           )}
-        </div>
+        </div> */}
       </section>
     </>
   );

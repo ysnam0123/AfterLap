@@ -10,25 +10,25 @@ export default function NextScheduleBox({ data }: PageProps) {
   const time = data.date_start.split('T')[1].split('+')[0];
   return (
     <>
-      <div className="flex items-center gap-3 rounded-4xl border-2 border-[#FED010] bg-[#212121] px-5 py-4">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FED010]">
-          <Timer className="h-8 w-8 text-white" />
+      <div className="flex items-center gap-1 rounded-xl border border-[#FED010] bg-[#212121] px-3 py-1.5 sm:gap-3 sm:rounded-4xl sm:border-2 sm:px-5 sm:py-4">
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FED010] sm:h-10 sm:w-10">
+          <Timer className="h-4 w-4 text-white sm:h-8 sm:w-8" />
         </div>
         <p
           style={{ fontFamily: 'Paperlolgy', fontWeight: 900 }}
-          className="text-[24px]"
+          className="hidden text-[12px] sm:block sm:text-[20px] md:text-[24px]"
         >
           Session Not Started
         </p>
         <p
           style={{ fontFamily: 'Paperlolgy', fontWeight: 500 }}
-          className="text-[20px]"
+          className="hidden text-[20px] lg:block"
         >
           아직 시작되지 않은 세션입니다
         </p>
         <p
           style={{ fontFamily: 'Paperlolgy', fontWeight: 500 }}
-          className="ml-3 text-[20px]"
+          className="ml-0 text-[13px] sm:ml-3 sm:text-[18px] md:text-[20px]"
         >
           <span>
             {date} {time}

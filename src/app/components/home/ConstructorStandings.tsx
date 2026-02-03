@@ -18,8 +18,8 @@ export default function ConstructorStandings({ data }: TS) {
   const router = useRouter();
   return (
     <>
-      <section className="w-full">
-        <div className="mb-3 flex items-center justify-between pr-3 sm:mb-5">
+      <section className="w-full rounded-xl bg-(--color-box-bg) p-4 sm:p-5">
+        <div className="mb-3 flex items-center justify-between sm:mb-5">
           <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
             팀 랭킹
           </h2>
@@ -27,7 +27,7 @@ export default function ConstructorStandings({ data }: TS) {
             전체보기
           </button>
         </div>
-        <div className="rounded-xl bg-(--color-table-bg) p-4 sm:p-5">
+        <div className="rounded-xl">
           {/* Header */}
           <div className="mb-3 border-b border-white/10 pb-2">
             <div className="grid grid-cols-[60px_1fr_80px] text-xs text-white/60 sm:text-sm">

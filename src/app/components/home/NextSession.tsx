@@ -21,7 +21,7 @@ export default function NextSession({ data }: PageProps) {
   console.log('nextSessions:', nextSessions);
   return (
     <>
-      <div className="flex flex-col gap-1.5 sm:gap-3">
+      <div className="flex flex-col gap-1.5 rounded-xl bg-(--color-box-bg) p-4 sm:gap-3 sm:p-5">
         <div className="flex items-center justify-between">
           <h1 className="text-[14px] font-semibold text-[#FED010] sm:text-[30px] sm:text-(--color-title)">
             다음 일정

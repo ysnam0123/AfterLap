@@ -51,12 +51,37 @@ export const fetchCircuits = async (): Promise<CircuitView[]> => {
 
   return data as CircuitView[];
 };
+export const fetchCircuit = async (
+  circuitKey: number,
+): Promise<CircuitView> => {
+  const { data, error } = await supabase
+    .from('v_circuit')
+    .select('*')
+    .eq('circuit_key', circuitKey)
+    .order('first_grand_prix', { ascending: true })
+    .single();
+
+  if (error) {
+    console.error('Circuit fetch error:', error);
+    throw new Error('Failed to fetch circuits');
+  }
+
+  return data as CircuitView;
+};
 
 // ==== view react query ====
 export const useCircuitViewData = () => {
   return useQuery<CircuitView[]>({
     queryKey: ['circuits'],
     queryFn: fetchCircuits,
+    staleTime: 1000 * 60 * 60 * 24, // 24시간 (서킷은 거의 안 바뀜)
+    gcTime: 1000 * 60 * 60 * 24,
+  });
+};
+export const useCircuitDetailData = (circuitKey: number) => {
+  return useQuery<CircuitView>({
+    queryKey: ['circuit', circuitKey],
+    queryFn: () => fetchCircuit(circuitKey),
     staleTime: 1000 * 60 * 60 * 24, // 24시간 (서킷은 거의 안 바뀜)
     gcTime: 1000 * 60 * 60 * 24,
   });

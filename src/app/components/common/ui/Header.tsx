@@ -76,12 +76,12 @@ export default function Header() {
               >
                 서킷
               </li>
-              <li
+              {/* <li
                 onClick={() => router.push('/infomation')}
                 className="cursor-pointer border-b-2 border-transparent py-6.25 hover:border-[#ffffff]"
               >
                 f1 알아보기
-              </li>
+              </li> */}
             </ul>
           </div>
           {openTeam && <TeamBox onMouseLeave={() => setOpenTeam(false)} />}

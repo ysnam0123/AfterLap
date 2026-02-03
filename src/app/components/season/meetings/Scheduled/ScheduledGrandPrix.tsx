@@ -12,7 +12,7 @@ export default function ScheduledGrandPrix({ data, circuitData }: PageProps) {
   console.log('물려받은 데이터', data);
   return (
     <>
-      <section className="flex flex-col gap-10">
+      <section className="flex flex-col gap-4 px-5 pt-5 sm:gap-10 sm:px-0 sm:pt-0">
         <NextScheduleBox data={data} />
         <About circuitData={circuitData} />
       </section>

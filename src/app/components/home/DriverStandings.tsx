@@ -1,50 +1,13 @@
 import { DriverSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
 
-const data = [
-  {
-    rank: 1,
-    name: '랜드 노리스',
-    team: '맥라렌',
-    points: 293,
-    color: 'bg-orange-500',
-  },
-  {
-    rank: 2,
-    name: '조지 러셀',
-    team: '메르세데스',
-    points: 247,
-    color: 'bg-teal-400',
-  },
-  {
-    rank: 3,
-    name: '샤를 르클레르',
-    team: '페라리',
-    points: 186,
-    color: 'bg-red-600',
-  },
-  {
-    rank: 4,
-    name: '유키 츠노다',
-    team: '레드불 레이싱',
-    points: 169,
-    color: 'bg-blue-600',
-  },
-  {
-    rank: 5,
-    name: '페르난도 알론소',
-    team: '애스턴 마틴',
-    points: 135,
-    color: 'bg-green-600',
-  },
-];
 interface DS {
   data: DriverSeasonRankingView[];
 }
 export default function DriverStandings({ data }: DS) {
   return (
-    <section className="w-full">
-      <div className="mb-3 flex items-center justify-between pr-3 sm:mb-5">
+    <section className="w-full rounded-xl bg-(--color-box-bg) p-4 sm:p-5">
+      <div className="mb-3 flex items-center justify-between sm:mb-5">
         <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
           드라이버 랭킹
         </h2>
@@ -52,7 +15,7 @@ export default function DriverStandings({ data }: DS) {
           전체보기
         </button>
       </div>
-      <div className="w-full rounded-xl bg-(--color-table-bg) p-4 sm:p-5">
+      <div className="w-full">
         {/* Header */}
         <div className="mb-3 border-b border-white/10 pb-2">
           <div className="grid grid-cols-[60px_1fr_1fr_80px] pr-3 text-xs text-white/60 sm:text-sm">

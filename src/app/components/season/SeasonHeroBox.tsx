@@ -22,7 +22,7 @@ export default function SeasonHeroBox({
   return (
     <>
       <section className="relative mb-1 pt-30 select-none sm:mb-12.5 sm:pt-60 md:pt-80 lg:pt-100">
-        <div className="absolute inset-0 z-0 h-30 w-screen sm:h-60 md:h-80 lg:h-100">
+        <div className="absolute inset-0 z-0 h-30 w-full sm:h-60 md:h-80 lg:h-100">
           <Image
             src={circuitInfo.circuit_bg}
             alt="bg"
@@ -33,7 +33,7 @@ export default function SeasonHeroBox({
 
           <div className="absolute inset-0 bg-black opacity-60" />
         </div>
-        <div className="absolute top-3 left-1/2 mx-auto flex w-full max-w-325 -translate-x-1/2 justify-between py-3.75 pl-5 sm:px-10">
+        <div className="absolute top-0 left-1/2 mx-auto flex w-full max-w-325 -translate-x-1/2 justify-between py-3.75 pl-5 sm:top-3 sm:px-10">
           <div className="flex flex-col gap-2">
             {!meetingInfo ? (
               <div className="desktop flex flex-col gap-2">

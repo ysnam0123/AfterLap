@@ -49,22 +49,22 @@ export function DriverPerformance({
       </div>
 
       {/* Race Results Table */}
-      <div className="space-y-4">
+      <div className="space-y-2 sm:space-y-4">
         <h3 className="text-muted-foreground text-[18px]">레이스 별 결과</h3>
         <div className="overflow-x-auto">
-          <table className="text-[18 w-full select-none">
+          <table className="w-full select-none">
             <thead>
-              <tr className="border-border border-b">
-                <th className="text-muted-foreground px-4 py-3 text-left text-[16px] font-medium tracking-wider uppercase">
+              <tr className="border-border border-b text-[12px] sm:text-[16px]">
+                <th className="text-muted-foreground px-2 py-1 text-left font-medium tracking-wider uppercase sm:px-4 sm:py-3">
                   Round
                 </th>
-                <th className="text-muted-foreground px-4 py-3 text-left text-[16px] font-medium tracking-wider uppercase">
+                <th className="text-muted-foreground px-2 py-1 text-left font-medium tracking-wider uppercase sm:px-4 sm:py-3">
                   Grand Prix
                 </th>
-                <th className="text-muted-foreground px-4 py-3 text-right text-[16px] font-medium tracking-wider uppercase">
+                <th className="text-muted-foreground hidden px-2 py-1 text-right font-medium tracking-wider uppercase sm:px-4 sm:py-3 md:table-cell">
                   Position
                 </th>
-                <th className="text-muted-foreground px-4 py-3 text-right text-[16px] font-medium tracking-wider uppercase">
+                <th className="text-muted-foreground px-2 py-1 text-right font-medium tracking-wider uppercase sm:px-4 sm:py-3">
                   Points
                 </th>
               </tr>
@@ -75,7 +75,7 @@ export function DriverPerformance({
                   key={result.round}
                   className="border-border/50 border-b transition-colors duration-200 hover:bg-[#252525]"
                 >
-                  <td className="text-muted-foreground px-4 py-3">
+                  <td className="text-muted-foreground px-2 py-1 sm:px-4 sm:py-3">
                     {result.round}
                   </td>
                   <td className="flex items-center gap-2 px-4 py-3">
@@ -84,11 +84,11 @@ export function DriverPerformance({
                       alt="flag"
                       width={24}
                       height={15}
-                      className="h-auto w-auto"
+                      className="h-auto w-4 sm:h-6"
                     />
-                    {result.race}
+                    <p className="text-[12px] sm:text-[16px]">{result.race}</p>
                   </td>
-                  <td className="px-4 py-3 text-right font-medium">
+                  <td className="hidden px-4 py-3 text-right font-medium md:table-cell">
                     {typeof result.position === 'number'
                       ? `P${result.position}`
                       : result.position}

@@ -54,13 +54,15 @@ export default function CircuitCard({ data }: PageProps) {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-1 text-[14px] sm:text-[16px]">
-                <Crown className="h-4.25 w-4.25 text-[#D6B706]" />
-                <p className="border-r-2 border-(--color-border) pr-1">
-                  {data.lap_record.driver}
-                </p>
-                <p className="">{data.lap_record.year}년</p>
-              </div>
+              {data.lap_record.driver !== null && (
+                <div className="flex items-center gap-1 text-[14px] sm:text-[16px]">
+                  <Crown className="h-4.25 w-4.25 text-[#D6B706]" />
+                  <p className="border-r-2 border-(--color-border) pr-1">
+                    {data.lap_record.driver}
+                  </p>
+                  <p className="">{data.lap_record.year}년</p>
+                </div>
+              )}
             </div>
           </div>
           <Image

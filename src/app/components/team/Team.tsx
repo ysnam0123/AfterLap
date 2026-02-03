@@ -74,7 +74,7 @@ export default function Team({ team }: NewTeamProps) {
                   {driver.driver_number}
                 </div>
                 <p
-                  className="text-[12px] transition-all duration-100 ease-in group-hover:border-b sm:text-[16px]"
+                  className="text-[10px] transition-all duration-100 ease-in group-hover:border-b sm:text-[16px]"
                   style={{ borderColor: team.team_colour }}
                 >
                   {driver.kr_name}
