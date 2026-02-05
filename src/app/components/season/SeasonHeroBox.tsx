@@ -21,8 +21,8 @@ export default function SeasonHeroBox({
   }
   return (
     <>
-      <section className="relative mb-1 pt-30 select-none sm:mb-12.5 sm:pt-60 md:pt-80 lg:pt-100">
-        <div className="absolute inset-0 z-0 h-30 w-full sm:h-60 md:h-80 lg:h-100">
+      <section className="relative mb-1 pt-30 select-none sm:mb-12.5 sm:pt-60 md:pt-80 lg:pt-85">
+        <div className="absolute inset-0 z-0 h-30 w-full sm:h-60 md:h-80 lg:h-85">
           <Image
             src={circuitInfo.circuit_bg}
             alt="bg"
@@ -75,7 +75,7 @@ export default function SeasonHeroBox({
             )}
           </div>
           <div className="hidden sm:block">
-            <div className="flex flex-col items-center justify-center gap-1 rounded-[30px] bg-[#000000]/90 px-4 py-2 md:h-60 lg:h-80 xl:h-90">
+            <div className="flex flex-col items-center justify-center gap-1 rounded-[30px] bg-[#000000]/90 px-4 py-2 md:h-60 lg:h-70">
               {!circuitSrc && <SimpleLoading />}
               {circuitSrc && (
                 <>
@@ -87,7 +87,7 @@ export default function SeasonHeroBox({
                     alt="circuit"
                     width={500}
                     height={270}
-                    className="w-auto sm:h-33 md:h-40 lg:h-50 xl:h-56.25"
+                    className="w-auto sm:h-33 md:h-40 lg:h-60"
                   />
                 </>
               )}

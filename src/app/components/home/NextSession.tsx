@@ -21,13 +21,13 @@ export default function NextSession({ data }: PageProps) {
   console.log('nextSessions:', nextSessions);
   return (
     <>
-      <div className="flex flex-col gap-1.5 rounded-xl bg-(--color-box-bg) p-4 sm:gap-3 sm:p-5">
+      <div className="flex flex-col gap-1.5 rounded-xl border border-white/10 bg-(--color-box-bg) p-4 sm:gap-0 sm:p-5">
         <div className="flex items-center justify-between">
           <h1 className="text-[14px] font-semibold text-[#FED010] sm:text-[30px] sm:text-(--color-title)">
             다음 일정
           </h1>
           <button
-            onClick={() => router.push(`/seaon/${data?.meeting_key}`)}
+            onClick={() => router.push(`/season/${data?.meeting_key}`)}
             className="cursor-pointer text-[12px] text-(--color-title) hover:text-[#F8F8F8] sm:text-[16px]"
           >
             자세히 보기

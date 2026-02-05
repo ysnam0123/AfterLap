@@ -19,7 +19,7 @@ export default function Page() {
 
   return (
     <>
-      <main className="min-h-screen px-5 sm:px-5 lg:px-10">
+      <main className="min-h-screen px-5 lg:px-10">
         {/* <SeasonHeroBox /> */}
         <section className="mx-auto w-full max-w-350">
           {isPending && (

@@ -7,9 +7,9 @@
   --color-muted: #6f6f6f;
 
   --color-box-bg: #111111;
-  --color-box-hover: #2f2f2f;
+  --color-box-hover: #161616;
   --color-box-active: #131313;
-  --color-box-border: #1f1f1f;
+  --color-box-border: rgba(255, 255, 255, 0.08);
 
   --color-border: #4a4a4a;
   --color-placeholder: #8b8b8b;

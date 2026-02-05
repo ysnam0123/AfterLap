@@ -65,16 +65,7 @@ export default function Page() {
     <>
       {/* {pageLoading && <MobileSplash />} */}
       {!pageLoading && (
-        <section className="relative mx-auto flex max-w-full flex-col gap-5 px-3 pt-5 select-none sm:gap-12.5 lg:px-30">
-          <div className="desktop">
-            <Image
-              src={'/homeImg.svg'}
-              alt="homeImg"
-              width={839}
-              height={360}
-              className="absolute right-5 -z-30"
-            />
-          </div>
+        <section className="mx-auto flex max-w-full flex-col gap-5 px-5 pt-5 select-none sm:gap-8 lg:px-15 xl:px-35">
           <NextSession data={nextMeeting} />
           {!DriverRankingLoading && DriverRanking && teamRanking && CData && (
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

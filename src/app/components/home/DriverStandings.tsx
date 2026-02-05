@@ -6,7 +6,7 @@ interface DS {
 }
 export default function DriverStandings({ data }: DS) {
   return (
-    <section className="w-full rounded-xl bg-(--color-box-bg) p-4 sm:p-5">
+    <section className="w-full rounded-xl border border-white/10 bg-(--color-box-bg) p-4 sm:p-5">
       <div className="mb-3 flex items-center justify-between sm:mb-5">
         <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
           드라이버 랭킹

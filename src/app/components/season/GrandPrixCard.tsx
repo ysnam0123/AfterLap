@@ -14,7 +14,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
     <>
       <div
         onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex w-full cursor-pointer flex-col rounded-[10px] bg-[#1A1A1A] p-4.5 font-semibold hover:bg-[#313131]"
+        className="flex w-full cursor-pointer flex-col rounded-[10px] border border-white/10 bg-[#1A1A1A] p-4.5 font-semibold hover:bg-[#313131]"
       >
         <p className="mb-2 text-[10px] text-[#8B8B8B] sm:text-[12px]">
           {meetingInfo.meeting_official_name}

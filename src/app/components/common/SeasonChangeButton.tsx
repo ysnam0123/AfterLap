@@ -25,7 +25,7 @@ export default function SeasonChangeButton({
         <button
           onClick={() => setOpenedAction(!opened)}
           className={twMerge(
-            `mb-2.5 flex h-8 w-21 cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-(--color-box-border) bg-(--color-box-bg) text-[14px] font-bold sm:mb-10 sm:h-12.5 sm:w-36 sm:text-[20px] sm:hover:bg-[#4b4b4b]`,
+            `mb-2.5 flex h-8 w-21 cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white/10 bg-(--color-box-bg) text-[14px] font-bold sm:mb-10 sm:h-12.5 sm:w-36 sm:text-[20px] sm:hover:bg-[#4b4b4b]`,
             className,
           )}
         >
@@ -47,7 +47,7 @@ export default function SeasonChangeButton({
             delay={0}
             className="absolute top-full z-800"
           >
-            <ul className="w-21 rounded-[10px] border border-(--color-box-border) bg-(--color-box-bg) text-center text-[20px] font-bold sm:w-36">
+            <ul className="w-21 rounded-[10px] border border-white/10 bg-(--color-box-bg) text-center text-[20px] font-bold sm:w-36">
               {years.map((year) => (
                 <li
                   key={year}

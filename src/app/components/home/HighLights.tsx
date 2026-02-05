@@ -16,7 +16,7 @@ export default function HighLights() {
         </h1>
         {isPending && <></>}
         {isError && <></>}
-        <div className="grid min-h-62.5 grid-cols-2 gap-10 rounded-4xl bg-[#1a1a1a] px-5 py-5 sm:grid-cols-4">
+        <div className="grid min-h-62.5 grid-cols-2 gap-10 rounded-4xl border border-white/10 bg-[#1a1a1a] px-5 py-5 sm:grid-cols-4">
           {data &&
             data.map((video) => (
               <a

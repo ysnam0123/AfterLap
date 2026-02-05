@@ -45,7 +45,7 @@ export default function GrandPrixCardWithPodium({ meetingInfo }: CardProps) {
     <>
       <div
         onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex min-h-45.5 w-full cursor-pointer flex-col justify-between rounded-[10px] bg-[#1A1A1A] p-4.5 font-semibold hover:bg-[#313131]"
+        className="flex min-h-45.5 w-full cursor-pointer flex-col justify-between rounded-[10px] border border-white/10 bg-[#1A1A1A] p-4.5 font-semibold hover:bg-[#313131]"
       >
         <div className="mb-2.5 flex items-center justify-between sm:mb-5">
           <div className="flex flex-col gap-3">
