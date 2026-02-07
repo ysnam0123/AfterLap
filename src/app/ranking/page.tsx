@@ -11,6 +11,7 @@ import {
   useTeamSeasonRanking,
 } from '../api/f1/ranking/TeamRanking';
 import F1Loading from '../components/common/F1Loading';
+import TeamRankingTable from '../components/ranking/TeamRankingTable';
 
 export default function Page() {
   const [opened, setOpened] = useState(false);
@@ -79,6 +80,11 @@ export default function Page() {
             </div>
             <DriverRankingTable year={selectedYear} results={DriverRanking} />
           </section>
+        )}
+        {showTeamRanking && (
+          <>
+            <TeamRankingTable />
+          </>
         )}
       </section>
     </>
