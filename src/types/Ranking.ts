@@ -9,13 +9,15 @@ export interface DriverSeasonRankingView {
   name_acronym: string;
   headshot_url: string;
   is_main: boolean;
+  flag: string;
+  country_kr_name: string;
 
-  team_name: string | null;
-  team_kr_name: string | null;
-  team_slug: string | null;
+  team_name: string;
+  team_kr_name: string;
+  team_slug: string;
   team_colour: string;
-  main_logo: string | null;
-  white_logo: string | null;
+  main_logo: string;
+  white_logo: string;
 
   total_points: number;
 

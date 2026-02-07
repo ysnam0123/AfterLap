@@ -1,5 +1,6 @@
 import { upgradeHeadshotQuality } from '@/hooks/UpgradeHeadShotQuality';
 import { SortedSessionResult } from '@/types/meeting';
+import { DriverSeasonRankingView } from '@/types/Ranking';
 import { findHeadshot } from '@/utils/findHeadShot';
 import Image from 'next/image';
 
@@ -9,7 +10,7 @@ export default function PodiumCard({
   year,
 }: {
   year: number;
-  result: SortedSessionResult;
+  result: SortedSessionResult | DriverSeasonRankingView;
   rank: 1 | 2 | 3;
 }) {
   const headshotSrc = upgradeHeadshotQuality(result.headshot_url);
