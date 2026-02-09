@@ -1,24 +1,22 @@
+import { TeamSeasonRankingView } from '@/types/Ranking';
 import TeamRankingCard from './TeamRankingCard';
 
-export default function TeamRankingTable() {
+interface PageProps {
+  data: TeamSeasonRankingView[];
+  year: number;
+}
+
+export default function TeamRankingTable({ data, year }: PageProps) {
   return (
     <>
-      <div className="grid grid-cols-4 gap-5 pt-10">
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-        <TeamRankingCard />
-      </div>
+      {data.length === 0 && <div></div>}
+      {data && (
+        <div className="grid gap-5 pt-10 md:grid-cols-2 lg:grid-cols-3">
+          {data.map((team) => (
+            <TeamRankingCard key={team.team_slug} year={year} data={team} />
+          ))}
+        </div>
+      )}
     </>
   );
 }

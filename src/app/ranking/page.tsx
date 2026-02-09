@@ -37,6 +37,8 @@ export default function Page() {
   const third = DriverRanking?.find((r) => r.rank === 3);
   const showDriverRanking = isSelected === '드라이버 랭킹';
   const showTeamRanking = isSelected === '팀 랭킹';
+  const seasonNotStarted =
+    DriverRanking?.length === 0 || TeamRanking.length === 0;
 
   return (
     <>
@@ -48,12 +50,6 @@ export default function Page() {
           selectedYear={selectedYear}
           setSelectedYearAction={setSelectedYear}
         />
-        {DriverRankingLoading ||
-          (TeamRankingLoading && (
-            <div className="flex h-100 items-center justify-center sm:h-100">
-              <F1Loading loadingText="로딩 중..." />
-            </div>
-          ))}
         <div className="mt-3 flex items-center gap-0 sm:gap-5">
           {tabs.map((tab, idx) => (
             <button
@@ -65,6 +61,13 @@ export default function Page() {
             </button>
           ))}
         </div>
+
+        {DriverRankingLoading ||
+          (TeamRankingLoading && (
+            <div className="flex h-100 items-center justify-center sm:h-100">
+              <F1Loading loadingText="로딩 중..." />
+            </div>
+          ))}
         {DriverRanking && showDriverRanking && (
           <section>
             <div className="my-0 flex items-end justify-center gap-7.5 sm:my-5 sm:px-5 md:px-0">
@@ -81,9 +84,9 @@ export default function Page() {
             <DriverRankingTable year={selectedYear} results={DriverRanking} />
           </section>
         )}
-        {showTeamRanking && (
+        {showTeamRanking && TeamRanking && (
           <>
-            <TeamRankingTable />
+            <TeamRankingTable year={selectedYear} data={teamRankings} />
           </>
         )}
       </section>
