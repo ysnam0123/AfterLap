@@ -17,7 +17,7 @@ export default function MobileFooter() {
   ];
 
   return (
-    <footer className="fixed right-0 bottom-0 left-0 z-50 flex h-12 items-center justify-center gap-6 border-t border-[#4A4A4A] bg-(--color-bg-primary) sm:gap-14 lg:hidden">
+    <footer className="fixed right-0 bottom-0 left-0 z-50 flex h-16 items-center justify-center gap-6 border-t border-[#4A4A4A] bg-(--color-bg-primary) sm:gap-14 lg:hidden">
       {menus.map(({ label, icon: Icon, path }) => {
         const isActive =
           path === '/' ? pathname === '/' : pathname.startsWith(path);
@@ -26,10 +26,10 @@ export default function MobileFooter() {
           <button
             key={label}
             onClick={() => router.push(path)}
-            className="flex h-9.5 w-11 flex-col items-center justify-center text-[10px] font-medium"
+            className="flex h-11 w-11 flex-col items-center justify-center text-[12px] font-medium"
           >
             <Icon
-              size={20}
+              size={22}
               className={isActive ? 'text-white' : 'text-[#4A4A4A]'}
             />
             <p className={isActive ? 'text-white' : 'text-[#4A4A4A]'}>

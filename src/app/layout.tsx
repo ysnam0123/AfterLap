@@ -78,7 +78,7 @@ export default function RootLayout({
       <body className="bg-[#0B0B0B] text-[#ffffff]">
         <Provider>
           <Header />
-          <div className="min-h-screen py-12 lg:py-25 lg:pb-0">{children}</div>
+          <div className="min-h-screen py-18 lg:py-25 lg:pb-0">{children}</div>
           <Footer />
           <MobileFooter />
         </Provider>

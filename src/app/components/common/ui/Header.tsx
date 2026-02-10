@@ -2,17 +2,21 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import TeamBox from './dropdown/TeamBox';
 import DriverBox from './dropdown/DriverBox';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronLeft } from 'lucide-react';
 export default function Header() {
   const [openTeam, setOpenTeam] = useState(false);
   const [openDriver, setOpenDriver] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const isDetailPage = pathSegments.length >= 2;
   return (
     <>
-      <div className="fixed top-0 z-50 mb-4 flex h-12.5 w-full flex-col bg-(--color-bg-primary) px-2.5 py-2.5 lg:h-23.5">
+      <div className="fixed top-0 z-50 mb-4 flex w-full flex-col gap-3 bg-(--color-bg-primary) px-2.5 py-2.5 lg:h-22">
         <div className="flex items-center gap-17.5 select-none lg:px-17.5 xl:px-35">
           <Image
             src={'/AfterLapLogo.svg'}
@@ -91,6 +95,14 @@ export default function Header() {
             />
           )}
         </div>
+        {isDetailPage && (
+          <div className="mobile">
+            <button onClick={() => router.back()} className="flex items-center">
+              <ChevronLeft className="h-5.25 w-5.25" />
+              <p className="text-[14px] font-semibold">뒤로가기</p>
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

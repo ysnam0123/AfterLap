@@ -127,7 +127,7 @@ export default function Page() {
         )}
         {isPageReady && (
           <>
-            <section className="mx-auto min-h-screen w-full px-5 md:px-10 lg:px-20 xl:px-35">
+            <section className="mx-auto min-h-screen w-full px-0 md:px-10 lg:px-20 xl:px-35">
               <>
                 {selectedSessionKey && (
                   <SessionNav

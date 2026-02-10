@@ -4,7 +4,7 @@ import { StatCard } from '../team/StatCard';
 export default function DriverStats({ data }: { data?: DriverSeasonData }) {
   return (
     <>
-      <div className="mb-10 grid grid-cols-1 gap-4 border-y border-[#4C4C4C] py-5 pt-8 sm:py-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-10 grid grid-cols-1 gap-4 border-b border-[#4C4C4C] py-5 pt-8 sm:py-8 md:grid-cols-2 lg:grid-cols-4">
         {data && (
           <>
             <StatCard

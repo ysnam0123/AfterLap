@@ -20,11 +20,10 @@ export default function Page() {
   return (
     <>
       <main className="min-h-screen px-5 lg:px-10">
-        {/* <SeasonHeroBox /> */}
         <section className="mx-auto w-full max-w-350">
           {isPending && (
             <>
-              <div className="flex h-200 items-center justify-center">
+              <div className="flex h-100 items-center justify-center md:h-200">
                 <F1Loading loadingText="시즌 불러오는중..." />
               </div>
             </>

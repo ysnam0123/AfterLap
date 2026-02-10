@@ -12,6 +12,7 @@ import {
 } from '../api/f1/ranking/TeamRanking';
 import F1Loading from '../components/common/F1Loading';
 import TeamRankingTable from '../components/ranking/TeamRankingTable';
+import BeforeSeason from '../components/common/BeforeSeason';
 
 export default function Page() {
   const [opened, setOpened] = useState(false);
@@ -66,7 +67,17 @@ export default function Page() {
               <F1Loading loadingText="로딩 중..." />
             </div>
           ))}
-        {DriverRanking && showDriverRanking && (
+        {DriverRanking && DriverRanking.length === 0 && showDriverRanking && (
+          <div className="flex h-100 items-center justify-center sm:h-100">
+            <BeforeSeason />
+          </div>
+        )}
+        {TeamRanking && TeamRanking.length === 0 && showTeamRanking && (
+          <div className="flex h-100 items-center justify-center sm:h-100">
+            <BeforeSeason />
+          </div>
+        )}
+        {DriverRanking && DriverRanking.length > 0 && showDriverRanking && (
           <section>
             <div className="my-0 flex items-end justify-center gap-7.5 sm:my-5 sm:px-5 md:px-0">
               {second && (
