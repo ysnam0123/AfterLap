@@ -3,11 +3,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function TeamBox({
-  className,
   onMouseLeave,
   onClick,
 }: {
-  className?: string;
   onClick: () => void;
   onMouseLeave: () => void;
 }) {

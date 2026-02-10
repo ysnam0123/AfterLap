@@ -7,7 +7,7 @@ export default function StatBox({
 }) {
   return (
     <>
-      <div className="mb-5 flex flex-col gap-[15px]">
+      <div className="mb-5 flex flex-col gap-3.75">
         <p
           className="text-[30px]"
           style={{ fontFamily: 'Paperlolgy', fontWeight: 500 }}

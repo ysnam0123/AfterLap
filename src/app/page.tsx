@@ -6,9 +6,7 @@ import { useMeetingsWithStatusAndPodium } from '@/hooks/SeasonRacePodium';
 import ConstructorStandings from './components/home/ConstructorStandings';
 import DriverStandings from './components/home/DriverStandings';
 import CircuitGrid from './components/home/CircuitGrid';
-import HomeLogo from './components/home/HomeLogo';
 import NextSession from './components/home/NextSession';
-import Image from 'next/image';
 import { useMemo } from 'react';
 import { useDriverRankingData } from './api/f1/ranking/driverRanking';
 import { useCircuitViewData } from './api/meeting/Circuit';
@@ -18,9 +16,10 @@ import {
 } from './api/f1/ranking/TeamRanking';
 
 export default function Page() {
-  const { data, isPending, isError } = useLiveSession();
-  if (data) {
-    console.log('라이브 세션:', data);
+  // 라이브 세션 아직 건드리지 않음
+  const { data: liveSession, isPending: liveSessionLoading } = useLiveSession();
+  if (liveSession) {
+    console.log('라이브 세션:', liveSession);
   }
   const { data: nextMeeting, isPending: nextMeetingLoading } = useNextMeeting();
   if (nextMeeting) {
@@ -28,11 +27,7 @@ export default function Page() {
   }
 
   // 시즌 화면으로 넘어가기 위한 로딩
-  const {
-    data: meetings,
-    isPending: load2025,
-    error: meetingError,
-  } = useMeetingsWithStatusAndPodium(2026);
+  const { data: meetings } = useMeetingsWithStatusAndPodium(2026);
 
   // 드라이버 랭킹
   const { data: DriverRanking, isPending: DriverRankingLoading } =

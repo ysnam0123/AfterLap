@@ -1,15 +1,10 @@
 'use client';
-import { upgradeHeadshotQuality } from '@/hooks/UpgradeHeadShotQuality';
 import { Team2026 } from '@/images/team';
-import { TeamSeasonRankingView } from '@/types/Ranking';
-import { Trophy, Users } from 'lucide-react';
+import { Users } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import defaultCar from '/public/cars/car.svg';
 
-interface TeamProps {
-  team: TeamSeasonRankingView;
-}
 interface NewTeamProps {
   team: Team2026;
 }

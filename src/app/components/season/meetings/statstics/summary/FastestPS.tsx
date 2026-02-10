@@ -1,5 +1,4 @@
 import { PitView } from '@/app/api/f1/race/pit';
-import { upgradeHeadshotQuality } from '@/hooks/UpgradeHeadShotQuality';
 import Image from 'next/image';
 import DefaultDriverProfile from '../../DefaultDriverProfile';
 import { findHeadshot } from '@/utils/findHeadShot';
@@ -15,7 +14,6 @@ export default function FastestPitStop({
   year: number;
 }) {
   const fastest = pit[0];
-  const headshot = upgradeHeadshotQuality(fastest.headshot_url);
   console.log('fastest', fastest);
   useEffect(() => {
     console.log(findHeadshot(fastest.full_name, year));

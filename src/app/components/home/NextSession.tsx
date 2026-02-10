@@ -1,7 +1,6 @@
 'use client';
 import { NextMeeting } from '@/hooks/NextMeeting';
 import Image from 'next/image';
-import SimpleLoading from '../common/SimpleLoading';
 import { useRouter } from 'next/navigation';
 import { useSessionData } from '@/app/api/meeting/Sessions';
 import SessionBox from './SessionBox';

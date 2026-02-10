@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { formatDuration } from '@/hooks/FormattingDuration';
 import { findHeadshot } from '@/utils/findHeadShot';
 import DefaultDriverProfile from '../season/meetings/DefaultDriverProfile';
 import DriverProfile from '../season/meetings/DriverProfile';

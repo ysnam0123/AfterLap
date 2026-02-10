@@ -28,12 +28,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* 안드로아드/크롬 계열 브라우저에서 pwa를 허용 */}
         <meta name="mobile-web-app-capable" content="yes" />
+        {/* ios safari에서 pwa를 허용 */}
+        {/* ios는 manifest.json 만으로는 부족하다. */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        {/* ios에서 상태바 스타일 제어 */}
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
+
+        {/* 여기서 부턴, 기기 별로 사용되는 스플래시 이미지 */}
         {/* iPhone 14 / 15 Pro Max */}
         <link
           rel="apple-touch-startup-image"
