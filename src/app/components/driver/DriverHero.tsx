@@ -87,7 +87,7 @@ export default function DriverHero({
             />
           ) : (
             <Image
-              src={data2026?.main_logo}
+              src={data2026!.main_logo}
               alt="logoImg"
               width={100}
               height={100}

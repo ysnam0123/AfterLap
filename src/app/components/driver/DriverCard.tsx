@@ -5,7 +5,7 @@ export default function DriverCard({
   headshot,
   teamColor,
 }: {
-  headshot: StaticImageData;
+  headshot: string;
   teamColor?: string;
 }) {
   return (
