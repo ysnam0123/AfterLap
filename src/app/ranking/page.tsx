@@ -37,8 +37,6 @@ export default function Page() {
   const third = DriverRanking?.find((r) => r.rank === 3);
   const showDriverRanking = isSelected === '드라이버 랭킹';
   const showTeamRanking = isSelected === '팀 랭킹';
-  const seasonNotStarted =
-    DriverRanking?.length === 0 || TeamRanking.length === 0;
 
   return (
     <>

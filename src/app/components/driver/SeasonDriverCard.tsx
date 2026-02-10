@@ -1,9 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { SeasonDriver } from '@/hooks/SeasonDrivers';
-import { upgradeHeadshotQuality } from '@/hooks/UpgradeHeadShotQuality';
-import defaultDriver from '/public/drivers/defaultDriver.svg';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { Team2026, teamDriver } from '@/images/team';
 
@@ -17,7 +14,6 @@ export default function SeasonDriverCard({
   teamData: Team2026;
 }) {
   const router = useRouter();
-  const [firstName, lastName] = driver.kr_name.split(' ');
   return (
     <div
       onClick={() => router.push(`/driver/${driver.driver_id}`)}

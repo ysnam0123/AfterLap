@@ -5,7 +5,7 @@ export default function DriverProfile({
   teamColor,
   className,
 }: {
-  headshot: StaticImageData;
+  headshot: StaticImageData | string;
   teamColor: string;
   className: string;
 }) {

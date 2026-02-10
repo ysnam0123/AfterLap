@@ -3,14 +3,6 @@ import { TeamSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const data = [
-  { rank: 1, team: '맥라렌', points: 293, color: 'bg-orange-500' },
-  { rank: 2, team: '메르세데스', points: 247, color: 'bg-gray-300' },
-  { rank: 3, team: '페라리', points: 186, color: 'bg-red-600' },
-  { rank: 4, team: '레드불 레이싱', points: 169, color: 'bg-blue-600' },
-  { rank: 5, team: '애스턴 마틴', points: 135, color: 'bg-green-600' },
-];
-
 interface TS {
   data: TeamSeasonRankingView[];
 }

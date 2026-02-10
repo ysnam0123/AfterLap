@@ -2,14 +2,11 @@ import {
   DriverDetailData,
   DriverSeasonData,
 } from '@/hooks/detailPage/DriverDetail';
-import defaultDriver from '/public/drivers/defaultDriver.svg';
 import Image from 'next/image';
-import { upgradeHeadshotQuality } from '@/hooks/UpgradeHeadShotQuality';
 import SeasonChangeButton from '../common/SeasonChangeButton';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { teams2026 } from '@/images/team';
 import DriverCard from './DriverCard';
-import defaultCar from '/public/cars/car.svg';
 
 interface Props {
   data: DriverDetailData;
@@ -113,27 +110,6 @@ export default function DriverHero({
           teamColor={seasonData?.team.team_colour}
           headshot={findHeadshot(fullName, selectedYear)}
         />
-        {/* <div className="flex flex-col items-center">
-          {seasonData?.team.car_img ? (
-            <Image
-              src={seasonData.team.car_img}
-              alt="carImg"
-              width={450}
-              height={150}
-              className="z-30"
-              priority
-            />
-          ) : (
-            <Image
-              src={data2026?.car_img ? data2026.car_img : defaultCar}
-              alt="carImg"
-              width={450}
-              height={150}
-              className="z-30 h-auto max-w-[260px] sm:max-w-[450px] md:max-w-[520px]"
-              priority
-            />
-          )}
-        </div> */}
       </section>
     </>
   );

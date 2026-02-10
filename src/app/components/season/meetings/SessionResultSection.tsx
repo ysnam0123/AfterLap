@@ -1,5 +1,5 @@
 'use client';
-import { SessionResults, SortedSessionResult } from '@/types/meeting';
+import { SessionResults } from '@/types/meeting';
 import Image from 'next/image';
 import DriverProfile from './DriverProfile';
 import DefaultDriverProfile from './DefaultDriverProfile';

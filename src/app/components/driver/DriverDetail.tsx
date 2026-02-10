@@ -3,9 +3,9 @@ import StatBox from './StatBox';
 export default function DriverDetail() {
   return (
     <>
-      <section className="min-h-250 w-full rounded-[30px] bg-[#1C1C25] px-10 py-[30px] select-none">
+      <section className="min-h-250 w-full rounded-[30px] bg-[#1C1C25] px-10 py-7.5 select-none">
         <h1
-          className="mb-[50px] text-[40px]"
+          className="mb-12.5 text-[40px]"
           style={{ fontFamily: 'PartialSans' }}
         >
           STATSTICS
