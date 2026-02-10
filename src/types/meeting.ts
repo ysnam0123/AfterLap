@@ -141,5 +141,5 @@ export interface StartingGridWithDriver {
 // 레이스 화면의 분석탭
 export interface RaceStatsticsTab {
   label: string;
-  icon: StaticImageData;
+  icon: string;
 }

@@ -1,9 +1,4 @@
 'use client';
-import graph from '/public/icons/graph.svg';
-import pitstop from '/public/icons/pitstop.svg';
-import retirement from '/public/icons/retirement.svg';
-import overview from '/public/icons/overview.svg';
-import checker from '/public/icons/checker.svg';
 import PodiumCard from './PodiumCard';
 import { RaceResults } from '@/types/meeting';
 import { useRouter } from 'next/navigation';
@@ -32,14 +27,14 @@ export default function RaceResultSection({
   startingGrid,
 }: RaceResults) {
   const tabs = [
-    { label: '전체 요약', icon: overview },
-    { label: '포지션', icon: graph },
-    { label: '피트 스탑', icon: pitstop },
-    { label: '이벤트', icon: retirement },
+    { label: '전체 요약', icon: '/icons/overview.svg' },
+    { label: '포지션', icon: '/icons/graph.svg' },
+    { label: '피트 스탑', icon: '/icons/pitstop.svg' },
+    { label: '이벤트', icon: '/icons/retirement.svg' },
   ];
   const mobileTabs = [
-    { label: '레이스 결과', icon: checker },
-    { label: '스타팅 그리드', icon: checker },
+    { label: '레이스 결과', icon: '/icons/checker.svg' },
+    { label: '스타팅 그리드', icon: '/icons/checker.svg' },
   ];
   const [selectedTab, setSelectedTab] = useState('전체 요약');
   const [mobileSelectedTab, mobileSetSelectedTab] = useState('레이스 결과');

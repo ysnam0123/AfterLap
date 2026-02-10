@@ -1,7 +1,6 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
 import { useState } from 'react';
-import defaultDriver from '/public/drivers/defaultDriver.svg';
 import { useRouter } from 'next/navigation';
 
 interface DriverCardProps {
@@ -31,7 +30,7 @@ export function TeamDriverCard({
       >
         <div className="flex items-center justify-center bg-neutral-900">
           <Image
-            src={imageUrl ? imageUrl : defaultDriver}
+            src={imageUrl ? imageUrl : '/public/drivers/defaultDriver.svg'}
             alt="driver"
             width={300}
             height={300}

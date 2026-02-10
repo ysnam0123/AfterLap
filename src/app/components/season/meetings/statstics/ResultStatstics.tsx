@@ -1,9 +1,4 @@
 'use client';
-import graph from '/public/icons/graph.svg';
-import pitstop from '/public/icons/pitstop.svg';
-import retirement from '/public/icons/retirement.svg';
-import overview from '/public/icons/overview.svg';
-import { useState } from 'react';
 import Image from 'next/image';
 import Summary from './summary/Summary';
 import Position from './Position';

@@ -3,7 +3,6 @@ import { Team2026 } from '@/images/team';
 import { Users } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import defaultCar from '/public/cars/car.svg';
 
 interface NewTeamProps {
   team: Team2026;
@@ -42,7 +41,7 @@ export default function Team({ team }: NewTeamProps) {
           </div>
         </div>
         <Image
-          src={team.car_img ? team.car_img : defaultCar}
+          src={team.car_img ? team.car_img : '/cars/car.svg'}
           alt={`${team.team_name} car`}
           width={360}
           height={40}

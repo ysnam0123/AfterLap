@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import logo from '/public/AfterLapLogo.svg';
 
 export default function MobileSplash() {
   const [visible, setVisible] = useState(true);
@@ -36,7 +35,7 @@ export default function MobileSplash() {
         {/* Logo */}
         <div className="animate-splash-logo">
           <Image
-            src={logo}
+            src={'/AfterLapLogo.svg'}
             alt="AfterLap logo"
             width={280}
             height={67}

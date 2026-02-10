@@ -1,5 +1,4 @@
-import Image, { StaticImageData } from 'next/image';
-import defaultDriver from '/public/drivers/defaultDriver.svg';
+import Image from 'next/image';
 
 export default function DriverCard({
   headshot,
@@ -11,7 +10,7 @@ export default function DriverCard({
   return (
     <div className="flex items-center justify-center rounded-2xl">
       <Image
-        src={headshot ? headshot : defaultDriver}
+        src={headshot ? headshot : '/drivers/defaultDriver.svg'}
         alt="driver"
         width={200}
         height={200}

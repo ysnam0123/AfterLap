@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import logo from '/public/AfterLapLogo.svg';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import TeamBox from './dropdown/TeamBox';
@@ -16,7 +15,7 @@ export default function Header() {
       <div className="fixed top-0 z-50 mb-4 flex h-12.5 w-full flex-col bg-(--color-bg-primary) px-2.5 py-2.5 lg:h-23.5">
         <div className="flex items-center gap-17.5 select-none lg:px-17.5 xl:px-35">
           <Image
-            src={logo}
+            src={'/AfterLapLogo.svg'}
             alt="logo"
             className="h-7.5 w-auto cursor-pointer"
             width={125}
