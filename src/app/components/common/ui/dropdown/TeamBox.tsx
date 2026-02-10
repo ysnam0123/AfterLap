@@ -27,7 +27,9 @@ export default function TeamBox({
             <Image
               src={team.main_logo}
               alt="logo"
-              className="h-20 object-contain transition-transform duration-200 ease-out group-hover:scale-105"
+              width={80}
+              height={80}
+              className="object-contain transition-transform duration-200 ease-out group-hover:scale-105"
               priority
             />
             <h1

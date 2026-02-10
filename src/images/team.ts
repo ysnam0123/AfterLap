@@ -1,88 +1,9 @@
-//2026
-import alpine from '/public/team_main_logo/alpine.svg';
-import astonmartin from '/public/team_main_logo/astonmartin.svg';
-import audi from '/public/team_main_logo/audi.svg';
-import cadillac from '/public/team_main_logo/cadillac.svg';
-import ferrari from '/public/team_main_logo/ferrari.svg';
-import haas from '/public/team_main_logo/haas.svg';
-import mclaren from '/public/team_main_logo/mclaren.svg';
-import mercedes from '/public/team_main_logo/mercedes.svg';
-import redbullracing from '/public/team_main_logo/redbullracing.svg';
-import williams from '/public/team_main_logo/williams.svg';
-import racingbulls from '/public/team_main_logo/racing_bulls.svg';
-
-import alpine2026 from '/public/cars/2026/alpine.svg';
-import astonmartin2026 from '/public/cars/2026/astonmartin.svg';
-import ferrari2026 from '/public/cars/2026/ferrari.svg';
-import haas2026 from '/public/cars/2026/haas.svg';
-import mclaren2026 from '/public/cars/2026/mclaren.svg';
-import mercedes2026 from '/public/cars/2026/mercedes.svg';
-import racingbulls2026 from '/public/cars/2026/racingbulls.svg';
-import redbullracing2026 from '/public/cars/2026/redbullracing.svg';
-import williams2026 from '/public/cars/2026/williams.svg';
-import audi2026 from '/public/cars/2026/audi.svg';
-
-import maxverstappen2026 from '/public/driversImg/2026/maxverstappen.svg';
-import lewishamilton2026 from '/public/driversImg/2026/lewishamilton.svg';
-import georgerussell2026 from '/public/driversImg/2026/georgerussell.svg';
-import charlesleclerc2026 from '/public/driversImg/2026/charlesleclerc.svg';
-import carlossainz2026 from '/public/driversImg/2026/carlossainz.svg';
-import landonorris2026 from '/public/driversImg/2026/landonorris.svg';
-import oscarpiastri2026 from '/public/driversImg/2026/oscarpiastri.svg';
-import fernandoalonso2026 from '/public/driversImg/2026/fernandoalonso.svg';
-import lancestroll2026 from '/public/driversImg/2026/lancestroll.svg';
-import pierregasly2026 from '/public/driversImg/2026/pierregasly.svg';
-import estebanocon2026 from '/public/driversImg/2026/estebanocon.svg';
-import alexanderalbon2026 from '/public/driversImg/2026/alexanderalbon.svg';
-import liamlawson2026 from '/public/driversImg/2026/liamlawson.svg';
-import oliverbearman2026 from '/public/driversImg/2026/oliverbearman.svg';
-import nicohulkenberg2026 from '/public/driversImg/2026/nicohulkenberg.svg';
-import gabrielbortoleto2026 from '/public/driversImg/2026/gabrielbortoleto.svg';
-import kimiantonelli2026 from '/public/driversImg/2026/kimiantonelli.svg';
-import isackhadjar2026 from '/public/driversImg/2026/isackhadjar.svg';
-import francocolapinto2026 from '/public/driversImg/2026/francocolapinto.svg';
-import arvidlindblad2026 from '/public/driversImg/2026/arvidlindblad.svg';
-import sergioperez2026 from '/public/driversImg/2026/sergioperez.svg';
-import valtteribottas2026 from '/public/driversImg/2026/valtteribottas.svg';
-
-// ==== flag ====
-import argentina from '/public/flag/argentina.svg';
-import australia from '/public/flag/australia.svg';
-import austria from '/public/flag/austria.svg';
-import azerbaijan from '/public/flag/azerbaijan.svg';
-import bahrain from '/public/flag/bahrain.svg';
-import belgium from '/public/flag/belgium.svg';
-import brazil from '/public/flag/brazil.svg';
-import canada from '/public/flag/canada.svg';
-import france from '/public/flag/france.svg';
-import germany from '/public/flag/germany.svg';
-import hungary from '/public/flag/hungary.svg';
-import finland from '/public/flag/finland.svg';
-import italy from '/public/flag/italy.svg';
-import japan from '/public/flag/japan.svg';
-import mexico from '/public/flag/mexico.svg';
-import monaco from '/public/flag/monaco.svg';
-import netherlands from '/public/flag/netherlands.svg';
-import qatar from '/public/flag/qatar.svg';
-import saudi from '/public/flag/saudi.svg';
-import singapore from '/public/flag/singapore.svg';
-import spain from '/public/flag/spain.svg';
-import thailand from '/public/flag/thailand.svg';
-import uae from '/public/flag/uae.svg';
-import uk from '/public/flag/uk.svg';
-import usa from '/public/flag/usa.svg';
-import china from '/public/flag/china.svg';
-import newzealand from '/public/flag/newzealand.svg';
-import estonia from '/public/flag/estonia.svg';
-import denmark from '/public/flag/denmark.svg';
-import { StaticImageData } from 'next/image';
-
 export interface teamDriver {
   driver_number: number;
   full_name: string;
   kr_name: string;
   driver_id: number;
-  headshot: StaticImageData;
+  headshot: string;
   flag: string;
 }
 export interface Team2026 {
@@ -91,225 +12,252 @@ export interface Team2026 {
   team_slug: string;
   team_colour: string;
   year: number;
-  main_logo: StaticImageData;
-  car_img: StaticImageData;
+  main_logo: string;
+  car_img: string;
   drivers: teamDriver[];
 }
 
-export const teams2026 = [
+export interface teamDriver {
+  driver_number: number;
+  full_name: string;
+  kr_name: string;
+  driver_id: number;
+  headshot: string;
+  flag: string;
+}
+
+export interface Team2026 {
+  team_name: string;
+  team_kr_name: string;
+  team_slug: string;
+  team_colour: string;
+  year: number;
+  main_logo: string;
+  car_img: string;
+  drivers: teamDriver[];
+}
+
+export const teams2026: Team2026[] = [
   {
     team_name: 'McLaren',
     team_kr_name: '맥라렌',
     team_slug: 'mclaren',
     team_colour: '#F47600',
     year: 2026,
-    main_logo: mclaren,
-    car_img: mclaren2026,
+    main_logo: '/team_main_logo/mclaren.svg',
+    car_img: '/cars/2026/mclaren.svg',
     drivers: [
       {
         driver_number: 4,
         full_name: 'Lando Norris',
         kr_name: '랜도 노리스',
         driver_id: 462,
-        headshot: landonorris2026,
-        flag: uk,
+        headshot: '/driversImg/2026/landonorris.svg',
+        flag: '/flag/uk.svg',
       },
       {
         driver_number: 81,
         full_name: 'Oscar Piastri',
         kr_name: '오스카 피아스트리',
         driver_id: 531,
-        headshot: oscarpiastri2026,
-        flag: australia,
+        headshot: '/driversImg/2026/oscarpiastri.svg',
+        flag: '/flag/australia.svg',
       },
     ],
   },
+
   {
     team_name: 'Red Bull Racing',
     team_kr_name: '레드불 레이싱',
     team_slug: 'red-bull-racing',
     team_colour: '#3671C6',
     year: 2026,
-    main_logo: redbullracing,
-    car_img: redbullracing2026,
+    main_logo: '/team_main_logo/redbullracing.svg',
+    car_img: '/cars/2026/redbullracing.svg',
     drivers: [
       {
         driver_number: 1,
         full_name: 'Max Verstappen',
         kr_name: '막스 베르스타펜',
         driver_id: 469,
-        headshot: maxverstappen2026,
-        flag: netherlands,
+        headshot: '/driversImg/2026/maxverstappen.svg',
+        flag: '/flag/netherlands.svg',
       },
       {
         driver_number: 6,
         full_name: 'Isack Hadjar',
         kr_name: '아이작 하자르',
         driver_id: 448,
-        headshot: isackhadjar2026,
-        flag: france,
+        headshot: '/driversImg/2026/isackhadjar.svg',
+        flag: '/flag/france.svg',
       },
     ],
   },
+
   {
     team_name: 'Ferrari',
     team_kr_name: '페라리',
     team_slug: 'ferrari',
     team_colour: '#ED1131',
     year: 2026,
-    main_logo: ferrari,
-    car_img: ferrari2026,
+    main_logo: '/team_main_logo/ferrari.svg',
+    car_img: '/cars/2026/ferrari.svg',
     drivers: [
       {
         driver_number: 16,
         full_name: 'Charles Leclerc',
         kr_name: '샤를 르클레르',
         driver_id: 454,
-        headshot: charlesleclerc2026,
-        flag: monaco,
+        headshot: '/driversImg/2026/charlesleclerc.svg',
+        flag: '/flag/monaco.svg',
       },
       {
         driver_number: 44,
         full_name: 'Lewis Hamilton',
         kr_name: '루이스 해밀턴',
         driver_id: 453,
-        headshot: lewishamilton2026,
-        flag: uk,
+        headshot: '/driversImg/2026/lewishamilton.svg',
+        flag: '/flag/uk.svg',
       },
     ],
   },
+
   {
     team_name: 'Mercedes',
     team_kr_name: '메르세데스',
     team_slug: 'mercedes',
     team_colour: '#00D7B6',
     year: 2026,
-    main_logo: mercedes,
-    car_img: mercedes2026,
+    main_logo: '/team_main_logo/mercedes.svg',
+    car_img: '/cars/2026/mercedes.svg',
     drivers: [
       {
         driver_number: 12,
         full_name: 'Kimi Antonelli',
         kr_name: '키미 안토넬리',
         driver_id: 507,
-        headshot: kimiantonelli2026,
-        flag: italy,
+        headshot: '/driversImg/2026/kimiantonelli.svg',
+        flag: '/flag/italy.svg',
       },
       {
         driver_number: 63,
         full_name: 'George Russell',
         kr_name: '조지 러셀',
         driver_id: 445,
-        headshot: georgerussell2026,
-        flag: uk,
+        headshot: '/driversImg/2026/georgerussell.svg',
+        flag: '/flag/uk.svg',
       },
     ],
   },
+
   {
     team_name: 'Aston Martin',
     team_kr_name: '애스턴 마틴',
     team_slug: 'aston-martin',
     team_colour: '#229971',
     year: 2026,
-    main_logo: astonmartin,
-    car_img: astonmartin2026,
+    main_logo: '/team_main_logo/astonmartin.svg',
+    car_img: '/cars/2026/astonmartin.svg',
     drivers: [
       {
         driver_number: 14,
         full_name: 'Fernando Alonso',
         kr_name: '페르난도 알론소',
         driver_id: 446,
-        headshot: fernandoalonso2026,
-        flag: spain,
+        headshot: '/driversImg/2026/fernandoalonso.svg',
+        flag: '/flag/spain.svg',
       },
       {
         driver_number: 18,
         full_name: 'Lance Stroll',
         kr_name: '랜스 스트롤',
         driver_id: 492,
-        headshot: lancestroll2026,
-        flag: canada,
+        headshot: '/driversImg/2026/lancestroll.svg',
+        flag: '/flag/canada.svg',
       },
     ],
   },
+
   {
     team_name: 'Audi',
     team_kr_name: '아우디',
     team_slug: 'audi',
     team_colour: '#9E001C',
     year: 2026,
-    main_logo: audi,
-    car_img: audi2026,
+    main_logo: '/team_main_logo/audi.svg',
+    car_img: '/cars/2026/audi.svg',
     drivers: [
       {
         driver_number: 5,
         full_name: 'Gabriel Bortoleto',
         kr_name: '가브리엘 보르톨레토',
         driver_id: 459,
-        headshot: gabrielbortoleto2026,
-        flag: brazil,
+        headshot: '/driversImg/2026/gabrielbortoleto.svg',
+        flag: '/flag/brazil.svg',
       },
       {
         driver_number: 27,
         full_name: 'Nico Hulkenberg',
         kr_name: '니코 휠켄베르크',
         driver_id: 472,
-        headshot: nicohulkenberg2026,
-        flag: germany,
+        headshot: '/driversImg/2026/nicohulkenberg.svg',
+        flag: '/flag/germany.svg',
       },
     ],
   },
+
   {
     team_name: 'Cadillac',
     team_kr_name: '캐딜락',
     team_slug: 'cadillac',
     team_colour: '#5A5A5A',
     year: 2026,
-    main_logo: cadillac,
-    car_img: null,
+    main_logo: '/team_main_logo/cadillac.svg',
+    car_img: '/cars/2026/cadillac.svg',
     drivers: [
       {
         driver_number: 11,
         full_name: 'Sergio Perez',
         kr_name: '세르히오 페레스',
         driver_id: 480,
-        headshot: sergioperez2026,
-        flag: mexico,
+        headshot: '/driversImg/2026/sergioperez.svg',
+        flag: '/flag/mexico.svg',
       },
       {
         driver_number: 77,
         full_name: 'Valtteri Bottas',
         kr_name: '발테리 보타스',
         driver_id: 447,
-        headshot: valtteribottas2026,
-        flag: finland,
+        headshot: '/driversImg/2026/valtteribottas.svg',
+        flag: '/flag/finland.svg',
       },
     ],
   },
+
   {
     team_name: 'Alpine',
     team_kr_name: '알핀',
     team_slug: 'alpine',
     team_colour: '#00A1E8',
     year: 2026,
-    main_logo: alpine,
-    car_img: alpine2026,
+    main_logo: '/team_main_logo/alpine.svg',
+    car_img: '/cars/2026/alpine.svg',
     drivers: [
       {
         driver_number: 10,
         full_name: 'Pierre Gasly',
         kr_name: '피에르 가슬리',
         driver_id: 461,
-        headshot: pierregasly2026,
-        flag: france,
+        headshot: '/driversImg/2026/pierregasly.svg',
+        flag: '/flag/france.svg',
       },
       {
         driver_number: 43,
         full_name: 'Franco Colapinto',
         kr_name: '프랑코 콜라핀토',
         driver_id: 451,
-        headshot: francocolapinto2026,
-        flag: argentina,
+        headshot: '/driversImg/2026/francocolapinto.svg',
+        flag: '/flag/argentina.svg',
       },
     ],
   },
@@ -320,24 +268,24 @@ export const teams2026 = [
     team_slug: 'haas',
     team_colour: '#9C9FA2',
     year: 2026,
-    main_logo: haas,
-    car_img: haas2026,
+    main_logo: '/team_main_logo/haas.svg',
+    car_img: '/cars/2026/haas.svg',
     drivers: [
       {
         driver_number: 31,
         full_name: 'Esteban Ocon',
         kr_name: '에스테반 오콘',
         driver_id: 483,
-        headshot: estebanocon2026,
-        flag: france,
+        headshot: '/driversImg/2026/estebanocon.svg',
+        flag: '/flag/france.svg',
       },
       {
         driver_number: 87,
         full_name: 'Oliver Bearman',
         kr_name: '올리버 베어먼',
         driver_id: 484,
-        headshot: oliverbearman2026,
-        flag: uk,
+        headshot: '/driversImg/2026/oliverbearman.svg',
+        flag: '/flag/uk.svg',
       },
     ],
   },
@@ -348,24 +296,24 @@ export const teams2026 = [
     team_slug: 'racing-bulls',
     team_colour: '#6C98FF',
     year: 2026,
-    main_logo: racingbulls,
-    car_img: racingbulls2026,
+    main_logo: '/team_main_logo/racing_bulls.svg',
+    car_img: '/cars/2026/racingbulls.svg',
     drivers: [
       {
         driver_number: 30,
         full_name: 'Liam Lawson',
         kr_name: '리암 로슨',
         driver_id: 471,
-        headshot: liamlawson2026,
-        flag: newzealand,
+        headshot: '/driversImg/2026/liamlawson.svg',
+        flag: '/flag/newzealand.svg',
       },
       {
         driver_number: 41,
         full_name: 'Arvid Lindblad',
         kr_name: '아르비드 린드블라드',
         driver_id: 460,
-        headshot: arvidlindblad2026,
-        flag: uk,
+        headshot: '/driversImg/2026/arvidlindblad.svg',
+        flag: '/flag/uk.svg',
       },
     ],
   },
@@ -376,24 +324,24 @@ export const teams2026 = [
     team_slug: 'williams',
     team_colour: '#1868DB',
     year: 2026,
-    main_logo: williams,
-    car_img: williams2026,
+    main_logo: '/team_main_logo/williams.svg',
+    car_img: '/cars/2026/williams.svg',
     drivers: [
       {
         driver_number: 23,
         full_name: 'Alexander Albon',
         kr_name: '알렉산더 알본',
         driver_id: 525,
-        headshot: alexanderalbon2026,
-        flag: thailand,
+        headshot: '/driversImg/2026/alexanderalbon.svg',
+        flag: '/flag/thailand.svg',
       },
       {
         driver_number: 55,
         full_name: 'Carlos Sainz',
         kr_name: '카를로스 사인츠',
         driver_id: 489,
-        headshot: carlossainz2026,
-        flag: spain,
+        headshot: '/driversImg/2026/carlossainz.svg',
+        flag: '/flag/spain.svg',
       },
     ],
   },
