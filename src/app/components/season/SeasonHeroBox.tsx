@@ -1,8 +1,8 @@
-import { country_code_flags } from '@/images/flags';
 import { Meeting } from '@/types/meeting';
 import Image from 'next/image';
 import SimpleLoading from '../common/SimpleLoading';
 import { Circuit } from '@/types/circuit';
+import { countryCodeFlags } from '@/images/flags';
 interface CircuitData {
   circuitInfo?: Circuit | null;
   meetingInfo?: Meeting;
@@ -14,7 +14,7 @@ export default function SeasonHeroBox({
   if (!meetingInfo || !circuitInfo) {
     return null;
   }
-  const flagSrc = country_code_flags[meetingInfo!.country_code];
+  const flagSrc = countryCodeFlags[meetingInfo!.country_code];
   const circuitSrc = circuitInfo.circuit_detail_img;
   if (circuitInfo) {
     console.log('서킷 정보 테스트:', circuitInfo);

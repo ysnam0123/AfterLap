@@ -1,14 +1,14 @@
 'use client';
 
 import { CardProps } from '@/hooks/SeasonRacePodium';
-import { country_code_flags } from '@/images/flags';
+import { countryCodeFlags } from '@/images/flags';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function GrandPrixCardWithPodium({ meetingInfo }: CardProps) {
   const router = useRouter();
-  const flagSrc = country_code_flags[meetingInfo.country_code];
+  const flagSrc = countryCodeFlags[meetingInfo.country_code];
   const krStatus = () => {
     switch (meetingInfo.status) {
       case 'finished':
