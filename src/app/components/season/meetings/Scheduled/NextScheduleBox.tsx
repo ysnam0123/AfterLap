@@ -1,4 +1,5 @@
 import { Session } from '@/types/meeting';
+import { formatDateTime } from '@/utils/time';
 import { Timer } from 'lucide-react';
 
 interface PageProps {
@@ -8,6 +9,34 @@ interface PageProps {
 export default function NextScheduleBox({ data }: PageProps) {
   const date = data.date_start.split('T')[0];
   const time = data.date_start.split('T')[1].split('+')[0];
+
+  const getSessionStatus = (session: Session) => {
+    const now = Date.now();
+    const start = new Date(data.date_start).getTime();
+    const end = new Date(data.date_end).getTime();
+
+    if (now < start) return 'upcoming';
+    if (now >= start && now <= end) return 'ongoing';
+    return 'finished';
+  };
+  // const krStatus = () => {
+  //   switch (data.status) {
+  //     case 'finished':
+  //       return (
+  //         <div className="flex items-center gap-1 text-[14px]">
+  //           <p>종료</p>
+  //           <div className="h-3 w-3 rounded-full bg-[#05AF05]"></div>
+  //         </div>
+  //       );
+  //     case 'ongoing':
+  //       return (
+  //         <div className="flex items-center gap-1 rounded-[3px] bg-[#4a4a4a] px-2 py-0.5 text-[14px]">
+  //           <p>진행중</p>
+  //           <div className="h-3 w-3 animate-pulse rounded-full bg-[#B80000]"></div>
+  //         </div>
+  //       );
+  //   }
+  // };
   return (
     <>
       <div className="flex items-center gap-1 rounded-xl border border-[#FED010] bg-[#212121] px-3 py-1.5 sm:gap-3 sm:rounded-4xl sm:border-2 sm:px-5 sm:py-4">
@@ -31,7 +60,8 @@ export default function NextScheduleBox({ data }: PageProps) {
           className="ml-0 text-[13px] sm:ml-3 sm:text-[18px] md:text-[20px]"
         >
           <span>
-            {date} {time}
+            {/* {date} {time} */}
+            {formatDateTime(data.date_start)}
           </span>
           <span className="pl-1 text-[#FED010]">시작 예정</span>
         </p>

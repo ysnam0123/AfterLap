@@ -56,6 +56,8 @@ export default function Page() {
     nextMeetingLoading ||
     circuitLoading;
 
+  console.log(new Date('2026-02-11T07:00:00+00:00').toLocaleString());
+
   return (
     <>
       {/* {pageLoading && <MobileSplash />} */}

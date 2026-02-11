@@ -75,6 +75,10 @@ export const getStartingGrid = async (sessionKey: number) => {
     .eq('session_key', sessionKey)
     .order('position');
 
+  if (data) {
+    console.log('스타팅 그리드 뷰 호출!');
+  }
+
   if (error) throw error;
   return data;
 };
@@ -87,10 +91,13 @@ export function useStartingGridData(
   return useQuery<StartingGridWithDriver[]>({
     queryKey: ['starting_grid_with_driver', sessionKey],
     retry: 3,
-    enabled: startingGridFetchable,
+    enabled: !!sessionKey,
     staleTime: 1000 * 60 * 60,
 
     queryFn: async () => {
+      if (!startingGridFetchable) {
+        return getStartingGrid(sessionKey!);
+      }
       await ensureStartingGridData(sessionKey);
       return getStartingGrid(sessionKey);
     },

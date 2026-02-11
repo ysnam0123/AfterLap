@@ -2,6 +2,7 @@
 
 import { CardProps } from '@/hooks/SeasonRacePodium';
 import { countryCodeFlags } from '@/images/flags';
+import { formatDateTime } from '@/utils/time';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -9,6 +10,24 @@ import { useRouter } from 'next/navigation';
 export default function GrandPrixCard({ meetingInfo }: CardProps) {
   const router = useRouter();
   const flagSrc = countryCodeFlags[meetingInfo.country_code];
+  const krStatus = () => {
+    switch (meetingInfo.status) {
+      case 'finished':
+        return (
+          <div className="flex items-center gap-1 text-[14px]">
+            <p>종료</p>
+            <div className="h-3 w-3 rounded-full bg-[#05AF05]"></div>
+          </div>
+        );
+      case 'ongoing':
+        return (
+          <div className="flex items-center gap-1 rounded-[3px] bg-[#4a4a4a] px-2 py-0.5 text-[14px]">
+            <p>진행중</p>
+            <div className="h-3 w-3 animate-pulse rounded-full bg-[#B80000]"></div>
+          </div>
+        );
+    }
+  };
 
   return (
     <>
@@ -22,7 +41,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
         <div className="flex items-center justify-between">
           <div className="flex h-full flex-col">
             <div className="mb-2.5 flex flex-col justify-between gap-1 sm:mb-5">
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
                 <Image
                   src={flagSrc}
                   alt="flag"
@@ -33,9 +52,10 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
                 <p className="text-[16px] text-white sm:text-[20px]">
                   {meetingInfo.country_kr_name}
                 </p>
+                <span>{krStatus()}</span>
               </div>
               <p className="text-[12px] sm:text-[14px]">
-                {meetingInfo.date_start.split('T')[0]}
+                {formatDateTime(meetingInfo.date_start)}
               </p>
             </div>
             <p className="mt-auto text-[12px]">

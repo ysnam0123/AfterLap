@@ -9,7 +9,7 @@ export interface Session {
   location: string;
   date_start: string;
   date_end: string;
-  session_type: string; // "Race" | "Practice" | "Qualifying" | "Sprint" 등
+  session_type: string;
   session_name: string;
   country_key: number;
   country_code: string;
@@ -29,7 +29,6 @@ export const fetchResultDataFromAPI = async (
   const response = await axiosInstance.get('/session_result', {
     params: { session_key: sessionKey },
   });
-  // console.log('API에서 세션결과 불러옴!');
   return response.data;
 };
 
@@ -40,7 +39,7 @@ export const getSessionResultDataFromDB = async (sessionKey: number) => {
     .select('*')
     .eq('session_key', sessionKey);
   if (data) {
-    // console.log('세션결과 db에서 불러옴:', data);
+    return data;
   }
   if (error) throw error;
   return data ?? [];
@@ -59,7 +58,7 @@ export const saveResultData = async (sessionKey: number) => {
     .select();
 
   if (data) {
-    // console.log('DB에 세션결과 저장!');
+    return data;
   }
 
   console.log('data:', data);
@@ -105,6 +104,7 @@ export const getSessionResult = async (sessionKey: number) => {
 
   if (data) {
     console.log('새로만든 세션 결과 뷰', data);
+    return data;
   }
   if (error) throw error;
   return data ?? [];
@@ -117,11 +117,15 @@ export function useSortedResults(
 ) {
   return useQuery<SortedSessionResult[]>({
     queryKey: ['session_results', sessionKey],
-    enabled: isFechable,
+    enabled: !!sessionKey,
     staleTime: 1000 * 60 * 60,
 
     queryFn: async () => {
-      // 결과 데이터가 있는지 없는지 확인. 데이터 길이가 15를 넘어가면,
+      if (!isFechable) {
+        // API 호출 없이 DB만 조회
+        return getSessionResult(sessionKey!);
+      }
+      // 데이터 길이가 15를 넘어가면,
       await ensureResultData(sessionKey!);
       // 뷰 호출
       return getSessionResult(sessionKey!);

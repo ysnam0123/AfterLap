@@ -8,10 +8,7 @@ import SessionNav from '@/app/components/season/meetings/SessionNav';
 import { useCircuitData } from '@/app/api/meeting/Circuit';
 import F1Loading from '@/app/components/common/F1Loading';
 import { useStartingGridData } from '@/app/api/f1/race/starting_grid';
-import {
-  getSessionResult,
-  useSortedResults,
-} from '@/app/api/meeting/sessionResult';
+import { useSortedResults } from '@/app/api/meeting/sessionResult';
 import { useMeetingData } from '@/app/api/meeting/Meetings';
 import { useSessionData } from '@/app/api/meeting/Sessions';
 import { useDriverData } from '@/app/api/f1/Drivers';
@@ -42,6 +39,8 @@ export default function Page() {
   const isSelectedSessionFinished = selectedSession
     ? isSessionFinished(selectedSession)
     : false;
+
+  console.log('isSelectedSessionFinished:', isSelectedSessionFinished);
   const sessionFinishMap = useMemo(() => {
     return sessions.reduce<Record<number, boolean>>((acc, session) => {
       acc[session.session_key] = isSessionFinished(session);
@@ -62,6 +61,7 @@ export default function Page() {
     : false;
 
   const isDriverFetchable = !!selectedSessionKey && isSelectedSessionFinished;
+
   const { data: driverData = [], isPending: driverLoading } = useDriverData(
     selectedSessionKey,
     isDriverFetchable,
@@ -72,11 +72,19 @@ export default function Page() {
     isSelectedSessionFinished &&
     !!driverData &&
     driverData.length >= 15;
+  console.log('sessionResultFetchable:', sessionResultFetchable);
+
   const { data: sessionResults = [], isLoading: sessionResultLoading } =
     useSortedResults(selectedSessionKey, sessionResultFetchable);
 
+  const startingGridWitdhDriver =
+    isQualifyingSessionFinished && driverData && driverData.length >= 15;
+  const startingGridWitdhoutDriver =
+    isQualifyingSessionFinished && driverData && driverData.length >= 15;
+
   const startingGridFetchable =
     isQualifyingSessionFinished && driverData && driverData.length >= 15;
+
   const {
     data: startingGridData,
     isLoading: startingGridLoading,
@@ -108,10 +116,6 @@ export default function Page() {
 
   const isPageReady =
     !!meetingInfo && !!year && !!circuitInfo && sessions.length > 0;
-
-  if (selectedSessionKey) {
-    getSessionResult(selectedSessionKey);
-  }
 
   return (
     <>

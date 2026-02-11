@@ -1,5 +1,6 @@
 'use client';
 import { Session } from '@/types/meeting';
+import { formatDateTime } from '@/utils/time';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -43,7 +44,8 @@ export default function SessionBox({ data }: PageProps) {
             style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
             className="text-[10px] sm:text-[12px] md:text-[14px]"
           >
-            {date} / {time}
+            {/* {date} / {time} */}
+            {formatDateTime(data.date_start)}
           </span>
         </div>
         <button

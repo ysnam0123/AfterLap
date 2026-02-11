@@ -41,6 +41,7 @@ export default function RaceResultSection({
   const statisticsRef = useRef<HTMLDivElement | null>(null);
   const [isShow, setIsShow] = useState(false);
   const router = useRouter();
+
   const podiumResults = sessionResults.slice(0, 3);
   const first = podiumResults.find((r) => r.position === 1);
   const second = podiumResults.find((r) => r.position === 2);

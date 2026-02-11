@@ -2,6 +2,7 @@
 
 import { CardProps } from '@/hooks/SeasonRacePodium';
 import { countryCodeFlags } from '@/images/flags';
+import { formatDateTime } from '@/utils/time';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -67,7 +68,8 @@ export default function GrandPrixCardWithPodium({ meetingInfo }: CardProps) {
             </div>
           </div>
           <div className="flex shrink-0 flex-col items-end gap-0.5 text-[12px]">
-            <p>{meetingInfo.date_start.split('T')[0]}</p>
+            {/* <p>{meetingInfo.date_start.split('T')[0]}</p> */}
+            <p>{formatDateTime(meetingInfo.date_start)}</p>
             <span>{krStatus()}</span>
           </div>
         </div>
