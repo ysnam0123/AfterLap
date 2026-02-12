@@ -45,6 +45,7 @@ export default function CircuitDetailPage() {
                   width={300}
                   height={320}
                   className="h-full w-full rounded-lg object-cover"
+                  priority
                 />
               </div>
             </div>

@@ -29,6 +29,7 @@ export default function SeasonHeroBox({
             width={1440}
             height={567}
             className="h-full w-full object-cover"
+            priority
           />
 
           <div className="absolute inset-0 bg-black opacity-60" />

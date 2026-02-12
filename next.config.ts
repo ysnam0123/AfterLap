@@ -27,7 +27,12 @@ const withPWA = require('next-pwa')({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.ytimg.com', 'media.formula1.com', 'www.formula1.com'],
+    domains: [
+      'i.ytimg.com',
+      'media.formula1.com',
+      'www.formula1.com',
+      'axykebsdqztifmbbluzg.supabase.co',
+    ],
   },
 };
 

@@ -21,6 +21,7 @@ export default function CircuitCard({ data }: PageProps) {
           width={360}
           height={200}
           className="h-35 w-auto rounded-t-xl object-cover sm:h-50"
+          priority
         />
         <div className="flex max-h-40 w-full items-center justify-between gap-2 rounded-b-xl border border-(--color-box-border) bg-(--color-main-black) px-2.5 py-2 sm:gap-5 sm:px-5 sm:py-3.75">
           <div className="flex w-full flex-col">
