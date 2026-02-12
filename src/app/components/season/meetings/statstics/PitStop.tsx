@@ -96,6 +96,7 @@ export default function PitStop({
                       alt="teamLogo"
                       width={28}
                       height={28}
+                      priority
                     />
                   </div>
                   <span className="relative hidden truncate sm:block">

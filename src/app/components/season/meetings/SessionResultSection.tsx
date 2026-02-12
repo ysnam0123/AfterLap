@@ -118,6 +118,7 @@ export default function SessionResultSection({
                         alt="teamLogo"
                         width={30}
                         height={30}
+                        priority
                       />
                     </div>
 

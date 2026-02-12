@@ -32,6 +32,7 @@ export default function FastestPitStop({
               width={28}
               height={28}
               className="desktop"
+              priority
             />
             <Image
               src="/icons/pitstop.svg"
@@ -39,6 +40,7 @@ export default function FastestPitStop({
               width={20}
               height={20}
               className="mobile"
+              priority
             />
             <p
               className="text-[14px] text-gray-400 md:text-[20px]"
@@ -66,6 +68,7 @@ export default function FastestPitStop({
                 width={100}
                 height={70}
                 className="desktop"
+                priority
               />
               <Image
                 src={fastest.main_logo}
@@ -73,6 +76,7 @@ export default function FastestPitStop({
                 width={70}
                 height={50}
                 className="mobile"
+                priority
               />
               <p className="text-[14px] md:text-[20px]">
                 {fastest.team_kr_name}
@@ -86,6 +90,7 @@ export default function FastestPitStop({
                     alt="teamLogo"
                     width={100}
                     height={100}
+                    priority
                   />
                 ) : (
                   <DefaultDriverProfile />
@@ -99,6 +104,7 @@ export default function FastestPitStop({
                     width={70}
                     height={70}
                     className="mobile"
+                    priority
                   />
                 ) : (
                   <DefaultDriverProfile />

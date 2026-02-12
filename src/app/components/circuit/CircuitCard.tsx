@@ -34,6 +34,7 @@ export default function CircuitCard({ data }: PageProps) {
                   width={25}
                   height={15}
                   className="h-2 sm:h-3.75"
+                  priority
                 />
                 <p className="text-[14px]">{data.country_kr_name}</p>
               </div>

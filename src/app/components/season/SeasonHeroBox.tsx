@@ -51,6 +51,7 @@ export default function SeasonHeroBox({
                     width={40}
                     height={40}
                     className="desktop"
+                    priority
                   />
                   <Image
                     src={flagSrc}
@@ -58,6 +59,7 @@ export default function SeasonHeroBox({
                     width={20}
                     height={12}
                     className="mobile"
+                    priority
                   />
                   <h2 className="text-[10px] font-bold sm:text-[20px]">
                     {meetingInfo?.meeting_name}
@@ -89,6 +91,7 @@ export default function SeasonHeroBox({
                     width={500}
                     height={270}
                     className="w-auto sm:h-33 md:h-40 lg:h-60"
+                    priority
                   />
                 </>
               )}

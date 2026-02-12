@@ -48,6 +48,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
                   width={24}
                   height={24}
                   className="rounded-full object-contain"
+                  priority
                 />
                 <p className="text-[16px] text-white sm:text-[20px]">
                   {meetingInfo.country_kr_name}
@@ -70,6 +71,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
               width={120}
               height={120}
               className="h-20 w-20 sm:h-30 sm:w-30"
+              priority
             />
           </div>
         </div>

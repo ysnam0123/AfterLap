@@ -60,14 +60,6 @@ export default function NextSession({ data }: PageProps) {
                 />
               </div>
             </div>
-            <div className="hidden w-full max-w-54 rounded-[15px] bg-[#111111]/90 lg:flex lg:items-center lg:justify-center">
-              <Image
-                src="/circuit/brazil_interlagos.svg"
-                alt="circuit"
-                width={180}
-                height={180}
-              />
-            </div>
           </div>
 
           <div className="flex grid-cols-3 flex-col gap-2 sm:grid sm:gap-5">

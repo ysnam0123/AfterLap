@@ -52,6 +52,7 @@ export default function TeamRankingCard({ data, year }: CardProps) {
                   alt="driver"
                   width={50}
                   height={50}
+                  priority
                 />
               </div>
             ))}

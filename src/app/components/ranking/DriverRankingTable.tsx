@@ -84,7 +84,13 @@ export default function DriverRankingTable({
               {/* 국가 */}
               <td className="hidden py-3 text-[12px] sm:text-[17px] md:table-cell">
                 <div className="flex items-center gap-2">
-                  <Image src={result.flag} alt="flag" width={27} height={14} />
+                  <Image
+                    src={result.flag}
+                    alt="flag"
+                    width={27}
+                    height={14}
+                    priority
+                  />
                   {result.country_kr_name}
                 </div>
               </td>
@@ -104,6 +110,7 @@ export default function DriverRankingTable({
                       alt="teamLogo"
                       width={28}
                       height={28}
+                      priority
                     />
                   </div>
                   <span className="relative hidden truncate sm:block">

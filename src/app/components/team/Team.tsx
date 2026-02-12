@@ -28,6 +28,7 @@ export default function Team({ team }: NewTeamProps) {
                 alt={`${team.main_logo} logo`}
                 width={74}
                 height={74}
+                priority
               />
             </div>
             <div className="flex flex-col">
@@ -46,6 +47,7 @@ export default function Team({ team }: NewTeamProps) {
           width={360}
           height={40}
           className="mb-4 w-55 sm:block sm:w-65 lg:w-75 xl:w-90"
+          priority
         />
         <div className="flex items-center gap-3 border-t border-zinc-800 pt-4">
           <Users className="h-4 w-4 text-zinc-600" />

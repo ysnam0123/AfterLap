@@ -20,6 +20,7 @@ export default function Top3Position({
               width={28}
               height={28}
               className="desktop"
+              priority
             />
             <Image
               src="/icons/graph.svg"
@@ -27,6 +28,7 @@ export default function Top3Position({
               width={20}
               height={20}
               className="mobile"
+              priority
             />
             <p
               className="text-[12px] sm:text-[20px]"

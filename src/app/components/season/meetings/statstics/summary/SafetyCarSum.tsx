@@ -61,6 +61,7 @@ export default function SafetyCarSummary({
             width={36}
             height={36}
             className="desktop"
+            priority
           />
           <Image
             src="/icons/safety.svg"
@@ -68,6 +69,7 @@ export default function SafetyCarSummary({
             width={20}
             height={20}
             className="mobile"
+            priority
           />
           <p
             className="text-[13px] sm:text-[20px]"

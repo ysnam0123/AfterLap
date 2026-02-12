@@ -28,6 +28,7 @@ export default function PodiumCard({
           alt="bg"
           fill
           className="absolute inset-0 z-0 object-cover"
+          priority
         />
         <Image
           src={headShot}
@@ -35,6 +36,7 @@ export default function PodiumCard({
           width={160}
           height={160}
           className="absolute bottom-16.25 left-1/2 z-10 -translate-x-1/2"
+          priority
         />
         <Image
           src={result.main_logo}
@@ -42,6 +44,7 @@ export default function PodiumCard({
           width={90}
           height={90}
           className="absolute right-1"
+          priority
         />
         <div className="absolute bottom-0 z-20 flex h-14 w-full items-center justify-between bg-[#222222] px-3.75">
           <div className="flex w-full items-center justify-between text-white">
@@ -53,7 +56,13 @@ export default function PodiumCard({
               >
                 {result.driver_number}
               </p>
-              <Image src={result.flag} alt="team" width={30} height={30} />
+              <Image
+                src={result.flag}
+                alt="team"
+                width={30}
+                height={30}
+                priority
+              />
             </div>
           </div>
         </div>

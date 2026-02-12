@@ -25,6 +25,7 @@ export default function LogoLoading({
           width={370}
           height={100}
           className="h-16 w-57.5 md:h-25 md:w-92.5"
+          priority
         />
         <p
           style={{ fontFamily: 'Pretendard' }}

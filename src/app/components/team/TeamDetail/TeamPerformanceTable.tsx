@@ -46,6 +46,7 @@ export default function TeamPerformanceTable({
                         alt="flag"
                         width={24}
                         height={15}
+                        priority
                       />
                     )}
                     {result.race_kr_name}

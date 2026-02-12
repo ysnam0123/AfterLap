@@ -40,6 +40,7 @@ export default function AboutBeforePoint({ circuitData }: PageProps) {
             alt="circuit"
             width={130}
             height={130}
+            priority
           />
         </div>
       </div>

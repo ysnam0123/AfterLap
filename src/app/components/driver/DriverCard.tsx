@@ -15,6 +15,7 @@ export default function DriverCard({
         width={200}
         height={200}
         className="z-30 md:h-50 md:w-50 lg:h-70 lg:w-70"
+        priority
       />
     </div>
   );

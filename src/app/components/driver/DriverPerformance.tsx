@@ -85,6 +85,7 @@ export function DriverPerformance({
                       width={24}
                       height={15}
                       className="h-auto w-4 sm:h-6"
+                      priority
                     />
                     <p className="text-[12px] sm:text-[16px]">{result.race}</p>
                   </td>

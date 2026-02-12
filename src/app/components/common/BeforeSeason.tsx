@@ -10,6 +10,7 @@ export default function BeforeSeason() {
           width={400}
           height={24}
           className="h-18 w-60 md:h-24 md:w-100"
+          priority
         />
         <p
           style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}

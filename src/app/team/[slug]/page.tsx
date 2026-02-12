@@ -86,6 +86,7 @@ export default function Page() {
               width={240}
               height={240}
               className="z-20 w-33 sm:w-55 sm:pb-3"
+              priority
             />
           </div>
           <div className="my-3">

@@ -25,7 +25,7 @@ export default function DriverProfile({
         // style={{ backgroundColor: teamColor }}
         className={`flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-[#222222] ${className}`}
       >
-        <Image src={headshot} alt="logo" width={36} height={36} />
+        <Image src={headshot} alt="logo" width={36} height={36} priority />
       </div>
     </>
   );

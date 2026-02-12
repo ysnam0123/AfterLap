@@ -23,6 +23,7 @@ export default function CircuitDetailBox({ circuitData }: PageProps) {
             width={130}
             height={130}
             className="w-full"
+            priority
           />
         </div>
       </div>

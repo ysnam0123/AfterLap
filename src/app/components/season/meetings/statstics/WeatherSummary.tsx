@@ -16,6 +16,7 @@ export default function WeatherSummary({
             width={28}
             height={28}
             className="desktop"
+            priority
           />
           <Image
             src="/icons/weather.svg"
@@ -23,6 +24,7 @@ export default function WeatherSummary({
             width={20}
             height={20}
             className="mobile"
+            priority
           />
           <p
             className="text-[14px] sm:text-[20px]"
@@ -58,6 +60,7 @@ export default function WeatherSummary({
             width={99}
             height={99}
             className="mobile"
+            priority
           />
           <Image
             src={'/icons/weathers/intermittent.svg'}
@@ -65,6 +68,7 @@ export default function WeatherSummary({
             width={160}
             height={160}
             className="desktop"
+            priority
           />
         </div>
       </div>

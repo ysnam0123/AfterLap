@@ -61,6 +61,7 @@ export default function ConstructorStandings({ data }: TS) {
                     height={40}
                     alt="team logo"
                     className="h-6 w-auto sm:h-9"
+                    priority
                   />
                   <span className="truncate text-sm font-medium text-white sm:text-base">
                     {item.team_kr_name}

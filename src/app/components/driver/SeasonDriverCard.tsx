@@ -35,11 +35,23 @@ export default function SeasonDriverCard({
             <p className="text-[18px]">{teamData.team_kr_name}</p>
             <div className="flex h-full flex-col justify-between">
               <div className="flex items-center gap-1">
-                <Image src={driver.flag} alt="국기" width={20} height={20} />
+                <Image
+                  src={driver.flag}
+                  alt="국기"
+                  width={20}
+                  height={20}
+                  priority
+                />
                 <p>{driver.driver_number}</p>
               </div>
             </div>
-            <Image src={teamData.main_logo} alt="logo" width={50} height={50} />
+            <Image
+              src={teamData.main_logo}
+              alt="logo"
+              width={50}
+              height={50}
+              priority
+            />
           </div>
           {findHeadshot(driver.full_name, year) ? (
             <Image
@@ -48,6 +60,7 @@ export default function SeasonDriverCard({
               width={140}
               height={140}
               className="z-10"
+              priority
             />
           ) : (
             <Image

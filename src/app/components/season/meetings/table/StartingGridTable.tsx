@@ -101,6 +101,7 @@ export default function StartingGridTable({
                       alt="teamLogo"
                       width={30}
                       height={30}
+                      priority
                     />
                   </div>
 

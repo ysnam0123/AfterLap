@@ -59,6 +59,7 @@ export default function DriverStandings({ data }: DS) {
                     height={46}
                     className="object-cover"
                     alt="driver"
+                    priority
                   />
                 </div>
                 <div className="flex flex-col md:flex-row">
