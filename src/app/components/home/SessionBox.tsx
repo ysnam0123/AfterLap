@@ -9,8 +9,6 @@ interface PageProps {
 }
 export default function SessionBox({ data }: PageProps) {
   const router = useRouter();
-  const date = data.date_start.split('T')[0];
-  const time = data.date_start.split('T')[1].split('+')[0];
   const isFinished = () => {
     return new Date(data.date_end) < new Date();
   };
@@ -25,6 +23,7 @@ export default function SessionBox({ data }: PageProps) {
               width={40}
               height={40}
               className="desktop"
+              priority
             />
             <Image
               src={'/icons/checker.svg'}
@@ -32,6 +31,7 @@ export default function SessionBox({ data }: PageProps) {
               width={26}
               height={26}
               className="mobile"
+              priority
             />
             <h1
               style={{ fontFamily: 'RiaSans', fontWeight: 900 }}

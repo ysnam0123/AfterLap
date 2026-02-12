@@ -56,6 +56,7 @@ export default function NextSession({ data }: PageProps) {
                   alt="flag"
                   width={24}
                   height={14}
+                  priority
                 />
               </div>
             </div>
