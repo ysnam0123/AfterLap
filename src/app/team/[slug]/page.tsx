@@ -53,7 +53,7 @@ export default function Page() {
   return (
     <>
       {teamDetailLoading && (
-        <div className="flex h-screen items-center justify-center">
+        <div className="flex h-100 items-center justify-center">
           <F1Loading loadingText="팀 정보 불러오는 중..." />
         </div>
       )}

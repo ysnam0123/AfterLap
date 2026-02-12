@@ -44,7 +44,7 @@ export default function SessionNav({
             })}
           </ul>
         </div>
-        <div className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-[#212121]/80 to-transparent sm:hidden" />
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-linear-to-l from-[#1E1E1E]/80 to-transparent sm:hidden" />
       </div>
     </>
   );

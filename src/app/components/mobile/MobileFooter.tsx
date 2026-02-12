@@ -9,9 +9,9 @@ export default function MobileFooter() {
 
   // 메뉴 배열
   const menus = [
-    { label: '홈', icon: House, path: '/' },
-    { label: '순위', icon: Trophy, path: '/ranking' },
     { label: '그랑프리', icon: Flag, path: '/season' },
+    { label: '순위', icon: Trophy, path: '/ranking' },
+    { label: '홈', icon: House, path: '/' },
     { label: '팀', icon: Layers, path: '/team' },
     { label: '드라이버', icon: IdCard, path: '/driver' },
   ];
