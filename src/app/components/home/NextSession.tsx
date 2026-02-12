@@ -26,10 +26,15 @@ export default function NextSession({ data }: PageProps) {
             다음 일정
           </h1>
           <button
-            onClick={() => router.push(`/season/${data?.meeting_key}`)}
-            className="cursor-pointer text-[12px] text-(--color-title) hover:text-[#F8F8F8] sm:text-[16px]"
+            onClick={() => router.push(`/season`)}
+            className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] bg-[#666666] px-3 py-1.75 transition-all duration-120 hover:bg-[#4C4C4C] active:bg-[#CDC9C9]/50 md:h-10"
           >
-            자세히 보기
+            <p
+              className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
+              style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
+            >
+              일정 전체보기
+            </p>
           </button>
         </div>
         <section className="flex flex-col gap-2">

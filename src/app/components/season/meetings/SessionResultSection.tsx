@@ -5,6 +5,7 @@ import DriverProfile from './DriverProfile';
 import DefaultDriverProfile from './DefaultDriverProfile';
 import { useRouter } from 'next/navigation';
 import { findHeadshot } from '@/utils/findHeadShot';
+import LogoLoading from '../../common/LogoLoading';
 
 export default function SessionResultSection({
   sessionResults,
@@ -42,7 +43,12 @@ export default function SessionResultSection({
     });
   return (
     <>
-      {!isPending && (
+      {sessionResults.length === 0 && (
+        <div className="flex h-100 items-center justify-center sm:h-100">
+          <LogoLoading loadingText="결과가 곧 업데이트 됩니다" />
+        </div>
+      )}
+      {!isPending && sessionResults.length > 0 && (
         <table className="mt-3 w-full table-fixed border-collapse select-none">
           <thead className="bg-(--color-table-head-bg)">
             <tr className="border-b border-[#1C1A1D] text-[14px] text-[#8B8B8B] sm:text-[20px]">

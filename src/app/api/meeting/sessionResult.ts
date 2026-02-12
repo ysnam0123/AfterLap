@@ -29,6 +29,7 @@ export const fetchResultDataFromAPI = async (
   const response = await axiosInstance.get('/session_result', {
     params: { session_key: sessionKey },
   });
+  console.log('api에서 세션결과 불러옴:', response.data);
   return response.data;
 };
 
@@ -39,6 +40,7 @@ export const getSessionResultDataFromDB = async (sessionKey: number) => {
     .select('*')
     .eq('session_key', sessionKey);
   if (data) {
+    console.log('db에서 세션결과 불러옴:', data);
     return data;
   }
   if (error) throw error;
@@ -117,14 +119,10 @@ export function useSortedResults(
 ) {
   return useQuery<SortedSessionResult[]>({
     queryKey: ['session_results', sessionKey],
-    enabled: !!sessionKey,
+    enabled: isFechable,
     staleTime: 1000 * 60 * 60,
 
     queryFn: async () => {
-      if (!isFechable) {
-        // API 호출 없이 DB만 조회
-        return getSessionResult(sessionKey!);
-      }
       // 데이터 길이가 15를 넘어가면,
       await ensureResultData(sessionKey!);
       // 뷰 호출
@@ -132,3 +130,20 @@ export function useSortedResults(
     },
   });
 }
+
+// return useQuery<SortedSessionResult[]>({
+//   queryKey: ['session_results', sessionKey],
+//   enabled: !!sessionKey,
+//   staleTime: 1000 * 60 * 60,
+
+//   queryFn: async () => {
+//     if (!isFechable) {
+//       // API 호출 없이 DB만 조회
+//       return getSessionResult(sessionKey!);
+//     }
+//     // 데이터 길이가 15를 넘어가면,
+//     await ensureResultData(sessionKey!);
+//     // 뷰 호출
+//     return getSessionResult(sessionKey!);
+//   },
+// });

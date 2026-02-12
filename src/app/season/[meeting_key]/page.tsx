@@ -32,6 +32,12 @@ export default function Page() {
   const [selectedSessionKey, setSelectedSessionKey] = useState<number | null>(
     null,
   );
+  useEffect(() => {
+    console.log('선택된 세션키:', selectedSessionKey);
+  }, [selectedSessionKey]);
+  useEffect(() => {
+    console.log('세션 모음집:', sessions);
+  }, [sessions]);
   const selectedSession = useMemo(
     () => sessions.find((s) => s.session_key === selectedSessionKey) ?? null,
     [sessions, selectedSessionKey],
@@ -41,6 +47,7 @@ export default function Page() {
     : false;
 
   console.log('isSelectedSessionFinished:', isSelectedSessionFinished);
+
   const sessionFinishMap = useMemo(() => {
     return sessions.reduce<Record<number, boolean>>((acc, session) => {
       acc[session.session_key] = isSessionFinished(session);

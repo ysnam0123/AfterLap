@@ -91,13 +91,10 @@ export function useStartingGridData(
   return useQuery<StartingGridWithDriver[]>({
     queryKey: ['starting_grid_with_driver', sessionKey],
     retry: 3,
-    enabled: !!sessionKey,
+    enabled: startingGridFetchable,
     staleTime: 1000 * 60 * 60,
 
     queryFn: async () => {
-      if (!startingGridFetchable) {
-        return getStartingGrid(sessionKey!);
-      }
       await ensureStartingGridData(sessionKey);
       return getStartingGrid(sessionKey);
     },

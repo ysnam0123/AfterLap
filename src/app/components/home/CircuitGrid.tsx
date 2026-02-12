@@ -16,9 +16,14 @@ export default function CircuitGrid({ data }: CircuitProps) {
         </h2>
         <button
           onClick={() => router.push('/circuit')}
-          className="cursor-pointer text-[16px] text-(--color-title) hover:text-[#F8F8F8]"
+          className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] bg-[#666666] px-3 py-1.75 transition-all duration-120 hover:bg-[#4C4C4C] active:bg-[#CDC9C9]/50 md:h-10"
         >
-          전체보기
+          <p
+            className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
+            style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
+          >
+            서킷 더보기
+          </p>
         </button>
       </div>
 
