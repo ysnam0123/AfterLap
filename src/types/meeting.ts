@@ -143,3 +143,15 @@ export interface RaceStatsticsTab {
   label: string;
   icon: string;
 }
+
+export interface LiveSession {
+  country_name: string;
+  date_end: string;
+  date_start: string;
+  meeting_key: number;
+  meeting_name: string;
+  round: number;
+  session_key: number;
+  session_name: string;
+  year: number;
+}

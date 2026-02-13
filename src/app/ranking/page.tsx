@@ -41,7 +41,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="w-full px-5 pt-5 sm:px-10 lg:px-15">
+      <section className="w-full px-5 sm:px-10 lg:px-15">
         <SeasonChangeButton
           opened={opened}
           setOpenedAction={setOpened}

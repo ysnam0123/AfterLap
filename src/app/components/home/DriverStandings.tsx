@@ -1,29 +1,34 @@
+'use client';
 import { DriverSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface DS {
   data: DriverSeasonRankingView[];
 }
 export default function DriverStandings({ data }: DS) {
+  const router = useRouter();
   return (
-    <section className="w-full rounded-xl border border-white/10 bg-(--color-box-bg) p-4 sm:p-5">
+    <section className="w-full">
       <div className="mb-3 flex items-center justify-between sm:mb-5">
         <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
-          드라이버 랭킹
+          2025 시즌 드라이버 랭킹
         </h2>
-        <button className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] bg-[#666666] px-3 py-1.75 transition-all duration-120 hover:bg-[#4C4C4C] active:bg-[#CDC9C9]/50 md:h-10">
-          <p
-            className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
-            style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-          >
-            더보기
-          </p>
-        </button>
+        <div className="desktop">
+          <button className="flex h-8 cursor-pointer items-center justify-center md:h-10">
+            <p
+              className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
+              style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
+            >
+              더보기
+            </p>
+          </button>
+        </div>
       </div>
       <div className="w-full">
         {/* Header */}
         <div className="mb-3 border-b border-white/10 pb-2">
-          <div className="grid grid-cols-[60px_1fr_1fr_80px] pr-3 text-xs text-white/60 sm:text-sm">
+          <div className="grid grid-cols-[60px_1fr_80px] pr-3 text-xs text-white/60 sm:text-sm md:grid-cols-[60px_1fr_1fr_80px]">
             <span>등수</span>
             <span>선수</span>
             {/* 768 px 이상에서 보임 */}
@@ -33,10 +38,11 @@ export default function DriverStandings({ data }: DS) {
         </div>
 
         {/* Body */}
-        <div className="space-y-1">
+        <div className="mb-1 space-y-1">
           {data.map((item) => (
             <div
               key={item.rank}
+              onClick={() => router.push(`/driver/${item.driver_id}`)}
               className="grid h-14 cursor-pointer grid-cols-[6px_50px_1fr_1fr] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) sm:h-16 sm:grid-cols-[6px_60px_1fr_1fr_80px]"
             >
               {/* Team Color Bar */}
@@ -88,6 +94,19 @@ export default function DriverStandings({ data }: DS) {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mobile">
+          <button
+            onClick={() => router.push('/ranking')}
+            className="flex h-full w-full cursor-pointer items-center justify-center rounded-[10px] border border-[#4A4A4A] bg-[#111111] py-2.5 hover:border-[#4C4C4C]/50 hover:bg-[#4C4C4C]/50 active:border-[#CDC9C9]/50 active:bg-[#CDC9C9]/50"
+          >
+            <p
+              style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
+              className="text-[12px]"
+            >
+              전체보기
+            </p>
+          </button>
         </div>
       </div>
     </section>

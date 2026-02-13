@@ -16,7 +16,7 @@ export default function Header() {
   const isDetailPage = pathSegments.length >= 2;
   return (
     <>
-      <div className="fixed top-0 z-50 mb-4 flex w-full flex-col gap-3 bg-(--color-bg-primary) px-2.5 py-2.5 lg:h-22">
+      <div className="sticky top-0 z-50 mb-4 flex w-full flex-col gap-3 bg-(--color-bg-primary) px-2.5 py-2.5 lg:h-22">
         <div className="flex items-center gap-17.5 select-none lg:px-17.5 xl:px-35">
           <Image
             src={'/AfterLapLogo.svg'}

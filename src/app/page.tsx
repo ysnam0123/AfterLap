@@ -14,6 +14,7 @@ import {
   groupTeamSeasonRanking,
   useTeamSeasonRanking,
 } from './api/f1/ranking/TeamRanking';
+import LiveSessionBox from './components/home/LiveSessionBox';
 
 export default function Page() {
   // 라이브 세션 아직 건드리지 않음
@@ -62,7 +63,8 @@ export default function Page() {
     <>
       {/* {pageLoading && <MobileSplash />} */}
       {!pageLoading && (
-        <section className="mx-auto flex max-w-full flex-col gap-5 px-5 pt-5 select-none sm:gap-8 lg:px-15 xl:px-35">
+        <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
+          {/* <NextSession data={nextMeeting} /> */}
           <NextSession data={nextMeeting} />
           {!DriverRankingLoading && DriverRanking && teamRanking && CData && (
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

@@ -1,8 +1,11 @@
 'use client';
 import { Session } from '@/types/meeting';
-import { formatDateTime } from '@/utils/time';
+import { formatDateTime, getSessionStatus } from '@/utils/time';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import FinishedButton from '../common/buttons/FinishedButton';
+import OngoingButton from '../common/buttons/OngoingButton';
+import UpcomingButton from '../common/buttons/UpcomingButton';
 
 interface PageProps {
   data: Session;
@@ -12,10 +15,21 @@ export default function SessionBox({ data }: PageProps) {
   const isFinished = () => {
     return new Date(data.date_end) < new Date();
   };
+  const status = getSessionStatus(data.date_start, data.date_end);
+  const krStatus = () => {
+    switch (status) {
+      case 'finished':
+        return <FinishedButton />;
+      case 'upcoming':
+        return <UpcomingButton />;
+      case 'ongoing':
+        return <OngoingButton />;
+    }
+  };
   return (
     <>
-      <div className="flex h-full w-full flex-row items-center justify-between gap-3 rounded-[10px] border border-(--color-box-border) bg-(--color-box-bg) px-3 py-1 sm:flex-col sm:items-center sm:px-5 sm:py-3">
-        <div className="flex flex-col gap-1">
+      <div className="flex h-full w-full flex-row items-center justify-between gap-3 rounded-[10px] border border-[#4A4A4A] bg-[#111111] px-3 py-3.75 sm:flex-col sm:items-center sm:px-5 sm:py-3">
+        <div className="flex flex-col gap-2.75">
           <div className="flex items-center">
             <Image
               src={'/icons/checker.svg'}
@@ -42,18 +56,20 @@ export default function SessionBox({ data }: PageProps) {
           </div>
           <span
             style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-            className="text-[10px] sm:text-[12px] md:text-[14px]"
+            className="text-[14px]"
           >
-            {/* {date} / {time} */}
             {formatDateTime(data.date_start)}
           </span>
         </div>
-        <button
-          onClick={() => router.push(`/season/${data.meeting_key}`)}
-          className="cursor-pointer rounded-[5px] border border-(--color-button-border) bg-(--color-button-bg) px-4 py-2 text-[12px] hover:bg-(--color-button-hover) active:bg-(--color-button-active) sm:h-10 sm:py-2 sm:text-[16px]"
-        >
-          {isFinished() ? '결과보기' : '일정보기'}
-        </button>
+        <div className="flex flex-col gap-2.75">
+          {krStatus()}
+          <button
+            onClick={() => router.push(`/season/${data.meeting_key}`)}
+            className="flex h-8 cursor-pointer items-center justify-center rounded-[5px] border border-(--color-button-border) bg-(--color-button-bg) px-3 py-1.25 text-[14px] hover:bg-(--color-button-hover) active:bg-(--color-button-active) sm:h-10 sm:py-2 sm:text-[16px]"
+          >
+            {isFinished() ? '결과보기' : '일정보기'}
+          </button>
+        </div>
       </div>
     </>
   );

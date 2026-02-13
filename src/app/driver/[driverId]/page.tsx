@@ -27,7 +27,7 @@ export default function Page() {
   return (
     <>
       {!driverDetailLoading && seasonData && driverDetailData && (
-        <div className="mx-auto w-full px-5 pt-5 sm:px-15 md:px-20 lg:px-40">
+        <div className="mx-auto w-full px-5 sm:px-15 md:px-20 lg:px-40">
           <DriverHero
             data={driverDetailData}
             seasonData={seasonData}

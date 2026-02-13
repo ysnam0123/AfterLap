@@ -8,7 +8,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="mx-auto w-full px-5 pt-10 sm:px-10 md:px-15">
+      <div className="mx-auto w-full px-5 sm:px-10 md:px-15">
         <h1
           style={{ fontFamily: 'Paperlolgy', fontWeight: 700 }}
           className="mb-5 text-[20px] sm:mb-0 sm:pb-10"
