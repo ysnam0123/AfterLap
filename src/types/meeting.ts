@@ -1,6 +1,3 @@
-import { StaticImageData } from 'next/image';
-
-// API RAW
 export interface ApiMeeting {
   meeting_key: number;
   meeting_name: string;
@@ -16,7 +13,7 @@ export interface ApiMeeting {
   date_end?: string;
   year: number;
 }
-// DB / Domain
+
 export type MeetingStatus = 'scheduled' | 'ongoing' | 'finished';
 export interface Meeting {
   meeting_key: number;
@@ -138,7 +135,6 @@ export interface StartingGridWithDriver {
   white_logo: string;
 }
 
-// 레이스 화면의 분석탭
 export interface RaceStatsticsTab {
   label: string;
   icon: string;

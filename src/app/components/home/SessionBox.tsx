@@ -28,7 +28,7 @@ export default function SessionBox({ data }: PageProps) {
   };
   return (
     <>
-      <div className="flex h-full w-full flex-row items-center justify-between gap-3 rounded-[10px] border border-[#4A4A4A] bg-[#111111] px-3 py-3.75 sm:flex-col sm:items-center sm:px-5 sm:py-3">
+      <div className="flex h-full w-full items-center justify-between gap-3 rounded-[10px] border border-[#4A4A4A] bg-[#111111] px-3 py-3.75 sm:px-5 sm:py-3">
         <div className="flex flex-col gap-2.75">
           <div className="flex items-center">
             <Image

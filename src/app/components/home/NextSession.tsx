@@ -55,7 +55,7 @@ export default function NextSession({ data }: PageProps) {
           </div>
           {liveSession && <LiveSessionBox data={liveSession} />}
           {!liveSession && (
-            <div className="flex grid-cols-3 flex-col gap-2 sm:grid sm:gap-5">
+            <div className="flex flex-col gap-2">
               {nextSessions.map((session) => (
                 <SessionBox key={session.session_key} data={session} />
               ))}
