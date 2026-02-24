@@ -1,4 +1,5 @@
-<img width="400" height="400" alt="ㅣㅣㅣㅣ" src="https://github.com/user-attachments/assets/1c73eea7-0539-4ac9-bf61-a62a891d131a" />
+<img width="280" height="68" alt="LOGO" src="https://github.com/user-attachments/assets/18d8dd77-197f-42e3-a1a2-190d8d82e5c4" />
+
 
 # 🏎️ AfterLap
 
