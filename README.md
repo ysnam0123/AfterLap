@@ -42,6 +42,7 @@ AfterLap은 Formula 1 시즌 데이터를 기반으로
 <img width="200" height="666" alt="전체 요약1" src="https://github.com/user-attachments/assets/ce395b4f-b31f-4d7a-825f-3e3b87941c21" />
 <img width="200" height="666" alt="전체 요약2" src="https://github.com/user-attachments/assets/f374ca9b-8624-4a67-904a-b9568532da6b" />
 <img width="200" height="666" alt="전체 요약3" src="https://github.com/user-attachments/assets/93a18f1b-f031-48e2-88c6-54cdd836c230" />
+<img width="200" height="666" alt="전체 요약5" src="https://github.com/user-attachments/assets/7c99c8b9-9786-4dc5-8816-30d6bb54acce" />
 
 
 > 모든 이미지는 비상업적 F1 팬 프로젝트 용도로 사용됩니다.
