@@ -109,6 +109,7 @@ const ensurePitData = async (sessionKey: number) => {
 
   if (existing.length === 0) {
     await syncPitDataFromAPI(sessionKey);
+    return getPitstopView(sessionKey);
   }
   return existing;
 };
@@ -118,6 +119,7 @@ const ensureTeamPitData = async (sessionKey: number) => {
 
   if (existing.length === 0) {
     await syncPitDataFromAPI(sessionKey);
+    return getTeamPitstopView(sessionKey);
   }
   return existing;
 };

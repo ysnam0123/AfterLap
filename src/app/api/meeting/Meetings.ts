@@ -60,10 +60,16 @@ export const syncMeetingsFromAPI = async (year: number) => {
 };
 
 // ===== Ensure =====
-// DB 기준 보장 + API는 보조
 export const ensureMeetings = async (year: number) => {
   const dbMeetings = await getMeetingsFromDB(year);
-  // API 동기화는 백그라운드 개념
+
+  // 1) DB에 없으면 API로 동기화 후 다시 조회
+  if (!dbMeetings || dbMeetings.length === 0) {
+    await syncMeetingsFromAPI(year);
+    return getMeetingsFromDB(year);
+  }
+
+  // 2) 이미 데이터가 있으면, API 동기화는 백그라운드로
   syncMeetingsFromAPI(year);
 
   return dbMeetings;

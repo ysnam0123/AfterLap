@@ -72,7 +72,7 @@ const ensureResultData = async (sessionKey: number) => {
   const existing = await getSessionResultDataFromDB(sessionKey);
   console.log('existing데이터 불러옴:', existing);
   if (existing.length === 0) {
-    await fetchResultDataFromAPI(sessionKey);
+    await saveResultData(sessionKey);
     return await getSessionResultDataFromDB(sessionKey);
   }
 
