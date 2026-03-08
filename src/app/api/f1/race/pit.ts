@@ -85,22 +85,32 @@ export const getPitDataFromDB = async (sessionKey: number) => {
     .eq('session_key', sessionKey)
     .order('pit_duration', { ascending: true });
 
+  if (data) {
+    console.log('db에서 피트스탑 불러옴:', data);
+    return data;
+  }
+
   if (error) throw error;
   return data ?? [];
 };
 
 // 없으면 supabse에 저장
 export const syncPitDataFromAPI = async (sessionKey: number) => {
-  try {
-    const apiPit = await fetchPitDataFromAPI(sessionKey);
-    if (!apiPit || apiPit.length === 0) return;
+  const apiPit = await fetchPitDataFromAPI(sessionKey);
+  if (!apiPit || apiPit.length === 0) return;
 
-    await supabase.from('pit_stops').upsert(apiPit, {
+  const { data } = await supabase
+    .from('pit_stops')
+    .upsert(apiPit, {
       onConflict: 'meeting_key,session_key,driver_number,lap_number',
-    });
-  } catch (e) {
-    console.warn('Sessions API sync failed:', e);
+    })
+    .select();
+
+  if (data) {
+    return data;
   }
+
+  console.log('supabase에 피트스탑 데이터 저장:', data);
 };
 
 // ===== Ensure =====

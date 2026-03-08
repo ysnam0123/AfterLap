@@ -46,28 +46,30 @@ export const getRaceControlDataFromDB = async (sessionKey: number) => {
   return data ?? [];
 };
 
-// ===== Sync =====
-export const syncRaceControlFromAPI = async (sessionKey: number) => {
-  try {
-    const raceControlData = await fetchRaceControlDataFromAPI(sessionKey);
-    if (!raceControlData || raceControlData.length === 0) return;
+// ===== 없으면 supabase에 저장 =====
+export const saveRaceControlData = async (sessionKey: number) => {
+  const raceControlData = await fetchRaceControlDataFromAPI(sessionKey);
+  if (!raceControlData || raceControlData.length === 0) return;
 
-    await supabase
-      .from('race_control')
-      .upsert(raceControlData, {
-        onConflict: 'meeting_key,session_key,date,message',
-      })
-      .select();
-  } catch (e) {
-    console.error('레이스 컨트롤 에러', e);
+  const { data } = await supabase
+    .from('race_control')
+    .upsert(raceControlData, {
+      onConflict: 'meeting_key,session_key,date,message',
+    })
+    .select();
+
+  if (data) {
+    return data;
   }
+
+  console.log('data:', data);
 };
 
 // ===== Ensure =====
 const ensureRaceControlData = async (sessionKey: number) => {
   const existing = await getRaceControlDataFromDB(sessionKey);
   if (existing.length === 0) {
-    await syncRaceControlFromAPI(sessionKey);
+    await saveRaceControlData(sessionKey);
     return await getRaceControlDataFromDB(sessionKey);
   }
   return existing;
@@ -85,10 +87,3 @@ export function useRaceControlData(sessionKey: number | null) {
     },
   });
 }
-
-// let pitData = await getRaceControlDataFromDB(sessionKey!);
-// if (!pitData || pitData.length === 0) {
-//   await saveRaceControlData(sessionKey!);
-//   pitData = await getRaceControlDataFromDB(sessionKey!);
-// }
-// return pitData ?? [];
