@@ -24,6 +24,7 @@ export default function SeasonDriverCard({
         src="/cardBg.png"
         alt="bg"
         fill
+        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
         className="absolute inset-0 z-0 object-cover"
       />
       <div className="pointer-events-none absolute inset-0 z-1 bg-black/0 transition-all duration-100 group-hover:bg-white/10" />

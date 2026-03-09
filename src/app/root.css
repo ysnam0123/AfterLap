@@ -1,51 +1,64 @@
 :root {
   /* 색상 */
   --color-bg-primary: #0b0b0b;
-  --color-primary-600: #3d8b3f;
-  --color-main-black: #111111;
-  --color-text: #333333;
-  --color-muted: #6f6f6f;
+  /* accent */
+  --color-accent: #d80003;
+  --color-accent-soft: rgba(216, 0, 3, 0.18);
+  --color-success: #22c55e;
+  --color-warning: #fbbf24;
 
-  --color-box-bg: #111111;
-  --color-box-hover: #161616;
-  --color-box-active: #131313;
-  --color-box-border: rgba(255, 255, 255, 0.08);
+  /* base text */
+  --color-text: #eaeaea;
+  --color-muted: rgba(255, 255, 255, 0.66);
 
-  --color-border: #4a4a4a;
-  --color-placeholder: #8b8b8b;
+  /* surfaces */
+  --color-main-black: #0f0f10;
+  --color-box-bg: #121214;
+  --color-box-hover: #18181b;
+  --color-box-active: #141418;
+  --color-box-border: rgba(255, 255, 255, 0.10);
 
-  --color-table-bg: #171717;
-  --color-table-border: #4a4a4a;
-  --color-table-hover: #333333;
+  /* strokes */
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-placeholder: rgba(255, 255, 255, 0.48);
 
-  --color-card-bg: #171717;
-  --color-card-border: #3c3c3c;
-  --color-card-hover: #333333;
+  /* table */
+  --color-table-bg: #121214;
+  --color-table-border: rgba(255, 255, 255, 0.12);
+  --color-table-hover: #1a1a1f;
 
-  --color-button-bg: #212121;
-  --color-button-border: #313131;
-  --color-button-hover: #373737;
-  --color-button-active: #252525;
+  /* card */
+  --color-card-bg: #121214;
+  --color-card-border: rgba(255, 255, 255, 0.12);
+  --color-card-hover: #18181b;
+
+  /* button */
+  --color-button-bg: #1a1a1f;
+  --color-button-border: rgba(255, 255, 255, 0.14);
+  --color-button-hover: #23232a;
+  --color-button-active: #1c1c22;
 
   /* 텍스트 */
-  --color-title: #c3c3c3;
-  --color-title-hover: #f8f8f8;
-  --color-sub-text: #787575;
+  --color-title: rgba(255, 255, 255, 0.92);
+  --color-title-hover: #ffffff;
+  --color-sub-text: rgba(255, 255, 255, 0.64);
 
   /* 테이블 */
-  --color-table-head-bg: #111111;
+  --color-table-head-bg: #0f0f12;
 
   /* 그림자 */
 
   /* 🟢 기본 그림자 (일반용: 카드, 버튼 등) */
-  --shadow-soft: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 12px 28px rgba(0, 0, 0, 0.55);
   /* ⚫ 강조 그림자 (hover, 활성화, 깊은 강조용) */
-  --shadow-strong: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-strong: 0 2px 0 rgba(255, 255, 255, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.65);
   /* 🟩 포커스 그림자 (초점/선택용) */
-  --shadow-focus: 0 0 0 3px rgba(76, 175, 80, 0.2);
+  --shadow-focus: 0 0 0 3px var(--color-accent-soft);
 
   /* 모바일 그림자 */
-  --shadow-mobile: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  --shadow-mobile: 0 1px 18px rgba(0, 0, 0, 0.5);
 
   /* 아티클 */
   --article-title: #3b3b3b;

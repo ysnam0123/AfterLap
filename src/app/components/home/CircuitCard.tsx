@@ -8,9 +8,9 @@ interface CircuitProps {
 
 export function CircuitCard({ data }: CircuitProps) {
   return (
-    <div className="flex h-15 cursor-pointer items-center justify-between rounded-[10px] border border-white/10 bg-(--color-card-bg) px-5 py-2.5 transition hover:bg-(--color-card-hover) sm:h-25">
+    <div className="flex h-15 cursor-pointer items-center justify-between rounded-[12px] border border-(--color-card-border) bg-(--color-card-bg) px-5 py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:h-25">
       <div className="flex min-w-0 flex-1 items-center gap-2">
-        <div className="flex h-8 w-10 shrink-0 items-center justify-center rounded-sm bg-[#303030] text-xs sm:h-10 sm:w-11.25">
+        <div className="flex h-8 w-10 shrink-0 items-center justify-center rounded-sm border border-(--color-box-border) bg-(--color-box-bg) text-xs sm:h-10 sm:w-11.25">
           <Image
             src={data.flag}
             alt="flag"
@@ -24,7 +24,7 @@ export function CircuitCard({ data }: CircuitProps) {
           <p className="truncate text-[14px] font-semibold sm:text-[16px]">
             {data.circuit_short_name}
           </p>
-          <p className="truncate text-[14px] text-[#909090] sm:text-[16px]">
+          <p className="truncate text-[14px] text-(--color-sub-text) sm:text-[16px]">
             {data.country_kr_name}
           </p>
         </div>

@@ -16,7 +16,7 @@ export default function Header() {
   const isDetailPage = pathSegments.length >= 2;
   return (
     <>
-      <div className="sticky top-0 z-50 mb-4 flex w-full flex-col gap-3 bg-(--color-bg-primary) px-2.5 py-2.5 lg:h-22">
+      <div className="sticky top-0 z-50 mb-4 flex w-full flex-col gap-3 border-b border-(--color-box-border) bg-(--color-bg-primary)/90 px-2.5 py-2.5 backdrop-blur lg:h-22">
         <div className="flex items-center gap-17.5 select-none lg:px-17.5 xl:px-35">
           <Image
             src={'/AfterLapLogo.svg'}
@@ -35,18 +35,18 @@ export default function Header() {
             <ul className="flex gap-14">
               <li
                 onClick={() => router.push('/season')}
-                className="cursor-pointer border-b-2 border-transparent py-6.25 hover:border-[#ffffff]"
+                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
               >
                 시즌
               </li>
               <li
                 onClick={() => router.push('/ranking')}
-                className="cursor-pointer border-b-2 border-transparent py-6.25 hover:border-[#ffffff]"
+                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
               >
                 순위
               </li>
               <li
-                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 hover:border-[#ffffff]"
+                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
                 onClick={() => {
                   router.push('/team');
                   setOpenTeam(false);
@@ -60,7 +60,7 @@ export default function Header() {
                 <ChevronDown />
               </li>
               <li
-                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 hover:border-[#ffffff]"
+                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
                 onClick={() => {
                   router.push('/driver');
                   setOpenDriver(false);
@@ -75,7 +75,7 @@ export default function Header() {
               </li>
               <li
                 onClick={() => router.push('/circuit')}
-                className="cursor-pointer border-b-2 border-transparent py-6.25 hover:border-[#ffffff]"
+                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
               >
                 서킷
               </li>

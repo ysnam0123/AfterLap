@@ -18,7 +18,7 @@ export default function Summary({
   year,
 }: {
   pit: PitView[];
-  weather: WeatherSessionSummary;
+  weather?: WeatherSessionSummary | null;
   SafetyCarNumber: number;
   raceControl: RaceControl[];
   totalLaps: number;
@@ -30,8 +30,22 @@ export default function Summary({
   return (
     <>
       <div className="px-5 md:px-0">
-        <div className="grid w-full gap-5 rounded-xl bg-none py-4 sm:gap-5 sm:bg-[#1A1A1A] sm:px-10 lg:grid-cols-2">
-          <WeatherSummary weather={weather} />
+        <div className="grid w-full gap-5 rounded-xl bg-none py-4 sm:gap-5 sm:rounded-4xl sm:border sm:border-(--color-box-border) sm:bg-(--color-card-bg) sm:px-10 lg:grid-cols-2">
+          {weather ? (
+            <WeatherSummary weather={weather} />
+          ) : (
+            <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">
+              <p
+                className="text-[14px] text-(--color-title) sm:text-[20px]"
+                style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
+              >
+                날씨
+              </p>
+              <p className="text-[13px] text-(--color-sub-text) sm:text-[16px]">
+                날씨 요약 데이터가 아직 없어요.
+              </p>
+            </div>
+          )}
           <Top3Position
             setSelectedTab={setSelectedTab}
             positionGain={positionGain}

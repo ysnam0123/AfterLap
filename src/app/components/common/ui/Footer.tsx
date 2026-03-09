@@ -7,10 +7,10 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <footer className="mt-10 w-full bg-[#100F13] px-4 py-6 select-none sm:mt-20 sm:px-12 sm:py-10">
+    <footer className="mt-10 w-full border-t border-(--color-box-border) bg-(--color-box-bg) px-4 py-6 select-none sm:mt-20 sm:px-12 sm:py-10">
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start">
         {/* Left */}
-        <div className="flex flex-col items-start gap-4 lg:w-100 lg:border-r lg:border-[#717171] lg:pr-10">
+        <div className="flex flex-col items-start gap-4 lg:w-100 lg:border-r lg:border-(--color-box-border) lg:pr-10">
           <Image
             src="/AfterLapLogo.svg"
             alt="AfterLap Logo"
@@ -27,13 +27,13 @@ export default function Footer() {
           />
 
           <div className="pl-1 text-sm sm:text-base">
-            <p className="text-[#CBCBCB]">Beyond the Result</p>
-            <p className="text-[#5D5D5D]">
+            <p className="text-(--color-title)">Beyond the Result</p>
+            <p className="text-(--color-sub-text)">
               결과를 넘어서, 세션과 드라이버의 흐름을 읽다
             </p>
           </div>
 
-          <p className="mt-4 text-xs text-[#5D5D5D] sm:text-sm">
+          <p className="mt-4 text-xs text-(--color-sub-text) sm:text-sm">
             © 2025 After Lap - All rights reserved.
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-8 hidden border-t border-[#696969] lg:block" />
+      <div className="mt-8 hidden border-t border-(--color-box-border) lg:block" />
     </footer>
   );
 }

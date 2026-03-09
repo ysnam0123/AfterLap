@@ -46,7 +46,7 @@ export default function GrandPrixCardWithPodium({ meetingInfo }: CardProps) {
     <>
       <div
         onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex min-h-45.5 w-full cursor-pointer flex-col justify-between rounded-[10px] border border-white/10 bg-[#1A1A1A] p-4.5 font-semibold hover:bg-[#313131]"
+        className="flex min-h-45.5 w-full cursor-pointer flex-col justify-between rounded-[12px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong)"
       >
         <div className="mb-2.5 flex items-center justify-between sm:mb-5">
           <div className="flex flex-col gap-3">
@@ -81,7 +81,7 @@ export default function GrandPrixCardWithPodium({ meetingInfo }: CardProps) {
           {meetingInfo.race_podium?.map((podium) => (
             <div
               key={podium.driver_code}
-              className="flex flex-1 items-center justify-between rounded-[5px] bg-[#242424] px-2 py-1.75 font-semibold"
+              className="flex flex-1 items-center justify-between rounded-[10px] border border-(--color-box-border) bg-(--color-box-bg) px-2 py-1.75 font-semibold"
             >
               <p className="text-[10px] leading-none sm:text-[12px]">
                 {position(podium.position)}

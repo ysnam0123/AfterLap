@@ -63,7 +63,7 @@ export default function NextSession({ data }: PageProps) {
           )}
         </section>
         <div className="mobile">
-          <button className="flex h-full w-full cursor-pointer items-center justify-center rounded-[10px] border border-[#4A4A4A] bg-[#111111] py-2.5 hover:border-[#4C4C4C]/50 hover:bg-[#4C4C4C]/50 active:border-[#CDC9C9]/50 active:bg-[#CDC9C9]/50">
+          <button className="flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)">
             <p
               style={{ fontFamily: 'RiaSans', fontWeight: 600 }}
               className="text-[12px]"

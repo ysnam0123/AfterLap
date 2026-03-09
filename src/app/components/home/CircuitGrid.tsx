@@ -17,7 +17,7 @@ export default function CircuitGrid({ data }: CircuitProps) {
         <div className="desktop">
           <button
             onClick={() => router.push('/circuit')}
-            className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] bg-[#666666] px-3 py-1.75 transition-all duration-120 hover:bg-[#4C4C4C] active:bg-[#CDC9C9]/50 md:h-10"
+            className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] border border-(--color-button-border) bg-(--color-button-bg) px-3 py-1.75 shadow-(--shadow-soft) transition-all duration-120 hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active) md:h-10"
           >
             <p
               className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
@@ -37,7 +37,7 @@ export default function CircuitGrid({ data }: CircuitProps) {
       <div className="mobile">
         <button
           onClick={() => router.push('/circuit')}
-          className="flex h-full w-full cursor-pointer items-center justify-center rounded-[10px] border border-[#4A4A4A] bg-[#111111] py-2.5 hover:border-[#4C4C4C]/50 hover:bg-[#4C4C4C]/50 active:border-[#CDC9C9]/50 active:bg-[#CDC9C9]/50"
+          className="flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
         >
           <p
             style={{ fontFamily: 'RiaSans', fontWeight: 500 }}

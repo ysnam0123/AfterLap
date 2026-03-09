@@ -33,7 +33,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
     <>
       <div
         onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex w-full cursor-pointer flex-col rounded-[10px] border border-white/10 bg-[#1A1A1A] p-4.5 font-semibold hover:bg-[#313131]"
+        className="flex w-full cursor-pointer flex-col rounded-[10px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong)"
       >
         <p className="mb-2 text-[10px] text-[#8B8B8B] sm:text-[12px]">
           {meetingInfo.meeting_official_name}
@@ -64,7 +64,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
               <span>- 라운드</span>
             </p>
           </div>
-          <div className="rounded-xl bg-[#333333] px-2.5 py-1">
+          <div className="rounded-xl border border-(--color-box-border) bg-(--color-box-bg) px-2.5 py-1">
             <Image
               src={meetingInfo.circuit_img}
               alt="img"

@@ -8,8 +8,8 @@ export default function WeatherSummary({
 }) {
   return (
     <>
-      <div className="flex flex-col gap-3 rounded-[5px] border border-[#262626] bg-[#161616] px-3 py-3.75 pl-5 sm:rounded-4xl sm:py-5">
-        <h1 className="flex items-center gap-1 text-gray-400">
+      <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">
+        <h1 className="flex items-center gap-1 text-(--color-sub-text)">
           <Image
             src="/icons/weather.svg"
             alt="icon"
@@ -40,16 +40,16 @@ export default function WeatherSummary({
             </div>
             <div className="flex items-center justify-between gap-10">
               <div className="flex flex-col text-[12px] sm:text-[18px]">
-                <span className="text-gray-500">트랙 온도</span>
+                <span className="text-(--color-sub-text)">트랙 온도</span>
                 <div className="">
                   {weather.track_temp_level}
-                  <span className="ml-1 text-gray-200">
+                  <span className="ml-1 text-white/80">
                     ({weather.avg_track_temp.toFixed(1)}°C)
                   </span>
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="text-gray-500">바람</div>
+                <div className="text-(--color-sub-text)">바람</div>
                 <div className="">{weather.wind_level}</div>
               </div>
             </div>

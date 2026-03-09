@@ -109,17 +109,17 @@ export default function RaceResultSection({
     '전체 요약': (
       <Summary
         year={year}
-        pit={pitData!}
-        totalLaps={totalLaps!}
-        weather={weatherSummary!}
-        SafetyCarNumber={deployCount!}
-        raceControl={sessionRaceControl!}
+        pit={pitData ?? []}
+        totalLaps={totalLaps ?? 0}
+        weather={weatherSummary}
+        SafetyCarNumber={deployCount ?? 0}
+        raceControl={sessionRaceControl ?? []}
         setSelectedTab={mobileSetSelectedTab}
-        positionGain={driverPositionGain!}
+        positionGain={driverPositionGain ?? []}
       />
     ),
-    포지션: <Position year={year} positionGain={driverPositionGain!} />,
-    '피트 스탑': <PitStop year={year} pit={pitData!} />,
+    포지션: <Position year={year} positionGain={driverPositionGain ?? []} />,
+    '피트 스탑': <PitStop year={year} pit={pitData ?? []} />,
     이벤트: <Events />,
   };
 

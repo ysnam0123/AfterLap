@@ -21,12 +21,13 @@ export default function PodiumCard({
   return (
     <>
       <div
-        className={`relative hidden w-full min-w-50 overflow-hidden rounded-br-2xl border border-[#5f5f5f] whitespace-nowrap transition-all duration-300 select-none sm:block ${podiumStyle}`}
+        className={`relative hidden w-full min-w-50 overflow-hidden rounded-br-2xl border border-(--color-card-border) bg-(--color-card-bg) whitespace-nowrap shadow-(--shadow-soft) transition-all duration-300 select-none sm:block ${podiumStyle}`}
       >
         <Image
           src="/cardBg.png"
           alt="bg"
           fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="absolute inset-0 z-0 object-cover"
           priority
         />
@@ -46,7 +47,7 @@ export default function PodiumCard({
           className="absolute right-1"
           priority
         />
-        <div className="absolute bottom-0 z-20 flex h-14 w-full items-center justify-between bg-[#222222] px-3.75">
+        <div className="absolute bottom-0 z-20 flex h-14 w-full items-center justify-between border-t border-(--color-box-border) bg-(--color-box-bg)/95 px-3.75 backdrop-blur">
           <div className="flex w-full items-center justify-between text-white">
             <span className="text-[19px] font-bold">{result.kr_name}</span>
             <div className="flex items-center gap-3">

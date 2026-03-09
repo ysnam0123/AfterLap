@@ -39,9 +39,9 @@ export default function SafetyCarSummary({
     summaryText = '레이스 흐름이 여러 번 리셋됨';
   } else {
     const lastScLap = Math.max(...safetyCarEvents.map((e) => e.lap_number), 0);
-    if (lastScLap / totalLaps >= 0.7) {
+    if (totalLaps > 0 && lastScLap / totalLaps >= 0.7) {
       summaryText = '후반부 세이프티카로 승부 결정';
-    } else if (lastScLap > 0 && lastScLap / totalLaps <= 0.3) {
+    } else if (totalLaps > 0 && lastScLap > 0 && lastScLap / totalLaps <= 0.3) {
       summaryText = '초반부터 흐름이 깨진 레이스';
     }
   }
@@ -52,8 +52,8 @@ export default function SafetyCarSummary({
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-4xl border border-[#262626] bg-[#161616] px-3 py-3.75 sm:px-7.5 sm:py-5">
-      <div className="mb-4 flex items-center justify-between text-gray-400">
+    <div className="flex flex-col gap-3 rounded-4xl border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 shadow-(--shadow-soft) sm:px-7.5 sm:py-5">
+      <div className="mb-4 flex items-center justify-between text-(--color-sub-text)">
         <h1 className="flex items-center gap-2">
           <Image
             src="/icons/safety.svg"
@@ -80,7 +80,7 @@ export default function SafetyCarSummary({
         </h1>
         <button
           onClick={() => setSelectedTab('이벤트')}
-          className="cursor-pointer text-[12px] hover:text-[#cacaca] sm:text-[18px]"
+          className="cursor-pointer text-[12px] hover:text-(--color-title-hover) sm:text-[18px]"
         >
           전체보기
         </button>
@@ -105,13 +105,13 @@ export default function SafetyCarSummary({
       </div>
 
       {/* 요약 문구 */}
-      <p className="mt-2 text-center text-[14px] text-gray-300 sm:text-[20px]">
+      <p className="mt-2 text-center text-[14px] text-white/85 sm:text-[20px]">
         {summaryText}
       </p>
 
       {/* 하단 보조 정보 */}
       {safetyCarLaps > 0 && (
-        <p className="text-left text-[10px] text-gray-500 sm:text-[13px]">
+        <p className="text-left text-[10px] text-(--color-sub-text) sm:text-[13px]">
           Safety Car Laps · {safetyCarLaps} / {totalLaps}
         </p>
       )}
