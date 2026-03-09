@@ -74,6 +74,7 @@ export const fetchPitDataFromAPI = async (
   const response = await axiosInstance.get('/pit', {
     params: { session_key: sessionKey },
   });
+  console.log('피트스탑 api 호출:', response.data);
   return response.data;
 };
 
@@ -99,23 +100,25 @@ export const syncPitDataFromAPI = async (sessionKey: number) => {
   const apiPit = await fetchPitDataFromAPI(sessionKey);
   if (!apiPit || apiPit.length === 0) return;
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('pit_stops')
     .upsert(apiPit, {
       onConflict: 'meeting_key,session_key,driver_number,lap_number',
     })
     .select();
 
+  console.log('피트스탑 슈퍼베이스에 저장:', data);
+  console.log('피트스탑 슈퍼베이스에 저장실패:', error);
+
   if (data) {
     return data;
   }
-
-  console.log('supabase에 피트스탑 데이터 저장:', data);
 };
 
 // ===== Ensure =====
 const ensurePitData = async (sessionKey: number) => {
   const existing = await getPitstopView(sessionKey);
+  console.log('존재하는 피트스탑 호출:', existing);
 
   if (existing.length === 0) {
     await syncPitDataFromAPI(sessionKey);
@@ -126,6 +129,7 @@ const ensurePitData = async (sessionKey: number) => {
 
 const ensureTeamPitData = async (sessionKey: number) => {
   const existing = await getTeamPitstopView(sessionKey);
+  console.log('존재하는 팀 피트스탑 호출:', existing);
 
   if (existing.length === 0) {
     await syncPitDataFromAPI(sessionKey);
@@ -160,6 +164,8 @@ export const getTeamPitstopView = async (sessionKey: number) => {
 };
 
 // ===== React Query =====
+
+// 피트스탑 데이터
 export function usePitData(sessionKey: number | null) {
   return useQuery<PitView[]>({
     queryKey: ['pit_stops', sessionKey],
@@ -173,6 +179,7 @@ export function usePitData(sessionKey: number | null) {
   });
 }
 
+// 피트스탑 팀 데이터
 export function useTeamPitData(sessionKey: number | null) {
   return useQuery<TeamPitStopRow[]>({
     queryKey: ['pit_stops', sessionKey],

@@ -47,13 +47,17 @@ export default function RaceResultSection({
   const second = podiumResults.find((r) => r.position === 2);
   const third = podiumResults.find((r) => r.position === 3);
   const totalLaps = first?.number_of_laps;
+
   const { data: sessionStints, isLoading: stintsLoading } =
     useStintsData(sessionKey);
+
   const { data: sessionRaceControl, isLoading: raceControlLoading } =
     useRaceControlData(sessionKey);
+
   const deployCount = sessionRaceControl?.filter(
     (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
   ).length;
+
   const {
     data: pitData,
     isLoading: pitLoading,
@@ -89,6 +93,9 @@ export default function RaceResultSection({
   }
   if (pitData) {
     console.log('pitData 불러옴:', pitData);
+  }
+  if (pitError) {
+    console.log('pitData 에러:', pitError);
   }
   // if (teamPitData) {
   //   console.log('teamPitData 불러옴:', teamPitData);
