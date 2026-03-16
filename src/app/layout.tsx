@@ -87,7 +87,7 @@ export default function RootLayout({
           media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
         />
       </head>
-      <body className="bg-(--color-bg-primary) text-white font-pretendard antialiased">
+      <body className="bg-(--color-bg-primary) text-white">
         <Provider>
           <Header />
           <div className="min-h-screen lg:pb-0">{children}</div>

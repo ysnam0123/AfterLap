@@ -18,7 +18,7 @@ export default function PitStop({
   const [isSelected, setIsSelected] = useState('팀 별');
   return (
     <>
-      <div className="mt-3 flex items-center gap-0 pl-0 sm:gap-5 sm:pl-5">
+      {/* <div className="mt-3 flex items-center gap-0 pl-0 sm:gap-5 sm:pl-5">
         {tabs.map((tab, idx) => (
           <button
             key={tab}
@@ -28,7 +28,7 @@ export default function PitStop({
             {tab}
           </button>
         ))}
-      </div>
+      </div> */}
       <table className="w-full table-fixed border-collapse whitespace-nowrap select-none sm:text-left">
         <thead>
           <tr className="border-b border-white text-[14px] text-[#8B8B8B] sm:text-[20px]">
@@ -38,10 +38,10 @@ export default function PitStop({
             <th className="hidden w-[14%] py-3 text-center sm:w-[20%] md:table-cell">
               팀
             </th>
-            <th className="w-[15%] py-3 text-center">스탑 시간</th>
             <th className="hidden w-[15%] py-3 text-center md:table-cell">
               총 피트스탑 시간
             </th>
+            <th className="w-[15%] py-3 text-center">스탑 시간</th>
           </tr>
         </thead>
         <tbody>
@@ -104,11 +104,11 @@ export default function PitStop({
                   </span>
                 </div>
               </td>
-              <td className="py-3 text-center text-[22px]">
-                {p.stop_duration}
-              </td>
               <td className="hidden py-3 text-center text-[22px] md:table-cell">
-                {p.pit_duration}
+                {p.pit_duration} 초
+              </td>
+              <td className="py-3 text-center text-[15px]">
+                {p.stop_duration === null ? '제공되지 않음' : p.stop_duration}
               </td>
             </tr>
           ))}

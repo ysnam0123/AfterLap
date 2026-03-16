@@ -13,7 +13,7 @@ export default function ConstructorStandings({ data }: TS) {
       <section className="w-full">
         <div className="mb-3 flex items-center justify-between sm:mb-5">
           <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
-            2025 시즌 팀 랭킹
+            2026 시즌 팀 랭킹
           </h2>
           <div className="desktop">
             <button className="flex h-8 cursor-pointer items-center justify-center md:h-10">
@@ -40,7 +40,7 @@ export default function ConstructorStandings({ data }: TS) {
             <div
               key={item.rank}
               onClick={() => router.push(`/team/${item.team_slug}`)}
-              className="grid h-10 cursor-pointer grid-cols-[6px_40px_1fr_80px] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) active:bg-[#848484] sm:h-16 sm:grid-cols-[6px_60px_1fr_80px]"
+              className="grid h-14 cursor-pointer grid-cols-[6px_40px_1fr_80px] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) active:bg-[#848484] sm:h-16 sm:grid-cols-[6px_60px_1fr_80px]"
             >
               {/* Team Color Bar */}
               <div
@@ -60,7 +60,7 @@ export default function ConstructorStandings({ data }: TS) {
                   width={70}
                   height={40}
                   alt="team logo"
-                  className="h-6 w-auto sm:h-9"
+                  className="h-8 w-auto sm:h-9"
                   priority
                 />
                 <span className="truncate text-sm font-medium text-white sm:text-base">

@@ -24,7 +24,7 @@ export default function FastestPitStop({
   // }, [fastest.full_name, year]);
   return (
     <>
-      <div className="flex flex-col gap-3 rounded-4xl border border-(--color-card-border) bg-(--color-card-bg) px-3 py-2.5 shadow-(--shadow-soft) sm:px-7.5 sm:py-5">
+      <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">
         <div className="text-gray-400">
           <div className="mb-2 flex items-center justify-between">
             <h1 className="text-gray-420 flex items-center gap-1">

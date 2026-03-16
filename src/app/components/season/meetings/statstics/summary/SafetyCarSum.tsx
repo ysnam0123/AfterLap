@@ -52,7 +52,7 @@ export default function SafetyCarSummary({
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-4xl border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 shadow-(--shadow-soft) sm:px-7.5 sm:py-5">
+    <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">
       <div className="mb-4 flex items-center justify-between text-(--color-sub-text)">
         <h1 className="flex items-center gap-2">
           <Image

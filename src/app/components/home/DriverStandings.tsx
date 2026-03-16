@@ -12,7 +12,7 @@ export default function DriverStandings({ data }: DS) {
     <section className="w-full">
       <div className="mb-3 flex items-center justify-between sm:mb-5">
         <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
-          2025 시즌 드라이버 랭킹
+          2026 시즌 드라이버 랭킹
         </h2>
         <div className="desktop">
           <button className="flex h-8 cursor-pointer items-center justify-center md:h-10">
@@ -39,7 +39,7 @@ export default function DriverStandings({ data }: DS) {
 
         {/* Body */}
         <div className="mb-1 space-y-1">
-          {data.map((item) => (
+          {data.map((item, idx) => (
             <div
               key={item.rank}
               onClick={() => router.push(`/driver/${item.driver_id}`)}
@@ -53,7 +53,7 @@ export default function DriverStandings({ data }: DS) {
 
               {/* Rank */}
               <div className="text-center text-sm font-semibold text-white sm:text-base">
-                {item.rank}
+                {idx + 1}
               </div>
 
               {/* Driver */}

@@ -24,12 +24,12 @@ export default function LogoLoading({
           alt="loadingLogo"
           width={370}
           height={100}
-          className="h-16 w-57.5 md:h-25 md:w-92.5"
+          className="h-16 w-57.5 animate-pulse md:h-25 md:w-92.5"
           priority
         />
         <p
           style={{ fontFamily: 'Pretendard' }}
-          className="text-[20px] font-semibold text-[#7A7A79] sm:text-[25px] lg:text-[30px]"
+          className="animate-pulse text-[20px] font-semibold text-[#7A7A79] sm:text-[25px] lg:text-[30px]"
         >
           {loadingText}
         </p>

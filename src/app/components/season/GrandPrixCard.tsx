@@ -47,7 +47,7 @@ export default function GrandPrixCard({ meetingInfo }: CardProps) {
                   alt="flag"
                   width={24}
                   height={24}
-                  className="rounded-full object-contain"
+                  className="rounded-[3px] object-contain"
                   priority
                 />
                 <p className="text-[16px] text-white sm:text-[20px]">

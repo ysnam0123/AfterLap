@@ -7,7 +7,6 @@ export default function MobileFooter() {
   const router = useRouter();
   const pathname = usePathname();
 
-  // 메뉴 배열
   const menus = [
     { label: '그랑프리', icon: Flag, path: '/season' },
     { label: '순위', icon: Trophy, path: '/ranking' },
@@ -17,27 +16,41 @@ export default function MobileFooter() {
   ];
 
   return (
-    <footer className="fixed right-0 bottom-0 left-0 z-50 flex h-16 items-center justify-center gap-6 border-t border-[#4A4A4A] bg-(--color-bg-primary) sm:gap-14 lg:hidden">
-      {menus.map(({ label, icon: Icon, path }) => {
-        const isActive =
-          path === '/' ? pathname === '/' : pathname.startsWith(path);
+    <footer className="fixed right-0 bottom-0 left-0 z-50 border-t border-white/10 bg-black/30 backdrop-blur-md">
+      <div className="flex h-17.5 items-center justify-around px-3">
+        {menus.map(({ label, icon: Icon, path }) => {
+          const isActive =
+            path === '/' ? pathname === '/' : pathname.startsWith(path);
 
-        return (
-          <button
-            key={label}
-            onClick={() => router.push(path)}
-            className="flex h-11 w-11 flex-col items-center justify-center text-[12px] font-medium"
-          >
-            <Icon
-              size={22}
-              className={isActive ? 'text-white' : 'text-[#4A4A4A]'}
-            />
-            <p className={isActive ? 'text-white' : 'text-[#4A4A4A]'}>
-              {label}
-            </p>
-          </button>
-        );
-      })}
+          return (
+            <button
+              key={label}
+              onClick={() => router.push(path)}
+              className="relative flex w-15 flex-col items-center justify-center gap-0.5"
+            >
+              {/* active indicator */}
+              {isActive && (
+                <span className="absolute -top-1.5 h-0.75 w-6 rounded-full bg-white" />
+              )}
+
+              <Icon
+                size={label === '홈' ? 26 : 22}
+                className={`transition-colors duration-200 ${
+                  isActive ? 'text-white' : 'text-[#4A4A4A]'
+                }`}
+              />
+
+              <p
+                className={`text-[11px] font-medium transition-colors duration-200 ${
+                  isActive ? 'text-white' : 'text-[#4A4A4A]'
+                }`}
+              >
+                {label}
+              </p>
+            </button>
+          );
+        })}
+      </div>
     </footer>
   );
 }

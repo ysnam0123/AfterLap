@@ -12,7 +12,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     <>
       <QueryClientProvider client={queryClient}>
         <AppSplashGate>{children}</AppSplashGate>
-        <ReactQueryDevtools />ㅇ
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   );

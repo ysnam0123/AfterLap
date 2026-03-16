@@ -24,11 +24,11 @@ export default function Page() {
   const { data: meetings } = useMeetingsWithStatusAndPodium(2026);
 
   const { data: DriverRanking, isPending: DriverRankingLoading } =
-    useDriverRankingData(2025);
+    useDriverRankingData(2026);
   const DRData = DriverRanking?.slice(0, 5);
 
   const { data: teamRanking, isPending: teamRankingLoading } =
-    useTeamSeasonRanking(2025);
+    useTeamSeasonRanking(2026);
 
   const TData = useMemo(() => {
     if (!teamRanking) return [];
