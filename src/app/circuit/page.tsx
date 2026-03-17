@@ -3,12 +3,22 @@
 import { useEffect } from 'react';
 import { useCircuitViewData } from '../api/meeting/Circuit';
 import CircuitCard from '../components/circuit/CircuitCard';
+import { useSeasonDrivers } from '@/hooks/SeasonDrivers';
+import { useTeams } from '@/hooks/seasonTeams';
 
 export default function Page() {
   // 서킷
   const { data: circuitData, isPending: circuitLoading } = useCircuitViewData();
+  const { data: mainDriver } = useSeasonDrivers(2026);
+  const { data: teams } = useTeams(2026);
   if (circuitData) {
     console.log(circuitData);
+  }
+  if (mainDriver) {
+    console.log(mainDriver);
+  }
+  if (teams) {
+    console.log('teams:', teams);
   }
   return (
     <>

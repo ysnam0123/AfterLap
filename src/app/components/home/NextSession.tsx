@@ -22,7 +22,7 @@ export default function NextSession({ data }: PageProps) {
     return null;
   }
 
-  console.log('nextSessions:', nextSessions);
+  // console.log('nextSessions:', nextSessions);
   return (
     <>
       <div className="flex flex-col gap-2">

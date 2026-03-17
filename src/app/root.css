@@ -16,7 +16,7 @@
   --color-box-bg: #121214;
   --color-box-hover: #18181b;
   --color-box-active: #141418;
-  --color-box-border: rgba(255, 255, 255, 0.10);
+  --color-box-border: rgba(255, 255, 255, 0.1);
 
   /* strokes */
   --color-border: rgba(255, 255, 255, 0.14);
@@ -49,11 +49,11 @@
   /* 그림자 */
 
   /* 🟢 기본 그림자 (일반용: 카드, 버튼 등) */
-  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 12px 28px rgba(0, 0, 0, 0.55);
+  --shadow-soft:
+    0 1px 0 rgba(255, 255, 255, 0.04), 0 12px 28px rgba(0, 0, 0, 0.55);
   /* ⚫ 강조 그림자 (hover, 활성화, 깊은 강조용) */
-  --shadow-strong: 0 2px 0 rgba(255, 255, 255, 0.06),
-    0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-strong:
+    0 2px 0 rgba(255, 255, 255, 0.06), 0 16px 40px rgba(0, 0, 0, 0.65);
   /* 🟩 포커스 그림자 (초점/선택용) */
   --shadow-focus: 0 0 0 3px var(--color-accent-soft);
 

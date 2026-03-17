@@ -6,6 +6,7 @@ import Footer from './components/common/ui/Footer';
 import Provider from './Provider';
 import MobileFooter from './components/mobile/MobileFooter';
 import { Analytics } from '@vercel/analytics/next';
+import LayoutWrapper from './components/common/ui/LayoutWrapper';
 
 export const metadata: Metadata = {
   title: 'AfterLap',
@@ -89,11 +90,12 @@ export default function RootLayout({
       </head>
       <body className="bg-(--color-bg-primary) text-white">
         <Provider>
-          <Header />
+          {/* <Header />
           <div className="min-h-screen lg:pb-0">{children}</div>
           <Analytics />
           <Footer />
-          <MobileFooter />
+          <MobileFooter /> */}
+          <LayoutWrapper>{children}</LayoutWrapper>
         </Provider>
       </body>
     </html>

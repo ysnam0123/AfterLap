@@ -6,19 +6,20 @@ import ConstructorStandings from './components/home/ConstructorStandings';
 import DriverStandings from './components/home/DriverStandings';
 import CircuitGrid from './components/home/CircuitGrid';
 import NextSession from './components/home/NextSession';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDriverRankingData } from './api/f1/ranking/driverRanking';
 import { useCircuitViewData } from './api/meeting/Circuit';
 import {
   groupTeamSeasonRanking,
   useTeamSeasonRanking,
 } from './api/f1/ranking/TeamRanking';
+import { supabase } from '@/supabase/client';
 
 export default function Page() {
   const { data: nextMeeting, isPending: nextMeetingLoading } = useNextMeeting();
-  if (nextMeeting) {
-    console.log('다음 미팅:', nextMeeting);
-  }
+  // if (nextMeeting) {
+  //   console.log('다음 미팅:', nextMeeting);
+  // }
 
   // 시즌 화면으로 넘어가기 위한 로딩, 이걸 지울까말까?
   const { data: meetings } = useMeetingsWithStatusAndPodium(2026);

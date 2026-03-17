@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 export default function HighLights() {
   const { data, isPending, isError } = useYoutube();
-  if (data) {
-    console.log('youtube', data);
-  }
+  // if (data) {
+  //   console.log('youtube', data);
+  // }
 
   return (
     <>
