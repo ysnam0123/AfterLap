@@ -15,7 +15,7 @@ export default function Page() {
     console.log(circuitData);
   }
   if (mainDriver) {
-    console.log(mainDriver);
+    console.log('년도별 드라이버:', mainDriver);
   }
   if (teams) {
     console.log('teams:', teams);

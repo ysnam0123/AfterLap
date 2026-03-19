@@ -32,6 +32,7 @@ const nextConfig: NextConfig = {
       'media.formula1.com',
       'www.formula1.com',
       'axykebsdqztifmbbluzg.supabase.co',
+      'k.kakaocdn.net',
     ],
   },
 };

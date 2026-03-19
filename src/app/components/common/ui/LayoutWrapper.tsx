@@ -12,16 +12,24 @@ export default function LayoutWrapper({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isLogin = pathname === '/login';
+
+  const hiddenHeaderRoutes = ['/login'];
+  const showHeader = !hiddenHeaderRoutes.includes(pathname);
+
+  const hiddenFooterRoutes = ['/preference', '/login'];
+  const showFooter = !hiddenFooterRoutes.includes(pathname);
+
   return (
     <>
-      {!isLogin && <Header />}
+      {showHeader && <Header />}
       <div className="min-h-screen lg:pb-0">{children}</div>
       <Analytics />
-      {!isLogin && (
+      {showFooter && (
         <>
           <Footer />
-          <MobileFooter />
+          <div className="mobile">
+            <MobileFooter />
+          </div>
         </>
       )}
     </>

@@ -13,6 +13,7 @@ export interface MeetingWithStatusAndPodium {
   meeting_key: number;
   circuit_key: number;
   circuit_short_name: string;
+  meeting_problem: string;
 
   meeting_code: string;
   location: string;

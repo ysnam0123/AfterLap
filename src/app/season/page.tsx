@@ -8,6 +8,7 @@ import F1Loading from '../components/common/F1Loading';
 import GrandPrixCardWithPodium from '../components/season/GrandPrixCardWithPodium';
 import GrandPrixCard from '../components/season/GrandPrixCard';
 import { years } from '@/data/years';
+import GrandPrixCardWithProblem from '../components/season/GrandPrixCardWithProblem';
 
 export default function Page() {
   const [opened, setOpened] = useState(false);
@@ -39,7 +40,12 @@ export default function Page() {
               />
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-7">
                 {meetings.map((meeting) =>
-                  meeting.race_podium ? (
+                  meeting.meeting_problem === 'cancelled' ? (
+                    <GrandPrixCardWithProblem
+                      key={meeting.meeting_key}
+                      meetingInfo={meeting}
+                    />
+                  ) : meeting.race_podium ? (
                     <GrandPrixCardWithPodium
                       key={meeting.meeting_key}
                       meetingInfo={meeting}

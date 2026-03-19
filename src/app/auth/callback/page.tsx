@@ -7,6 +7,7 @@ import Lottie from 'lottie-react';
 import loading from '../../../../public/loading.json';
 
 export default function CallbackPage() {
+  console.log('callback 들어옴');
   const router = useRouter();
   const hasRun = useRef(false); // ✅ 중복 실행 방지
 
@@ -53,7 +54,7 @@ export default function CallbackPage() {
         // 1. 프로필 조회
         const { data: profile, error: profileError } = await supabase
           .from('profiles')
-          .select('id, onboarding_completed')
+          .select('id, preference_completed')
           .eq('id', user.id)
           .single();
 
@@ -75,7 +76,7 @@ export default function CallbackPage() {
                 user.user_metadata?.avatar_url ??
                 user.user_metadata?.picture ??
                 null,
-              is_onboarding_completed: false,
+              preference_completed: false,
             });
 
           if (insertError) {
@@ -84,13 +85,13 @@ export default function CallbackPage() {
             return;
           }
 
-          router.replace(`/onboarding?next=${encodeURIComponent(next)}`);
+          router.replace(`/preference?next=${encodeURIComponent(next)}`);
           return;
         }
 
         // 3. 온보딩 안한 유저
-        if (!profile.onboarding_completed) {
-          router.replace(`/onboarding?next=${encodeURIComponent(next)}`);
+        if (!profile.preference_completed) {
+          router.replace(`/preference?next=${encodeURIComponent(next)}`);
           return;
         }
 

@@ -1,11 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import './root.css';
-import Header from './components/common/ui/Header';
-import Footer from './components/common/ui/Footer';
 import Provider from './Provider';
-import MobileFooter from './components/mobile/MobileFooter';
-import { Analytics } from '@vercel/analytics/next';
 import LayoutWrapper from './components/common/ui/LayoutWrapper';
 
 export const metadata: Metadata = {
@@ -90,11 +86,6 @@ export default function RootLayout({
       </head>
       <body className="bg-(--color-bg-primary) text-white">
         <Provider>
-          {/* <Header />
-          <div className="min-h-screen lg:pb-0">{children}</div>
-          <Analytics />
-          <Footer />
-          <MobileFooter /> */}
           <LayoutWrapper>{children}</LayoutWrapper>
         </Provider>
       </body>

@@ -12,6 +12,11 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ open, onClose }: LoginModalProps) {
+  const baseUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://afterlap.vercel.app';
+
   const handleGoogleLogin = () => {
     console.log('Google login');
   };
@@ -21,8 +26,7 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'kakao',
       options: {
-        // next : 로그인 끝나고 이동할 위치
-        redirectTo: `https://afterlap.vercel.app/auth/callback?next=${currentPath}`,
+        redirectTo: `${baseUrl}/auth/callback?next=${currentPath}`,
       },
     });
     if (error) {
@@ -72,7 +76,7 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
 
                 {/* login buttons */}
                 <div className="flex flex-col gap-3">
-                  <button
+                  {/* <button
                     onClick={handleGoogleLogin}
                     className="relative flex h-12 w-full cursor-pointer items-center justify-center rounded-lg bg-white text-sm font-semibold text-black hover:bg-gray-200"
                   >
@@ -84,7 +88,7 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
                       className="absolute left-3.75"
                     />
                     Google로 로그인
-                  </button>
+                  </button> */}
 
                   <button
                     onClick={handleKakaoLogin}

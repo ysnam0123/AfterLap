@@ -1,14 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import TeamBox from './dropdown/TeamBox';
 import DriverBox from './dropdown/DriverBox';
 import { ChevronDown, ChevronLeft, CircleUserRound } from 'lucide-react';
 import LoginModal from '../../Auth/LoginModal';
-import { supabase } from '@/supabase/client';
-import { User } from '@supabase/supabase-js';
+import { useAuth } from '@/context/usAuth';
+import UserProfile from '../../Auth/UserProfile';
+import { UIUser } from '@/types/user';
 export default function Header() {
   const [openTeam, setOpenTeam] = useState(false);
   const [openDriver, setOpenDriver] = useState(false);
@@ -19,36 +20,9 @@ export default function Header() {
   const isDetailPage = pathSegments.length >= 2;
   const [loginOpen, setLoginOpen] = useState(false);
 
-  const [user, setUser] = useState<User | null>(null);
+  const { user, isLoading } = useAuth();
+  console.log('유저:', user);
 
-  useEffect(() => {
-    // 1️⃣ 현재 세션 확인
-    const getInitialUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
-    };
-
-    getInitialUser();
-
-    // 2️⃣ 로그인/로그아웃 실시간 구독
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-      },
-    );
-
-    return () => {
-      listener.subscription.unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (user) {
-      console.log('현재 유저:', user);
-    } else {
-      console.log('로그아웃 상태');
-    }
-  }, [user]);
   return (
     <>
       <div className="sticky top-0 z-50 mb-4 flex w-full flex-col gap-3 border-b border-(--color-box-border) bg-(--color-bg-primary)/90 px-5 py-2.5 backdrop-blur lg:h-22">
@@ -123,16 +97,17 @@ export default function Header() {
             </ul>
           </div>
           {!user ? (
-            <button
-              onClick={() => setLoginOpen(true)}
-              className="ml-auto flex h-10 cursor-pointer items-center justify-center truncate rounded-[10px] bg-(--color-button-bg) px-6 text-[13px] font-semibold transition hover:bg-(--color-button-hover) sm:h-12 sm:text-[18px]"
-            >
-              로그인
-            </button>
+            <button onClick={() => setLoginOpen(true)}>로그인</button>
           ) : (
-            <CircleUserRound
-              onClick={() => router.push('/profile')}
-              className="ml-auto h-7 w-7 cursor-pointer text-[#EFEFEF]"
+            <UserProfile
+              userData={{
+                name:
+                  user.user_metadata?.full_name ??
+                  user.user_metadata?.name ??
+                  '익명',
+                avatar: user.user_metadata?.avatar_url ?? '',
+              }}
+              className="ml-auto"
             />
           )}
           {openTeam && <TeamBox onMouseLeave={() => setOpenTeam(false)} />}

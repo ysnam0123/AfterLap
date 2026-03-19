@@ -1,6 +1,6 @@
 'use client';
 
-import { Trophy, Flag, House, Layers, IdCard } from 'lucide-react';
+import { Trophy, Flag, House, Layers, IdCard, Menu } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function MobileFooter() {
@@ -8,11 +8,12 @@ export default function MobileFooter() {
   const pathname = usePathname();
 
   const menus = [
+    { label: '홈', icon: House, path: '/' },
     { label: '그랑프리', icon: Flag, path: '/season' },
     { label: '순위', icon: Trophy, path: '/ranking' },
-    { label: '홈', icon: House, path: '/' },
-    { label: '팀', icon: Layers, path: '/team' },
-    { label: '드라이버', icon: IdCard, path: '/driver' },
+    { label: '전체메뉴', icon: Menu, path: '/menus' },
+    // { label: '팀', icon: Layers, path: '/team' },
+    // { label: '드라이버', icon: IdCard, path: '/driver' },
   ];
 
   return (
