@@ -11,7 +11,7 @@ export default function DriverStandings({ data }: DS) {
   return (
     <section className="w-full">
       <div className="mb-3 flex items-center justify-between sm:mb-5">
-        <h2 className="text-[14px] font-semibold text-(--color-title) sm:text-[18px]">
+        <h2 className="text-[16px] font-semibold text-(--color-title) sm:text-[18px]">
           2026 시즌 드라이버 랭킹
         </h2>
         <div className="desktop">

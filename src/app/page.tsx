@@ -1,19 +1,19 @@
 'use client';
-import HighLights from './components/home/HighLights';
 import { useNextMeeting } from '@/hooks/NextMeeting';
 import { useMeetingsWithStatusAndPodium } from '@/hooks/SeasonRacePodium';
 import ConstructorStandings from './components/home/ConstructorStandings';
 import DriverStandings from './components/home/DriverStandings';
 import CircuitGrid from './components/home/CircuitGrid';
 import NextSession from './components/home/NextSession';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useDriverRankingData } from './api/f1/ranking/driverRanking';
 import { useCircuitViewData } from './api/meeting/Circuit';
 import {
   groupTeamSeasonRanking,
   useTeamSeasonRanking,
 } from './api/f1/ranking/TeamRanking';
-import { supabase } from '@/supabase/client';
+import TeamList from './components/home/TeamList';
+import DriverList from './components/home/DriverList';
 
 export default function Page() {
   const { data: nextMeeting, isPending: nextMeetingLoading } = useNextMeeting();
@@ -60,8 +60,9 @@ export default function Page() {
               <DriverStandings data={DRData!} />
             </div>
           )}
+          <TeamList />
+          <DriverList />
           <CircuitGrid data={CData} />
-          <HighLights />
         </section>
       )}
     </>

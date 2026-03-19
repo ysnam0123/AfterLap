@@ -13,10 +13,11 @@
 
   /* surfaces */
   --color-main-black: #0f0f10;
-  --color-box-bg: #121214;
+  --color-box-bg: #171717;
+  --color-box-selected: #2d2d2d;
   --color-box-hover: #18181b;
   --color-box-active: #141418;
-  --color-box-border: rgba(255, 255, 255, 0.1);
+  --color-box-border: #2e2e2e;
 
   /* strokes */
   --color-border: rgba(255, 255, 255, 0.14);

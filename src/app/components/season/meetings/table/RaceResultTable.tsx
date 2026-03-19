@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { formatDuration } from '@/hooks/FormattingDuration';
 import { findHeadshot } from '@/utils/findHeadShot';
+import PodiumCard from '../PodiumCard';
 
 export default function RaceResultTable({
   results,
@@ -15,17 +16,19 @@ export default function RaceResultTable({
   results: SortedSessionResult[];
 }) {
   const router = useRouter();
+  const podiumResults = results.slice(0, 3);
+  const first = podiumResults.find((r) => r.position === 1);
+  const second = podiumResults.find((r) => r.position === 2);
+  const third = podiumResults.find((r) => r.position === 3);
   const processedResults = [...results]
     .sort((a, b) => {
       // 둘 다 완주
       if (a.position !== null && b.position !== null) {
         return a.position - b.position;
       }
-
       // 완주 vs 리타이어 → 완주 먼저
       if (a.position !== null) return -1;
       if (b.position !== null) return 1;
-
       // 둘 다 리타이어면 순서 유지
       return 0;
     })
@@ -36,7 +39,6 @@ export default function RaceResultTable({
           displayPosition: index + 1,
         };
       }
-
       if (result.dsq) return { ...result, displayPosition: 'DSQ' };
       if (result.dns) return { ...result, displayPosition: 'DNS' };
       if (result.dnf) return { ...result, displayPosition: 'DNF' };
@@ -46,6 +48,11 @@ export default function RaceResultTable({
 
   return (
     <>
+      <div className="my-0 flex items-end justify-center gap-7.5 sm:my-5 sm:px-5 md:px-0">
+        {second && <PodiumCard year={year} result={second} rank={2} />}
+        {first && <PodiumCard year={year} result={first} rank={1} />}
+        {third && <PodiumCard year={year} result={third} rank={3} />}
+      </div>
       <table className="w-full table-fixed border-collapse text-left whitespace-nowrap select-none">
         <thead className="bg-(--color-table-head-bg)">
           <tr className="border-b border-white text-[13px] text-[#8B8B8B] sm:text-[20px]">

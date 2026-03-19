@@ -16,7 +16,7 @@ export default function SessionNav({
     <>
       <div className="relative">
         <div className="hide-scrollbar flex items-center justify-normal overflow-x-scroll sm:justify-between">
-          <ul className="flex gap-1.5 sm:mb-7.5 sm:gap-2.5">
+          <ul className="flex gap-1.5 sm:mb-4 sm:gap-2.5">
             {sessionTabs.map((session) => {
               const isFinished = sessionFinishMap[session.session_key];
               const isActive = isSelectedKey === session.session_key;
@@ -27,10 +27,10 @@ export default function SessionNav({
                   onClick={() => {
                     setIsSelectedAction(session.session_key);
                   }}
-                  className={`flex h-10 items-center justify-center truncate rounded-[10px] px-4 text-[13px] font-semibold transition sm:h-12 sm:text-[18px] ${
+                  className={`btn-interaction flex h-10 items-center justify-center truncate rounded-[10px] px-4 text-[13px] font-semibold transition sm:h-12 sm:text-[18px] ${
                     isActive
-                      ? 'bg-(--color-box-hover) text-white ring-1 ring-(--color-box-border) shadow-(--shadow-soft)'
-                      : 'bg-(--color-button-bg) text-(--color-title) hover:bg-(--color-button-hover)'
+                      ? 'border border-(--color-box-border) bg-(--color-box-selected) text-white shadow-(--shadow-soft)'
+                      : 'border border-(--color-box-border) bg-(--color-button-bg) text-(--color-title) hover:bg-(--color-button-hover)'
                   } ${!isFinished ? 'opacity-70' : ''} cursor-pointer`}
                 >
                   {session.session_name}
