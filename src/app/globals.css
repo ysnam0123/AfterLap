@@ -265,3 +265,15 @@
 .animate-fade-out {
   animation: fadeOut 0.4s ease forwards;
 }
+
+.btn-interaction {
+  @apply backdrop-blur-sm transition-all duration-200 ease-out;
+}
+
+.btn-interaction:hover {
+  @apply -translate-y-px bg-white/10 text-white;
+}
+
+.btn-interaction:active {
+  @apply translate-y-0 scale-95;
+}

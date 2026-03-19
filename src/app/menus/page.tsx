@@ -66,7 +66,7 @@ export default function Page() {
               }
             }}
             type="button"
-            className={`flex h-14 w-full items-center justify-between rounded-2xl border border-(--color-card-border) bg-(--color-card-bg) px-5 transition active:scale-[0.98] ${className}`}
+            className={`btn-interaction flex h-14 w-full cursor-pointer items-center justify-between rounded-2xl border border-(--color-card-border) bg-(--color-card-bg) px-5 transition active:scale-[0.98] ${className}`}
           >
             <div className="flex items-center gap-3">
               <Icon className="transition-colors duration-200" />

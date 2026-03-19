@@ -64,6 +64,7 @@ export const usePreferenceStore = create<Preference>()(
 
       reset: () => {
         set({
+          step: 1,
           selectedTeams: [],
           selectedDrivers: [],
         });
