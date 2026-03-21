@@ -1,6 +1,6 @@
 'use client';
 
-import { Trophy, Flag, House, Layers, IdCard, Menu } from 'lucide-react';
+import { Trophy, Flag, House, Menu } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function MobileFooter() {

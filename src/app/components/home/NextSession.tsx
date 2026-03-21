@@ -7,6 +7,7 @@ import { useSessionData } from '@/app/api/meeting/Sessions';
 import { useLiveSession } from '@/hooks/LiveSession';
 import LiveSessionBox from './LiveSessionBox';
 import SessionBox from './SessionBox';
+import AnimatedContent from '@/components/AnimatedContent';
 
 interface PageProps {
   data?: NextMeeting;

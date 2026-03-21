@@ -97,7 +97,12 @@ export default function Header() {
             </ul>
           </div>
           {!user ? (
-            <button onClick={() => setLoginOpen(true)}>로그인</button>
+            <button
+              className="btn-interaction ml-auto flex cursor-pointer items-center justify-center rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-4 py-2"
+              onClick={() => setLoginOpen(true)}
+            >
+              로그인
+            </button>
           ) : (
             <UserProfile
               userData={{

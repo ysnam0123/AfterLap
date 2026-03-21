@@ -20,7 +20,8 @@ export default function DriverList() {
             return (
               <div
                 key={driver.driver_id}
-                className="flex shrink-0 flex-col items-center gap-2"
+                className="flex shrink-0 flex-col items-center gap-2 transition active:scale-95 active:opacity-80"
+                onClick={() => router.push(`/driver/${driver.driver_id}`)}
               >
                 <div className="flex cursor-pointer flex-col items-center justify-center rounded-[6px] border border-(--color-card-border) bg-(--color-card-bg) p-2.5">
                   <Image
@@ -28,7 +29,6 @@ export default function DriverList() {
                     alt="driver"
                     width={80}
                     height={80}
-                    priority
                   />
                 </div>
 

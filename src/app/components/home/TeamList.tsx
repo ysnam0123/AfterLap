@@ -18,17 +18,12 @@ export default function TeamList() {
         {teams2026.map((team) => {
           return (
             <div
+              // onClick={() => router.push(`/team/${team.team_slug}`)}
               key={team.team_slug}
-              className="flex shrink-0 flex-col items-center gap-2"
+              className="flex shrink-0 flex-col items-center gap-2 transition active:scale-95 active:opacity-80"
             >
               <div className="flex cursor-pointer flex-col items-center justify-center rounded-[6px] border border-(--color-card-border) bg-(--color-card-bg) p-2.5">
-                <Image
-                  src={team.main_logo}
-                  alt="logo"
-                  width={80}
-                  height={80}
-                  priority
-                />
+                <Image src={team.main_logo} alt="logo" width={80} height={80} />
               </div>
 
               <h1 className="text-[15px] text-[#b5b5b5]">

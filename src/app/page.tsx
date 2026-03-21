@@ -14,6 +14,7 @@ import {
 } from './api/f1/ranking/TeamRanking';
 import TeamList from './components/home/TeamList';
 import DriverList from './components/home/DriverList';
+import AnimatedContent from '@/components/AnimatedContent';
 
 export default function Page() {
   const { data: nextMeeting, isPending: nextMeetingLoading } = useNextMeeting();
@@ -53,7 +54,19 @@ export default function Page() {
     <>
       {!pageLoading && (
         <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
-          <NextSession data={nextMeeting} />
+          <AnimatedContent
+            distance={100}
+            direction="vertical"
+            reverse={false}
+            ease="power3.out"
+            initialOpacity={0}
+            animateOpacity
+            scale={0.5}
+            threshold={0.1}
+            delay={0}
+          >
+            <NextSession data={nextMeeting} />
+          </AnimatedContent>
           {!DriverRankingLoading && DriverRanking && teamRanking && CData && (
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               <ConstructorStandings data={TData!} />

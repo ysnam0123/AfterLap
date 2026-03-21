@@ -9,6 +9,7 @@ import GrandPrixCardWithPodium from '../components/season/GrandPrixCardWithPodiu
 import GrandPrixCard from '../components/season/GrandPrixCard';
 import { years } from '@/data/years';
 import GrandPrixCardWithProblem from '../components/season/GrandPrixCardWithProblem';
+import AnimatedContent from '@/components/AnimatedContent';
 
 export default function Page() {
   const [opened, setOpened] = useState(false);
@@ -48,20 +49,50 @@ export default function Page() {
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-7">
                 {sortedMeetings.map((meeting) =>
                   meeting.meeting_problem === 'cancelled' ? (
-                    <GrandPrixCardWithProblem
+                    <AnimatedContent
                       key={meeting.meeting_key}
-                      meetingInfo={meeting}
-                    />
+                      distance={140}
+                      direction="vertical"
+                      reverse={false}
+                      ease="power3.out"
+                      initialOpacity={0}
+                      animateOpacity
+                      scale={0.5}
+                      threshold={0.1}
+                      delay={0}
+                    >
+                      <GrandPrixCardWithProblem meetingInfo={meeting} />
+                    </AnimatedContent>
                   ) : meeting.race_podium ? (
-                    <GrandPrixCardWithPodium
+                    <AnimatedContent
                       key={meeting.meeting_key}
-                      meetingInfo={meeting}
-                    />
+                      distance={140}
+                      direction="vertical"
+                      reverse={false}
+                      ease="power3.out"
+                      initialOpacity={0}
+                      animateOpacity
+                      scale={0.5}
+                      threshold={0.1}
+                      delay={0}
+                    >
+                      <GrandPrixCardWithPodium meetingInfo={meeting} />
+                    </AnimatedContent>
                   ) : (
-                    <GrandPrixCard
+                    <AnimatedContent
                       key={meeting.meeting_key}
-                      meetingInfo={meeting}
-                    />
+                      distance={140}
+                      direction="vertical"
+                      reverse={false}
+                      ease="power3.out"
+                      initialOpacity={0}
+                      animateOpacity
+                      scale={0.5}
+                      threshold={0.1}
+                      delay={0}
+                    >
+                      <GrandPrixCard meetingInfo={meeting} />
+                    </AnimatedContent>
                   ),
                 )}
               </div>
