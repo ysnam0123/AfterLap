@@ -6,9 +6,9 @@ import Summary from './statstics/summary/Summary';
 import Position from './statstics/Position';
 import PitStop from './statstics/PitStop';
 import Events from './statstics/Events';
-import RaceTabs from '../../mobile/meeting/RaceTabs';
 import { useState } from 'react';
 import { useRaceResultData } from '@/hooks/result/raceResult';
+import RaceTabs from '../../mobile/meeting/RaceTabs';
 
 export default function RaceResultSection({
   year,
