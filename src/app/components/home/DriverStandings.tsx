@@ -5,8 +5,10 @@ import { useRouter } from 'next/navigation';
 
 interface DS {
   data: DriverSeasonRankingView[];
+  seeAll: boolean;
+  setSeeAll: (see: boolean) => void;
 }
-export default function DriverStandings({ data }: DS) {
+export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
   const router = useRouter();
   return (
     <section className="w-full">
@@ -97,14 +99,14 @@ export default function DriverStandings({ data }: DS) {
         </div>
         <div className="mobile">
           <button
-            onClick={() => router.push('/ranking')}
+            onClick={() => setSeeAll(!seeAll)}
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
             <p
               style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
               className="text-[12px]"
             >
-              전체보기
+              {seeAll ? '접기' : '펼치기'}
             </p>
           </button>
         </div>

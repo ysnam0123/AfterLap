@@ -17,10 +17,6 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
       ? 'http://localhost:3000'
       : 'https://afterlap.vercel.app';
 
-  const handleGoogleLogin = () => {
-    console.log('Google login');
-  };
-
   const handleKakaoLogin = async () => {
     const currentPath = window.location.pathname;
     const { error } = await supabase.auth.signInWithOAuth({

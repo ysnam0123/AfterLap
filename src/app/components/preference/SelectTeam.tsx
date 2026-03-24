@@ -8,8 +8,6 @@ import Image from 'next/image';
 export default function SelectTeam() {
   const { selectedTeams, toggleTeam, setStep } = usePreferenceStore();
 
-  const updatePreference = () => {};
-
   return (
     <>
       <h1 className="text-[18px]">나의 팀을 선택하세요 (최대 2팀)</h1>

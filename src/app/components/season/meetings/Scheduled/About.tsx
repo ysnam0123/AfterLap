@@ -17,13 +17,17 @@ export default function About({ circuitData }: PageProps) {
         >
           경기 전 둘러보기
         </p>
-        <div className="flex flex-col items-stretch gap-5 md:flex-row lg:gap-10">
-          <AboutCircuit circuitData={circuitData} />
-          <AboutBeforePoint circuitData={circuitData} />
-        </div>
-        <div className="mobile">
-          <CircuitDetailBox circuitData={circuitData} />
-        </div>
+        {circuitData && (
+          <>
+            <div className="flex flex-col items-stretch gap-5 md:flex-row lg:gap-10">
+              <AboutCircuit circuitData={circuitData} />
+              <AboutBeforePoint circuitData={circuitData} />
+            </div>
+            <div className="mobile">
+              <CircuitDetailBox circuitData={circuitData} />
+            </div>
+          </>
+        )}
       </div>
     </>
   );

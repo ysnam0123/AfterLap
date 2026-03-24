@@ -1,11 +1,12 @@
 'use client';
-import { PitView } from '@/app/api/f1/race/pit';
+
 import DriverProfile from '../DriverProfile';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import DefaultDriverProfile from '../DefaultDriverProfile';
 import { useState } from 'react';
 import { findHeadshot } from '@/utils/findHeadShot';
+import { PitView } from '@/types/raceResult';
 export default function PitStop({
   pit,
   year,

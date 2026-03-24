@@ -5,39 +5,38 @@ import { useEffect, useMemo, useState } from 'react';
 import RaceResultSection from '@/app/components/season/meetings/RaceResultSection';
 import SessionResultSection from '@/app/components/season/meetings/SessionResultSection';
 import SessionNav from '@/app/components/season/meetings/SessionNav';
-import { useCircuitData } from '@/app/api/meeting/Circuit';
 import F1Loading from '@/app/components/common/F1Loading';
-import { useStartingGridData } from '@/app/api/f1/race/starting_grid';
-import { useSortedResults } from '@/app/api/meeting/sessionResult';
-import { useMeetingData } from '@/app/api/meeting/Meetings';
-import { useSessionData } from '@/app/api/meeting/Sessions';
-import { useDriverData } from '@/app/api/f1/Drivers';
 import ScheduledGrandPrix from '@/app/components/season/meetings/Scheduled/ScheduledGrandPrix';
 import { isSessionFinished } from '@/utils/isSessionFinished';
+import { useCircuitData } from '@/hooks/useCircuit';
+import { useDriverData } from '@/hooks/drivers';
+import { useMeetingDetailData } from '@/hooks/page/meetingDetail';
+import { useSessionResults } from '@/hooks/result/sessionResult';
+import { useStartingGridData } from '@/hooks/result/startingGrid';
 
 export default function Page() {
   const params = useParams<{ meeting_key: string }>();
   const meetingKey = Number(params.meeting_key);
-  const { data: meetingInfo, isPending: meetingLoading } =
-    useMeetingData(meetingKey);
-  const year = meetingInfo?.year;
-  const { data: circuitInfo, isPending: circuitLoading } = useCircuitData(
-    meetingInfo?.circuit_key,
-  );
-  const sessionFetchable = !!meetingKey && !!meetingInfo;
-  const { data: sessions = [], isPending: sessionLoading } = useSessionData(
-    meetingKey,
-    sessionFetchable,
-  );
+  const { data: detailData, isLoading: meetingDetailLoading } =
+    useMeetingDetailData(meetingKey);
+  const { meetingDetail, sessions = [] } = detailData ?? {};
+  const year = meetingDetail?.year;
   const [selectedSessionKey, setSelectedSessionKey] = useState<number | null>(
     null,
   );
+  // 테스트
   useEffect(() => {
     console.log('선택된 세션키:', selectedSessionKey);
   }, [selectedSessionKey]);
   useEffect(() => {
     console.log('세션 모음집:', sessions);
   }, [sessions]);
+
+  const { data: circuitData, isLoading: circuitDataLoading } = useCircuitData(
+    meetingDetail?.circuit_key,
+  );
+  console.log('서킷 데이터:', circuitData);
+
   const selectedSession = useMemo(
     () => sessions.find((s) => s.session_key === selectedSessionKey) ?? null,
     [sessions, selectedSessionKey],
@@ -46,7 +45,8 @@ export default function Page() {
     ? isSessionFinished(selectedSession)
     : false;
 
-  console.log('isSelectedSessionFinished:', isSelectedSessionFinished);
+  // 테스트
+  console.log('선택된 세션의 종료 여부:', isSelectedSessionFinished);
 
   const sessionFinishMap = useMemo(() => {
     return sessions.reduce<Record<number, boolean>>((acc, session) => {
@@ -69,9 +69,13 @@ export default function Page() {
 
   const isDriverFetchable = !!selectedSessionKey && isSelectedSessionFinished;
 
+  // const { data: driverData = [], isPending: driverLoading } = useDriverData(
+  //   selectedSessionKey,
+  //   isDriverFetchable,
+  // );
   const { data: driverData = [], isPending: driverLoading } = useDriverData(
     selectedSessionKey,
-    isDriverFetchable,
+    !!selectedSessionKey, // 세션 키만 있으면 일단 가져와!
   );
 
   const sessionResultFetchable =
@@ -79,25 +83,17 @@ export default function Page() {
     isSelectedSessionFinished &&
     !!driverData &&
     driverData.length >= 15;
-  console.log('sessionResultFetchable:', sessionResultFetchable);
 
   const { data: sessionResults = [], isLoading: sessionResultLoading } =
-    useSortedResults(selectedSessionKey, sessionResultFetchable);
-
-  const startingGridWitdhDriver =
-    isQualifyingSessionFinished && driverData && driverData.length >= 15;
-  const startingGridWitdhoutDriver =
-    isQualifyingSessionFinished && driverData && driverData.length >= 15;
+    useSessionResults(selectedSessionKey, sessionResultFetchable);
 
   const startingGridFetchable =
     isQualifyingSessionFinished && driverData && driverData.length >= 15;
 
-  const {
-    data: startingGridData,
-    isLoading: startingGridLoading,
-    isError: startingGridError,
-  } = useStartingGridData(qualifyingSessionKey!, startingGridFetchable);
+  const { data: startingGridData, isLoading: startingGridLoading } =
+    useStartingGridData(qualifyingSessionKey!, startingGridFetchable);
 
+  console.log('스타팅그리드 데이터:', startingGridData);
   const finishedSessions = sessions
     .filter(isSessionFinished)
     .sort(
@@ -122,15 +118,31 @@ export default function Page() {
   }, [sessions, selectedSessionKey, finishedSessions, upcomingSessions]);
 
   const isPageReady =
-    !!meetingInfo && !!year && !!circuitInfo && sessions.length > 0;
+    !meetingDetailLoading &&
+    !circuitDataLoading &&
+    !driverLoading &&
+    !!meetingDetail &&
+    !!year &&
+    circuitData &&
+    sessions.length > 0;
 
+  useEffect(() => {
+    console.log('--- 페칭 상태 체크 ---');
+    console.log('selectedSessionKey:', selectedSessionKey);
+    console.log('isSelectedSessionFinished:', isSelectedSessionFinished);
+    console.log('driverData:', driverData.length, '명');
+    console.log('sessionResultFetchable:', sessionResultFetchable);
+  }, [
+    selectedSessionKey,
+    isSelectedSessionFinished,
+    driverData,
+    sessionResultFetchable,
+  ]);
   return (
     <>
       <>
-        <SeasonHeroBox meetingInfo={meetingInfo} circuitInfo={circuitInfo} />
         {!isPageReady && (
           <>
-            {' '}
             <div className="flex h-100 items-center justify-center sm:h-100">
               <F1Loading loadingText="로딩 중..." />
             </div>
@@ -138,6 +150,10 @@ export default function Page() {
         )}
         {isPageReady && (
           <>
+            <SeasonHeroBox
+              meetingInfo={meetingDetail}
+              circuitInfo={circuitData}
+            />
             <section className="mx-auto min-h-screen w-full px-0 md:px-10 lg:px-20 xl:px-35">
               <>
                 {selectedSessionKey && (
@@ -152,7 +168,7 @@ export default function Page() {
                   {!isSelectedSessionFinished && selectedSession && (
                     <ScheduledGrandPrix
                       data={selectedSession}
-                      circuitData={circuitInfo}
+                      circuitData={circuitData}
                     />
                   )}
                   {isSelectedSessionFinished && (
@@ -161,6 +177,7 @@ export default function Page() {
                       raceSession &&
                       startingGridData ? (
                         <RaceResultSection
+                          isRaceFinished={isSelectedSessionFinished}
                           year={year}
                           sessionKey={raceSession.session_key}
                           sessionResults={sessionResults}

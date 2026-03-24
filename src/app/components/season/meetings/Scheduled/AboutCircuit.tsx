@@ -34,12 +34,12 @@ export default function AboutCircuit({ circuitData }: PageProps) {
           <p className="text-[12px] text-[#838383] sm:text-[16px]">
             난이도 요약
           </p>
-          <p className="text-[14px] sm:text-[16px] lg:text-[18px]">
+          <div className="text-[14px] sm:text-[16px] lg:text-[18px]">
             {!circuitData.difficulty_summary && (
               <p>아직 충분히 진행되지 않은 레이스입니다. </p>
             )}
             {circuitData.difficulty_summary && circuitData.difficulty_summary}
-          </p>
+          </div>
         </div>
       </div>
     </>

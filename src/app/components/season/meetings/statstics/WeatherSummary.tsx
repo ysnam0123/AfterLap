@@ -1,4 +1,4 @@
-import { WeatherSessionSummary } from '@/app/api/f1/race/weather';
+import { WeatherSessionSummary } from '@/types/raceResult';
 import Image from 'next/image';
 
 export default function WeatherSummary({

@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import AnimatedContent from '@/components/AnimatedContent';
 import { twMerge } from 'tailwind-merge';

@@ -1,8 +1,7 @@
-import { PitView } from '@/app/api/f1/race/pit';
 import Image from 'next/image';
 import DefaultDriverProfile from '../../DefaultDriverProfile';
 import { findHeadshot } from '@/utils/findHeadShot';
-import { useEffect } from 'react';
+import { PitView } from '@/types/raceResult';
 
 export default function FastestPitStop({
   pit,
@@ -16,12 +15,6 @@ export default function FastestPitStop({
   const fastest = pit[0];
   const stopDurationOffered = pit[0]?.stop_duration !== null ? true : false;
   console.log('stopDurationOffered', stopDurationOffered);
-  // useEffect(() => {
-  //   console.log(findHeadshot(fastest.full_name, year));
-  //   console.log(fastest.full_name);
-  //   console.log(fastest.full_name.split(' ').join('').toLowerCase());
-  //   console.log('4번 year', year);
-  // }, [fastest.full_name, year]);
   return (
     <>
       <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">

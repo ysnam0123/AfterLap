@@ -9,16 +9,6 @@ export default function DriverProfile({
   teamColor: string;
   className: string;
 }) {
-  const upgradeHeadshotQuality = (url: string) => {
-    if (url.includes('.transform/')) {
-      return url.replace(
-        /\.transform\/\d+col\/image\.png$/,
-        '.transform/4col/image.png',
-      );
-    }
-    return url;
-  };
-  // const headshotSrc = upgradeHeadshotQuality(headshot);
   return (
     <>
       <div

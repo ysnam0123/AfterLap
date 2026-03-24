@@ -1,11 +1,11 @@
 'use client';
-import { DriverPositionGain } from '@/app/api/f1/race/position';
 import DriverProfile from '../DriverProfile';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import DefaultDriverProfile from '../DefaultDriverProfile';
 import { useState, useMemo } from 'react';
 import { findHeadshot } from '@/utils/findHeadShot';
+import { DriverPositionGain } from '@/types/raceResult';
 
 export default function Position({
   positionGain,

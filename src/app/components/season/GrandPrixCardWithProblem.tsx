@@ -1,13 +1,12 @@
 'use client';
 
-import { CardProps } from '@/hooks/SeasonRacePodium';
 import { countryCodeFlags } from '@/images/flags';
-
+import { GrandPrixCardProps } from '@/types/meeting';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
-export default function GrandPrixCardWithProblem({ meetingInfo }: CardProps) {
-  const router = useRouter();
+export default function GrandPrixCardWithProblem({
+  meetingInfo,
+}: GrandPrixCardProps) {
   const flagSrc = countryCodeFlags[meetingInfo.country_code];
 
   return (

@@ -1,6 +1,5 @@
 import { Session } from '@/types/meeting';
-import { formatDateTime, getSessionStatus } from '@/utils/time';
-import { Timer } from 'lucide-react';
+import { getSessionStatus } from '@/utils/time';
 import Ongoing from './ScheduledStatus/Ongoing';
 import Upcoming from './ScheduledStatus/Upcoming';
 
@@ -9,9 +8,6 @@ interface PageProps {
 }
 
 export default function NextScheduleBox({ data }: PageProps) {
-  const date = data.date_start.split('T')[0];
-  const time = data.date_start.split('T')[1].split('+')[0];
-
   const status = getSessionStatus(data.date_start, data.date_end);
   const krStatus = () => {
     switch (status) {

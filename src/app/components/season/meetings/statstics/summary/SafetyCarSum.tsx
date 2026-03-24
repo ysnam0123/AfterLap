@@ -1,4 +1,4 @@
-import { RaceControl } from '@/app/api/f1/race/raceControl';
+import { RaceControl } from '@/types/raceResult';
 import Image from 'next/image';
 import { useEffect } from 'react';
 

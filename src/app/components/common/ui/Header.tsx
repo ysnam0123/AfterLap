@@ -5,11 +5,10 @@ import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import TeamBox from './dropdown/TeamBox';
 import DriverBox from './dropdown/DriverBox';
-import { ChevronDown, ChevronLeft, CircleUserRound } from 'lucide-react';
+import { ChevronDown, ChevronLeft } from 'lucide-react';
 import LoginModal from '../../Auth/LoginModal';
 import { useAuth } from '@/context/usAuth';
 import UserProfile from '../../Auth/UserProfile';
-import { UIUser } from '@/types/user';
 export default function Header() {
   const [openTeam, setOpenTeam] = useState(false);
   const [openDriver, setOpenDriver] = useState(false);
@@ -20,8 +19,7 @@ export default function Header() {
   const isDetailPage = pathSegments.length >= 2;
   const [loginOpen, setLoginOpen] = useState(false);
 
-  const { user, isLoading } = useAuth();
-  console.log('유저:', user);
+  const { user } = useAuth();
 
   return (
     <>

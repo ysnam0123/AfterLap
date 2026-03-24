@@ -1,5 +1,6 @@
 import { supabase } from '@/supabase/client';
 
+// 안쓰고있음
 export interface SessionDriverProfile {
   session_key: number;
   year: number;

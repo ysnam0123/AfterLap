@@ -1,6 +1,5 @@
 'use client';
 import { LiveSession } from '@/types/meeting';
-import { Timer } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 

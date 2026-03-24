@@ -1,5 +1,5 @@
 'use client';
-import { supabase } from '@/supabase/client';
+import { createClient } from '@/supabase/client';
 import {
   Heart,
   LogOut,
@@ -9,17 +9,18 @@ import {
   IdCard,
   Bell,
 } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
+  const supabase = createClient();
   const router = useRouter();
-  const pathname = usePathname();
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut({ scope: 'global' });
 
     if (error) {
       console.error('로그아웃 실패:', error);
     }
+    router.replace('/');
   };
   const menus = [
     {

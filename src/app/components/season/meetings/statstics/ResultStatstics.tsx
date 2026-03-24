@@ -4,12 +4,14 @@ import Summary from './summary/Summary';
 import Position from './Position';
 import PitStop from './PitStop';
 import Events from './Events';
-import { WeatherSessionSummary } from '@/app/api/f1/race/weather';
-import { PitView } from '@/app/api/f1/race/pit';
-import { Stints } from '@/app/api/f1/race/stints';
-import { RaceControl } from '@/app/api/f1/race/raceControl';
-import { DriverPositionGain } from '@/app/api/f1/race/position';
 import { RaceStatsticsTab } from '@/types/meeting';
+import {
+  DriverPositionGain,
+  PitView,
+  RaceControl,
+  Stints,
+  WeatherSessionSummary,
+} from '@/types/raceResult';
 
 export default function ResultStatstics({
   totalLaps,

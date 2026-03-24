@@ -1,11 +1,13 @@
-import { WeatherSessionSummary } from '@/app/api/f1/race/weather';
 import Top3Position from './Top3Position';
 import WeatherSummary from '../WeatherSummary';
 import FastestPitStop from './FastestPS';
 import SafetyCarSummary from './SafetyCarSum';
-import { RaceControl } from '@/app/api/f1/race/raceControl';
-import { DriverPositionGain } from '@/app/api/f1/race/position';
-import { PitView } from '@/app/api/f1/race/pit';
+import {
+  DriverPositionGain,
+  PitView,
+  RaceControl,
+  WeatherSessionSummary,
+} from '@/types/raceResult';
 
 export default function Summary({
   weather,

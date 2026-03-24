@@ -38,23 +38,30 @@ export interface Meeting {
 export interface Sessions {
   relatedSession: Session[];
 }
+
+export interface MeetingDetailResponse {
+  meetingDetail: Meeting;
+  sessions: Session[];
+}
 export interface Session {
-  circuit_key: number;
-  circuit_short_name: string;
-  country_code: string;
-  country_key: number;
-  country_name: string;
-  created_at: string;
-  date_start: string;
-  date_end: string;
-  gmt_offset: string;
-  id: string;
-  location: string;
   meeting_key: number;
   session_key: number;
-  session_name: string;
+  location: string;
+  date_start: string;
+  date_end: string;
   sesstion_type: string;
+  session_name: string;
+  country_key: number;
+  country_code: string;
+  country_name: string;
+  circuit_key: number;
+  circuit_short_name: string;
+  gmt_offset: string;
+
   year: number;
+
+  created_at: string;
+  id: string;
 }
 
 export interface SessionResult {
@@ -105,6 +112,7 @@ export interface SessionResults {
 export interface RaceResults {
   year: number;
   sessionKey: number | null;
+  isRaceFinished: boolean;
   sessionResults: SortedSessionResult[];
   startingGrid: StartingGridWithDriver[];
 }
@@ -150,4 +158,71 @@ export interface LiveSession {
   session_key: number;
   session_name: string;
   year: number;
+}
+
+interface NextMeetingCircuit {
+  circuit_img: string;
+  circuit_long_name: string;
+}
+interface NextMeetingCountry {
+  flag: string;
+  country_kr_name: string;
+}
+export interface NextMeeting {
+  circuit_key: number;
+  circuit_short_name: string;
+  country_code: string;
+  country_key: number;
+  country_name: string;
+  date_end: string;
+  date_start: string;
+  gmt_offset: string;
+  id: string;
+  location: string;
+  meeting_code: string;
+  meeting_key: number;
+  meeting_name: string;
+  meeting_official_name: string;
+  round: number;
+  year: number;
+  circuits: NextMeetingCircuit;
+  countries: NextMeetingCountry;
+}
+
+export interface RacePodiumItem {
+  position: 1 | 2 | 3;
+  driver_code: string;
+  driver_season_profile_id: number;
+  team_colour: string;
+  team_white_logo: string;
+}
+
+export interface MeetingWithStatusAndPodium {
+  meeting_key: number;
+  circuit_key: number;
+  circuit_short_name: string;
+  meeting_problem: string;
+
+  meeting_code: string;
+  location: string;
+
+  country_key: number;
+  country_code: string;
+  country_name: string;
+  country_kr_name: string | null;
+
+  meeting_name: string;
+  meeting_official_name: string;
+  gmt_offset: string;
+  date_start: string;
+  date_end: string;
+  year: number;
+  round: number;
+  status: 'scheduled' | 'ongoing' | 'finished';
+  race_podium: RacePodiumItem[] | null;
+  circuit_img: string;
+}
+
+export interface GrandPrixCardProps {
+  meetingInfo: MeetingWithStatusAndPodium;
 }

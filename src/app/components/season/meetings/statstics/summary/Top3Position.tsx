@@ -1,4 +1,4 @@
-import { DriverPositionGain } from '@/app/api/f1/race/position';
+import { DriverPositionGain } from '@/types/raceResult';
 import { ArrowBigRight, Flame } from 'lucide-react';
 import Image from 'next/image';
 

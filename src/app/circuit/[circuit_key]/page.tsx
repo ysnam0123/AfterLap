@@ -1,6 +1,7 @@
 'use client';
 
-import { useCircuitDetailData } from '@/app/api/meeting/Circuit';
+import F1Loading from '@/app/components/common/F1Loading';
+import { useCircuitDetailData } from '@/hooks/useCircuit';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 
@@ -11,7 +12,12 @@ export default function CircuitDetailPage() {
   console.log(circuitDetail);
   return (
     <main className="mx-auto px-5 pt-5 text-white sm:px-10 md:px-20">
-      {circuitDetail && (
+      {circuitLoading && (
+        <div className="flex h-100 items-center justify-center sm:h-100">
+          <F1Loading loadingText="서킷 로딩 중..." />
+        </div>
+      )}
+      {circuitDetail && !circuitLoading && (
         <>
           <header className="mb-10 flex flex-col gap-4">
             <h1 className="text-4xl font-bold">

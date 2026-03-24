@@ -1,25 +1,21 @@
 'use client';
 import { RaceResults } from '@/types/meeting';
-import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
 import RaceResultTable from './table/RaceResultTable';
 import StartingGridTable from './table/StartingGridTable';
-import { useStintsData } from '@/app/api/f1/race/stints';
-import { useRaceControlData } from '@/app/api/f1/race/raceControl';
-import { usePitData } from '@/app/api/f1/race/pit';
-import { useWeatherSummary } from '@/app/api/f1/race/weather';
-import { usePositionData } from '@/app/api/f1/race/position';
 import Summary from './statstics/summary/Summary';
 import Position from './statstics/Position';
 import PitStop from './statstics/PitStop';
 import Events from './statstics/Events';
 import RaceTabs from '../../mobile/meeting/RaceTabs';
+import { useState } from 'react';
+import { useRaceResultData } from '@/hooks/result/raceResult';
 
 export default function RaceResultSection({
   year,
   sessionKey,
   sessionResults,
   // isPending,
+  isRaceFinished,
   startingGrid,
 }: RaceResults) {
   const tabs = [
@@ -37,21 +33,24 @@ export default function RaceResultSection({
   const first = podiumResults.find((r) => r.position === 1);
   const totalLaps = first?.number_of_laps;
 
-  const { data: sessionStints, isLoading: stintsLoading } =
-    useStintsData(sessionKey);
+  const { data: raceResultData, isLoading: raceResultLoading } =
+    useRaceResultData(sessionKey!, isRaceFinished);
 
-  const { data: sessionRaceControl, isLoading: raceControlLoading } =
-    useRaceControlData(sessionKey);
-
-  const deployCount = sessionRaceControl?.filter(
-    (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
-  ).length;
+  if (!raceResultData) return null;
 
   const {
-    data: pitData,
-    isLoading: pitLoading,
-    isError: pitError,
-  } = usePitData(sessionKey);
+    driverPitData,
+    // teamPitData,
+    // startingGridData,
+    positionData,
+    weatherData,
+    raceControlData,
+    stintsData,
+  } = raceResultData;
+
+  const deployCount = raceControlData?.filter(
+    (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
+  ).length;
 
   // groupby를 아직 안해서 못씀
   // const {
@@ -59,38 +58,24 @@ export default function RaceResultSection({
   //   isLoading: teamPitLoading,
   //   isError: teamPitError,
   // } = useTeamPitData(sessionKey);
-  const { data: weatherSummary, isLoading: weatherLoading } =
-    useWeatherSummary(sessionKey);
-  const { data: driverPositionGain, isLoading: dPositionLoading } =
-    usePositionData(sessionKey, !!sessionKey);
-  if (driverPositionGain) {
-    console.log('드라이버 별 포지션:', driverPositionGain);
+  if (positionData) {
+    console.log('드라이버 별 포지션:', positionData);
   }
-  const summaryLoading =
-    stintsLoading ||
-    raceControlLoading ||
-    pitLoading ||
-    weatherLoading ||
-    dPositionLoading;
-
   // 테스트
-  if (sessionStints) {
-    console.log('sessionStints 불러옴:', sessionStints);
+  if (stintsData) {
+    console.log('sessionStints 불러옴:', stintsData);
   }
-  if (sessionRaceControl) {
-    console.log('sessionRaceControl 불러옴:', sessionRaceControl);
+  if (raceControlData) {
+    console.log('raceControlData 불러옴:', raceControlData);
   }
-  if (pitData) {
-    console.log('pitData 불러옴:', pitData);
-  }
-  if (pitError) {
-    console.log('pitData 에러:', pitError);
+  if (driverPitData) {
+    console.log('driverPitData 불러옴:', driverPitData);
   }
   // if (teamPitData) {
   //   console.log('teamPitData 불러옴:', teamPitData);
   // }
-  if (weatherSummary) {
-    console.log('weatherSummary 불러옴:', weatherSummary);
+  if (weatherData) {
+    console.log('weatherData 불러옴:', weatherData);
   }
   const renderMap: Record<string, React.ReactNode> = {
     '레이스 결과': <RaceResultTable year={year} results={sessionResults} />,
@@ -98,17 +83,17 @@ export default function RaceResultSection({
     '전체 요약': (
       <Summary
         year={year}
-        pit={pitData ?? []}
+        pit={driverPitData ?? []}
         totalLaps={totalLaps ?? 0}
-        weather={weatherSummary}
+        weather={weatherData}
         SafetyCarNumber={deployCount ?? 0}
-        raceControl={sessionRaceControl ?? []}
+        raceControl={raceControlData ?? []}
         setSelectedTab={setSelectedTab}
-        positionGain={driverPositionGain ?? []}
+        positionGain={positionData ?? []}
       />
     ),
-    포지션: <Position year={year} positionGain={driverPositionGain ?? []} />,
-    '피트 스탑': <PitStop year={year} pit={pitData ?? []} />,
+    포지션: <Position year={year} positionGain={positionData ?? []} />,
+    '피트 스탑': <PitStop year={year} pit={driverPitData ?? []} />,
     이벤트: <Events />,
     '타이어 전략': <Events />,
   };

@@ -89,3 +89,8 @@ interface Driver {
 }
 
 // const teams = groupBy(data, d => d.team_slug);
+
+export interface RankingResponse {
+  driverRanking: DriverSeasonRankingView[];
+  teamRanking: TeamSeasonRankingRow[];
+}

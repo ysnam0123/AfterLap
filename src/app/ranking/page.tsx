@@ -1,42 +1,34 @@
 'use client';
 
 import { useYearStore } from '@/store/YearStore';
-import { useDriverRankingData } from '../api/f1/ranking/driverRanking';
 import { useState } from 'react';
 import SeasonChangeButton from '../components/common/SeasonChangeButton';
 import PodiumCard from '../components/season/meetings/PodiumCard';
 import DriverRankingTable from '../components/ranking/DriverRankingTable';
-import {
-  groupTeamSeasonRanking,
-  useTeamSeasonRanking,
-} from '../api/f1/ranking/TeamRanking';
 import F1Loading from '../components/common/F1Loading';
 import TeamRankingTable from '../components/ranking/TeamRankingTable';
 import BeforeSeason from '../components/common/BeforeSeason';
+import { groupTeamSeasonRanking } from '@/utils/groupTeamSeasonRanking';
+import { useRankingData } from '@/hooks/page/ranking';
 
 export default function Page() {
   const [opened, setOpened] = useState(false);
   const selectedYear = useYearStore((s) => s.selectedYear);
   const setSelectedYear = useYearStore((s) => s.setSelectedYear);
   const years = [2023, 2024, 2025, 2026];
-  const { data: DriverRanking, isPending: DriverRankingLoading } =
-    useDriverRankingData(selectedYear);
-  if (DriverRanking) {
-    console.log('드라이버 랭킹:', DriverRanking);
-  }
-  const { data: TeamRanking = [], isPending: TeamRankingLoading } =
-    useTeamSeasonRanking(selectedYear);
-  const teamRankings = groupTeamSeasonRanking(TeamRanking);
 
-  if (TeamRanking) {
-    console.log('팀 랭킹:', teamRankings);
-  }
+  const { data: rankingData, isLoading: pageLoading } = useRankingData();
+  const { driverRanking, teamRanking } = rankingData ?? {};
+
+  const teamRankings = groupTeamSeasonRanking(teamRanking ?? []);
   const tabs = ['드라이버 랭킹', '팀 랭킹'];
   const [isSelected, setIsSelected] = useState('드라이버 랭킹');
-  const first = DriverRanking?.find((r) => r.rank === 1);
-  const second = DriverRanking?.find((r) => r.rank === 2);
-  const third = DriverRanking?.find((r) => r.rank === 3);
-  const showDriverRanking = isSelected === '드라이버 랭킹';
+
+  const first = driverRanking?.find((r) => r.rank === 1);
+  const second = driverRanking?.find((r) => r.rank === 2);
+  const third = driverRanking?.find((r) => r.rank === 3);
+
+  const showdriverRanking = isSelected === '드라이버 랭킹';
   const showTeamRanking = isSelected === '팀 랭킹';
 
   return (
@@ -61,23 +53,22 @@ export default function Page() {
           ))}
         </div>
 
-        {DriverRankingLoading ||
-          (TeamRankingLoading && (
-            <div className="flex h-100 items-center justify-center sm:h-100">
-              <F1Loading loadingText="로딩 중..." />
-            </div>
-          ))}
-        {DriverRanking && DriverRanking.length === 0 && showDriverRanking && (
+        {pageLoading && (
+          <div className="flex h-100 items-center justify-center sm:h-100">
+            <F1Loading loadingText="로딩 중..." />
+          </div>
+        )}
+        {driverRanking && driverRanking.length === 0 && showdriverRanking && (
           <div className="flex h-100 items-center justify-center sm:h-100">
             <BeforeSeason />
           </div>
         )}
-        {TeamRanking && TeamRanking.length === 0 && showTeamRanking && (
+        {teamRanking && teamRanking.length === 0 && showTeamRanking && (
           <div className="flex h-100 items-center justify-center sm:h-100">
             <BeforeSeason />
           </div>
         )}
-        {DriverRanking && DriverRanking.length > 0 && showDriverRanking && (
+        {driverRanking && driverRanking.length > 0 && showdriverRanking && (
           <section>
             <div className="my-0 flex items-end justify-center gap-7.5 sm:my-5 sm:px-5 md:px-0">
               {second && (
@@ -90,10 +81,10 @@ export default function Page() {
                 <PodiumCard year={third.year} result={third} rank={3} />
               )}
             </div>
-            <DriverRankingTable year={selectedYear} results={DriverRanking} />
+            <DriverRankingTable year={selectedYear} results={driverRanking} />
           </section>
         )}
-        {showTeamRanking && TeamRanking && (
+        {showTeamRanking && teamRanking && (
           <>
             <TeamRankingTable year={selectedYear} data={teamRankings} />
           </>

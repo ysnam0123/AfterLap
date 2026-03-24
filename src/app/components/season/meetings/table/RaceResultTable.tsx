@@ -4,7 +4,7 @@ import DefaultDriverProfile from '../DefaultDriverProfile';
 import DriverProfile from '../DriverProfile';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { formatDuration } from '@/hooks/FormattingDuration';
+import { formatDuration } from '@/utils/FormattingDuration';
 import { findHeadshot } from '@/utils/findHeadShot';
 import PodiumCard from '../PodiumCard';
 

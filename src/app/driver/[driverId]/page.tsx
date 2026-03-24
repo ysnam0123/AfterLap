@@ -11,6 +11,7 @@ export default function Page() {
   const [opened, setOpened] = useState(false);
   const [selectedYear, setSelectedYear] = useState(2026);
   const driverId = Number(params.driverId);
+
   const { data: driverDetailData, isLoading: driverDetailLoading } =
     useDriverDetailData(driverId);
   console.log(driverDetailData);
