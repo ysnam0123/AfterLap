@@ -1,12 +1,9 @@
-import {
-  DriverDetailData,
-  DriverSeasonData,
-} from '@/hooks/detailPage/DriverDetail';
 import Image from 'next/image';
 import SeasonChangeButton from '../common/SeasonChangeButton';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { teams2026 } from '@/images/team';
 import DriverCard from './DriverCard';
+import { DriverDetailData, DriverSeasonData } from '@/types/driver';
 
 interface Props {
   data: DriverDetailData;
@@ -107,7 +104,7 @@ export default function DriverHero({
       >
         <div className="absolute z-20 h-full w-full rounded-xl bg-black/30" />
         <DriverCard
-          teamColor={seasonData?.team.team_colour}
+          // teamColor={seasonData?.team.team_colour}
           headshot={findHeadshot(fullName, selectedYear)}
         />
       </section>

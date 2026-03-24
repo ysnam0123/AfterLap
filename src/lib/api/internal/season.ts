@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 // export const fetchMeetingsWithPodium = async (year: number) => {
 //   const res = await axios.get('/api/season', {

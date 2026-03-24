@@ -1,4 +1,4 @@
-import { TeamSeason } from '@/hooks/detailPage/TeamDetail';
+import { TeamSeason } from '@/types/detailPage';
 import { StatCard } from './StatCard';
 
 export default function TeamStats({ data }: { data: TeamSeason }) {

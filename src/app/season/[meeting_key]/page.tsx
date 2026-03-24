@@ -67,7 +67,7 @@ export default function Page() {
     ? isSessionFinished(qualifyingSession)
     : false;
 
-  const isDriverFetchable = !!selectedSessionKey && isSelectedSessionFinished;
+  // const isDriverFetchable = !!selectedSessionKey && isSelectedSessionFinished;
 
   // const { data: driverData = [], isPending: driverLoading } = useDriverData(
   //   selectedSessionKey,

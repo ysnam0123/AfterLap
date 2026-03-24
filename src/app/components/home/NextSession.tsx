@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import LiveSessionBox from './LiveSessionBox';
 import SessionBox from './SessionBox';
 import { LiveSession, NextMeeting } from '@/types/meeting';
@@ -16,7 +14,6 @@ interface PageProps {
   liveSession: LiveSession;
 }
 export default function NextSession({ data, liveSession }: PageProps) {
-  const router = useRouter();
   const meetingKey = data?.meeting_key ?? null;
   const { data: nextSessions = [] } = useSessionData(meetingKey, !!meetingKey);
   const [seeAll, setSeeAll] = useState(false);
@@ -93,7 +90,7 @@ export default function NextSession({ data, liveSession }: PageProps) {
         <div className="mobile">
           <button
             onClick={() => setSeeAll(!seeAll)}
-            className="flex h-full w-full cursor-pointer items-center justify-center rounded-[8px] border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
+            className="flex h-full w-full cursor-pointer items-center justify-center rounded-xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
             <p
               style={{ fontFamily: 'RiaSans', fontWeight: 600 }}

@@ -1,6 +1,5 @@
 import { RaceControl } from '@/types/raceResult';
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 export default function SafetyCarSummary({
   SafetyCarNumber,

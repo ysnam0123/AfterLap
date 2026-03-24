@@ -5,6 +5,11 @@ import Provider from './Provider';
 import LayoutWrapper from './components/common/ui/LayoutWrapper';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === 'production'
+      ? 'https://afterlap.vercel.app'
+      : 'http://localhost:3000',
+  ),
   title: 'AfterLap',
   description: 'F1의 결과를 한눈에 확인하세요.',
   openGraph: {

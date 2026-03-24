@@ -20,7 +20,7 @@ export const useCircuitViewData = () => {
   });
 };
 export const useCircuitDetailData = (circuitKey: number) => {
-  return useQuery<Circuit>({
+  return useQuery<CircuitView>({
     queryKey: ['circuit', circuitKey],
     queryFn: () => getCircuit(circuitKey),
     staleTime: 1000 * 60 * 60 * 24,

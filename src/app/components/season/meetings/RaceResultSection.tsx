@@ -100,15 +100,19 @@ export default function RaceResultSection({
 
   return (
     <>
-      <div className="mt-3 sm:px-5 md:px-0">
-        <RaceTabs
-          selectedTab={selectedTab}
-          setSelectedTabAction={setSelectedTab}
-          tabs={tabs}
-        />
-        <div className="mobile">{renderMap[selectedTab]}</div>
-      </div>
-      <div className="desktop">{renderMap[selectedTab]}</div>
+      {!raceResultLoading && (
+        <>
+          <div className="mt-3 sm:px-5 md:px-0">
+            <RaceTabs
+              selectedTab={selectedTab}
+              setSelectedTabAction={setSelectedTab}
+              tabs={tabs}
+            />
+            <div className="mobile">{renderMap[selectedTab]}</div>
+          </div>
+          <div className="desktop">{renderMap[selectedTab]}</div>
+        </>
+      )}
     </>
   );
 }

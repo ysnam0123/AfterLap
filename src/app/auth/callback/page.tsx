@@ -1,17 +1,32 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+export const dynamic = 'force-dynamic';
+
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/supabase/client'; // ✅ 변경
-import Lottie from 'lottie-react';
-import loading from '../../../../public/loading.json';
+import { createClient } from '@/supabase/client';
+// 1. JSON을 require 대신 import로 가져옵니다 (ESLint 에러 해결)
+import loadingData from '../../../../public/loading.json';
+
+// 2. Lottie 컴포넌트의 타입을 정의합니다 (any 에러 해결)
+import type { LottieComponentProps } from 'lottie-react';
 
 export default function Page() {
   const router = useRouter();
   const hasRun = useRef(false);
 
+  // any 대신 React 컴포넌트 타입을 지정합니다.
+  const [Lottie, setLottie] = useState<React.FC<LottieComponentProps> | null>(
+    null,
+  );
+
   useEffect(() => {
-    if (hasRun.current) return;
+    // 클라이언트에서만 lottie-react를 로드합니다.
+    import('lottie-react').then((mod) => setLottie(() => mod.default));
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || hasRun.current) return;
     hasRun.current = true;
 
     const handleLogin = async () => {
@@ -20,17 +35,14 @@ export default function Page() {
         let next = searchParams.get('next') || '/';
         if (!next.startsWith('/')) next = '/';
 
-        const supabase = createClient(); // ✅ 여기서 생성
-
+        const supabase = createClient();
         let session = null;
 
         for (let i = 0; i < 3; i++) {
           const { data, error } = await supabase.auth.getSession();
           if (error) throw error;
-
           session = data.session;
           if (session) break;
-
           await supabase.auth.refreshSession();
           await new Promise((res) => setTimeout(res, 300));
         }
@@ -41,7 +53,6 @@ export default function Page() {
         }
 
         const user = session.user;
-
         const { data: profile, error: profileError } = await supabase
           .from('profiles')
           .select('id, preference_completed')
@@ -54,7 +65,7 @@ export default function Page() {
         }
 
         if (!profile) {
-          const { error } = await supabase.from('profiles').upsert({
+          await supabase.from('profiles').upsert({
             id: user.id,
             nickname: user.user_metadata?.name ?? null,
             avatar_url:
@@ -63,12 +74,6 @@ export default function Page() {
               null,
             preference_completed: false,
           });
-
-          if (error) {
-            router.replace('/login?error=insert');
-            return;
-          }
-
           router.replace(`/preference?next=${encodeURIComponent(next)}`);
           return;
         }
@@ -80,6 +85,7 @@ export default function Page() {
 
         router.replace(next);
       } catch (err) {
+        console.error('콜백 페이지 에러:', err);
         router.replace('/login?error=unknown');
       }
     };
@@ -88,34 +94,28 @@ export default function Page() {
   }, [router]);
 
   return (
-    <div className="flex h-30 w-30 flex-col items-center justify-center gap-5">
-      <Lottie animationData={loading} loop className="w-full" />
-      <p className="animate-pulse text-2xl">로그인 중...</p>
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-5">
+      <div className="h-32 w-32">
+        {/* 3. 로드된 Lottie 컴포넌트와 import한 loadingData를 사용합니다. */}
+        {Lottie && <Lottie animationData={loadingData} loop />}
+      </div>
+      <p className="animate-pulse text-xl font-medium">로그인 중입니다...</p>
     </div>
   );
 }
 // 'use client';
 
+// export const dynamic = 'force-dynamic';
+
 // import { useEffect, useRef } from 'react';
 // import { useRouter } from 'next/navigation';
-// import { supabase } from '@/supabase/client';
+// import { createClient } from '@/supabase/client'; // ✅ 변경
 // import Lottie from 'lottie-react';
 // import loading from '../../../../public/loading.json';
 
 // export default function Page() {
-//   console.log('callback 들어옴');
 //   const router = useRouter();
-//   const hasRun = useRef(false); // ✅ 중복 실행 방지
-
-//   const searchParams =
-//     typeof window !== 'undefined'
-//       ? new URLSearchParams(window.location.search)
-//       : null;
-
-//   let next = searchParams?.get('next') || '/';
-
-//   // 보안 (중요)
-//   if (!next.startsWith('/')) next = '/';
+//   const hasRun = useRef(false);
 
 //   useEffect(() => {
 //     if (hasRun.current) return;
@@ -123,19 +123,21 @@ export default function Page() {
 
 //     const handleLogin = async () => {
 //       try {
-//         // ✅ session 안정화 (retry 포함)
+//         const searchParams = new URLSearchParams(window.location.search);
+//         let next = searchParams.get('next') || '/';
+//         if (!next.startsWith('/')) next = '/';
+
+//         const supabase = createClient(); // ✅ 여기서 생성
+
 //         let session = null;
 
 //         for (let i = 0; i < 3; i++) {
 //           const { data, error } = await supabase.auth.getSession();
-
 //           if (error) throw error;
 
 //           session = data.session;
-
 //           if (session) break;
 
-//           // session 아직 없으면 refresh + 대기
 //           await supabase.auth.refreshSession();
 //           await new Promise((res) => setTimeout(res, 300));
 //         }
@@ -147,36 +149,29 @@ export default function Page() {
 
 //         const user = session.user;
 
-//         // 1. 프로필 조회
 //         const { data: profile, error: profileError } = await supabase
 //           .from('profiles')
 //           .select('id, preference_completed')
 //           .eq('id', user.id)
 //           .single();
 
-//         // ❗ 진짜 에러
 //         if (profileError && profileError.code !== 'PGRST116') {
-//           console.error('프로필 조회 실패:', profileError);
 //           router.replace('/login?error=profile');
 //           return;
 //         }
 
-//         // 2. 프로필 없으면 생성 (idempotent)
 //         if (!profile) {
-//           const { error: insertError } = await supabase
-//             .from('profiles')
-//             .upsert({
-//               id: user.id,
-//               nickname: user.user_metadata?.name ?? null,
-//               avatar_url:
-//                 user.user_metadata?.avatar_url ??
-//                 user.user_metadata?.picture ??
-//                 null,
-//               preference_completed: false,
-//             });
+//           const { error } = await supabase.from('profiles').upsert({
+//             id: user.id,
+//             nickname: user.user_metadata?.name ?? null,
+//             avatar_url:
+//               user.user_metadata?.avatar_url ??
+//               user.user_metadata?.picture ??
+//               null,
+//             preference_completed: false,
+//           });
 
-//           if (insertError) {
-//             console.error('프로필 생성 실패:', insertError);
+//           if (error) {
 //             router.replace('/login?error=insert');
 //             return;
 //           }
@@ -185,22 +180,20 @@ export default function Page() {
 //           return;
 //         }
 
-//         // 3. 온보딩 안한 유저
 //         if (!profile.preference_completed) {
 //           router.replace(`/preference?next=${encodeURIComponent(next)}`);
 //           return;
 //         }
 
-//         // 4. 정상 유저
 //         router.replace(next);
 //       } catch (err) {
-//         console.error('로그인 처리 실패:', err);
+//         console.error('콜백 페이지 에러:', err);
 //         router.replace('/login?error=unknown');
 //       }
 //     };
 
 //     handleLogin();
-//   }, [router, next]);
+//   }, [router]);
 
 //   return (
 //     <div className="flex h-30 w-30 flex-col items-center justify-center gap-5">

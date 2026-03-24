@@ -2,10 +2,10 @@ import Image from 'next/image';
 
 export default function DriverCard({
   headshot,
-  teamColor,
+  // teamColor,
 }: {
   headshot: string;
-  teamColor?: string;
+  // teamColor?: string;
 }) {
   return (
     <div className="flex items-center justify-center rounded-2xl">

@@ -4,7 +4,7 @@ import DriverProfile from '../DriverProfile';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import DefaultDriverProfile from '../DefaultDriverProfile';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { PitView } from '@/types/raceResult';
 export default function PitStop({
@@ -15,8 +15,8 @@ export default function PitStop({
   year: number;
 }) {
   const router = useRouter();
-  const tabs = ['팀 별', '드라이버 별'];
-  const [isSelected, setIsSelected] = useState('팀 별');
+  // const tabs = ['팀 별', '드라이버 별'];
+  // const [isSelected, setIsSelected] = useState('팀 별');
   return (
     <>
       {/* <div className="mt-3 flex items-center gap-0 pl-0 sm:gap-5 sm:pl-5">

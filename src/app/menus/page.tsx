@@ -12,9 +12,9 @@ import {
 import { useRouter } from 'next/navigation';
 
 export default function Page() {
-  const supabase = createClient();
   const router = useRouter();
   const handleLogout = async () => {
+    const supabase = createClient();
     const { error } = await supabase.auth.signOut({ scope: 'global' });
 
     if (error) {

@@ -36,6 +36,7 @@ export default function ResultStatstics({
   setSelectedTabAction: (tab: string) => void;
   year: number;
 }) {
+  console.log('스틴트 데이터:', stints);
   const renderTabContent = () => {
     switch (selectedTab) {
       case '전체 요약':

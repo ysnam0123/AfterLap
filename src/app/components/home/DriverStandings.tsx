@@ -100,7 +100,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
         <div className="mobile">
           <button
             onClick={() => setSeeAll(!seeAll)}
-            className="flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
+            className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
             <p
               style={{ fontFamily: 'RiaSans', fontWeight: 500 }}

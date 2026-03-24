@@ -1,4 +1,4 @@
-import { DriverSeasonData } from '@/hooks/detailPage/DriverDetail';
+import { DriverSeasonData } from '@/types/driver';
 import { StatCard } from '../team/StatCard';
 
 export default function DriverStats({ data }: { data?: DriverSeasonData }) {

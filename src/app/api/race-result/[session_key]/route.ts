@@ -41,9 +41,11 @@ export type RaceResultResponse = {
 
 export async function GET(
   req: Request,
-  context: { params: { session_key: string } },
+  { params }: { params: Promise<{ session_key: string }> },
 ) {
-  const sessionKey = Number(context.params.session_key);
+  const session_key = await params;
+
+  const sessionKey = Number(session_key);
 
   if (!sessionKey || Number.isNaN(sessionKey)) {
     return NextResponse.json({ error: 'Invalid session_key' }, { status: 400 });

@@ -1,10 +1,11 @@
 'use client';
-import { TeamSeason } from '@/hooks/detailPage/TeamDetail';
+
 import { TeamDriverCard } from '../TeamDriverCard';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { useState } from 'react';
 import { Team2026 } from '@/images/team';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { TeamSeason } from '@/types/detailPage';
 
 export default function TeamDriver({
   selectedYear,

@@ -6,9 +6,9 @@ import {
 
 export async function GET(
   req: Request,
-  context: { params: { session_key: string } },
+  { params }: { params: Promise<{ session_key: string }> },
 ) {
-  const sessionKey = Number(context.params.session_key);
+  const sessionKey = await Number(params);
 
   if (!sessionKey || Number.isNaN(sessionKey)) {
     return NextResponse.json({ error: 'Invalid session_key' }, { status: 400 });
@@ -24,6 +24,7 @@ export async function GET(
 
     return NextResponse.json(data);
   } catch (error) {
+    console.error('스타팅그리드 에러:', error);
     return NextResponse.json(
       { error: 'Failed to fetch starting grid' },
       { status: 500 },

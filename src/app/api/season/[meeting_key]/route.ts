@@ -4,7 +4,7 @@ import { ensureSessions } from '@/lib/server/sessions';
 
 export async function GET(
   req: Request,
-  { params }: { params: { meeting_key: string } },
+  { params }: { params: Promise<{ meeting_key: string }> },
 ) {
   const { meeting_key } = await params;
 
