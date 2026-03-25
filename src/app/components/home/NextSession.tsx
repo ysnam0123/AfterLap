@@ -45,7 +45,7 @@ export default function NextSession({ data, liveSession }: PageProps) {
         <section className="flex flex-col gap-2">
           <NextSessionTitle data={data} />
           {liveSession && <LiveSessionBox data={liveSession} />}
-          {!liveSession && (
+          {!liveSession && upcomingSession && (
             <div className="flex flex-col gap-2">
               {!seeAll && (
                 <>
