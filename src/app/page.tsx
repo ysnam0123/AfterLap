@@ -30,7 +30,7 @@ export default function Page() {
     return [...circuitData].sort(() => Math.random() - 0.5).slice(0, 6);
   }, [circuitData]);
 
-  const pageLoading = homeLoading && circuitLoading;
+  const pageLoading = homeLoading || circuitLoading;
 
   return (
     <>

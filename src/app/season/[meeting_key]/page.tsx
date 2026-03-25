@@ -117,14 +117,12 @@ export default function Page() {
     }
   }, [sessions, selectedSessionKey, finishedSessions, upcomingSessions]);
 
-  const isPageReady =
-    !meetingDetailLoading &&
-    !circuitDataLoading &&
-    !driverLoading &&
-    !!meetingDetail &&
-    !!year &&
-    circuitData &&
-    sessions.length > 0;
+  const isLoading = meetingDetailLoading || circuitDataLoading || driverLoading;
+
+  const hasRequiredData =
+    !!meetingDetail && !!circuitData && sessions && sessions.length > 0;
+
+  const isPageReady = !isLoading && hasRequiredData && !!year;
 
   useEffect(() => {
     console.log('--- 페칭 상태 체크 ---');
