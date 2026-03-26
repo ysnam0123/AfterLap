@@ -1,7 +1,7 @@
 'use client';
 
 import AnimatedContent from '@/components/AnimatedContent';
-import { useAuth } from '@/context/usAuth';
+import { useAuth } from '@/context/useAuth';
 import { teams2026 } from '@/images/team';
 import { usePreferenceStore } from '@/store/PreferenceStore';
 import { supabase } from '@/supabase/client';

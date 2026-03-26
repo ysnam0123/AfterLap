@@ -1,8 +1,9 @@
+import { StartingGridWithDriver } from '@/types/meeting';
 import axios from 'axios';
 
-export const fetchStartingGrid = async (quealifyingSessionKey: number) => {
-  const res = await axios.get('/api/starting-grid', {
-    params: { session_key: quealifyingSessionKey },
-  });
+export const fetchStartingGrid = async (
+  quealifyingSessionKey: number,
+): Promise<StartingGridWithDriver[]> => {
+  const res = await axios.get(`/api/starting-grid/${quealifyingSessionKey}`);
   return res.data;
 };

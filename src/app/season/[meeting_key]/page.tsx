@@ -75,7 +75,7 @@ export default function Page() {
   // );
   const { data: driverData = [], isPending: driverLoading } = useDriverData(
     selectedSessionKey,
-    !!selectedSessionKey, // 세션 키만 있으면 일단 가져와!
+    !!selectedSessionKey,
   );
 
   const sessionResultFetchable =
@@ -91,7 +91,10 @@ export default function Page() {
     isQualifyingSessionFinished && driverData && driverData.length >= 15;
 
   const { data: startingGridData, isLoading: startingGridLoading } =
-    useStartingGridData(qualifyingSessionKey!, startingGridFetchable);
+    useStartingGridData(
+      qualifyingSessionKey!,
+      startingGridFetchable && qualifyingSessionKey !== null,
+    );
 
   console.log('스타팅그리드 데이터:', startingGridData);
   const finishedSessions = sessions
@@ -171,7 +174,15 @@ export default function Page() {
                   )}
                   {isSelectedSessionFinished && (
                     <>
-                      {selectedSession?.session_name === 'Race' &&
+                      {sessionResultLoading && (
+                        <>
+                          <div className="flex h-100 items-center justify-center sm:h-100">
+                            <F1Loading loadingText="로딩 중..." />
+                          </div>
+                        </>
+                      )}
+                      {!sessionResultLoading &&
+                      selectedSession?.session_name === 'Race' &&
                       raceSession &&
                       startingGridData ? (
                         <RaceResultSection

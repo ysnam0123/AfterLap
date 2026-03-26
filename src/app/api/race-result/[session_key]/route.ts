@@ -45,7 +45,7 @@ export async function GET(
 ) {
   const session_key = await params;
 
-  const sessionKey = Number(session_key);
+  const sessionKey = Number(session_key.session_key);
 
   if (!sessionKey || Number.isNaN(sessionKey)) {
     return NextResponse.json({ error: 'Invalid session_key' }, { status: 400 });

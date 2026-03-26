@@ -8,21 +8,30 @@ export async function GET(
   req: Request,
   { params }: { params: Promise<{ session_key: string }> },
 ) {
-  const sessionKey = await Number(params);
-
-  if (!sessionKey || Number.isNaN(sessionKey)) {
-    return NextResponse.json({ error: 'Invalid session_key' }, { status: 400 });
-  }
-
   try {
+    const session_key = await params;
+    const sessionKey = Number(session_key.session_key);
+    console.log('받은 세션키:', sessionKey);
+
+    if (!sessionKey || Number.isNaN(sessionKey)) {
+      return NextResponse.json(
+        { error: 'Invalid session_key' },
+        { status: 400 },
+      );
+    }
     let data = await getStartingGrid(sessionKey);
 
     if (!data || data.length === 0) {
       await ensureStartingGridData(sessionKey);
       data = await getStartingGrid(sessionKey);
     }
+    const safeData = JSON.parse(
+      JSON.stringify(data, (key, value) =>
+        typeof value === 'bigint' ? value.toString() : value,
+      ),
+    );
 
-    return NextResponse.json(data);
+    return NextResponse.json(safeData);
   } catch (error) {
     console.error('스타팅그리드 에러:', error);
     return NextResponse.json(

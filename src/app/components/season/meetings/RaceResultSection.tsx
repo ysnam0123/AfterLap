@@ -108,9 +108,9 @@ export default function RaceResultSection({
               setSelectedTabAction={setSelectedTab}
               tabs={tabs}
             />
-            <div className="mobile">{renderMap[selectedTab]}</div>
           </div>
-          <div className="desktop">{renderMap[selectedTab]}</div>
+          <div className="">{renderMap[selectedTab]}</div>
+          {/* <div className="">{renderMap[selectedTab]}</div> */}
         </>
       )}
     </>

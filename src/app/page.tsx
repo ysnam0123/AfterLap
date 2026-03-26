@@ -42,7 +42,7 @@ export default function Page() {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               <ConstructorStandings data={TData!} />
               <DriverStandings
-                data={seeAll ? driverRanking! : driverRanking!.slice(10)}
+                data={seeAll ? driverRanking! : driverRanking!.slice(0, 10)}
                 seeAll={seeAll}
                 setSeeAll={setSeeAll}
               />

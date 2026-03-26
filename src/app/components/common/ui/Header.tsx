@@ -7,7 +7,7 @@ import TeamBox from './dropdown/TeamBox';
 import DriverBox from './dropdown/DriverBox';
 import { ChevronDown, ChevronLeft } from 'lucide-react';
 import LoginModal from '../../Auth/LoginModal';
-import { useAuth } from '@/context/usAuth';
+import { useAuth } from '@/context/useAuth';
 import UserProfile from '../../Auth/UserProfile';
 export default function Header() {
   const [openTeam, setOpenTeam] = useState(false);
@@ -19,7 +19,7 @@ export default function Header() {
   const isDetailPage = pathSegments.length >= 2;
   const [loginOpen, setLoginOpen] = useState(false);
 
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
 
   return (
     <>
@@ -94,7 +94,9 @@ export default function Header() {
               </li>
             </ul>
           </div>
-          {!user ? (
+          {isLoading ? (
+            <div className="ml-auto h-6.5 w-6.5 animate-pulse rounded-full bg-gray-700" />
+          ) : !user ? (
             <button
               className="btn-interaction ml-auto flex cursor-pointer items-center justify-center rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-4 py-2"
               onClick={() => setLoginOpen(true)}
