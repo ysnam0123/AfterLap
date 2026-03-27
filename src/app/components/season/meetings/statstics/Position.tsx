@@ -6,6 +6,8 @@ import DefaultDriverProfile from '../DefaultDriverProfile';
 import { useState, useMemo } from 'react';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { DriverPositionGain } from '@/types/raceResult';
+import { useUserStore } from '@/store/useUserFavoriteStore';
+import Favorite from '@/app/components/Auth/Favorite';
 
 export default function Position({
   positionGain,
@@ -15,6 +17,7 @@ export default function Position({
   positionGain: DriverPositionGain[];
 }) {
   const router = useRouter();
+  const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
   type SortKey = 'end_position' | 'position_gain' | null;
 
   const [sortConfig, setSortConfig] = useState<{
@@ -71,7 +74,7 @@ export default function Position({
         <thead>
           <tr className="border-b border-white text-[14px] text-[#8B8B8B] sm:text-[20px]">
             <th className="w-[5%] py-3 text-center sm:w-[12%]">번호</th>
-            <th className="w-[20%] py-3 pl-5 text-left sm:w-[30%]">드라이버</th>
+            <th className="w-[30%] py-3 pl-5 text-left sm:w-[30%]">드라이버</th>
             {/* 768 px 이상에서 보임 */}
             <th className="hidden w-[14%] py-3 text-center sm:w-[20%] md:table-cell">
               팀
@@ -130,7 +133,12 @@ export default function Position({
                   )}
                   <div className="relative flex min-w-0 flex-col md:flex-row">
                     <div className="text-[13px] md:text-[18px]">
-                      <p className="truncate">{position.kr_name}</p>
+                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                        {position.kr_name}
+                        {favoriteDrivers.includes(position.driver_id) && (
+                          <Favorite />
+                        )}
+                      </span>
                     </div>
                     <div
                       style={{ borderLeftColor: position.team_colour }}

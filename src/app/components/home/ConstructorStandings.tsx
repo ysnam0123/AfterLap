@@ -1,13 +1,16 @@
 'use client';
+import { useUserStore } from '@/store/useUserFavoriteStore';
 import { TeamSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Favorite from '../Auth/Favorite';
 
 interface TS {
   data: TeamSeasonRankingView[];
 }
 export default function ConstructorStandings({ data }: TS) {
   const router = useRouter();
+  const favoriteTeams = useUserStore((state) => state.favoriteTeams);
   return (
     <>
       <section className="w-full">
@@ -63,8 +66,9 @@ export default function ConstructorStandings({ data }: TS) {
                   className="h-8 w-auto sm:h-9"
                   priority
                 />
-                <span className="truncate text-sm font-medium text-white sm:text-base">
+                <span className="relative inline-flex items-center gap-1 truncate text-sm font-medium text-white sm:text-base">
                   {item.team_kr_name}
+                  {favoriteTeams.includes(item.team_slug) && <Favorite />}
                 </span>
               </div>
 

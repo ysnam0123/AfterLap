@@ -3,7 +3,6 @@
 import { countryCodeFlags } from '@/images/flags';
 import { GrandPrixCardProps } from '@/types/meeting';
 import { formatDateTime } from '@/utils/time';
-
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 

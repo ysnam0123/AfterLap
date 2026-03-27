@@ -12,8 +12,6 @@ export default function MobileFooter() {
     { label: '그랑프리', icon: Flag, path: '/season' },
     { label: '순위', icon: Trophy, path: '/ranking' },
     { label: '전체메뉴', icon: Menu, path: '/menus' },
-    // { label: '팀', icon: Layers, path: '/team' },
-    // { label: '드라이버', icon: IdCard, path: '/driver' },
   ];
 
   return (

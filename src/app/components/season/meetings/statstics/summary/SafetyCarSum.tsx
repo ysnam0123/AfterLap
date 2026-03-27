@@ -74,7 +74,7 @@ export default function SafetyCarSummary({
             className="text-[13px] sm:text-[20px]"
             style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
           >
-            레이스 중립화
+            레이스 이벤트
           </p>
         </h1>
         <button

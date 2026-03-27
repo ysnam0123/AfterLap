@@ -5,14 +5,14 @@ import SafetyCarSummary from './SafetyCarSum';
 import {
   DriverPositionGain,
   PitView,
-  RaceControl,
+  // RaceControl,
   WeatherSessionSummary,
 } from '@/types/raceResult';
 
 export default function Summary({
   weather,
-  SafetyCarNumber,
-  raceControl,
+  // SafetyCarNumber,
+  // raceControl,
   totalLaps,
   setSelectedTab,
   positionGain,
@@ -21,8 +21,8 @@ export default function Summary({
 }: {
   pit: PitView[];
   weather?: WeatherSessionSummary | null;
-  SafetyCarNumber: number;
-  raceControl: RaceControl[];
+  // SafetyCarNumber: number;
+  // raceControl: RaceControl[];
   totalLaps: number;
   setSelectedTab: (tab: string) => void;
   positionGain: DriverPositionGain[];
@@ -57,12 +57,12 @@ export default function Summary({
             pit={pit}
             setSelectedTab={setSelectedTab}
           />
-          <SafetyCarSummary
+          {/* <SafetyCarSummary
             SafetyCarNumber={SafetyCarNumber}
             raceControl={raceControl}
             totalLaps={totalLaps}
             setSelectedTab={setSelectedTab}
-          />
+          /> */}
         </div>
       </div>
     </>

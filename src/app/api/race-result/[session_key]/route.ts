@@ -8,10 +8,6 @@ import {
   ensurePositionData,
   getPosition,
 } from '@/lib/server/race_result/position';
-// import {
-//   ensureStartingGridData,
-//   getStartingGrid,
-// } from '@/lib/server/race_result/starting_grid';
 import { ensureRaceControlData } from '@/lib/server/race_result/raceControl';
 import { ensureStintsData } from '@/lib/server/race_result/stints';
 import {
@@ -22,20 +18,18 @@ import { NextResponse } from 'next/server';
 import {
   DriverPositionGain,
   PitView,
-  RaceControl,
+  // RaceControl,
   Stints,
   TeamPitStopRow,
   WeatherSessionSummary,
 } from '@/types/raceResult';
-// import { StartingGridWithDriver } from '@/types/meeting';
 
 export type RaceResultResponse = {
   driverPitData: PitView[];
   teamPitData: TeamPitStopRow[];
   positionData: DriverPositionGain[];
-  // startingGridData: StartingGridWithDriver[];
   weatherData: WeatherSessionSummary;
-  raceControlData: RaceControl[];
+  // raceControlData: RaceControl[];
   stintsData: Stints[];
 };
 
@@ -84,9 +78,8 @@ export async function GET(
       driverPitData,
       teamPitData,
       positionData,
-      // startingGridData,
       weatherData,
-      raceControlData,
+      // raceControlData,
       stintsData,
     ] = await Promise.all([
       handleData(
@@ -101,15 +94,11 @@ export async function GET(
         () => getPosition(sessionKey),
         () => ensurePositionData(sessionKey),
       ),
-      // handleData(
-      //   () => getStartingGrid(sessionKey),
-      //   () => ensureStartingGridData(sessionKey),
-      // ),
       handleSingleData(
         () => getWeatherSummary(sessionKey),
         () => ensureWeatherData(sessionKey),
       ),
-      ensureRaceControlData(sessionKey),
+      // ensureRaceControlData(sessionKey),
       ensureStintsData(sessionKey),
     ]);
 
@@ -117,9 +106,8 @@ export async function GET(
       driverPitData,
       teamPitData,
       positionData,
-      // startingGridData,
       weatherData,
-      raceControlData,
+      // raceControlData,
       stintsData,
     });
   } catch (error) {

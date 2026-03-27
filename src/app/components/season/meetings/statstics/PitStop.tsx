@@ -7,6 +7,8 @@ import DefaultDriverProfile from '../DefaultDriverProfile';
 // import { useState } from 'react';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { PitView } from '@/types/raceResult';
+import Favorite from '@/app/components/Auth/Favorite';
+import { useUserStore } from '@/store/useUserFavoriteStore';
 export default function PitStop({
   pit,
   year,
@@ -15,6 +17,7 @@ export default function PitStop({
   year: number;
 }) {
   const router = useRouter();
+  const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
   // const tabs = ['팀 별', '드라이버 별'];
   // const [isSelected, setIsSelected] = useState('팀 별');
   return (
@@ -33,8 +36,8 @@ export default function PitStop({
       <table className="w-full table-fixed border-collapse whitespace-nowrap select-none sm:text-left">
         <thead>
           <tr className="border-b border-white text-[14px] text-[#8B8B8B] sm:text-[20px]">
-            <th className="w-[8%] py-3 text-center sm:w-[12%]">번호</th>
-            <th className="w-[40%] py-3 pl-3 text-left sm:w-[30%]">드라이버</th>
+            <th className="w-[5%] py-3 text-center sm:w-[12%]">번호</th>
+            <th className="w-[30%] py-3 pl-5 text-left sm:w-[30%]">드라이버</th>
             {/* 768 px 이상에서 보임 */}
             <th className="hidden w-[14%] py-3 text-center sm:w-[20%] md:table-cell">
               팀
@@ -70,7 +73,10 @@ export default function PitStop({
                   )}
                   <div className="relative flex min-w-0 flex-col md:flex-row">
                     <div className="text-[13px] md:text-[18px]">
-                      <p className="truncate">{p.kr_name}</p>
+                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                        {p.kr_name}
+                        {favoriteDrivers.includes(p.driver_id) && <Favorite />}
+                      </span>
                     </div>
                     <div
                       style={{ borderLeftColor: p.team_colour }}

@@ -90,6 +90,7 @@ export interface SortedSessionResult {
   duration: string;
   gap_to_leader: string;
   driver_number: number;
+  driver_id: number;
   country_code: string;
   country_kr_name: string;
   full_name: string;
@@ -127,6 +128,7 @@ export interface StartingGrid {
 
 export interface StartingGridWithDriver {
   driver_number: number;
+  driver_id: number;
   full_name: string;
   headshot_url: string | null;
   id: number;

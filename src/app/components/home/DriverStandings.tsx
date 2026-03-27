@@ -1,7 +1,9 @@
 'use client';
+import { useUserStore } from '@/store/useUserFavoriteStore';
 import { DriverSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Favorite from '../Auth/Favorite';
 
 interface DS {
   data: DriverSeasonRankingView[];
@@ -10,6 +12,7 @@ interface DS {
 }
 export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
   const router = useRouter();
+  const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
   return (
     <section className="w-full">
       <div className="mb-3 flex items-center justify-between sm:mb-5">
@@ -45,7 +48,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
             <div
               key={item.rank}
               onClick={() => router.push(`/driver/${item.driver_id}`)}
-              className="grid h-14 cursor-pointer grid-cols-[6px_50px_1fr_1fr] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) sm:h-16 sm:grid-cols-[6px_60px_1fr_1fr_80px]"
+              className="grid h-14 cursor-pointer grid-cols-[6px_50px_2fr_1fr] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) sm:h-16 sm:grid-cols-[6px_60px_1fr_1fr_80px]"
             >
               {/* Team Color Bar */}
               <div
@@ -72,8 +75,9 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
                 </div>
                 <div className="flex flex-col md:flex-row">
                   <div className="flex gap-2 text-[13px] md:text-[18px]">
-                    <span className="truncate text-sm font-medium text-white sm:text-base">
+                    <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
                       {item.kr_name}
+                      {favoriteDrivers.includes(item.driver_id) && <Favorite />}
                     </span>
                   </div>
                   <div

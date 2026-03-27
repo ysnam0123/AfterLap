@@ -4,6 +4,8 @@ import DefaultDriverProfile from '../DefaultDriverProfile';
 import DriverProfile from '../DriverProfile';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useUserStore } from '@/store/useUserFavoriteStore';
+import Favorite from '@/app/components/Auth/Favorite';
 
 export default function StartingGridTable({
   results,
@@ -11,6 +13,7 @@ export default function StartingGridTable({
   results: StartingGridWithDriver[];
 }) {
   const router = useRouter();
+  const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
   const processedResults = [...results]
     .sort((a, b) => {
       // 둘 다 완주
@@ -71,9 +74,14 @@ export default function StartingGridTable({
                   ) : (
                     <DefaultDriverProfile />
                   )}
-                  <div className="relative flex min-w-0 flex-col md:flex-row">
+                  <div className="relative flex min-w-0 flex-col items-start md:flex-row">
                     <div className="flex gap-2 text-[13px] md:text-[18px]">
-                      <p className="truncate">{result.kr_name}</p>
+                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                        {result.kr_name}
+                        {favoriteDrivers.includes(result.driver_id) && (
+                          <Favorite />
+                        )}
+                      </span>
                       {/* 640px 이상에서 보임 */}
                       <p className="hidden sm:block">{result.driver_number}</p>
                     </div>

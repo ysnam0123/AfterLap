@@ -22,10 +22,10 @@ export default function RaceResultSection({
     { label: '레이스 결과', icon: '/icons/checker.svg' },
     { label: '스타팅 그리드', icon: '/icons/checker.svg' },
     { label: '전체 요약', icon: '/icons/overview.svg' },
-    { label: '포지션', icon: '/icons/graph.svg' },
+    { label: '포지션 변동', icon: '/icons/graph.svg' },
     { label: '피트 스탑', icon: '/icons/pitstop.svg' },
-    { label: '이벤트', icon: '/icons/retirement.svg' },
     { label: '타이어 전략', icon: '/icons/retirement.svg' },
+    // { label: '이벤트', icon: '/icons/retirement.svg' },
   ];
   const [selectedTab, setSelectedTab] = useState('레이스 결과');
 
@@ -41,16 +41,15 @@ export default function RaceResultSection({
   const {
     driverPitData,
     // teamPitData,
-    // startingGridData,
     positionData,
     weatherData,
-    raceControlData,
+    // raceControlData,
     stintsData,
   } = raceResultData;
 
-  const deployCount = raceControlData?.filter(
-    (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
-  ).length;
+  // const deployCount = raceControlData?.filter(
+  //   (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
+  // ).length;
 
   // groupby를 아직 안해서 못씀
   // const {
@@ -65,9 +64,9 @@ export default function RaceResultSection({
   if (stintsData) {
     console.log('sessionStints 불러옴:', stintsData);
   }
-  if (raceControlData) {
-    console.log('raceControlData 불러옴:', raceControlData);
-  }
+  // if (raceControlData) {
+  //   console.log('raceControlData 불러옴:', raceControlData);
+  // }
   if (driverPitData) {
     console.log('driverPitData 불러옴:', driverPitData);
   }
@@ -86,15 +85,15 @@ export default function RaceResultSection({
         pit={driverPitData ?? []}
         totalLaps={totalLaps ?? 0}
         weather={weatherData}
-        SafetyCarNumber={deployCount ?? 0}
-        raceControl={raceControlData ?? []}
+        // SafetyCarNumber={deployCount ?? 0}
+        // raceControl={raceControlData ?? []}
         setSelectedTab={setSelectedTab}
         positionGain={positionData ?? []}
       />
     ),
-    포지션: <Position year={year} positionGain={positionData ?? []} />,
+    '포지션 변동': <Position year={year} positionGain={positionData ?? []} />,
     '피트 스탑': <PitStop year={year} pit={driverPitData ?? []} />,
-    이벤트: <Events />,
+    // 이벤트: <Events />,
     '타이어 전략': <Events />,
   };
 

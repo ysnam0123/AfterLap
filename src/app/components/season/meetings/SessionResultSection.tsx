@@ -43,11 +43,11 @@ export default function SessionResultSection({
     });
   return (
     <>
-      {sessionResults.length === 0 && (
+      {/* {sessionResults.length === 0 && (
         <div className="flex h-100 items-center justify-center sm:h-100">
           <LogoLoading loadingText="결과가 곧 업데이트 됩니다" />
         </div>
-      )}
+      )} */}
       {!isPending && sessionResults.length > 0 && (
         <table className="mt-3 w-full table-fixed border-collapse select-none">
           <thead className="bg-(--color-table-head-bg)">

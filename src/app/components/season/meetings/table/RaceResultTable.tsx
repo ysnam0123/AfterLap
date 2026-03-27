@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { formatDuration } from '@/utils/FormattingDuration';
 import { findHeadshot } from '@/utils/findHeadShot';
 import PodiumCard from '../PodiumCard';
+import { useUserStore } from '@/store/useUserFavoriteStore';
+import Favorite from '@/app/components/Auth/Favorite';
 
 export default function RaceResultTable({
   results,
@@ -16,6 +18,7 @@ export default function RaceResultTable({
   results: SortedSessionResult[];
 }) {
   const router = useRouter();
+  const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
   const podiumResults = results.slice(0, 3);
   const first = podiumResults.find((r) => r.position === 1);
   const second = podiumResults.find((r) => r.position === 2);
@@ -57,7 +60,7 @@ export default function RaceResultTable({
         <thead className="bg-(--color-table-head-bg)">
           <tr className="border-b border-white text-[13px] text-[#8B8B8B] sm:text-[20px]">
             <th className="w-[5%] py-3 text-center sm:w-[8%]">등수</th>
-            <th className="w-[20%] py-3 sm:w-[30%]">이름</th>
+            <th className="w-[30%] py-3 sm:w-[30%]">이름</th>
             {/* 768 px 이상에서 보임 */}
             <th className="hidden w-[14%] py-3 sm:w-[25%] md:table-cell">팀</th>
             {/* 768 px 이상에서 보임 */}
@@ -92,7 +95,12 @@ export default function RaceResultTable({
                   )}
                   <div className="relative flex min-w-0 flex-col md:flex-row">
                     <div className="flex gap-2 text-[13px] md:text-[18px]">
-                      <p className="truncate">{result.kr_name}</p>
+                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                        {result.kr_name}
+                        {favoriteDrivers.includes(result.driver_id) && (
+                          <Favorite />
+                        )}
+                      </span>
                       {/* 640px 이상에서 보임 */}
                       <p className="hidden sm:block">{result.driver_number}</p>
                     </div>
