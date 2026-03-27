@@ -46,8 +46,8 @@ export default function ResultStatstics({
             pit={pit}
             totalLaps={totalLaps}
             weather={weather}
-            SafetyCarNumber={deployCount}
-            raceControl={raceControl}
+            // SafetyCarNumber={deployCount}
+            // raceControl={raceControl}
             setSelectedTab={setSelectedTabAction}
             positionGain={positionGain}
           />
