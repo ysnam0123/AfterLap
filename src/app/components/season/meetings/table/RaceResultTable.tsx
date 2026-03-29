@@ -60,7 +60,7 @@ export default function RaceResultTable({
         <thead className="bg-(--color-table-head-bg)">
           <tr className="border-b border-white text-[13px] text-[#8B8B8B] sm:text-[20px]">
             <th className="w-[5%] py-3 text-center sm:w-[8%]">등수</th>
-            <th className="w-[30%] py-3 sm:w-[30%]">이름</th>
+            <th className="w-[22%] py-3 sm:w-[30%]">이름</th>
             {/* 768 px 이상에서 보임 */}
             <th className="hidden w-[14%] py-3 sm:w-[25%] md:table-cell">팀</th>
             {/* 768 px 이상에서 보임 */}

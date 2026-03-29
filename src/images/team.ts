@@ -48,7 +48,7 @@ export const teams2026: Team2026[] = [
     car_img: '/cars/2026/mclaren.svg',
     drivers: [
       {
-        driver_number: 4,
+        driver_number: 1,
         full_name: 'Lando Norris',
         kr_name: '랜도 노리스',
         driver_id: 462,
@@ -76,7 +76,7 @@ export const teams2026: Team2026[] = [
     car_img: '/cars/2026/redbullracing.svg',
     drivers: [
       {
-        driver_number: 1,
+        driver_number: 3,
         full_name: 'Max Verstappen',
         kr_name: '막스 베르스타펜',
         driver_id: 469,
