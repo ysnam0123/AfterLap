@@ -18,6 +18,7 @@ export const getNextMeeting = async () => {
     `,
     )
     .gte('date_end', new Date().toISOString())
+    .or('meeting_problem.is.null, meeting_problem.neq.cancelled')
     .order('date_start', { ascending: true })
     .limit(1)
     .maybeSingle();
