@@ -12,6 +12,10 @@ import { groupTeamSeasonRanking } from '@/utils/groupTeamSeasonRanking';
 import { useAuth } from '@/context/useAuth';
 import { useFavorites } from '@/hooks/favorite';
 import { useUserStore } from '@/store/useUserFavoriteStore';
+import NextSessionSkeleton from './components/home/skeleton/NextSessionSkeleton';
+import ConstructorStandingsSkeleton from './components/home/skeleton/ConstructorStandingsSkeleton';
+import DriverStandingsSkeleton from './components/home/skeleton/DriverStandingsSkeleton';
+import CircuitGridSkeleton from './components/home/skeleton/CircuitGridSkeleton';
 
 export default function Page() {
   const { data: homeData, isLoading: homeLoading } = useHomeData();
@@ -35,13 +39,9 @@ export default function Page() {
 
   const pageLoading = homeLoading || circuitLoading;
 
-  const { user, isLoading: userLoading } = useAuth();
+  const { user } = useAuth();
   console.log('현재 로그인된 유저:', user);
-  const {
-    data: userFavorite,
-    isLoading: userFavotieLoading,
-    error,
-  } = useFavorites(user?.id);
+  const { data: userFavorite } = useFavorites(user?.id);
   console.log('현재 로그인된 유저의 선호 목록:', userFavorite);
 
   const { setFavorites, clearFavorites } = useUserStore();
@@ -56,27 +56,38 @@ export default function Page() {
     }
   }, [userFavorite, user, setFavorites, clearFavorites]);
 
+  const rankingCircuitData = driverRanking && teamRanking && CData;
   return (
     <>
-      {!pageLoading && (
-        <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
+      <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
+        {/* pageLoading */}
+        {!pageLoading ? (
           <NextSession data={nextMeeting} liveSession={liveSession} />
+        ) : (
+          <NextSessionSkeleton />
+        )}
 
-          {driverRanking && teamRanking && CData && (
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <ConstructorStandings data={TData!} />
-              <DriverStandings
-                data={seeAll ? driverRanking! : driverRanking!.slice(0, 10)}
-                seeAll={seeAll}
-                setSeeAll={setSeeAll}
-              />
-            </div>
-          )}
-          <TeamList />
-          <DriverList />
-          <CircuitGrid data={CData} />
-        </section>
-      )}
+        {/* rankingCircuitData */}
+        {rankingCircuitData ? (
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <ConstructorStandings data={TData!} />
+            <DriverStandings
+              data={seeAll ? driverRanking! : driverRanking!.slice(0, 5)}
+              seeAll={seeAll}
+              setSeeAll={setSeeAll}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <ConstructorStandingsSkeleton />
+            <DriverStandingsSkeleton />
+          </div>
+        )}
+        <TeamList />
+        <DriverList />
+        {/* CData */}
+        {CData ? <CircuitGrid data={CData} /> : <CircuitGridSkeleton />}
+      </section>
     </>
   );
 }

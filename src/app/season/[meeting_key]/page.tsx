@@ -142,72 +142,74 @@ export default function Page() {
   return (
     <>
       <>
-        {!isPageReady && (
-          <>
-            <div className="flex h-100 items-center justify-center sm:h-100">
-              <F1Loading loadingText="로딩 중..." />
-            </div>
-          </>
-        )}
-        {isPageReady && (
-          <>
-            <SeasonHeroBox
-              meetingInfo={meetingDetail}
-              circuitInfo={circuitData}
-            />
-            <section className="mx-auto min-h-screen w-full px-0 md:px-10 lg:px-20 xl:px-35">
-              <>
-                {selectedSessionKey && (
-                  <SessionNav
-                    sessionTabs={sessions}
-                    isSelectedKey={selectedSessionKey}
-                    setIsSelectedAction={setSelectedSessionKey}
-                    sessionFinishMap={sessionFinishMap}
-                  />
-                )}
-                <div>
-                  {!isSelectedSessionFinished && selectedSession && (
-                    <ScheduledGrandPrix
-                      data={selectedSession}
-                      circuitData={circuitData}
+        <section>
+          {!isPageReady && (
+            <>
+              <div className="flex h-100 items-center justify-center sm:h-100">
+                <F1Loading loadingText="로딩 중..." />
+              </div>
+            </>
+          )}
+          {isPageReady && (
+            <>
+              <SeasonHeroBox
+                meetingInfo={meetingDetail}
+                circuitInfo={circuitData}
+              />
+              <section className="mx-auto min-h-screen w-full px-0 md:px-10 lg:px-20 xl:px-35">
+                <>
+                  {selectedSessionKey && (
+                    <SessionNav
+                      sessionTabs={sessions}
+                      isSelectedKey={selectedSessionKey}
+                      setIsSelectedAction={setSelectedSessionKey}
+                      sessionFinishMap={sessionFinishMap}
                     />
                   )}
-                  {isSelectedSessionFinished && (
-                    <>
-                      {sessionResultLoading && (
-                        <>
-                          <div className="flex h-100 items-center justify-center sm:h-100">
-                            <F1Loading loadingText="로딩 중..." />
-                          </div>
-                        </>
-                      )}
-                      {!sessionResultLoading &&
-                      selectedSession?.session_name === 'Race' &&
-                      raceSession &&
-                      startingGridData ? (
-                        <RaceResultSection
-                          isRaceFinished={isSelectedSessionFinished}
-                          year={year}
-                          sessionKey={raceSession.session_key}
-                          sessionResults={sessionResults}
-                          startingGrid={startingGridData}
-                        />
-                      ) : (
-                        selectedSessionKey && (
-                          <SessionResultSection
+                  <div>
+                    {!isSelectedSessionFinished && selectedSession && (
+                      <ScheduledGrandPrix
+                        data={selectedSession}
+                        circuitData={circuitData}
+                      />
+                    )}
+                    {isSelectedSessionFinished && (
+                      <>
+                        {sessionResultLoading && (
+                          <>
+                            <div className="flex h-100 items-center justify-center sm:h-100">
+                              <F1Loading loadingText="로딩 중..." />
+                            </div>
+                          </>
+                        )}
+                        {!sessionResultLoading &&
+                        selectedSession?.session_name === 'Race' &&
+                        raceSession &&
+                        startingGridData ? (
+                          <RaceResultSection
+                            isRaceFinished={isSelectedSessionFinished}
                             year={year}
-                            isPending={sessionResultLoading}
+                            sessionKey={raceSession.session_key}
                             sessionResults={sessionResults}
+                            startingGrid={startingGridData}
                           />
-                        )
-                      )}
-                    </>
-                  )}
-                </div>
-              </>
-            </section>
-          </>
-        )}
+                        ) : (
+                          selectedSessionKey && (
+                            <SessionResultSection
+                              year={year}
+                              isPending={sessionResultLoading}
+                              sessionResults={sessionResults}
+                            />
+                          )
+                        )}
+                      </>
+                    )}
+                  </div>
+                </>
+              </section>
+            </>
+          )}
+        </section>
       </>
     </>
   );

@@ -41,15 +41,6 @@ export const saveDriverData = async (sessionKey: number) => {
   return data ?? [];
 };
 
-// ===== Ensure =====
-// export const ensureDriverData = async (sessionKey: number) => {
-//   const existing = await getDriverDataFromDB(sessionKey);
-//   console.log('existing 드라이버 불러옴:', existing);
-//   if (existing.length >= 20) return;
-
-//   await saveDriverData(sessionKey);
-//   return existing;
-// };
 export const ensureDriverData = async (sessionKey: number) => {
   // 1. 일단 DB에서 가져와봄
   let data = await getDriverDataFromDB(sessionKey);
@@ -68,3 +59,13 @@ export const ensureDriverData = async (sessionKey: number) => {
   console.log('최종 반환될 데이터 개수:', data?.length || 0);
   return data ?? [];
 };
+
+// ===== Ensure =====
+// export const ensureDriverData = async (sessionKey: number) => {
+//   const existing = await getDriverDataFromDB(sessionKey);
+//   console.log('existing 드라이버 불러옴:', existing);
+//   if (existing.length >= 20) return;
+
+//   await saveDriverData(sessionKey);
+//   return existing;
+// };
