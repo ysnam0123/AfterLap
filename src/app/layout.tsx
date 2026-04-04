@@ -36,9 +36,9 @@ const riaSans = localFont({
 
 const paperlogy = localFont({
   src: [
-    { path: '../../public/fonts/Paperlogy-3Light.ttf', weight: '300' },
-    { path: '../../public/fonts/Paperlogy-4Regular.ttf', weight: '400' },
-    { path: '../../public/fonts/Paperlogy-6SemiBold.ttf', weight: '600' },
+    { path: '../../public/fonts/Paperlogy-3Light.woff2', weight: '300' },
+    { path: '../../public/fonts/Paperlogy-4Regular.woff2', weight: '400' },
+    { path: '../../public/fonts/Paperlogy-6SemiBold.woff2', weight: '600' },
   ],
   variable: '--font-paperlogy',
   display: 'swap',

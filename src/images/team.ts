@@ -44,7 +44,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'mclaren',
     team_colour: '#F47600',
     year: 2026,
-    main_logo: '/team_main_logo/mclaren.svg',
+    main_logo: '/team_main_logo/mclaren.webp',
     car_img: '/cars/2026/mclaren.svg',
     drivers: [
       {
@@ -72,7 +72,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'red-bull-racing',
     team_colour: '#3671C6',
     year: 2026,
-    main_logo: '/team_main_logo/redbullracing.svg',
+    main_logo: '/team_main_logo/redbullracing.webp',
     car_img: '/cars/2026/redbullracing.svg',
     drivers: [
       {
@@ -100,7 +100,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'ferrari',
     team_colour: '#ED1131',
     year: 2026,
-    main_logo: '/team_main_logo/ferrari.svg',
+    main_logo: '/team_main_logo/ferrari.webp',
     car_img: '/cars/2026/ferrari.svg',
     drivers: [
       {
@@ -128,7 +128,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'mercedes',
     team_colour: '#00D7B6',
     year: 2026,
-    main_logo: '/team_main_logo/mercedes.svg',
+    main_logo: '/team_main_logo/mercedes.webp',
     car_img: '/cars/2026/mercedes.svg',
     drivers: [
       {
@@ -156,7 +156,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'aston-martin',
     team_colour: '#229971',
     year: 2026,
-    main_logo: '/team_main_logo/astonmartin.svg',
+    main_logo: '/team_main_logo/astonmartin.webp',
     car_img: '/cars/2026/astonmartin.svg',
     drivers: [
       {
@@ -184,7 +184,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'audi',
     team_colour: '#9E001C',
     year: 2026,
-    main_logo: '/team_main_logo/audi.svg',
+    main_logo: '/team_main_logo/audi.webp',
     car_img: '/cars/2026/audi.svg',
     drivers: [
       {
@@ -212,7 +212,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'cadillac',
     team_colour: '#5A5A5A',
     year: 2026,
-    main_logo: '/team_main_logo/cadillac.svg',
+    main_logo: '/team_main_logo/cadillac.webp',
     car_img: '/cars/2026/cadillac.svg',
     drivers: [
       {
@@ -240,7 +240,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'alpine',
     team_colour: '#00A1E8',
     year: 2026,
-    main_logo: '/team_main_logo/alpine.svg',
+    main_logo: '/team_main_logo/alpine.webp',
     car_img: '/cars/2026/alpine.svg',
     drivers: [
       {
@@ -268,7 +268,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'haas',
     team_colour: '#9C9FA2',
     year: 2026,
-    main_logo: '/team_main_logo/haas.svg',
+    main_logo: '/team_main_logo/haas.webp',
     car_img: '/cars/2026/haas.svg',
     drivers: [
       {
@@ -296,7 +296,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'racing-bulls',
     team_colour: '#6C98FF',
     year: 2026,
-    main_logo: '/team_main_logo/racing_bulls.svg',
+    main_logo: '/team_main_logo/racing_bulls.webp',
     car_img: '/cars/2026/racingbulls.svg',
     drivers: [
       {
@@ -324,7 +324,7 @@ export const teams2026: Team2026[] = [
     team_slug: 'williams',
     team_colour: '#1868DB',
     year: 2026,
-    main_logo: '/team_main_logo/williams.svg',
+    main_logo: '/team_main_logo/williams.webp',
     car_img: '/cars/2026/williams.svg',
     drivers: [
       {

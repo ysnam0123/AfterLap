@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Left */}
         <div className="flex flex-col items-start gap-4 lg:w-100 lg:border-r lg:border-(--color-box-border) lg:pr-10">
           <Image
-            src="/AfterLapLogo.svg"
+            src="/AfterLapLogo.webp"
             alt="AfterLap Logo"
             width={270}
             height={67}
