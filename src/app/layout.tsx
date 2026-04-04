@@ -3,6 +3,58 @@ import './globals.css';
 import './root.css';
 import Provider from './Provider';
 import LayoutWrapper from './components/common/ui/LayoutWrapper';
+import localFont from 'next/font/local';
+
+// 900 - font-black
+// 700 - font-bold
+// 600 - font-semibold
+// 500 - font-medium
+// 400 - font-normal
+// 300 - font-light
+
+const riaSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/RiaSans-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/RiaSans-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/RiaSans-ExtraBold.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-ria-sans',
+  display: 'swap',
+});
+
+const paperlogy = localFont({
+  src: [
+    { path: '../../public/fonts/Paperlogy-3Light.ttf', weight: '300' },
+    { path: '../../public/fonts/Paperlogy-4Regular.ttf', weight: '400' },
+    { path: '../../public/fonts/Paperlogy-6SemiBold.ttf', weight: '600' },
+  ],
+  variable: '--font-paperlogy',
+  display: 'swap',
+});
+
+const pretendard = localFont({
+  src: [
+    {
+      path: '../../public/fonts/PretendardVariable.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-pretendard',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -40,8 +92,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="ko"
+      className={`${riaSans.variable} ${paperlogy.variable} ${pretendard.variable}`}
+    >
       <head>
+        <link
+          rel="preconnect"
+          href="https://axykebsdqztifmbbluzg.supabase.co"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://axykebsdqztifmbbluzg.supabase.co"
+        />
         {/* 안드로아드/크롬 계열 브라우저에서 pwa를 허용 */}
         <meta name="mobile-web-app-capable" content="yes" />
         {/* ios safari에서 pwa를 허용 */}
@@ -53,7 +116,6 @@ export default function RootLayout({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-
         {/* 여기서 부턴, 기기 별로 사용되는 스플래시 이미지 */}
         {/* iPhone 14 / 15 Pro Max */}
         <link

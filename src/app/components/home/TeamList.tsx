@@ -7,10 +7,7 @@ export default function TeamList() {
   const router = useRouter();
   return (
     <>
-      <h2
-        style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-        className="text-[18px] font-semibold text-(--color-title)"
-      >
+      <h2 className="font-paper text-[18px] font-semibold text-(--color-title)">
         팀 목록
       </h2>
 
@@ -23,7 +20,13 @@ export default function TeamList() {
               className="flex shrink-0 flex-col items-center gap-2 transition active:scale-95 active:opacity-80"
             >
               <div className="flex cursor-pointer flex-col items-center justify-center rounded-[6px] border border-(--color-card-border) bg-(--color-card-bg) p-2.5">
-                <Image src={team.main_logo} alt="logo" width={80} height={80} />
+                <Image
+                  src={team.main_logo}
+                  alt="logo"
+                  width={80}
+                  height={80}
+                  quality={75}
+                />
               </div>
 
               <h1 className="text-[15px] text-[#b5b5b5]">
@@ -38,12 +41,7 @@ export default function TeamList() {
           onClick={() => router.push('/team')}
           className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
         >
-          <p
-            style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-            className="text-[12px]"
-          >
-            팀 전체보기
-          </p>
+          <p className="font-ria text-[12px] font-semibold">팀 전체보기</p>
         </button>
       </div>
     </>

@@ -21,10 +21,7 @@ export default function WeatherSummary({
           className="h-5 w-5 sm:h-7 sm:w-7" // 모바일/데스크탑 크기 분기
           priority
         />
-        <p
-          className="text-[14px] sm:text-[20px]"
-          style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
-        >
+        <p className="font-paper text-[14px] font-semibold sm:text-[20px]">
           날씨
         </p>
       </h1>

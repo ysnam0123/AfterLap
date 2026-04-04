@@ -9,10 +9,7 @@ export default function Page() {
   return (
     <>
       <div className="mx-auto w-full px-5 sm:px-10 md:px-15">
-        <h1
-          style={{ fontFamily: 'Paperlolgy', fontWeight: 700 }}
-          className="mb-5 text-[20px] sm:mb-0 sm:pb-10"
-        >
+        <h1 className="font-paper mb-5 text-[20px] font-semibold sm:mb-0 sm:pb-10">
           2026 시즌 드라이버
         </h1>
         <section className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

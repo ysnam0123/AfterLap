@@ -6,13 +6,6 @@ export default function DriverStandingsSkeleton() {
 
   return (
     <section className="w-full">
-      <div className="mb-3 flex items-center justify-between sm:mb-5">
-        <div className="h-6 w-36 animate-pulse rounded bg-[#252525] sm:h-7 sm:w-44" />
-        <div className="desktop">
-          <div className="h-8 w-12 animate-pulse rounded bg-[#252525] md:h-10 md:w-16" />
-        </div>
-      </div>
-
       <div className="w-full">
         <div className="mb-3 border-b border-white/10 pb-2">
           <div className="grid grid-cols-[60px_1fr_80px] pr-3 md:grid-cols-[60px_1fr_1fr_80px]">

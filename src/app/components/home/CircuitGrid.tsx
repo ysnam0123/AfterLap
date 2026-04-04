@@ -19,10 +19,7 @@ export default function CircuitGrid({ data }: CircuitProps) {
             onClick={() => router.push('/circuit')}
             className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] border border-(--color-button-border) bg-(--color-button-bg) px-3 py-1.75 shadow-(--shadow-soft) transition-all duration-120 hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active) md:h-10"
           >
-            <p
-              className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
-              style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-            >
+            <p className="font-ria text-[12px] font-semibold text-[#F8F8F8] sm:text-[16px]">
               서킷 더보기
             </p>
           </button>
@@ -37,14 +34,9 @@ export default function CircuitGrid({ data }: CircuitProps) {
       <div className="mobile">
         <button
           onClick={() => router.push('/circuit')}
-          className="flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
+          className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
         >
-          <p
-            style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-            className="text-[12px]"
-          >
-            서킷 구경하기
-          </p>
+          <p className="font-ria text-[12px] font-semibold">서킷 구경하기</p>
         </button>
       </div>
     </section>

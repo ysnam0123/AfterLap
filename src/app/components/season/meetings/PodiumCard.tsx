@@ -51,10 +51,7 @@ export default function PodiumCard({
           <div className="flex w-full items-center justify-between text-white">
             <span className="text-[19px] font-bold">{result.kr_name}</span>
             <div className="flex items-center gap-3">
-              <p
-                style={{ fontFamily: 'PartialSans', fontWeight: 700 }}
-                className="text-[16px]"
-              >
+              <p className="font-pretendard text-[16px] font-semibold">
                 {result.driver_number}
               </p>
               <Image

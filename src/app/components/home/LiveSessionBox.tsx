@@ -30,17 +30,11 @@ export default function LiveSessionBox({ data }: PageProps) {
               className="mobile"
               priority
             />
-            <h1
-              style={{ fontFamily: 'RiaSans', fontWeight: 900 }}
-              className="text-[12px] sm:text-[16px]"
-            >
+            <h1 className="font-ria text-[12px] font-black sm:text-[16px]">
               {data.session_name}
             </h1>
           </div>
-          <span
-            style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-            className="flex items-center gap-1 text-[14px]"
-          >
+          <span className="font-ria flex items-center gap-1 text-[14px] font-semibold">
             <p>세션 진행중</p>
             <div className="h-4 w-4 animate-pulse rounded-full bg-[#E10600]"></div>
           </span>

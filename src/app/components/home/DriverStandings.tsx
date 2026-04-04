@@ -15,21 +15,6 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
   const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
   return (
     <section className="w-full">
-      <div className="mb-3 flex items-center justify-between sm:mb-5">
-        <h2 className="text-[16px] font-semibold text-(--color-title) sm:text-[18px]">
-          2026 시즌 드라이버 랭킹
-        </h2>
-        <div className="desktop">
-          <button className="flex h-8 cursor-pointer items-center justify-center md:h-10">
-            <p
-              className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
-              style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-            >
-              더보기
-            </p>
-          </button>
-        </div>
-      </div>
       <div className="w-full">
         {/* Header */}
         <div className="mb-3 border-b border-white/10 pb-2">
@@ -71,6 +56,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
                     className="object-cover"
                     alt="driver"
                     priority
+                    quality={50}
                   />
                 </div>
                 <div className="flex flex-col md:flex-row">
@@ -106,10 +92,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
             onClick={() => setSeeAll(!seeAll)}
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
-            <p
-              style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-              className="text-[12px]"
-            >
+            <p className="font-ria text-[12px] font-medium">
               {seeAll ? '접기' : '펼치기'}
             </p>
           </button>

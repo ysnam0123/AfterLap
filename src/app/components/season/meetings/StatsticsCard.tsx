@@ -16,12 +16,7 @@ export default function StatsticsCard({ title }: { title: string }) {
       <div className="min-h-55 w-89.5 rounded-[40px] bg-[#1A1A1A] px-7.5 py-6.25">
         <div className="mb-12.5 flex items-center gap-0">
           {icon && <Image src={icon?.icon} alt="icon" width={40} height={40} />}
-          <h1
-            className="text-[20px]"
-            style={{ fontFamily: 'RiaSans', fontWeight: 700 }}
-          >
-            {title}
-          </h1>
+          <h1 className="font-ria text-[20px] font-bold">{title}</h1>
         </div>
         {/* fastest */}
         {/* <div className="text-right">

@@ -8,18 +8,8 @@ export default function StatBox({
   return (
     <>
       <div className="mb-5 flex flex-col gap-3.75">
-        <p
-          className="text-[30px]"
-          style={{ fontFamily: 'Paperlolgy', fontWeight: 500 }}
-        >
-          {title}
-        </p>
-        <p
-          className="text-[30px]"
-          style={{ fontFamily: 'RiaSans', fontWeight: 900 }}
-        >
-          {value}
-        </p>
+        <p className="font-paper text-[30px] font-semibold">{title}</p>
+        <p className="font-ria text-[30px] font-black">{value}</p>
       </div>
     </>
   );

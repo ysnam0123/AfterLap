@@ -57,10 +57,7 @@ export default function StartingGridTable({
               key={result.driver_number}
               className="border-b border-[#2A2A2A] text-center text-[16px]"
             >
-              <td
-                style={{ fontFamily: 'PartialSans', fontWeight: 700 }}
-                className="px-0 py-5 text-center text-[14px] sm:px-4 sm:text-[20px]"
-              >
+              <td className="font-pretendard px-0 py-5 text-center text-[14px] font-semibold sm:px-4 sm:text-[20px]">
                 {result.displayPosition}
               </td>
               <td className="py-3 font-bold">

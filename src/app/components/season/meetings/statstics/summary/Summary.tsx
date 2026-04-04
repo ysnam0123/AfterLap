@@ -37,10 +37,7 @@ export default function Summary({
             <WeatherSummary weather={weather} />
           ) : (
             <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">
-              <p
-                className="text-[14px] text-(--color-title) sm:text-[20px]"
-                style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
-              >
+              <p className="font-paper text-[14px] font-semibold text-(--color-title) sm:text-[20px]">
                 날씨
               </p>
               <p className="text-[13px] text-(--color-sub-text) sm:text-[16px]">

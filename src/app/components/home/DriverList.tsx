@@ -7,10 +7,7 @@ export default function DriverList() {
   const router = useRouter();
   return (
     <>
-      <h2
-        style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-        className="text-[18px] font-semibold text-(--color-title)"
-      >
+      <h2 className="font-paper text-[18px] font-semibold text-(--color-title)">
         드라이버 목록
       </h2>
 
@@ -29,6 +26,7 @@ export default function DriverList() {
                     alt="driver"
                     width={80}
                     height={80}
+                    quality={65}
                   />
                 </div>
 
@@ -45,12 +43,7 @@ export default function DriverList() {
           onClick={() => router.push('/driver')}
           className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
         >
-          <p
-            style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-            className="text-[12px]"
-          >
-            드라이버 전체보기
-          </p>
+          <p className="font-ria text-[12px] font-medium">드라이버 전체보기</p>
         </button>
       </div>
     </>

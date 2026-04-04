@@ -43,10 +43,7 @@ export default function DriverHero({
       <div className="mb-5 flex w-full items-center justify-between">
         <div className="flex flex-col gap-1 select-none">
           <div className="flex items-center justify-between">
-            <p
-              className="text-[20px] sm:text-[30px] md:text-[50px]"
-              style={{ fontFamily: 'RiaSans', fontWeight: 700 }}
-            >
+            <p className="font-ria text-[20px] font-bold sm:text-[30px] md:text-[50px]">
               {data.kr_name}
             </p>
           </div>
@@ -65,10 +62,7 @@ export default function DriverHero({
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <p
-            style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-            className="hidden text-[18px] sm:block sm:text-[20px] md:text-[30px]"
-          >
+          <p className="font-paper hidden text-[18px] font-semibold sm:block sm:text-[20px] md:text-[30px]">
             {seasonData?.team.team_kr_name
               ? seasonData?.team.team_kr_name
               : data2026?.team_kr_name}

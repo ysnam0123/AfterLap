@@ -27,10 +27,7 @@ export default function LogoLoading({
           className="h-16 w-57.5 animate-pulse md:h-25 md:w-92.5"
           priority
         />
-        <p
-          style={{ fontFamily: 'Pretendard' }}
-          className="animate-pulse text-[20px] font-semibold text-[#7A7A79] sm:text-[25px] lg:text-[30px]"
-        >
+        <p className="font-pretendard animate-pulse text-[20px] font-medium text-[#7A7A79] sm:text-[25px] lg:text-[30px]">
           {loadingText}
         </p>
       </div>

@@ -69,10 +69,7 @@ export default function SessionResultSection({
                 key={result.driver_number}
                 className="border-b border-[#2A2A2A] hover:bg-[#1a1a1a]"
               >
-                <td
-                  style={{ fontFamily: 'PartialSans', fontWeight: 700 }}
-                  className="py-3 text-center text-[14px] sm:text-[22px]"
-                >
+                <td className="font-paper py-3 text-center text-[14px] font-semibold sm:text-[22px]">
                   {result.displayPosition}
                 </td>
                 <td className="py-3 font-bold">

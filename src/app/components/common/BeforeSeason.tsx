@@ -12,10 +12,7 @@ export default function BeforeSeason() {
           className="h-18 w-60 md:h-24 md:w-100"
           priority
         />
-        <p
-          style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-          className="text-[20px] text-[#6f6f6f] md:text-[40px]"
-        >
+        <p className="font-paper text-[20px] font-semibold text-[#6f6f6f] md:text-[40px]">
           시즌 시작 전입니다
         </p>
       </div>

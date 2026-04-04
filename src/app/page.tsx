@@ -16,6 +16,8 @@ import NextSessionSkeleton from './components/home/skeleton/NextSessionSkeleton'
 import ConstructorStandingsSkeleton from './components/home/skeleton/ConstructorStandingsSkeleton';
 import DriverStandingsSkeleton from './components/home/skeleton/DriverStandingsSkeleton';
 import CircuitGridSkeleton from './components/home/skeleton/CircuitGridSkeleton';
+import ConstructorHeader from './components/home/sectionHeader/ConstructorHeader';
+import DriverStandingsHeader from './components/home/sectionHeader/DriverStandingsHeader';
 
 export default function Page() {
   const { data: homeData, isLoading: homeLoading } = useHomeData();
@@ -32,11 +34,6 @@ export default function Page() {
     return groupTeamSeasonRanking(teamRanking).slice(0, 5);
   }, [teamRanking]);
 
-  const CData = useMemo(() => {
-    if (!circuitData) return [];
-    return [...circuitData].sort(() => Math.random() - 0.5).slice(0, 6);
-  }, [circuitData]);
-
   const pageLoading = homeLoading || circuitLoading;
 
   const { user } = useAuth();
@@ -50,43 +47,55 @@ export default function Page() {
     if (userFavorite) {
       setFavorites(userFavorite);
     }
-    // 유저가 로그아웃하면 초기화
     if (!user) {
       clearFavorites();
     }
   }, [userFavorite, user, setFavorites, clearFavorites]);
 
-  const rankingCircuitData = driverRanking && teamRanking && CData;
   return (
     <>
       <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
-        {/* pageLoading */}
+        <h1 className="font-ria text-[18px] font-black text-[#C4C4C4] sm:text-[30px] sm:text-(--color-title)">
+          Next
+        </h1>
+        {/* !pageLoading */}
         {!pageLoading ? (
           <NextSession data={nextMeeting} liveSession={liveSession} />
         ) : (
           <NextSessionSkeleton />
         )}
 
-        {/* rankingCircuitData */}
-        {rankingCircuitData ? (
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <ConstructorStandings data={TData!} />
-            <DriverStandings
-              data={seeAll ? driverRanking! : driverRanking!.slice(0, 5)}
-              seeAll={seeAll}
-              setSeeAll={setSeeAll}
-            />
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div>
+            <ConstructorHeader />
+            {/* teamRanking */}
+            {teamRanking ? (
+              <ConstructorStandings data={TData!} />
+            ) : (
+              <ConstructorStandingsSkeleton />
+            )}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <ConstructorStandingsSkeleton />
-            <DriverStandingsSkeleton />
+          <div>
+            <DriverStandingsHeader />
+            {driverRanking ? (
+              <DriverStandings
+                data={seeAll ? driverRanking! : driverRanking!.slice(0, 5)}
+                seeAll={seeAll}
+                setSeeAll={setSeeAll}
+              />
+            ) : (
+              <DriverStandingsSkeleton />
+            )}
           </div>
-        )}
+        </div>
         <TeamList />
         <DriverList />
-        {/* CData */}
-        {CData ? <CircuitGrid data={CData} /> : <CircuitGridSkeleton />}
+        {/* circuitData */}
+        {circuitData ? (
+          <CircuitGrid data={circuitData.slice(0, 5)} />
+        ) : (
+          <CircuitGridSkeleton />
+        )}
       </section>
     </>
   );

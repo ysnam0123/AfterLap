@@ -34,10 +34,7 @@ export default function GrandPrixCardWithProblem({
               </p>
             </div>
             <div className="mt-3 ml-auto flex items-center gap-1">
-              <p
-                style={{ fontFamily: 'Pretendard', fontWeight: 500 }}
-                className="text-[18px]"
-              >
+              <p className="font-pretendard text-[18px] font-semibold">
                 일정 취소
               </p>
               <div className="h-5 w-5 rounded-full bg-[#F6CD00]"></div>

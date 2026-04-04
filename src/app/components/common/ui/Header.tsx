@@ -37,6 +37,7 @@ export default function Header() {
               setOpenTeam(false);
             }}
             priority
+            fetchPriority="high"
           />
           <div className="desktop">
             <ul className="flex gap-14">

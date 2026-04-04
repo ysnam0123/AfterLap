@@ -4,10 +4,7 @@ export default function DriverDetail() {
   return (
     <>
       <section className="min-h-250 w-full rounded-[30px] bg-[#1C1C25] px-10 py-7.5 select-none">
-        <h1
-          className="mb-12.5 text-[40px]"
-          style={{ fontFamily: 'PartialSans' }}
-        >
+        <h1 className="font-pretendard mb-12.5 text-[40px] font-semibold">
           STATSTICS
         </h1>
         <div className="grid grid-cols-4">

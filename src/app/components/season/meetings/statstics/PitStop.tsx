@@ -55,10 +55,7 @@ export default function PitStop({
                 key={`${p.pit_duration}-${p.driver_number}`}
                 className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
               >
-                <td
-                  style={{ fontFamily: 'PartialSans', fontWeight: 700 }}
-                  className="py-3 text-center text-[14px] font-bold sm:text-[20px]"
-                >
+                <td className="font-pretendard py-3 text-center text-[14px] font-bold font-semibold sm:text-[20px]">
                   {p.driver_number}
                 </td>
 

@@ -1,19 +1,22 @@
 @import 'tailwindcss';
-
 @plugin 'tailwindcss-animate';
-
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-ria: var(--font-ria-sans);
+  --font-paper: var(--font-paperlogy);
+  --font-pretendard: var(--font-pretendard);
+}
+
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* 크롬, 사파리 */
+  display: none;
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* 커스텀 유틸리티 */
 @layer utilities {
   .mobile {
     @apply block lg:hidden;
@@ -21,83 +24,6 @@
   .desktop {
     @apply hidden lg:block;
   }
-}
-
-@font-face {
-  font-family: 'RiaSans';
-  src: url('/fonts/RiaSans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'RiaSans';
-  src: url('/fonts/RiaSans-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'RiaSans';
-  src: url('/fonts/RiaSans-ExtraBold.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PartialSans';
-  src: url('/fonts/PartialSansKR-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PretendardVariable';
-  src: url('/fonts/PretendardVariable.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'paperlogy';
-  src: url('/fonts/Paperlogy-3Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'paperlogy';
-  src: url('/fonts/Paperlogy-4Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'paperlogy';
-  src: url('/fonts/Paperlogy-5Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'paperlogy';
-  src: url('/fonts/Paperlogy-6SSemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'paperlogy';
-  src: url('/fonts/Paperlogy-7Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
 }
 
 @theme inline {

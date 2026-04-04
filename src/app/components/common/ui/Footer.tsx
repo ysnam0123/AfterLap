@@ -16,14 +16,8 @@ export default function Footer() {
             alt="AfterLap Logo"
             width={270}
             height={67}
-            className="hidden h-16.75 w-auto sm:block"
-          />
-          <Image
-            src="/AfterLapLogo.svg"
-            alt="AfterLap Logo"
-            width={150}
-            height={36}
-            className="block h-9 w-auto sm:hidden"
+            priority
+            className="block h-9 w-auto sm:h-16.75"
           />
 
           <div className="pl-1 text-sm sm:text-base">

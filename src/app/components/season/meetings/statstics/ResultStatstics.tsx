@@ -71,10 +71,7 @@ export default function ResultStatstics({
   return (
     <>
       <section className="select-none">
-        <h1
-          className="mb-12.5 text-[16px] sm:text-[40px]"
-          style={{ fontFamily: 'PartialSans' }}
-        >
+        <h1 className="font-pretendard mb-12.5 text-[16px] sm:text-[40px]">
           STATSTICS
         </h1>
         <div className="min-h-100 w-full rounded-4xl bg-[#1A1A1A]">
@@ -92,10 +89,7 @@ export default function ResultStatstics({
                   width={30}
                   className="hidden sm:block"
                 />
-                <p
-                  style={{ fontFamily: 'Pretendard' }}
-                  className="text-[18px] font-semibold"
-                >
+                <p className="font-pretendard text-[18px] font-semibold">
                   {tab.label}
                 </p>
               </li>

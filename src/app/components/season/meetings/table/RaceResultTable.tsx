@@ -76,10 +76,7 @@ export default function RaceResultTable({
               key={`${result.session_key}-${result.driver_number}`}
               className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
             >
-              <td
-                style={{ fontFamily: 'PartialSans', fontWeight: 700 }}
-                className="px-2 py-3 text-center text-[14px] sm:text-[20px]"
-              >
+              <td className="font-pretendard px-2 py-3 text-center text-[14px] font-semibold sm:text-[20px]">
                 {result.displayPosition}
               </td>
               <td className="py-3 font-bold">

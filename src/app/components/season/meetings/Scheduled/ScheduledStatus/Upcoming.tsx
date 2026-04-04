@@ -13,22 +13,13 @@ export default function Upcoming({ data }: PageProps) {
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C430] sm:h-10 sm:w-10">
           <Timer className="h-4 w-4 text-white sm:h-8 sm:w-8" />
         </div>
-        <p
-          style={{ fontFamily: 'Paperlolgy', fontWeight: 900 }}
-          className="hidden text-[14px] sm:block sm:text-[20px] md:text-[24px]"
-        >
+        <p className="font-paper hidden text-[14px] font-semibold sm:block sm:text-[20px] md:text-[24px]">
           Session Not Started
         </p>
-        <p
-          style={{ fontFamily: 'Paperlolgy', fontWeight: 500 }}
-          className="hidden text-[20px] lg:block"
-        >
+        <p className="font-paper hidden text-[20px] font-semibold lg:block">
           아직 시작되지 않은 세션입니다
         </p>
-        <p
-          style={{ fontFamily: 'Paperlolgy', fontWeight: 500 }}
-          className="ml-0 text-[15px] sm:ml-3 sm:text-[18px] md:text-[20px]"
-        >
+        <p className="font-paper ml-0 text-[15px] font-semibold sm:ml-3 sm:text-[18px] md:text-[20px]">
           <span>
             {/* {date} {time} */}
             {formatDateTime(data.date_start)}

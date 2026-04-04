@@ -9,10 +9,7 @@ export default function AboutBeforePoint({ circuitData }: PageProps) {
     <>
       <div className="w-full rounded-2xl bg-[#212121] px-4.5 py-3 sm:rounded-4xl sm:px-7 sm:py-5">
         <div className="flex justify-between border-b border-[#474747] pb-1.5">
-          <h1
-            style={{ fontFamily: 'Paperlolgy', fontWeight: 700 }}
-            className="text-[14px] text-[#c4c4c4] sm:text-[18px]"
-          >
+          <h1 className="font-paper text-[14px] font-semibold text-[#c4c4c4] sm:text-[18px]">
             경기 관전 포인트
           </h1>
           <p className="text-[12px] sm:text-[14px]">* AI 수집 데이터</p>
@@ -26,10 +23,7 @@ export default function AboutBeforePoint({ circuitData }: PageProps) {
               circuitData.watch_points.map((point) => (
                 <li key={point} className="flex items-center gap-3">
                   <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#FED010]" />
-                  <p
-                    style={{ fontFamily: 'Paperlolgy', fontWeight: 400 }}
-                    className="text-[14px] sm:text-[15px] lg:text-[19px]"
-                  >
+                  <p className="font-paper text-[14px] font-semibold sm:text-[15px] lg:text-[19px]">
                     {point}
                   </p>
                 </li>

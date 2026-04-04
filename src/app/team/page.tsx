@@ -6,10 +6,7 @@ export default function Page() {
   return (
     <>
       <div className="mx-auto flex w-full flex-col px-5 select-none md:px-10 lg:px-20">
-        <h1
-          style={{ fontFamily: 'paperlogy', fontWeight: 700 }}
-          className="mb-5 text-[20px] sm:mb-10 sm:text-[30px]"
-        >
+        <h1 className="font-paper mb-5 text-[20px] font-semibold sm:mb-10 sm:text-[30px]">
           2026 Season
         </h1>
         <div className="">

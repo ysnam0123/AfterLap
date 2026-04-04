@@ -70,10 +70,7 @@ export default function SafetyCarSummary({
             className="mobile"
             priority
           />
-          <p
-            className="text-[13px] sm:text-[20px]"
-            style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
-          >
+          <p className="font-pretendard text-[13px] font-semibold sm:text-[20px]">
             레이스 이벤트
           </p>
         </h1>
@@ -84,10 +81,7 @@ export default function SafetyCarSummary({
           전체보기
         </button>
       </div>
-      <div
-        className="flex items-end justify-between px-2"
-        style={{ fontFamily: 'RiaSans', fontWeight: 700 }}
-      >
+      <div className="font-ria flex items-end justify-between px-2 font-bold">
         <div className="flex flex-col">
           <span className="mb-3 text-[18px] leading-none sm:text-[36px]">
             {safetyCarCount}

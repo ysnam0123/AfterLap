@@ -37,10 +37,7 @@ export default function FastestPitStop({
                 className="mobile"
                 priority
               />
-              <p
-                className="text-[14px] md:text-[20px]"
-                style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
-              >
+              <p className="font-paper text-[14px] font-semibold md:text-[20px]">
                 Best 피트 스탑
               </p>
             </h1>
@@ -73,10 +70,7 @@ export default function FastestPitStop({
           </div>
         )}
         {fastest && (
-          <div
-            style={{ fontFamily: 'Pretendard', fontWeight: 500 }}
-            className="flex items-center justify-between px-4"
-          >
+          <div className="font-pretendard flex items-center justify-between px-4 font-semibold">
             <div className="flex flex-col items-center">
               <Image
                 src={fastest.main_logo}

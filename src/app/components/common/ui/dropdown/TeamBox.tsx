@@ -32,10 +32,7 @@ export default function TeamBox({
               className="object-contain transition-transform duration-200 ease-out group-hover:scale-105"
               priority
             />
-            <h1
-              style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-              className="mb-3 text-[20px] text-[#b5b5b5] transition-colors duration-200 group-hover:text-white"
-            >
+            <h1 className="font-ria mb-3 text-[20px] font-medium text-[#b5b5b5] transition-colors duration-200 group-hover:text-white">
               {team.team_kr_name}
             </h1>
           </div>

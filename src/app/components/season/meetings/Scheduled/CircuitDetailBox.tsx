@@ -9,10 +9,7 @@ export default function CircuitDetailBox({ circuitData }: PageProps) {
     <>
       <div className="w-full rounded-2xl bg-[#212121] px-4.5 py-3 sm:rounded-4xl sm:px-7 sm:py-5">
         <div className="mb-3 flex justify-between border-b border-[#474747] pb-1.5">
-          <h1
-            style={{ fontFamily: 'Paperlolgy', fontWeight: 700 }}
-            className="text-[14px] text-[#c4c4c4] sm:text-[18px]"
-          >
+          <h1 className="font-paper text-[14px] font-semibold text-[#c4c4c4] sm:text-[18px]">
             서킷 구간 살펴보기
           </h1>
         </div>

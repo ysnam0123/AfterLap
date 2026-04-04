@@ -49,10 +49,7 @@ export default function DriverRankingTable({
               key={`${result.driver_number}`}
               className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
             >
-              <td
-                style={{ fontFamily: 'PartialSans', fontWeight: 700 }}
-                className="px-2 py-3 text-center text-[14px] sm:text-[18px]"
-              >
+              <td className="font-pretendard px-2 py-3 text-center text-[14px] font-semibold sm:text-[18px]">
                 {result.rank}
               </td>
               <td className="py-3 font-bold">

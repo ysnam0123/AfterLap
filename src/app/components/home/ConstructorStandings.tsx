@@ -14,21 +14,6 @@ export default function ConstructorStandings({ data }: TS) {
   return (
     <>
       <section className="w-full">
-        <div className="mb-3 flex items-center justify-between sm:mb-5">
-          <h2 className="text-[16px] font-semibold text-(--color-title) sm:text-[18px]">
-            2026 시즌 팀 랭킹
-          </h2>
-          <div className="desktop">
-            <button className="flex h-8 cursor-pointer items-center justify-center md:h-10">
-              <p
-                className="text-[12px] text-[#F8F8F8] sm:text-[16px]"
-                style={{ fontFamily: 'Paperlolgy', fontWeight: 600 }}
-              >
-                더보기
-              </p>
-            </button>
-          </div>
-        </div>
         <div className="mb-3 border-b border-white/10 pb-2">
           <div className="grid grid-cols-[60px_1fr_80px] text-xs text-white/60 sm:text-sm">
             <span>등수</span>
@@ -58,14 +43,14 @@ export default function ConstructorStandings({ data }: TS) {
 
               {/* Team */}
               <div className="flex cursor-pointer items-center gap-3 py-2">
-                <Image
-                  src={item.small_logo}
-                  width={70}
-                  height={40}
-                  alt="team logo"
-                  className="h-8 w-auto sm:h-9"
-                  priority
-                />
+                <div className="relative h-8 w-14 sm:h-9 sm:w-16">
+                  <Image
+                    src={item.small_logo}
+                    alt="team logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 <span className="relative inline-flex items-center gap-1 truncate text-sm font-medium text-white sm:text-base">
                   {item.team_kr_name}
                   {favoriteTeams.includes(item.team_slug) && <Favorite />}
@@ -84,12 +69,7 @@ export default function ConstructorStandings({ data }: TS) {
             onClick={() => router.push('/ranking')}
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
-            <p
-              style={{ fontFamily: 'RiaSans', fontWeight: 500 }}
-              className="text-[12px]"
-            >
-              전체보기
-            </p>
+            <p className="font-ria text-[12px] font-semibold">전체보기</p>
           </button>
         </div>
       </section>

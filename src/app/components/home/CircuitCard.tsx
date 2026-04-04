@@ -17,7 +17,7 @@ export function CircuitCard({ data }: CircuitProps) {
             width={37}
             height={22}
             className="h-auto w-7 sm:w-9"
-            priority
+            quality={70}
           />
         </div>
         <div className="min-w-0">
@@ -36,7 +36,6 @@ export function CircuitCard({ data }: CircuitProps) {
           width={80}
           height={80}
           className="h-auto w-14 sm:w-20"
-          priority
         />
       </div>
     </div>

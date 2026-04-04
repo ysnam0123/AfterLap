@@ -36,12 +36,6 @@ export default function NextSession({ data, liveSession }: PageProps) {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1
-          style={{ fontFamily: 'RiaSans', fontWeight: 900 }}
-          className="text-[18px] font-semibold text-[#C4C4C4] sm:text-[30px] sm:text-(--color-title)"
-        >
-          Next
-        </h1>
         <section className="flex flex-col gap-2">
           <NextSessionTitle data={data} />
           {liveSession && <LiveSessionBox data={liveSession} />}
@@ -92,10 +86,7 @@ export default function NextSession({ data, liveSession }: PageProps) {
             onClick={() => setSeeAll(!seeAll)}
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
-            <p
-              style={{ fontFamily: 'RiaSans', fontWeight: 600 }}
-              className="text-[12px]"
-            >
+            <p className="font-ria text-[12px] font-semibold">
               {seeAll ? '접기' : '펼치기'}
             </p>
           </button>

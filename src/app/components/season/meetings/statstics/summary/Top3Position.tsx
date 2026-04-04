@@ -30,10 +30,7 @@ export default function Top3Position({
               className="mobile"
               priority
             />
-            <p
-              className="text-[12px] sm:text-[20px]"
-              style={{ fontFamily: 'paperlogy', fontWeight: 500 }}
-            >
+            <p className="font-paper text-[12px] font-semibold sm:text-[20px]">
               포지션 상승 TOP 3
             </p>
           </h1>
