@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchHomeData } from '@/lib/api/internal/home';
+import { HomeData } from '@/types/home';
 
-export function useHomeData() {
+export function useHomeData(options?: { initialData?: HomeData }) {
   return useQuery({
     queryKey: ['home'],
     queryFn: fetchHomeData,
-    refetchInterval: 1000 * 30, // live 포함이면 여기서 관리
+    initialData: options?.initialData,
+    refetchInterval: 1000 * 30,
   });
 }

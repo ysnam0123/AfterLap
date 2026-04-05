@@ -35,7 +35,7 @@ export default function MobileSplash() {
         {/* Logo */}
         <div className="animate-splash-logo">
           <Image
-            src={'/AfterLapLogo.web'}
+            src={'/AfterLapLogo.webp'}
             alt="AfterLap logo"
             width={280}
             height={67}
