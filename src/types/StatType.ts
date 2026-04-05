@@ -7,7 +7,7 @@
 //   }
 // > = {
 //   'Fastest Lap': {
-//     icon: '/icons/fastest.svg',
+//     icon: '/icons/fastest.webp',
 //     render: (data) => (
 //       <>
 //         <p className="font-ria font-bold">{data.driver}</p>
@@ -16,7 +16,7 @@
 //     ),
 //   },
 //   'Safety Car': {
-//     icon: '/icons/safety.svg',
+//     icon: '/icons/safety.webp',
 //     render: (data) => (
 //       <>
 //         <p className="font-ria font-bold">Deployments</p>
@@ -25,7 +25,7 @@
 //     ),
 //   },
 //   'Weather': {
-//     icon: '/icons/weather.svg',
+//     icon: '/icons/weather.webp',
 //     render: (data) => (
 //       <>
 //         <p className="font-ria font-bold">{data.condition}</p>

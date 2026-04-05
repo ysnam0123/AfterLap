@@ -42,7 +42,7 @@ export default function Team({ team }: NewTeamProps) {
           </div>
         </div>
         <Image
-          src={team.car_img ? team.car_img : '/cars/car.svg'}
+          src={team.car_img ? team.car_img : '/cars/car.webp'}
           alt={`${team.team_name} car`}
           width={360}
           height={40}

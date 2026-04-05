@@ -65,7 +65,7 @@ export default function SeasonDriverCard({
             />
           ) : (
             <Image
-              src={'/drivers/defaultDriver.svg'}
+              src={'/driversImg/defaultDriver.webp'}
               alt="driver"
               width={160}
               height={160}

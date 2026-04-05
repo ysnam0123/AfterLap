@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 export default function StatsticsCard({ title }: { title: string }) {
   const iconArr = [
-    { title: 'Fastest Lap', icon: '/icons/fastest.svg' },
-    { title: 'Safety Car', icon: '/icons/safety.svg' },
-    { title: 'Weather', icon: '/icons/weather.svg' },
-    { title: 'Fastest Pit Stop', icon: '/icons/pitstop.svg' },
-    { title: 'Retirements', icon: '/icons/retirement.svg' },
-    { title: '포지션 상승 TOP 3', icon: '/icons/graph.svg' },
-    { title: '경고', icon: '/icons/warning.svg' },
+    { title: 'Fastest Lap', icon: '/icons/fastest.webp' },
+    { title: 'Safety Car', icon: '/icons/safety.webp' },
+    { title: 'Weather', icon: '/icons/weather.webp' },
+    { title: 'Fastest Pit Stop', icon: '/icons/pitstop.webp' },
+    { title: 'Retirements', icon: '/icons/retirement.webp' },
+    { title: '포지션 상승 TOP 3', icon: '/icons/graph.webp' },
+    { title: '경고', icon: '/icons/warning.webp' },
   ];
   const icon = iconArr.find((item) => item.title === title);
   return (

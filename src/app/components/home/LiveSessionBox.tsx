@@ -15,16 +15,16 @@ export default function LiveSessionBox({ data }: PageProps) {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-1.25">
             <Image
-              src={'/icons/start.svg'}
-              alt="checker"
+              src={'/icons/start.webp'}
+              alt="start"
               width={40}
               height={40}
               className="desktop"
               priority
             />
             <Image
-              src={'/icons/start.svg'}
-              alt="checker"
+              src={'/icons/start.webp'}
+              alt="start"
               width={32}
               height={32}
               className="mobile"

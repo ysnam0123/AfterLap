@@ -5,7 +5,7 @@ export default function HomeLogo() {
     <>
       <div className="flex items-center gap-1 sm:mr-auto sm:flex-col sm:items-start">
         <Image
-          src={'/AfterLapLogo.svg'}
+          src={'/AfterLapLogo.webp'}
           alt="logo"
           width={270}
           height={67}

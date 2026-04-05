@@ -20,7 +20,7 @@ export default function LogoLoading({
         )}
       >
         <Image
-          src={'/loadingLogo.svg'}
+          src={'/loadingLogo.webp'}
           alt="loadingLogo"
           width={370}
           height={100}

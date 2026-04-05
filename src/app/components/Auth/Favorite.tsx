@@ -5,7 +5,7 @@ export default function Favorite({ className }: { className?: string }) {
     <>
       <div className={`${className}`}></div>
       <Image
-        src={'/icons/favorite.svg'}
+        src={'/icons/favorite.webp'}
         alt="favorite"
         width={30}
         height={15}

@@ -5,7 +5,7 @@ export default function BeforeSeason() {
     <>
       <div className="flex flex-col items-center justify-center gap-1 md:gap-5">
         <Image
-          src={'/loadingLogo.svg'}
+          src={'/loadingLogo.webp'}
           alt="logo"
           width={400}
           height={24}

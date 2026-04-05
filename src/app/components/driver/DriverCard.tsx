@@ -10,7 +10,7 @@ export default function DriverCard({
   return (
     <div className="flex items-center justify-center rounded-2xl">
       <Image
-        src={headshot ? headshot : '/drivers/defaultDriver.svg'}
+        src={headshot ? headshot : '/driversImg/defaultDriver.webp'}
         alt="driver"
         width={200}
         height={200}

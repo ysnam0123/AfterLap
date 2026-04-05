@@ -30,7 +30,7 @@ export function TeamDriverCard({
       >
         <div className="flex items-center justify-center bg-neutral-900">
           <Image
-            src={imageUrl ? imageUrl : '/public/drivers/defaultDriver.svg'}
+            src={imageUrl ? imageUrl : '/public/driversImg/defaultDriver.webp'}
             alt="driver"
             width={300}
             height={300}

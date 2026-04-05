@@ -32,7 +32,7 @@ export default function SessionBox({ data }: PageProps) {
         <div className="flex flex-col gap-2.75">
           <div className="flex items-center">
             <Image
-              src={'/icons/checker.svg'}
+              src={'/icons/checker.webp'}
               alt="checker"
               width={40}
               height={40}
@@ -40,7 +40,7 @@ export default function SessionBox({ data }: PageProps) {
               priority
             />
             <Image
-              src={'/icons/checker.svg'}
+              src={'/icons/checker.webp'}
               alt="checker"
               width={26}
               height={26}

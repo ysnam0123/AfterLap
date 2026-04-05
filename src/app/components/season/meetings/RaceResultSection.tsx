@@ -19,13 +19,13 @@ export default function RaceResultSection({
   startingGrid,
 }: RaceResults) {
   const tabs = [
-    { label: '레이스 결과', icon: '/icons/checker.svg' },
-    { label: '스타팅 그리드', icon: '/icons/checker.svg' },
-    { label: '전체 요약', icon: '/icons/overview.svg' },
-    { label: '포지션 변동', icon: '/icons/graph.svg' },
-    { label: '피트 스탑', icon: '/icons/pitstop.svg' },
-    { label: '타이어 전략', icon: '/icons/retirement.svg' },
-    // { label: '이벤트', icon: '/icons/retirement.svg' },
+    { label: '레이스 결과', icon: '/icons/checker.webp' },
+    { label: '스타팅 그리드', icon: '/icons/checker.webp' },
+    { label: '전체 요약', icon: '/icons/overview.webp' },
+    { label: '포지션 변동', icon: '/icons/graph.webp' },
+    { label: '피트 스탑', icon: '/icons/pitstop.webp' },
+    { label: '타이어 전략', icon: '/icons/retirement.webp' },
+    // { label: '이벤트', icon: '/icons/retirement.webp' },
   ];
   const [selectedTab, setSelectedTab] = useState('레이스 결과');
 
