@@ -6,7 +6,7 @@ interface CircuitProps {
   idx: number;
 }
 
-export function CircuitCard({ data }: CircuitProps) {
+export function CircuitCard({ data, idx }: CircuitProps) {
   return (
     <div className="flex h-15 cursor-pointer items-center justify-between rounded-2xl border border-(--color-card-border) bg-(--color-card-bg) px-5 py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:h-25">
       <div className="flex min-w-0 flex-1 items-center gap-2">
@@ -36,6 +36,7 @@ export function CircuitCard({ data }: CircuitProps) {
           width={80}
           height={80}
           className="h-auto w-14 sm:w-20"
+          priority={idx === 0}
         />
       </div>
     </div>
