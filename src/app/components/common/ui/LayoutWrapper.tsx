@@ -22,7 +22,7 @@ export default function LayoutWrapper({
   return (
     <>
       {showHeader && <Header />}
-      <div className="min-h-screen lg:pb-0">{children}</div>
+      <div className="lg:pb-0">{children}</div>
       <Analytics />
       {showFooter && (
         <>

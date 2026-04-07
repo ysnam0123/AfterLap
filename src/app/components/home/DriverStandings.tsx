@@ -53,7 +53,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
                     src={item.headshot_url}
                     width={46}
                     height={46}
-                    className="object-cover"
+                    className="object-fill"
                     alt="driver"
                     priority
                     quality={50}
