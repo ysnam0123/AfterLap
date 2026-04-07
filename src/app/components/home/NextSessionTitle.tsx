@@ -1,25 +1,11 @@
-'use client';
-
 import Image from 'next/image';
 import { NextMeeting } from '@/types/meeting';
-import { useSessionData } from '@/hooks/sessions';
-import { getSessionStatus } from '@/utils/time';
 
 interface PageProps {
   data: NextMeeting;
 }
 
 export default function NextSessionTitle({ data }: PageProps) {
-  const meetingKey = data?.meeting_key ?? null;
-  const { data: nextSessions = [] } = useSessionData(meetingKey, !!meetingKey);
-  console.log('다음 미팅 세션들:', nextSessions);
-  console.log(
-    '바로 직후 세션:',
-    nextSessions.find(
-      (session) =>
-        getSessionStatus(session.date_start, session.date_end) === 'upcoming',
-    ),
-  );
   if (!data) {
     return null;
   }
