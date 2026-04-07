@@ -1,6 +1,9 @@
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
 import { twMerge } from 'tailwind-merge';
 import loading from '../../../../public/loading.json';
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+
 interface LoadingLottieProps {
   className?: string;
   loadingText?: string;

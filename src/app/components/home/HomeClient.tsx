@@ -13,22 +13,21 @@ import DriverStandingsSkeleton from './skeleton/DriverStandingsSkeleton';
 import TeamList from './TeamList';
 import DriverList from './DriverList';
 import CircuitGrid from './CircuitGrid';
-import CircuitGridSkeleton from './skeleton/CircuitGridSkeleton';
 import { useEffect, useMemo, useState } from 'react';
 import { groupTeamSeasonRanking } from '@/utils/groupTeamSeasonRanking';
 import { useAuth } from '@/context/useAuth';
 import { useFavorites } from '@/hooks/favorite';
 import { useUserStore } from '@/store/useUserFavoriteStore';
-import { useCircuitViewData } from '@/hooks/useCircuit';
+import { CircuitView } from '@/types/circuit';
 
 interface Data {
   initialData: HomeData;
+  initialCircuits: CircuitView[];
 }
-export default function HomeClient({ initialData }: Data) {
+export default function HomeClient({ initialData, initialCircuits }: Data) {
   const { data: homeData } = useHomeData({ initialData });
   const { liveSession, nextMeeting, driverRanking, teamRanking } =
     homeData ?? {};
-  const { data: circuitData, isPending: circuitLoading } = useCircuitViewData();
   const [seeAll, setSeeAll] = useState(false);
 
   // console.log('드라이버 랭킹:', driverRanking);
@@ -39,7 +38,7 @@ export default function HomeClient({ initialData }: Data) {
     return groupTeamSeasonRanking(teamRanking).slice(0, 5);
   }, [teamRanking]);
 
-  const pageLoading = !initialData || circuitLoading;
+  const pageLoading = !initialData;
 
   const { user } = useAuth();
   console.log('현재 로그인된 유저:', user);
@@ -95,12 +94,7 @@ export default function HomeClient({ initialData }: Data) {
         </div>
         <TeamList />
         <DriverList />
-        {/* circuitData */}
-        {circuitData ? (
-          <CircuitGrid data={circuitData.slice(0, 6)} />
-        ) : (
-          <CircuitGridSkeleton />
-        )}
+        <CircuitGrid data={initialCircuits.slice(0, 6)} />
       </section>
     </>
   );
