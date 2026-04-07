@@ -54,6 +54,7 @@ const pretendard = localFont({
   ],
   variable: '--font-pretendard',
   display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -77,7 +78,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   icons: {
-    icon: '/AfterLapLogo.svg',
+    icon: '/icons/icon-192.png',
     apple: '/icons/icon-192.png',
   },
 };

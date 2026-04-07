@@ -1,14 +1,16 @@
 'use client';
 
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import TeamBox from './dropdown/TeamBox';
 import DriverBox from './dropdown/DriverBox';
 import { ChevronDown, ChevronLeft } from 'lucide-react';
-import LoginModal from '../../Auth/LoginModal';
 import { useAuth } from '@/context/useAuth';
 import UserProfile from '../../Auth/UserProfile';
+
+const LoginModal = dynamic(() => import('../../Auth/LoginModal'));
 export default function Header() {
   const [openTeam, setOpenTeam] = useState(false);
   const [openDriver, setOpenDriver] = useState(false);

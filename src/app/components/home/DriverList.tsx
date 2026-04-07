@@ -26,6 +26,7 @@ export default function DriverList() {
                     alt="driver"
                     width={80}
                     height={80}
+                    sizes="80px"
                     quality={65}
                   />
                 </div>

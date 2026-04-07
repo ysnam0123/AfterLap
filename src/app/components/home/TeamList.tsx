@@ -25,6 +25,7 @@ export default function TeamList() {
                   alt="logo"
                   width={80}
                   height={80}
+                  sizes="80px"
                   quality={75}
                 />
               </div>
