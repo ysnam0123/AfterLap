@@ -7,7 +7,7 @@ import { useSessionData } from '@/hooks/sessions';
 import { getSessionStatus } from '@/utils/time';
 import { useState } from 'react';
 import NextSessionTitle from './NextSessionTitle';
-import CSSCSSAnimatedContent from '@/components/CSSCSSAnimatedContent';
+import CSSAnimatedContent from '@/components/CSSAnimatedContent';
 
 interface PageProps {
   data: NextMeeting;
