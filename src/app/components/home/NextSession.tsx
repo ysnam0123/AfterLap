@@ -47,7 +47,6 @@ export default function NextSession({ data, liveSession }: PageProps) {
                     distance={10}
                     direction="vertical"
                     reverse={false}
-                    ease="power3.out"
                     initialOpacity={0}
                     animateOpacity
                     scale={0.5}
@@ -66,7 +65,6 @@ export default function NextSession({ data, liveSession }: PageProps) {
                       distance={10}
                       direction="vertical"
                       reverse={false}
-                      ease="power3.out"
                       initialOpacity={0}
                       animateOpacity
                       scale={0.5}
