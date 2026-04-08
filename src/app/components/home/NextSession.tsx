@@ -7,7 +7,7 @@ import { useSessionData } from '@/hooks/sessions';
 import { getSessionStatus } from '@/utils/time';
 import { useState } from 'react';
 import NextSessionTitle from './NextSessionTitle';
-import AnimatedContent from '@/components/AnimatedContent';
+import CSSCSSAnimatedContent from '@/components/CSSCSSAnimatedContent';
 
 interface PageProps {
   data: NextMeeting;
@@ -43,7 +43,7 @@ export default function NextSession({ data, liveSession }: PageProps) {
             <div className="flex flex-col gap-2">
               {!seeAll && (
                 <>
-                  <AnimatedContent
+                  <CSSAnimatedContent
                     distance={10}
                     direction="vertical"
                     reverse={false}
@@ -55,13 +55,13 @@ export default function NextSession({ data, liveSession }: PageProps) {
                     delay={0}
                   >
                     <SessionBox data={upcomingSession!} />
-                  </AnimatedContent>
+                  </CSSAnimatedContent>
                 </>
               )}
               {seeAll && (
                 <>
                   {nextSessions.map((session) => (
-                    <AnimatedContent
+                    <CSSAnimatedContent
                       key={session.session_key}
                       distance={10}
                       direction="vertical"
@@ -74,7 +74,7 @@ export default function NextSession({ data, liveSession }: PageProps) {
                       delay={0}
                     >
                       <SessionBox data={session} />
-                    </AnimatedContent>
+                    </CSSAnimatedContent>
                   ))}
                 </>
               )}

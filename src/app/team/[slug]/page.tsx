@@ -2,7 +2,12 @@
 
 import F1Loading from '@/app/components/common/F1Loading';
 import SeasonChangeButton from '@/app/components/common/SeasonChangeButton';
-import { SeasonPerformance } from '@/app/components/team/SeasonPerformance';
+import dynamic from 'next/dynamic';
+const SeasonPerformance = dynamic(() =>
+  import('@/app/components/team/SeasonPerformance').then(
+    (m) => m.SeasonPerformance,
+  ),
+);
 import TeamDriver from '@/app/components/team/TeamDetail/TeamDriver';
 import TeamPerformanceTable from '@/app/components/team/TeamDetail/TeamPerformanceTable';
 import TeamStats from '@/app/components/team/TeamStats';
