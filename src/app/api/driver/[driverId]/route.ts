@@ -3,15 +3,15 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   req: Request,
-  { params }: { params: Promise<{ driver_id: string }> },
+  { params }: { params: Promise<{ driverId: string }> },
 ) {
-  const driver_id = await params;
-  const driverId = Number(driver_id);
+  const { driverId } = await params;
+  const id = Number(driverId);
 
-  if (!driverId) {
+  if (!id) {
     return NextResponse.json({ error: 'invalid driver_id' }, { status: 400 });
   }
 
-  const data = await fetchDriverData(driverId);
+  const data = await fetchDriverData(id);
   return NextResponse.json(data);
 }
