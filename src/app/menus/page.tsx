@@ -48,7 +48,7 @@ export default function Page() {
   const filteredMenus = menus.filter((menu) => !menu.authRequired || user);
 
   return (
-    <section className="mx-auto flex flex-col gap-4 px-5 select-none lg:px-10">
+    <section className="mx-auto flex h-[calc(100vh-280px)] flex-col gap-4 px-5 select-none lg:px-10">
       {filteredMenus.map(({ label, icon: Icon, path, className, onClick }) => {
         return (
           <button

@@ -1,0 +1,175 @@
+{
+  "projects": {
+    "afterlap": {
+      "description": "F1 한국 사용자 맞춤 정보 웹앱 (개인 프로젝트, 2025.11~2026.03)",
+      "tech_stack": ["Next.js 15", "TypeScript", "Supabase", "React Query", "Tailwind CSS", "Zustand"],
+      "deploy_url": "https://afterlap.vercel.app",
+      "github_url": "https://github.com/ysnam0123/AfterLap"
+    }
+  },
+  "qa": [
+    {
+      "topic": "React Query",
+      "question": "React Query를 사용하는 이유는?",
+      "base_answer": "서버 상태 관리의 복잡성(캐싱, 로딩, 에러, 동기화)을 자동으로 처리해줍니다.",
+      "bullets": [
+        "자동 캐싱 — 같은 쿼리키의 데이터는 캐시에서 즉시 반환",
+        "staleTime / gcTime으로 캐시 전략 세밀하게 제어",
+        "isLoading, isError로 로딩·에러 상태를 별도 코드 없이 접근",
+        "enabled 옵션으로 조건부 페칭 — 필요한 시점에만 요청",
+        "refetchInterval로 실시간 데이터 자동 갱신"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "데이터 성격에 따라 캐시 전략을 세분화했습니다. 드라이버·서킷처럼 변하지 않는 데이터는 staleTime: 24h + gcTime: 24h로 재요청을 차단하고, 레이스 순위 같은 실시간 데이터는 refetchInterval: 30s로 자동 갱신했습니다. 또한 enabled 옵션으로 sessionKey가 확정됐을 때만 드라이버 데이터를 요청해 불필요한 API 호출을 방지했습니다.",
+        "code_ref": "src/hooks/drivers.ts — useDriverData (staleTime: 1h, enabled: isFetchable) / src/hooks/page/ranking.ts — useRankingData (refetchInterval: 30s) / src/hooks/useCircuit.ts — useCircuitDetailData (staleTime: 24h, gcTime: 24h) / src/hooks/result/startingGrid.ts — useStartingGridData (retry: 3)",
+        "interview_sentence": "데이터 변경 빈도에 따라 staleTime을 30초~24시간으로 다르게 설정하고, enabled 옵션으로 sessionKey가 결정된 시점에만 드라이버 데이터를 패칭해 불필요한 네트워크 요청을 줄였습니다."
+      }
+    },
+    {
+      "topic": "Next.js App Router",
+      "question": "서버 컴포넌트와 클라이언트 컴포넌트를 어떻게 구분해서 사용했나요?",
+      "base_answer": "서버 컴포넌트는 DB 접근·메타데이터 등 초기 렌더링에 필요한 작업을, 클라이언트 컴포넌트는 상호작용·상태관리가 필요한 부분을 담당합니다.",
+      "bullets": [
+        "서버 컴포넌트 — page.tsx에서 async/await로 Supabase 직접 쿼리, Promise.all 병렬 페칭",
+        "클라이언트 컴포넌트 — 'use client' 선언 후 useQuery / useState / useRouter 사용",
+        "RootLayout — 서버 컴포넌트로 메타데이터·폰트·OG 이미지 정의",
+        "Provider 패턴 — QueryClientProvider, AuthProvider를 클라이언트 컴포넌트로 래핑",
+        "initialData 패턴 — 서버에서 패칭한 데이터를 props로 전달해 클라이언트 React Query에 주입"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "홈 page.tsx를 서버 컴포넌트로 유지해 Promise.all로 liveSession, nextMeeting, driverRanking 등 5개 데이터를 병렬로 패칭한 뒤, initialData로 HomeClient에 전달했습니다. HomeClient는 'use client'로 선언해 useQuery가 초기값을 그대로 사용하다가 staleTime이 지나면 재요청합니다. 이 구조로 SSR의 빠른 초기 렌더링과 클라이언트 캐싱을 동시에 확보했습니다.",
+        "code_ref": "src/app/page.tsx — async Page() Promise.all 병렬 패칭 / src/app/components/home/HomeClient.tsx — 'use client', useHomeData({ initialData }) / src/app/Provider.tsx — 'use client' QueryClientProvider·AuthProvider 래핑 / src/app/layout.tsx — 서버 컴포넌트, export const metadata",
+        "interview_sentence": "서버 컴포넌트에서 Promise.all로 초기 데이터를 병렬 패칭해 props로 내려주고, 클라이언트 컴포넌트의 React Query initialData로 주입하는 패턴을 사용해 SSR 속도와 클라이언트 캐싱을 동시에 확보했습니다."
+      }
+    },
+    {
+      "topic": "인증 / Middleware",
+      "question": "Next.js에서 인증을 어떻게 구현했나요? Layout Shift 문제는 어떻게 해결했나요?",
+      "base_answer": "Supabase SSR 클라이언트를 미들웨어에서 사용해 쿠키 기반 토큰을 자동 갱신하고, AuthProvider에서 onAuthStateChange로 실시간 세션 상태를 관리합니다.",
+      "bullets": [
+        "middleware.ts — 모든 요청에서 Supabase SSR 클라이언트로 쿠키 토큰 자동 갱신",
+        "AuthProvider — useEffect에서 getSession()으로 초기 확인 + onAuthStateChange로 실시간 감지",
+        "Layout Shift 방지 — isLoading: true 동안 animate-pulse placeholder 렌더링",
+        "OAuth 콜백 — /auth/callback에서 세션 최대 3회 재시도, 프로필 없으면 /preference로 리다이렉트",
+        "카카오 로그인 — signInWithOAuth로 redirectTo에 현재 경로 포함해 로그인 후 원래 페이지로 복귀"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "isLoading이 true인 동안 Header의 로그인 버튼 자리에 animate-pulse 스켈레톤을 렌더링해 로그인 여부가 확정되기 전 버튼이 갑자기 나타나는 Layout Shift를 방지했습니다. 미들웨어는 쿠키 getAll/setAll을 직접 구현해 Access Token 만료 시 자동 갱신하고, OAuth 콜백에서는 세션이 바로 안 잡힐 경우를 대비해 최대 3회 재시도 로직을 추가했습니다.",
+        "code_ref": "src/middleware.ts — createServerClient, cookies getAll/setAll, supabase.auth.getUser() / src/context/AuthProvider.tsx — isLoading state, onAuthStateChange / src/app/components/common/ui/Header.tsx:100-120 — isLoading ? animate-pulse placeholder / src/app/auth/callback/page.tsx — retry loop (i < 3), profiles upsert",
+        "interview_sentence": "isLoading 상태 동안 animate-pulse 스켈레톤을 표시해 Layout Shift를 방지했고, 미들웨어에서 쿠키 기반 토큰 자동 갱신을 처리해 서버·클라이언트 양쪽에서 세션이 유지되도록 구현했습니다."
+      }
+    },
+    {
+      "topic": "Supabase",
+      "question": "Supabase를 어떻게 활용했나요? 쿼리 최적화는 어떻게 했나요?",
+      "base_answer": "Supabase를 PostgreSQL ORM으로 사용하면서 복잡한 조인 쿼리는 SQL VIEW로 추상화하고, 클라이언트/서버 클라이언트를 환경에 맞게 분리했습니다.",
+      "bullets": [
+        "SQL VIEW 활용 — v_driver_season_ranking, v_session_result, v_meeting_results 등으로 복잡한 조인을 DB 레벨에서 처리",
+        "클라이언트/서버 분리 — createBrowserClient(브라우저)와 createServerClient(SSR/API)를 환경별로 구분",
+        "Promise.all 병렬 요청 — getFavoriteData에서 driversQuery와 teamsQuery를 동시에 실행",
+        "관계 조인 — meetings.select('*, circuits(img), countries!fkey(flag)') 패턴으로 단일 쿼리",
+        "maybeSingle() — 행이 없을 때 에러 대신 null 반환으로 안전한 단일 행 조회"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "드라이버 시즌 랭킹처럼 여러 테이블을 조인해야 하는 데이터는 PostgreSQL VIEW(v_driver_season_ranking)로 미리 집계해두고 .from('v_driver_season_ranking').select('*').eq('year', year)로 단순하게 조회했습니다. 즐겨찾기는 드라이버/팀 두 테이블을 Promise.all로 동시에 쿼리해 지연 시간을 절반으로 줄였습니다.",
+        "code_ref": "src/lib/server/driverRanking.ts — .from('v_driver_season_ranking') / src/lib/server/sessionResult.ts — .from('v_session_result'), .from('v_meeting_results') / src/lib/server/favorite.ts — Promise.all([driversQuery, teamsQuery]) / src/lib/server/nextMeeting.ts — .select('*, circuits(circuit_img), countries!fkey(flag)') / src/supabase/client.ts, server.ts — 환경별 클라이언트 분리",
+        "interview_sentence": "복잡한 조인 쿼리는 PostgreSQL VIEW로 추상화해 클라이언트에서 단순 select로 호출하고, 즐겨찾기처럼 독립적인 다중 쿼리는 Promise.all로 병렬 실행해 응답 시간을 단축했습니다."
+      }
+    },
+    {
+      "topic": "BFF 패턴",
+      "question": "BFF(Backend For Frontend) 패턴을 사용한 이유와 구조를 설명해주세요.",
+      "base_answer": "외부 API 키 노출 방지와 클라이언트에서의 CORS 문제 해결, 그리고 여러 데이터 소스를 하나의 응답으로 합치기 위해 Next.js API Routes를 BFF로 활용했습니다.",
+      "bullets": [
+        "외부 API 추상화 — OpenF1 API 호출을 서버 사이드 route.ts로 감싸 클라이언트에 직접 노출하지 않음",
+        "데이터 통합 — home/route.ts에서 5개 소스를 Promise.all로 병렬 패칭해 단일 응답 반환",
+        "동적 라우트 — /api/session-result/[session_key]/route.ts로 파라미터 기반 API",
+        "입력 검증 — searchParams 누락·NaN 등을 400으로 명시적 처리",
+        "BigInt 직렬화 — JSON.stringify replacer로 BigInt를 string 변환해 직렬화 에러 방지"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "OpenF1 외부 API를 그대로 클라이언트에서 호출하면 API 구조 변경 시 전체 수정이 필요하고 CORS 이슈도 발생합니다. /api/drivers, /api/session-result 등 route.ts로 래핑해 클라이언트는 항상 내부 API만 바라보도록 했습니다. home/route.ts는 5개 Supabase 쿼리를 Promise.all로 묶어 한 번의 요청으로 홈 화면 전체 데이터를 반환합니다.",
+        "code_ref": "src/app/api/home/route.ts — Promise.all 5개 소스 통합 / src/app/api/drivers/route.ts — searchParams 검증, BigInt 직렬화 / src/app/api/session-result/[session_key]/route.ts — 동적 라우트, params Promise 해결 / src/app/api/axiosInstance.ts — OpenF1 baseURL 싱글톤",
+        "interview_sentence": "OpenF1 외부 API 호출을 Next.js route.ts로 감싸 BFF로 구성하고, 홈 화면처럼 여러 데이터 소스가 필요한 경우 Promise.all로 병렬 패칭해 단일 엔드포인트에서 응답하도록 설계했습니다."
+      }
+    },
+    {
+      "topic": "상태 관리",
+      "question": "Zustand와 Context를 어떻게 나눠 사용했나요?",
+      "base_answer": "인증처럼 컴포넌트 트리 전체에 주입되어야 하는 상태는 Context로, 사용자 선호·연도 선택처럼 로컬스토리지 영속성이 필요한 UI 상태는 Zustand로 분리했습니다.",
+      "bullets": [
+        "Context (인증) — AuthContext로 session/user/isLoading을 트리 전체에 주입",
+        "Zustand (선호도) — PreferenceStore에 persist 미들웨어로 localStorage 자동 동기화",
+        "Zustand (연도) — YearStore로 선택된 시즌 연도 전역 관리",
+        "Zustand (즐겨찾기) — useUserFavoriteStore로 로그인 후 서버 데이터를 클라이언트 전역 상태로 캐시",
+        "역할 분리 — 서버 연동 상태는 React Query, 클라이언트 UI 상태는 Zustand, 세션은 Context"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "인증 세션은 Supabase onAuthStateChange와 연동해야 해서 Context + useEffect로 관리했고, 사용자가 선택한 즐겨찾기 드라이버/팀은 Zustand에 저장해 로그인 후 서버에서 받아온 데이터를 클라이언트 전역 캐시로 유지했습니다. 사용자 선호 설정(PreferenceStore)은 persist 미들웨어로 localStorage에 자동 저장해 페이지를 새로고침해도 진행 상태가 유지됩니다.",
+        "code_ref": "src/context/AuthProvider.tsx — Context + onAuthStateChange / src/store/useUserFavoriteStore.ts — Zustand setFavorites / clearFavorites / src/store/PreferenceStore.ts — persist('preference-storage'), toggleTeam, toggleDriver / src/store/YearStore.ts — persist('grand-prix-year')",
+        "interview_sentence": "인증 세션은 Supabase 리스너와 연동이 필요해 Context로, 즐겨찾기·선호 설정처럼 페이지 이동 후에도 유지해야 하는 UI 상태는 Zustand persist로 localStorage에 동기화했습니다."
+      }
+    },
+    {
+      "topic": "TypeScript",
+      "question": "TypeScript를 어떻게 활용했나요? 타입 설계 원칙이 있나요?",
+      "base_answer": "도메인 레이어(DB 모델), 뷰 레이어(VIEW 응답), UI 레이어(컴포넌트 props)로 타입을 분리하고, 제네릭으로 React Query 반환 타입을 명시했습니다.",
+      "bullets": [
+        "도메인 타입 분리 — src/types/ 에 driver, meeting, circuit, ranking, user 도메인별 파일 구성",
+        "VIEW 전용 타입 — DriverSeasonRankingView, CircuitView 등 DB VIEW 응답에 대응하는 타입 정의",
+        "인터페이스 확장 — CircuitView extends Circuit 으로 기본 타입 재사용",
+        "Union 타입 — MeetingStatus = 'scheduled' | 'ongoing' | 'finished' 로 유한 상태 표현",
+        "제네릭 활용 — useQuery<Driver[]>, useQuery<Circuit | null> 로 반환 타입 명시"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "Supabase VIEW(v_driver_season_ranking)의 응답은 DriverSeasonRankingView, 원본 테이블 타입은 Driver로 분리해 DB 스키마 변경이 뷰 타입에만 영향을 주도록 격리했습니다. React Query 훅에서 useQuery<Driver[]>처럼 제네릭을 명시해 queryFn 반환 타입과 data 타입을 자동으로 맞추고, enabled로 null이 올 수 없는 시점을 타입 비단언(!) 없이 처리했습니다.",
+        "code_ref": "src/types/driver.ts — Driver, DriverSeasonData, DriverDetailData 계층 구조 / src/types/circuit.ts — Circuit, CircuitView extends Circuit / src/types/meeting.ts — MeetingStatus Union 타입 / src/types/Ranking.ts — DriverSeasonRankingView, RankingResponse / src/hooks/drivers.ts:7 — useQuery<Driver[]>",
+        "interview_sentence": "DB 원본 모델과 VIEW 응답 타입을 분리해 스키마 변경 영향 범위를 최소화하고, React Query 훅에 제네릭을 명시해 data 타입이 컴포넌트까지 자동으로 전파되도록 설계했습니다."
+      }
+    },
+    {
+      "topic": "성능 최적화",
+      "question": "프론트엔드 성능 최적화를 위해 어떤 작업을 했나요?",
+      "base_answer": "LCP, CLS, FID 등 Core Web Vitals 지표를 기준으로 이미지 최적화, 코드 스플리팅, 폰트 최적화, PWA 캐싱을 적용했습니다.",
+      "bullets": [
+        "next/image priority + fetchPriority='high' — LCP 대상 로고 이미지 우선 로딩",
+        "quality={50} — 드라이버 썸네일 이미지 용량 절반으로 감소",
+        "dynamic import — LoginModal을 동적 import해 초기 번들에서 분리",
+        "localFont display='swap' — 폰트 로딩 전 fallback 폰트 표시로 CLS 방지",
+        "DNS Prefetch + Preconnect — Supabase 도메인 사전 연결로 첫 쿼리 지연 감소",
+        "PWA Service Worker — Supabase API 응답을 NetworkFirst 전략으로 1시간 캐시"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "Lighthouse 점수를 개선하면서 LCP를 낮추기 위해 헤더 로고에 priority + fetchPriority='high'를 적용했고, 드라이버 헤드샷은 quality={50}으로 이미지 크기를 절반으로 줄였습니다. LoginModal은 로그인 버튼 클릭 시에만 필요하므로 dynamic import로 코드 스플리팅해 초기 JS 번들을 감소시켰습니다. 폰트는 localFont + display='swap'으로 FOIT를 방지했습니다.",
+        "code_ref": "src/app/components/common/ui/Header.tsx — <Image priority fetchPriority='high' /> / src/app/components/home/DriverStandings.tsx — <Image quality={50} priority /> / src/app/layout.tsx:15-58 — localFont display='swap' / src/app/layout.tsx:100-108 — preconnect, dns-prefetch / next.config.ts — withPWA runtimeCaching NetworkFirst / dynamic(() => import('LoginModal'))",
+        "interview_sentence": "LCP 개선을 위해 로고 이미지에 fetchPriority='high'를 적용하고, 드라이버 썸네일은 quality={50}으로 최적화했으며, LoginModal은 dynamic import로 초기 번들에서 분리해 Lighthouse 성능 점수를 높였습니다."
+      }
+    },
+    {
+      "topic": "에러 처리",
+      "question": "에러 처리 전략은 어떻게 설계했나요?",
+      "base_answer": "레이어별로 에러 처리를 분리해 DB 레이어는 throw로 전파, API 라우트는 try/catch로 포착해 HTTP 상태 코드와 함께 반환, 외부 API는 isAxiosError로 타입 가드 후 fallback 반환합니다.",
+      "bullets": [
+        "계층형 에러 전파 — DB 함수에서 if(error) throw error로 상위 레이어에 전파",
+        "HTTP 상태 코드 명시 — 400(잘못된 파라미터), 500(서버 에러)를 명확히 구분",
+        "axios.isAxiosError 타입 가드 — 401이면 빈 배열 반환, 다른 에러는 로그 후 fallback",
+        "특정 에러 코드 처리 — PGRST116(행 없음)은 null 반환, 나머지는 throw",
+        "재시도 로직 — OAuth 콜백에서 세션 획득 실패 시 최대 3회 재시도 후 에러 페이지로 리다이렉트"
+      ],
+      "project_experience": {
+        "project": "AfterLap",
+        "summary": "OpenF1 외부 API가 경우에 따라 401을 반환할 때 axios.isAxiosError로 타입을 좁혀 401이면 빈 배열을 반환해 앱이 중단되지 않도록 처리했습니다. Supabase getLiveSession에서는 PGRST116(결과 없음) 에러만 null로 처리하고 나머지는 throw해 예상치 못한 DB 에러를 상위로 전파했습니다. OAuth 콜백은 세션 지연을 고려해 300ms 간격으로 최대 3회 재시도하고 실패 시 /login?error=session으로 사용자를 안내했습니다.",
+        "code_ref": "src/lib/api/external/raceResult.ts — axios.isAxiosError, 401 처리 / src/lib/server/liveSession.ts — error.code === 'PGRST116' null 반환 / src/app/api/drivers/route.ts — 400/500 분기, try/catch / src/app/auth/callback/page.tsx — retry loop (i < 3), router.replace('/login?error=session')",
+        "interview_sentence": "외부 API 에러는 isAxiosError 타입 가드로 HTTP 상태별 분기 처리하고, Supabase 에러는 PGRST116처럼 예상 가능한 에러만 null로 흡수해 나머지는 상위로 전파하는 계층형 에러 전략을 사용했습니다."
+      }
+    }
+  ]
+}
