@@ -43,6 +43,30 @@ AfterLap은 **레이스 흐름을 한 화면에서 파악**할 수 있도록 설
 
 ---
 
+```mermaid
+flowchart TD
+    A[사용자 브라우저] -->|데이터 요청| B[Next.js BFF\nroute.ts]
+
+    B -->|1순위: 캐시 확인| C[(Supabase DB)]
+
+    C -->|캐시 HIT| G[데이터 반환]
+    C -->|캐시 MISS| D[외부 F1 API\nJolpica API]
+
+    D -->|응답 성공| E[Supabase Upsert\n캐시 갱신]
+    D -->|응답 실패| F[최대 3회 재시도\nEnsure Pattern]
+
+    E --> G
+    F -->|재시도 성공| E
+    F -->|최종 실패| H[에러 처리]
+
+    G --> A
+
+    style B fill:#1D9E75,color:#fff
+    style C fill:#185FA5,color:#fff
+    style D fill:#854F0B,color:#fff
+    style F fill:#A32D2D,color:#fff
+```
+
 ## 🖼️ Preview
 <img width="200" height="666" alt="전체 요약1" src="https://github.com/user-attachments/assets/ce395b4f-b31f-4d7a-825f-3e3b87941c21" />
 <img width="200" height="666" alt="전체 요약2" src="https://github.com/user-attachments/assets/f374ca9b-8624-4a67-904a-b9568532da6b" />
