@@ -53,10 +53,11 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
                     src={item.headshot_url}
                     width={46}
                     height={46}
-                    className="object-fill"
+                    className="w-full object-cover"
+                    style={{ height: 'auto' }}
                     alt="driver"
                     priority
-                    quality={50}
+                    quality={65}
                   />
                 </div>
                 <div className="flex flex-col md:flex-row">

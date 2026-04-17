@@ -17,7 +17,7 @@ export function CircuitCard({ data, idx }: CircuitProps) {
             width={37}
             height={22}
             className="aspect-37/22 h-auto w-7 sm:w-9"
-            quality={70}
+            quality={65}
           />
         </div>
         <div className="min-w-0">

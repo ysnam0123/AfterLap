@@ -43,11 +43,12 @@ export default function ConstructorStandings({ data }: TS) {
 
               {/* Team */}
               <div className="flex cursor-pointer items-center gap-3 py-2">
-                <div className="relative h-8 w-14 sm:h-9 sm:w-16">
+                <div className="relative h-9 w-16">
                   <Image
                     src={item.small_logo}
                     alt="team logo"
                     fill
+                    sizes="60px"
                     className="object-contain"
                   />
                 </div>

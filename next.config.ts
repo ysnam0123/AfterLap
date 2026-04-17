@@ -3,8 +3,6 @@ import type { NextConfig } from 'next';
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
-  // 캐시 지옥의 핵심
-  // URL 요청이 발생하면, Service Worker가 어떻게 응답할지 정의
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/.*\.supabase\.co\/rest\/v1\/.*$/,
@@ -23,6 +21,9 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
+    qualities: [25, 65, 80, 90],
+    formats: ['image/avif', 'image/webp'],
+
     remotePatterns: [
       { protocol: 'https', hostname: 'i.ytimg.com' },
       { protocol: 'https', hostname: 'media.formula1.com' },
@@ -33,18 +34,5 @@ const nextConfig: NextConfig = {
     ],
   },
 };
-
-// const nextConfig: NextConfig = {
-//   reactStrictMode: true,
-//   images: {
-//     domains: [
-//       'i.ytimg.com',
-//       'media.formula1.com',
-//       'www.formula1.com',
-//       'axykebsdqztifmbbluzg.supabase.co',
-//       'k.kakaocdn.net',
-//     ],
-//   },
-// };
 
 export default withPWA(nextConfig);
