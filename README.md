@@ -50,7 +50,7 @@ flowchart TD
     B -->|1순위: 캐시 확인| C[(Supabase DB)]
 
     C -->|캐시 HIT| G[데이터 반환]
-    C -->|캐시 MISS| D[외부 F1 API\nJolpica API]
+    C -->|캐시 MISS| D[외부 F1 API]
 
     D -->|응답 성공| E[Supabase Upsert\n캐시 갱신]
     D -->|응답 실패| F[최대 3회 재시도\nEnsure Pattern]
