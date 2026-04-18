@@ -8,7 +8,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="mx-auto w-full px-5 sm:px-10 md:px-15">
+      <div className="mx-auto min-h-screen w-full px-5 sm:px-10 md:px-15">
         <h1 className="font-paper mb-5 text-[20px] font-semibold sm:mb-0 sm:pb-10">
           2026 시즌 드라이버
         </h1>

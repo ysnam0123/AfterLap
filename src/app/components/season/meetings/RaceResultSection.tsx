@@ -5,7 +5,7 @@ import StartingGridTable from './table/StartingGridTable';
 import Summary from './statstics/summary/Summary';
 import Position from './statstics/Position';
 import PitStop from './statstics/PitStop';
-import Events from './statstics/Events';
+import TireStrategy from './statstics/TireStrategy';
 import { useState } from 'react';
 import { useRaceResultData } from '@/hooks/result/raceResult';
 import RaceTabs from '../../mobile/meeting/RaceTabs';
@@ -93,8 +93,9 @@ export default function RaceResultSection({
     ),
     '포지션 변동': <Position year={year} positionGain={positionData ?? []} />,
     '피트 스탑': <PitStop year={year} pit={driverPitData ?? []} />,
-    // 이벤트: <Events />,
-    '타이어 전략': <Events />,
+    '타이어 전략': (
+      <TireStrategy stints={stintsData ?? []} totalLaps={totalLaps ?? 0} />
+    ),
   };
 
   return (

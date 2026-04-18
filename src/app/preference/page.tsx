@@ -22,7 +22,7 @@ export default function Page() {
   };
 
   return (
-    <section className="mx-auto flex flex-col gap-4 px-5 pb-24 select-none">
+    <section className="mx-auto flex min-h-screen flex-col gap-4 px-5 pb-24 select-none">
       <button
         onClick={handleBack}
         className="btn-interaction inline-flex max-w-30 cursor-pointer items-center gap-2 rounded-md border border-(--color-button-border) bg-(--color-button-bg) px-3 py-1.5 text-[14px] font-medium text-gray-300"

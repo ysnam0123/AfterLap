@@ -147,6 +147,16 @@ export interface Stints {
   tyre_age_at_start: number;
 }
 
+/** v_stints_with_driver 뷰 결과: 드라이버/팀 정보가 JOIN된 stint */
+export interface StintsWithDriver extends Stints {
+  full_name: string;
+  broadcast_name: string;
+  name_acronym: string;
+  team_name: string;
+  team_colour: string;
+  headshot_url: string;
+}
+
 export interface WeatherSessionSummary {
   meeting_key: number;
   session_key: number;

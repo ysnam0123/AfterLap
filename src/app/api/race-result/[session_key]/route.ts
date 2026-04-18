@@ -19,7 +19,7 @@ import {
   DriverPositionGain,
   PitView,
   // RaceControl,
-  Stints,
+  StintsWithDriver,
   TeamPitStopRow,
   WeatherSessionSummary,
 } from '@/types/raceResult';
@@ -30,7 +30,7 @@ export type RaceResultResponse = {
   positionData: DriverPositionGain[];
   weatherData: WeatherSessionSummary;
   // raceControlData: RaceControl[];
-  stintsData: Stints[];
+  stintsData: StintsWithDriver[];
 };
 
 export async function GET(
