@@ -2,6 +2,7 @@
 import { ChevronDown } from 'lucide-react';
 import AnimatedContent from '@/components/AnimatedContent';
 import { twMerge } from 'tailwind-merge';
+import { motion } from 'framer-motion';
 
 export default function SeasonChangeButton({
   opened,
@@ -21,18 +22,20 @@ export default function SeasonChangeButton({
   return (
     <>
       <div className="relative z-30">
-        <button
+        <motion.button
           onClick={() => setOpenedAction(!opened)}
           className={twMerge(
             `mb-2.5 flex h-8 w-21 cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white/10 bg-(--color-box-bg) text-[14px] font-bold sm:mb-10 sm:h-12.5 sm:w-36 sm:text-[20px] sm:hover:bg-[#4b4b4b]`,
             className,
           )}
+          whileTap={{ scale: 0.93 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         >
           <span>{selectedYear}</span>
           <ChevronDown
             className={`h-4.5 w-4.5 transition-transform sm:h-6 sm:w-6 ${opened ? 'rotate-180' : ''}`}
           />
-        </button>
+        </motion.button>
         {opened && (
           <AnimatedContent
             distance={3}

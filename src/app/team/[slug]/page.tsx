@@ -56,7 +56,7 @@ export default function Page() {
 
   console.log(teamDetailData);
   return (
-    <>
+    <div className="min-h-screen">
       {teamDetailLoading && (
         <div className="flex h-100 items-center justify-center">
           <F1Loading loadingText="팀 정보 불러오는 중..." />
@@ -119,7 +119,7 @@ export default function Page() {
           <TeamPerformanceTable data={performanceWithCumulative} />
         </div>
       )}
-    </>
+    </div>
   );
 }
 

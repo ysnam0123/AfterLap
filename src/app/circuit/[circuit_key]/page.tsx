@@ -11,7 +11,7 @@ export default function CircuitDetailPage() {
     useCircuitDetailData(Number(params.circuit_key));
   console.log(circuitDetail);
   return (
-    <main className="mx-auto px-5 pt-5 text-white sm:px-10 md:px-20">
+    <main className="mx-auto min-h-screen px-5 pt-5 text-white sm:px-10 md:px-20">
       {circuitLoading && (
         <div className="flex h-100 items-center justify-center sm:h-100">
           <F1Loading loadingText="서킷 로딩 중..." />

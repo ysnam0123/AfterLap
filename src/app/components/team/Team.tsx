@@ -3,6 +3,7 @@ import { Team2026 } from '@/images/team';
 import { Users } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 interface NewTeamProps {
   team: Team2026;
@@ -12,9 +13,16 @@ export default function Team({ team }: NewTeamProps) {
   const router = useRouter();
   return (
     <>
-      <div
+      <motion.div
         onClick={() => router.push(`/team/${team.team_slug}`)}
-        className="relative cursor-pointer overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 transition-all duration-300 hover:border-zinc-700"
+        className="relative cursor-pointer overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 p-6"
+        whileHover={{
+          scale: 1.02,
+          boxShadow: `0 0 28px ${team.team_colour}44`,
+          borderColor: team.team_colour,
+        }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: 'spring', stiffness: 280, damping: 22 }}
       >
         <div
           className="absolute top-0 right-0 left-0 h-1"
@@ -46,6 +54,7 @@ export default function Team({ team }: NewTeamProps) {
           alt={`${team.team_name} car`}
           width={360}
           height={40}
+          sizes="(min-width: 1280px) 360px, (min-width: 1024px) 300px, (min-width: 640px) 260px, 220px"
           className="mb-4 w-55 sm:block sm:w-65 lg:w-75 xl:w-90"
           priority
         />
@@ -82,7 +91,7 @@ export default function Team({ team }: NewTeamProps) {
         <div className="z-20 flex items-center">
           <div className="flex gap-20"></div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

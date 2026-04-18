@@ -65,10 +65,114 @@
   --article-content: #777777;
 }
 
-/* 
+/* ── Light Mode ──────────────────────────────────────────── */
+.light {
+  /* 색상 */
+  --color-bg-primary: #f4f4f5;
+  /* accent */
+  --color-accent: #d80003;
+  --color-accent-soft: rgba(216, 0, 3, 0.12);
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+
+  /* base text */
+  --color-text: #18181b;
+  --color-muted: rgba(0, 0, 0, 0.55);
+
+  /* surfaces */
+  --color-main-black: #ffffff;
+  --color-box-bg: #ffffff;
+  --color-box-selected: #e4e4e7;
+  --color-box-hover: #f1f1f3;
+  --color-box-active: #e8e8ec;
+  --color-box-border: #d4d4d8;
+
+  /* strokes */
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-placeholder: rgba(0, 0, 0, 0.36);
+
+  /* table */
+  --color-table-bg: #ffffff;
+  --color-table-border: rgba(0, 0, 0, 0.08);
+  --color-table-hover: #f4f4f5;
+
+  /* card */
+  --color-card-bg: #ffffff;
+  --color-card-border: rgba(0, 0, 0, 0.1);
+  --color-card-hover: #f1f1f3;
+
+  /* button */
+  --color-button-bg: #ffffff;
+  --color-button-border: #d4d4d8;
+  --color-button-hover: #f4f4f5;
+  --color-button-active: #e4e4e7;
+
+  /* 텍스트 */
+  --color-title: rgba(0, 0, 0, 0.9);
+  --color-title-hover: #000000;
+  --color-sub-text: rgba(0, 0, 0, 0.55);
+
+  /* 테이블 */
+  --color-table-head-bg: #f4f4f5;
+
+  /* 그림자 */
+  --shadow-soft:
+    0 1px 0 rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-strong:
+    0 2px 0 rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-focus: 0 0 0 3px var(--color-accent-soft);
+  --shadow-mobile: 0 1px 10px rgba(0, 0, 0, 0.1);
+
+  /* 아티클 */
+  --article-title: #d4d4d8;
+  --article-content: #a1a1aa;
+}
+
+/* ── Dark Mode (기본값 유지) ───────────────────────────────── */
+.dark {
+  --color-bg-primary: #0b0b0b;
+  --color-accent: #d80003;
+  --color-accent-soft: rgba(216, 0, 3, 0.18);
+  --color-success: #22c55e;
+  --color-warning: #fbbf24;
+  --color-text: #eaeaea;
+  --color-muted: rgba(255, 255, 255, 0.66);
+  --color-main-black: #0f0f10;
+  --color-box-bg: #171717;
+  --color-box-selected: #2d2d2d;
+  --color-box-hover: #18181b;
+  --color-box-active: #141418;
+  --color-box-border: #2e2e2e;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-placeholder: rgba(255, 255, 255, 0.48);
+  --color-table-bg: #121214;
+  --color-table-border: rgba(255, 255, 255, 0.12);
+  --color-table-hover: #1a1a1f;
+  --color-card-bg: #121214;
+  --color-card-border: rgba(255, 255, 255, 0.12);
+  --color-card-hover: #18181b;
+  --color-button-bg: #171717;
+  --color-button-border: #2e2e2e;
+  --color-button-hover: #23232a;
+  --color-button-active: #1c1c22;
+  --color-title: rgba(255, 255, 255, 0.92);
+  --color-title-hover: #ffffff;
+  --color-sub-text: rgba(255, 255, 255, 0.64);
+  --color-table-head-bg: #0f0f12;
+  --shadow-soft:
+    0 1px 0 rgba(255, 255, 255, 0.04), 0 12px 28px rgba(0, 0, 0, 0.55);
+  --shadow-strong:
+    0 2px 0 rgba(255, 255, 255, 0.06), 0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-focus: 0 0 0 3px var(--color-accent-soft);
+  --shadow-mobile: 0 1px 18px rgba(0, 0, 0, 0.5);
+  --article-title: #3b3b3b;
+  --article-content: #777777;
+}
+
+/*
 - sm: 640px
 - md: 768px
 - lg: 1024px
 - xl: 1280px
-- 2xl: 1536px 
+- 2xl: 1536px
 */

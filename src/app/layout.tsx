@@ -96,6 +96,7 @@ export default function RootLayout({
     <html
       lang="ko"
       className={`${riaSans.variable} ${paperlogy.variable} ${pretendard.variable}`}
+      suppressHydrationWarning
     >
       <head>
         <link
@@ -152,7 +153,7 @@ export default function RootLayout({
           media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
         />
       </head>
-      <body className="bg-(--color-bg-primary) text-white">
+      <body className="bg-(--color-bg-primary) text-(--color-text) transition-colors duration-300">
         <Provider>
           <LayoutWrapper>{children}</LayoutWrapper>
         </Provider>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { Team2026, teamDriver } from '@/images/team';
+import { motion } from 'framer-motion';
 
 export default function SeasonDriverCard({
   driver,
@@ -15,10 +16,16 @@ export default function SeasonDriverCard({
 }) {
   const router = useRouter();
   return (
-    <div
+    <motion.div
       onClick={() => router.push(`/driver/${driver.driver_id}`)}
       style={{ borderColor: teamData.team_colour }}
       className={`group relative h-50 w-full cursor-pointer overflow-hidden rounded-[10px] border px-4 py-3 select-none sm:h-55 sm:px-5 sm:py-5`}
+      whileHover={{
+        scale: 1.03,
+        boxShadow: `0 0 22px ${teamData.team_colour}55`,
+      }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <Image
         src="/cardBg.png"
@@ -60,6 +67,7 @@ export default function SeasonDriverCard({
               alt="driver"
               width={140}
               height={140}
+              sizes="(min-width: 1024px) 140px, (min-width: 640px) 140px, 40vw"
               className="z-10"
               priority
             />
@@ -69,11 +77,12 @@ export default function SeasonDriverCard({
               alt="driver"
               width={160}
               height={160}
+              sizes="(min-width: 1024px) 160px, (min-width: 640px) 160px, 40vw"
               className="z-10"
             />
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

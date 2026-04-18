@@ -9,6 +9,7 @@ import DriverBox from './dropdown/DriverBox';
 import { ChevronDown, ChevronLeft } from 'lucide-react';
 import { useAuth } from '@/context/useAuth';
 import UserProfile from '../../Auth/UserProfile';
+import ThemeToggle from '../../common/ThemeToggle';
 
 const LoginModal = dynamic(() => import('../../Auth/LoginModal'));
 export default function Header() {
@@ -97,27 +98,29 @@ export default function Header() {
               </li>
             </ul>
           </div>
-          {isLoading ? (
-            <div className="ml-auto h-6.5 w-6.5 animate-pulse rounded-full bg-gray-700" />
-          ) : !user ? (
-            <button
-              className="btn-interaction ml-auto flex cursor-pointer items-center justify-center rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-4 py-2"
-              onClick={() => setLoginOpen(true)}
-            >
-              로그인
-            </button>
-          ) : (
-            <UserProfile
-              userData={{
-                name:
-                  user.user_metadata?.full_name ??
-                  user.user_metadata?.name ??
-                  '익명',
-                avatar: user.user_metadata?.avatar_url ?? '',
-              }}
-              className="ml-auto"
-            />
-          )}
+          <div className="ml-auto flex items-center gap-2">
+            <ThemeToggle />
+            {isLoading ? (
+              <div className="h-6.5 w-6.5 animate-pulse rounded-full bg-gray-700" />
+            ) : !user ? (
+              <button
+                className="btn-interaction flex cursor-pointer items-center justify-center rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-4 py-2"
+                onClick={() => setLoginOpen(true)}
+              >
+                로그인
+              </button>
+            ) : (
+              <UserProfile
+                userData={{
+                  name:
+                    user.user_metadata?.full_name ??
+                    user.user_metadata?.name ??
+                    '익명',
+                  avatar: user.user_metadata?.avatar_url ?? '',
+                }}
+              />
+            )}
+          </div>
           {openTeam && <TeamBox onMouseLeave={() => setOpenTeam(false)} />}
           {openDriver && (
             <DriverBox

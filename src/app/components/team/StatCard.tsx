@@ -1,4 +1,7 @@
+'use client';
+
 import { useState } from 'react';
+import CountUp from '@/app/components/common/CountUp';
 
 interface StatCardProps {
   label: string;
@@ -24,7 +27,11 @@ export function StatCard({ label, value, teamColor }: StatCardProps) {
           {label}
         </p>
         <p className="text-[20px] font-semibold tracking-tight sm:text-3xl">
-          {value}
+          {typeof value === 'number' ? (
+            <CountUp value={value} />
+          ) : (
+            value
+          )}
         </p>
       </div>
     </div>

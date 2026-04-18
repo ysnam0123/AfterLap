@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 interface PageProps {
   userData: UIUser;
-  className: string;
+  className?: string;
 }
 
 export default function UserProfile({ userData, className }: PageProps) {

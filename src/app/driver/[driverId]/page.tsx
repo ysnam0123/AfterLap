@@ -2,6 +2,7 @@
 import DriverHero from '@/app/components/driver/DriverHero';
 import { DriverPerformance } from '@/app/components/driver/DriverPerformance';
 import DriverStats from '@/app/components/driver/DriverStats';
+import DriverDetailSkeleton from '@/app/components/driver/skeleton/DriverDetailSkeleton';
 import { useDriverDetailData } from '@/hooks/detailPage/DriverDetail';
 import { useParams } from 'next/navigation';
 import { useMemo, useState } from 'react';
@@ -26,7 +27,8 @@ export default function Page() {
     [driverDetailData?.seasons],
   );
   return (
-    <>
+    <div className="min-h-screen">
+      {driverDetailLoading && <DriverDetailSkeleton />}
       {!driverDetailLoading && seasonData && driverDetailData && (
         <div className="mx-auto w-full px-5 sm:px-15 md:px-20 lg:px-40">
           <DriverHero
@@ -45,6 +47,6 @@ export default function Page() {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
