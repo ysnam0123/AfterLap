@@ -8,7 +8,7 @@ interface CircuitProps {
 
 export function CircuitCard({ data, idx }: CircuitProps) {
   return (
-    <div className="flex h-15 cursor-pointer items-center justify-between rounded-2xl border border-(--color-card-border) bg-(--color-card-bg) px-5 py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:h-25">
+    <div className="flex h-15 cursor-pointer items-center justify-between rounded-2xl border border-(--color-card-border) bg-(--color-card-dark-bg) px-5 py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:h-25">
       <div className="flex min-w-0 flex-1 items-center gap-2">
         <div className="flex h-8 w-10 shrink-0 items-center justify-center rounded-sm border border-(--color-box-border) bg-(--color-box-bg) text-xs sm:h-10 sm:w-11.25">
           <Image

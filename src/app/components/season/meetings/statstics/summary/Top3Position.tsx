@@ -15,7 +15,7 @@ export default function Top3Position({
         <div className="mb-4 flex items-center justify-between text-(--color-sub-text)">
           <h1 className="text-gray-420 flex items-center gap-1">
             <Image
-              src="/icons/graph.svg"
+              src="/icons/graph.webp"
               alt="icon"
               width={28}
               height={28}
@@ -23,7 +23,7 @@ export default function Top3Position({
               priority
             />
             <Image
-              src="/icons/graph.svg"
+              src="/icons/graph.webp"
               alt="icon"
               width={20}
               height={20}

@@ -17,9 +17,9 @@ export default function DriverRankingTable({
 
   return (
     <>
-      <table className="w-full table-fixed border-collapse text-left whitespace-nowrap select-none">
+      <table className="w-full table-fixed border-collapse bg-(--color-table-bg) text-left whitespace-nowrap select-none">
         <thead className="bg-(--color-table-head-bg)">
-          <tr className="border-b border-white text-[13px] text-[#8B8B8B] sm:text-[18px]">
+          <tr className="border-b border-(--color-table-border) text-[13px] sm:text-[18px]">
             <th className="w-[4%] py-3 text-center sm:w-[8%]">순위</th>
 
             <th className="w-[18%] py-3 sm:w-[20%]">드라이버</th>
@@ -43,11 +43,11 @@ export default function DriverRankingTable({
             <th className="w-[5%] py-3 sm:w-[10%]">포인트</th>
           </tr>
         </thead>
-        <tbody className="bg-[#000000]">
+        <tbody className="">
           {results.map((result) => (
             <tr
               key={`${result.driver_number}`}
-              className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
+              className="border-b border-(--color-table-border) text-[16px] hover:bg-(--color-table-hover)"
             >
               <td className="font-pretendard px-2 py-3 text-center text-[14px] font-semibold sm:text-[18px]">
                 {result.rank}

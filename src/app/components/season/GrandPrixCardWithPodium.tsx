@@ -47,7 +47,7 @@ export default function GrandPrixCardWithPodium({
     <>
       <div
         onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex min-h-45.5 w-full cursor-pointer flex-col justify-between rounded-[12px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong)"
+        className="flex min-h-37.5 w-full cursor-pointer flex-col justify-between rounded-[12px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:min-h-48"
       >
         <div className="mb-2.5 flex items-center justify-between sm:mb-5">
           <div className="flex flex-col gap-3">
@@ -64,9 +64,7 @@ export default function GrandPrixCardWithPodium({
                 className="rounded-full object-contain"
                 priority
               />
-              <p className="text-[20px] text-white">
-                {meetingInfo.country_kr_name}
-              </p>
+              <p className="text-[20px]">{meetingInfo.country_kr_name}</p>
             </div>
           </div>
           <div className="flex shrink-0 flex-col items-end gap-0.5 text-[12px]">

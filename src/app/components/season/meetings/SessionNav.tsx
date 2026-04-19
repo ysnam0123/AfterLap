@@ -34,8 +34,8 @@ export default function SessionNav({
                   }}
                   className={`btn-interaction flex h-10 items-center justify-center gap-1 truncate rounded-[10px] px-4 text-[13px] font-semibold transition sm:h-12 sm:text-[18px] ${
                     isActive
-                      ? 'border-b-2 border-[#D80003] bg-(--color-box-selected) text-white shadow-(--shadow-soft)'
-                      : 'border border-(--color-box-border) bg-(--color-button-bg) text-(--color-title) hover:bg-(--color-button-hover)'
+                      ? 'border-b-4 border-[#D80003] bg-(--color-box-selected) shadow-(--shadow-soft)'
+                      : 'border border-(--color-box-border) bg-(--color-button-bg) hover:bg-(--color-button-hover)'
                   } ${!isFinished ? 'opacity-70' : ''} cursor-pointer`}
                 >
                   {session.session_name}

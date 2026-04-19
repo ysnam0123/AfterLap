@@ -28,13 +28,10 @@ export default function SelectDriver() {
     // 팀
     await supabase.from('user_favorite_teams').delete().eq('user_id', user.id);
 
-    const { data: teamInsert, error: teamInsertError } = await supabase
+    const { error: teamInsertError } = await supabase
       .from('user_favorite_teams')
       .insert(teams);
 
-    if (teamInsert) {
-      console.log('팀 입력', teamInsert);
-    }
     if (teamInsertError) {
       console.error('팀 입력 실패:', teamInsertError);
       return;
@@ -46,13 +43,10 @@ export default function SelectDriver() {
       .delete()
       .eq('user_id', user.id);
 
-    const { data: driverInsert, error: driverInsertError } = await supabase
+    const { error: driverInsertError } = await supabase
       .from('user_favorite_drivers')
       .insert(drivers);
 
-    if (driverInsert) {
-      console.log('팀 입력', driverInsert);
-    }
     if (driverInsertError) {
       console.error('팀 입력 실패:', driverInsertError);
       return;

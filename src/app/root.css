@@ -7,6 +7,10 @@
   --color-success: #22c55e;
   --color-warning: #fbbf24;
 
+  /* 모바일 푸터 */
+  --color-mobile: #4a4a4a;
+  --color-mobile-selected: #ffffff;
+
   /* base text */
   --color-text: #eaeaea;
   --color-muted: rgba(255, 255, 255, 0.66);
@@ -14,6 +18,7 @@
   /* surfaces */
   --color-main-black: #0f0f10;
   --color-box-bg: #171717;
+  --color-box-dark-bg: #171717;
   --color-box-selected: #2d2d2d;
   --color-box-hover: #18181b;
   --color-box-active: #141418;
@@ -32,9 +37,11 @@
   --color-card-bg: #121214;
   --color-card-border: rgba(255, 255, 255, 0.12);
   --color-card-hover: #18181b;
+  --color-card-dark-bg: #121214;
 
   /* button */
   --color-button-bg: #171717;
+  --color-button-selected: #252525;
   --color-button-border: #2e2e2e;
   --color-button-hover: #23232a;
   --color-button-active: #1c1c22;
@@ -75,6 +82,10 @@
   --color-success: #16a34a;
   --color-warning: #d97706;
 
+  /* 모바일 푸터 */
+  --color-mobile: #a7a7a7;
+  --color-mobile-selected: #0f0f10;
+
   /* base text */
   --color-text: #18181b;
   --color-muted: rgba(0, 0, 0, 0.55);
@@ -86,6 +97,7 @@
   --color-box-hover: #f1f1f3;
   --color-box-active: #e8e8ec;
   --color-box-border: #d4d4d8;
+  --color-box-dark-bg: #cecece;
 
   /* strokes */
   --color-border: rgba(0, 0, 0, 0.12);
@@ -100,9 +112,11 @@
   --color-card-bg: #ffffff;
   --color-card-border: rgba(0, 0, 0, 0.1);
   --color-card-hover: #f1f1f3;
+  --color-card-dark-bg: #cecece;
 
   /* button */
   --color-button-bg: #ffffff;
+  --color-button-selected: #ececec;
   --color-button-border: #d4d4d8;
   --color-button-hover: #f4f4f5;
   --color-button-active: #e4e4e7;
@@ -116,10 +130,8 @@
   --color-table-head-bg: #f4f4f5;
 
   /* 그림자 */
-  --shadow-soft:
-    0 1px 0 rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-strong:
-    0 2px 0 rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 1px 0 rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 2px 0 rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-focus: 0 0 0 3px var(--color-accent-soft);
   --shadow-mobile: 0 1px 10px rgba(0, 0, 0, 0.1);
 

@@ -17,21 +17,5 @@ export async function findDriverInfo(meetingKey: number, driverNumber: number) {
   if (error) {
     console.error('드라이버 정보 찾기 실패', error);
   }
-  console.log('드라이버 정보 찾기 성공:', data);
   return data;
 }
-
-// const { data } = await supabase
-//   .from('drivers')
-//   .select(`
-//     driver_number,
-//     full_name,
-//     teams (
-//       team_name
-//     ),
-//     countries (
-//       country_kr_name,
-//       flag
-//     )
-//   `)
-//   .eq('meeting_key', meetingKey);

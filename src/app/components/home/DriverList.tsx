@@ -20,7 +20,10 @@ export default function DriverList() {
                 className="flex shrink-0 flex-col items-center gap-2 transition active:scale-95 active:opacity-80"
                 onClick={() => router.push(`/driver/${driver.driver_id}`)}
               >
-                <div className="flex cursor-pointer flex-col items-center justify-center rounded-[6px] border border-(--color-card-border) bg-(--color-card-bg) p-2.5">
+                <div
+                  style={{ backgroundColor: team.team_colour }}
+                  className="flex cursor-pointer flex-col items-center justify-center rounded-[6px] border border-(--color-card-border) p-2.5"
+                >
                   <Image
                     src={driver.headshot}
                     alt="driver"
@@ -31,9 +34,7 @@ export default function DriverList() {
                   />
                 </div>
 
-                <h1 className="text-[13px] font-semibold text-[#b5b5b5]">
-                  {driver.kr_name}
-                </h1>
+                <h1 className="text-[13px] font-semibold">{driver.kr_name}</h1>
               </div>
             );
           }),

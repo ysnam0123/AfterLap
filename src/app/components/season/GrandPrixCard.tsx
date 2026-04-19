@@ -33,7 +33,7 @@ export default function GrandPrixCard({ meetingInfo }: GrandPrixCardProps) {
     <>
       <div
         onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex w-full cursor-pointer flex-col rounded-[10px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong)"
+        className="flex min-h-37.5 w-full cursor-pointer flex-col rounded-[10px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:h-48"
       >
         <p className="mb-2 text-[10px] text-[#8B8B8B] sm:text-[12px]">
           {meetingInfo.meeting_official_name}
@@ -50,7 +50,7 @@ export default function GrandPrixCard({ meetingInfo }: GrandPrixCardProps) {
                   className="rounded-[3px] object-contain"
                   priority
                 />
-                <p className="text-[16px] text-white sm:text-[20px]">
+                <p className="text-[16px] font-bold sm:text-[20px]">
                   {meetingInfo.country_kr_name}
                 </p>
                 <span>{krStatus()}</span>
@@ -64,7 +64,7 @@ export default function GrandPrixCard({ meetingInfo }: GrandPrixCardProps) {
               <span>- 라운드</span>
             </p>
           </div>
-          <div className="rounded-xl border border-(--color-box-border) bg-(--color-box-bg) px-2.5 py-1">
+          <div className="rounded-xl border border-(--color-box-border) bg-(--color-box-dark-bg) px-2.5 py-1">
             <Image
               src={meetingInfo.circuit_img}
               alt="img"

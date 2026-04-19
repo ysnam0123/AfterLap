@@ -5,7 +5,6 @@ import DriverProfile from './DriverProfile';
 import DefaultDriverProfile from './DefaultDriverProfile';
 import { useRouter } from 'next/navigation';
 import { findHeadshot } from '@/utils/findHeadShot';
-import LogoLoading from '../../common/LogoLoading';
 
 export default function SessionResultSection({
   sessionResults,
@@ -51,7 +50,7 @@ export default function SessionResultSection({
       {!isPending && sessionResults.length > 0 && (
         <table className="mt-3 w-full table-fixed border-collapse select-none">
           <thead className="bg-(--color-table-head-bg)">
-            <tr className="border-b border-[#1C1A1D] text-[14px] text-[#8B8B8B] sm:text-[20px]">
+            <tr className="border-b border-[#1C1A1D] text-[14px] sm:text-[20px]">
               <th className="w-[10%] shrink-0 px-4 py-3 sm:w-[10%]">등수</th>
               <th className="w-[30%] py-3 text-left sm:w-[30%]">이름</th>
               {/* 768 px 이상에서 보임 */}
@@ -63,11 +62,11 @@ export default function SessionResultSection({
               <th className="w-[15%] py-3">시간</th>
             </tr>
           </thead>
-          <tbody className="bg-[#000000]">
+          <tbody className="bg-(--color-table-bg)">
             {processedResults.map((result) => (
               <tr
                 key={result.driver_number}
-                className="border-b border-[#2A2A2A] hover:bg-[#1a1a1a]"
+                className="border-b border-(--color-table-border) hover:bg-(--color-table-hover)"
               >
                 <td className="font-paper py-3 text-center text-[14px] font-semibold sm:text-[22px]">
                   {result.displayPosition}

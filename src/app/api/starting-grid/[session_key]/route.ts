@@ -11,7 +11,6 @@ export async function GET(
   try {
     const session_key = await params;
     const sessionKey = Number(session_key.session_key);
-    console.log('받은 세션키:', sessionKey);
 
     if (!sessionKey || Number.isNaN(sessionKey)) {
       return NextResponse.json(

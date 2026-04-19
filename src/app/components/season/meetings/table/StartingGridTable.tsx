@@ -41,9 +41,9 @@ export default function StartingGridTable({
 
   return (
     <>
-      <table className="w-full border-collapse select-none">
+      <table className="w-full border-collapse bg-(--color-table-bg) select-none">
         <thead>
-          <tr className="border-b border-white text-center text-[13px] text-[#8B8B8B] sm:text-[20px]">
+          <tr className="border-b border-(--color-table-border) text-center text-[13px] sm:text-[20px]">
             <th className="w-[3%] py-3 sm:w-[8%]">포지션</th>
             <th className="w-[8%] py-4 sm:w-[30%]">이름</th>
             {/* 768 px 이상에서 보임 */}
@@ -55,7 +55,7 @@ export default function StartingGridTable({
           {processedResults.map((result) => (
             <tr
               key={result.driver_number}
-              className="border-b border-[#2A2A2A] text-center text-[16px]"
+              className="border-b border-(--color-table-border) text-center text-[16px]"
             >
               <td className="font-pretendard px-0 py-5 text-center text-[14px] font-semibold sm:px-4 sm:text-[20px]">
                 {result.displayPosition}
@@ -73,7 +73,7 @@ export default function StartingGridTable({
                   )}
                   <div className="relative flex min-w-0 flex-col items-start md:flex-row">
                     <div className="flex gap-2 text-[13px] md:text-[18px]">
-                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                      <span className="inline-flex gap-1 truncate text-sm font-medium sm:text-base">
                         {result.kr_name}
                         {favoriteDrivers.includes(result.driver_id) && (
                           <Favorite />

@@ -18,7 +18,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
       <div className="w-full">
         {/* Header */}
         <div className="mb-3 border-b border-white/10 pb-2">
-          <div className="grid grid-cols-[60px_1fr_80px] pr-3 text-xs text-white/60 sm:text-sm md:grid-cols-[60px_1fr_1fr_80px]">
+          <div className="grid grid-cols-[60px_1fr_80px] pr-3 text-xs sm:text-sm md:grid-cols-[60px_1fr_1fr_80px]">
             <span>등수</span>
             <span>선수</span>
             {/* 768 px 이상에서 보임 */}
@@ -42,7 +42,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
               />
 
               {/* Rank */}
-              <div className="text-center text-sm font-semibold text-white sm:text-base">
+              <div className="text-center text-sm font-semibold sm:text-base">
                 {idx + 1}
               </div>
 
@@ -63,7 +63,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
                 </div>
                 <div className="flex flex-col md:flex-row">
                   <div className="flex gap-2 text-[13px] md:text-[18px]">
-                    <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                    <span className="inline-flex gap-1 truncate text-sm font-medium sm:text-base">
                       {item.kr_name}
                       {favoriteDrivers.includes(item.driver_id) && <Favorite />}
                     </span>
@@ -78,12 +78,12 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
               </div>
 
               {/* Team */}
-              <div className="hidden truncate text-center text-sm text-white/80 sm:text-base md:block">
+              <div className="hidden truncate text-center text-sm sm:text-base md:block">
                 {item.team_kr_name}
               </div>
 
               {/* Points */}
-              <div className="pr-3 text-right text-sm font-semibold text-white sm:text-base">
+              <div className="pr-3 text-right text-sm font-semibold sm:text-base">
                 {item.total_points}
               </div>
             </div>

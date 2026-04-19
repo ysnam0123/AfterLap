@@ -17,18 +17,11 @@ export default function NextSession({ data, liveSession }: PageProps) {
   const meetingKey = data?.meeting_key ?? null;
   const { data: nextSessions = [] } = useSessionData(meetingKey, !!meetingKey);
   const [seeAll, setSeeAll] = useState(false);
-  console.log('다음 미팅 세션들:', nextSessions);
   const upcomingSession = nextSessions.find(
     (session) =>
       getSessionStatus(session.date_start, session.date_end) === 'upcoming',
   );
-  console.log(
-    '바로 직후 세션:',
-    nextSessions.find(
-      (session) =>
-        getSessionStatus(session.date_start, session.date_end) === 'upcoming',
-    ),
-  );
+
   if (!data) {
     return null;
   }

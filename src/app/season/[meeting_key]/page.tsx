@@ -24,18 +24,10 @@ export default function Page() {
   const [selectedSessionKey, setSelectedSessionKey] = useState<number | null>(
     null,
   );
-  // 테스트
-  useEffect(() => {
-    console.log('선택된 세션키:', selectedSessionKey);
-  }, [selectedSessionKey]);
-  useEffect(() => {
-    console.log('세션 모음집:', sessions);
-  }, [sessions]);
 
   const { data: circuitData, isLoading: circuitDataLoading } = useCircuitData(
     meetingDetail?.circuit_key,
   );
-  console.log('서킷 데이터:', circuitData);
 
   const selectedSession = useMemo(
     () => sessions.find((s) => s.session_key === selectedSessionKey) ?? null,
@@ -44,9 +36,6 @@ export default function Page() {
   const isSelectedSessionFinished = selectedSession
     ? isSessionFinished(selectedSession)
     : false;
-
-  // 테스트
-  console.log('선택된 세션의 종료 여부:', isSelectedSessionFinished);
 
   const sessionFinishMap = useMemo(() => {
     return sessions.reduce<Record<number, boolean>>((acc, session) => {
@@ -90,11 +79,10 @@ export default function Page() {
   const startingGridFetchable =
     isQualifyingSessionFinished && driverData && driverData.length >= 15;
 
-  const { data: startingGridData, isLoading: startingGridLoading } =
-    useStartingGridData(
-      qualifyingSessionKey!,
-      startingGridFetchable && qualifyingSessionKey !== null,
-    );
+  const { data: startingGridData } = useStartingGridData(
+    qualifyingSessionKey!,
+    startingGridFetchable && qualifyingSessionKey !== null,
+  );
 
   console.log('스타팅그리드 데이터:', startingGridData);
   const finishedSessions = sessions

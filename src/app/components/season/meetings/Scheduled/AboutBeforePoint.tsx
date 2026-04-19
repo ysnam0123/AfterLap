@@ -7,8 +7,8 @@ interface PageProps {
 export default function AboutBeforePoint({ circuitData }: PageProps) {
   return (
     <>
-      <div className="w-full rounded-2xl bg-[#212121] px-4.5 py-3 sm:rounded-4xl sm:px-7 sm:py-5">
-        <div className="flex justify-between border-b border-[#474747] pb-1.5">
+      <div className="w-full rounded-2xl bg-(--color-box-bg) px-4.5 py-3 sm:rounded-4xl sm:px-7 sm:py-5">
+        <div className="flex justify-between border-b border-(--color-box-border) pb-1.5">
           <h1 className="font-paper text-[14px] font-semibold text-[#c4c4c4] sm:text-[18px]">
             경기 관전 포인트
           </h1>

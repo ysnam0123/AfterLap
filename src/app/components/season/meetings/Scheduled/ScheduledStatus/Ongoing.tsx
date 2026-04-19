@@ -9,7 +9,7 @@ interface PageProps {
 export default function Ongoing({ data }: PageProps) {
   return (
     <>
-      <div className="flex animate-pulse items-center gap-2 rounded-xl border border-[#E10600] bg-[#212121] px-3.5 py-2.5 sm:gap-3 sm:rounded-4xl sm:border-2 sm:px-5 sm:py-4">
+      <div className="flex animate-pulse items-center gap-2 rounded-xl border border-[#E10600] bg-(--color-box-bg) px-3.5 py-2.5 sm:gap-3 sm:rounded-4xl sm:border-2 sm:px-5 sm:py-4">
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#E10600] sm:h-10 sm:w-10">
           <Timer className="h-5 w-5 text-white sm:h-8 sm:w-8" />
         </div>

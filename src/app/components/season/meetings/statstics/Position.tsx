@@ -70,9 +70,9 @@ export default function Position({
   };
   return (
     <>
-      <table className="w-full table-fixed border-collapse whitespace-nowrap select-none sm:text-left">
+      <table className="w-full table-fixed border-collapse bg-(--color-table-bg) whitespace-nowrap select-none sm:text-left">
         <thead>
-          <tr className="border-b border-white text-[14px] text-[#8B8B8B] sm:text-[20px]">
+          <tr className="border-b border-(--color-table-border) text-[14px] sm:text-[20px]">
             <th className="w-[5%] py-3 text-center sm:w-[12%]">번호</th>
             <th className="w-[30%] py-3 pl-5 text-left sm:w-[30%]">드라이버</th>
             {/* 768 px 이상에서 보임 */}
@@ -83,7 +83,7 @@ export default function Position({
               출발 포지션
             </th>
             <th
-              className="hidden w-[15%] cursor-pointer py-3 text-center transition-colors hover:text-[#e5e5e5] md:table-cell"
+              className="hidden w-[15%] cursor-pointer py-3 text-center transition-colors hover:text-(--color-title-hover) md:table-cell"
               onClick={() => handleSort('end_position')}
             >
               <span className="inline-flex items-center gap-1">
@@ -95,7 +95,7 @@ export default function Position({
               </span>
             </th>
             <th
-              className="w-[10%] cursor-pointer py-3 text-center transition-colors hover:text-[#e5e5e5]"
+              className="w-[10%] cursor-pointer py-3 text-center transition-colors hover:text-(--color-title-hover)"
               onClick={() => handleSort('position_gain')}
             >
               <span className="inline-flex items-center gap-1">
@@ -112,9 +112,9 @@ export default function Position({
           {sortedPositionGain.map((position) => (
             <tr
               key={position.driver_number}
-              className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
+              className="border-b border-(--color-table-border) text-[16px] hover:bg-(--color-table-hover)"
             >
-              <td className="font-pretendard py-3 text-center text-[14px] font-bold font-semibold sm:text-[20px]">
+              <td className="font-pretendard py-3 text-center text-[14px] font-bold sm:text-[20px]">
                 {position.driver_number}
               </td>
               <td className="py-3 font-bold">
@@ -130,7 +130,7 @@ export default function Position({
                   )}
                   <div className="relative flex min-w-0 flex-col md:flex-row">
                     <div className="text-[13px] md:text-[18px]">
-                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                      <span className="inline-flex gap-1 truncate text-sm font-medium sm:text-base">
                         {position.kr_name}
                         {favoriteDrivers.includes(position.driver_id) && (
                           <Favorite />

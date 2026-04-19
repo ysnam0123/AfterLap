@@ -29,10 +29,6 @@ export default function HomeClient({ initialData, initialCircuits }: Data) {
   const { liveSession, nextMeeting, driverRanking, teamRanking } =
     homeData ?? {};
   const [seeAll, setSeeAll] = useState(false);
-
-  // console.log('드라이버 랭킹:', driverRanking);
-  console.log('다음 미팅:', nextMeeting);
-
   const TData = useMemo(() => {
     if (!teamRanking) return [];
     return groupTeamSeasonRanking(teamRanking).slice(0, 5);
@@ -41,9 +37,7 @@ export default function HomeClient({ initialData, initialCircuits }: Data) {
   const pageLoading = !initialData;
 
   const { user } = useAuth();
-  console.log('현재 로그인된 유저:', user);
   const { data: userFavorite } = useFavorites(user?.id);
-  console.log('현재 로그인된 유저의 선호 목록:', userFavorite);
 
   const { setFavorites, clearFavorites } = useUserStore();
 
@@ -59,15 +53,17 @@ export default function HomeClient({ initialData, initialCircuits }: Data) {
   return (
     <>
       <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
-        <h1 className="font-ria text-[18px] font-black text-[#C4C4C4] sm:text-[30px] sm:text-(--color-title)">
-          Next
-        </h1>
-        {/* !pageLoading */}
-        {!pageLoading ? (
-          <NextSession data={nextMeeting} liveSession={liveSession} />
-        ) : (
-          <NextSessionSkeleton />
-        )}
+        <div>
+          <h1 className="font-ria text-[18px] font-black text-(--color-title) sm:text-[30px] sm:text-(--color-title)">
+            Next
+          </h1>
+          {/* !pageLoading */}
+          {!pageLoading ? (
+            <NextSession data={nextMeeting} liveSession={liveSession} />
+          ) : (
+            <NextSessionSkeleton />
+          )}
+        </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>

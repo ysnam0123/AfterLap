@@ -9,9 +9,8 @@ export default function CircuitDetailPage() {
   const params = useParams<{ circuit_key: string }>();
   const { data: circuitDetail, isPending: circuitLoading } =
     useCircuitDetailData(Number(params.circuit_key));
-  console.log(circuitDetail);
   return (
-    <main className="mx-auto min-h-screen px-5 pt-5 text-white sm:px-10 md:px-20">
+    <main className="mx-auto min-h-screen px-5 pt-5 sm:px-10 md:px-20">
       {circuitLoading && (
         <div className="flex h-100 items-center justify-center sm:h-100">
           <F1Loading loadingText="서킷 로딩 중..." />
@@ -24,7 +23,7 @@ export default function CircuitDetailPage() {
               {circuitDetail.circuit_short_name}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
+            <div className="flex flex-wrap items-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 {circuitDetail.country_kr_name}
                 <Image
@@ -41,8 +40,8 @@ export default function CircuitDetailPage() {
           </header>
 
           <section className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[2fr_1fr]">
-            <div className="rounded-xl border border-white/10 bg-neutral-900 p-6">
-              <div className="mb-4 text-sm text-white/60">트랙 맵</div>
+            <div className="rounded-xl border border-(--color-card-border) bg-(--color-card-bg) p-6">
+              <div className="mb-4 text-sm">트랙 맵</div>
 
               <div className="flex h-40 items-center justify-center rounded-lg md:h-80">
                 <Image
@@ -56,29 +55,25 @@ export default function CircuitDetailPage() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-white/10 bg-neutral-900 p-6">
+            <div className="rounded-xl border border-(--color-card-border) bg-(--color-card-bg) p-6">
               <h3 className="mb-4 text-lg font-semibold">서킷 정보</h3>
 
-              <ul className="space-y-3 text-sm text-white/80">
+              <ul className="space-y-3 text-sm">
                 <li className="flex justify-between">
                   <span>정식 명칭</span>
-                  <span className="text-white">
-                    {circuitDetail.circuit_long_name}
-                  </span>
+                  <span className="">{circuitDetail.circuit_long_name}</span>
                 </li>
                 <li className="flex justify-between">
                   <span>위치</span>
-                  <span className="text-white">Monza, Italy</span>
+                  <span className="">Monza, Italy</span>
                 </li>
                 <li className="flex justify-between">
                   <span>랩 레코드</span>
-                  <span className="text-white">
-                    {circuitDetail.lap_record.time}
-                  </span>
+                  <span className="">{circuitDetail.lap_record.time}</span>
                 </li>
                 <li className="flex justify-center">
                   <Image
-                    src={circuitDetail.circuit_img}
+                    src={circuitDetail.circuit_detail_img}
                     alt="circuit"
                     width={200}
                     height={200}
@@ -89,36 +84,32 @@ export default function CircuitDetailPage() {
           </section>
 
           <section className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div className="rounded-xl border border-white/10 bg-neutral-900 p-6">
+            <div className="rounded-xl border border-(--color-card-border) bg-(--color-card-bg) p-6">
               <h3 className="mb-4 text-lg font-semibold">서킷 기록</h3>
 
-              <div className="space-y-3 text-sm text-white/80">
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span>최다 우승</span>
-                  <span className="text-white">Michael Schumacher (5회)</span>
+                  <span className="">Michael Schumacher (5회)</span>
                 </div>
                 <div className="flex justify-between">
                   <span>최다 폴 포지션</span>
-                  <span className="text-white">7회</span>
+                  <span className="">7회</span>
                 </div>
                 <div className="flex justify-between">
                   <span>최단 랩</span>
-                  <span className="text-white">1:20.235</span>
+                  <span className="">1:20.235</span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-xl border border-white/10 bg-neutral-900 p-6">
+            <div className="rounded-xl border border-(--color-card-border) bg-(--color-card-bg) p-6">
               <h3 className="mb-4 text-lg font-semibold">최고 랩 타임</h3>
 
-              <div className="flex items-center justify-between rounded-lg bg-neutral-800 p-4">
+              <div className="flex items-center justify-between rounded-lg bg-(--color-card-bg) p-4">
                 <div>
-                  <p className="text-sm text-white/60">
-                    {circuitDetail.lap_record.driver}
-                  </p>
-                  <p className="text-xs text-white/40">
-                    {circuitDetail.lap_record.year}
-                  </p>
+                  <p className="text-sm">{circuitDetail.lap_record.driver}</p>
+                  <p className="text-xs">{circuitDetail.lap_record.year}</p>
                 </div>
                 <p className="text-2xl font-bold">
                   {circuitDetail.lap_record.time}

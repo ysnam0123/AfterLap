@@ -13,13 +13,13 @@ export default function GrandPrixCardWithProblem({
     <>
       <div
         // onClick={() => router.push(`/season/${meetingInfo.meeting_key}`)}
-        className="flex w-full cursor-pointer flex-col rounded-[10px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong)"
+        className="flex h-37.5 w-full cursor-pointer flex-col rounded-[10px] border border-(--color-card-border) bg-(--color-card-bg) p-4.5 font-semibold shadow-(--shadow-soft) transition hover:bg-(--color-card-hover) hover:shadow-(--shadow-strong) sm:h-48"
       >
         <p className="mb-2 text-[10px] text-[#8B8B8B] sm:text-[12px]">
           {meetingInfo.meeting_official_name}
         </p>
-        <div className="flex w-full items-center justify-between">
-          <div className="mb-2.5 flex w-full flex-col justify-between gap-1 sm:mb-5">
+        <div className="flex h-full w-full items-center justify-between">
+          <div className="flex w-full flex-col justify-between gap-1">
             <div className="flex items-center gap-2">
               <Image
                 src={flagSrc}
@@ -29,9 +29,7 @@ export default function GrandPrixCardWithProblem({
                 className="rounded-[3px] object-contain"
                 priority
               />
-              <p className="text-[16px] text-white sm:text-[20px]">
-                {meetingInfo.country_kr_name}
-              </p>
+              <p className="text-[20px]">{meetingInfo.country_kr_name}</p>
             </div>
             <div className="mt-3 ml-auto flex items-center gap-1">
               <p className="font-pretendard text-[18px] font-semibold">

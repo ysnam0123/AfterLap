@@ -15,7 +15,7 @@ export default function ConstructorStandings({ data }: TS) {
     <>
       <section className="w-full">
         <div className="mb-3 border-b border-white/10 pb-2">
-          <div className="grid grid-cols-[60px_1fr_80px] text-xs text-white/60 sm:text-sm">
+          <div className="grid grid-cols-[60px_1fr_80px] text-xs sm:text-sm">
             <span>등수</span>
             <span>팀</span>
             <span className="pr-2 text-right">포인트</span>
@@ -37,7 +37,7 @@ export default function ConstructorStandings({ data }: TS) {
               />
 
               {/* Rank */}
-              <div className="text-center text-[16px] font-semibold text-white sm:text-base">
+              <div className="text-center text-[16px] font-semibold sm:text-base">
                 {item.rank}
               </div>
 
@@ -52,14 +52,14 @@ export default function ConstructorStandings({ data }: TS) {
                     className="object-contain"
                   />
                 </div>
-                <span className="relative inline-flex items-center gap-1 truncate text-sm font-medium text-white sm:text-base">
+                <span className="relative inline-flex items-center gap-1 truncate text-sm font-medium sm:text-base">
                   {item.team_kr_name}
                   {favoriteTeams.includes(item.team_slug) && <Favorite />}
                 </span>
               </div>
 
               {/* Points */}
-              <div className="pr-3 text-right text-sm font-semibold text-white sm:text-base">
+              <div className="pr-3 text-right text-sm font-semibold sm:text-base">
                 {item.team_total_points}
               </div>
             </div>

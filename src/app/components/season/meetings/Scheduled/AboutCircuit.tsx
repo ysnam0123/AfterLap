@@ -7,8 +7,8 @@ interface PageProps {
 export default function AboutCircuit({ circuitData }: PageProps) {
   return (
     <>
-      <div className="flex w-full flex-col rounded-2xl bg-[#212121] px-4.5 py-3 sm:rounded-4xl sm:px-7 sm:py-5">
-        <h1 className="font-paper border-b border-[#474747] pb-1 text-[14px] font-semibold text-[#c4c4c4] sm:text-[18px]">
+      <div className="flex w-full flex-col rounded-2xl bg-(--color-box-bg) px-4.5 py-3 sm:rounded-4xl sm:px-7 sm:py-5">
+        <h1 className="font-paper border-b border-(--color-box-border) pb-1 text-[14px] font-semibold text-[#949494] sm:text-[18px]">
           서킷 정보
         </h1>
         <div className="flex items-center gap-10 pt-2">

@@ -29,9 +29,8 @@ export function useSeasonDrivers(year: number) {
         .eq('year', year)
         .order('team_slug')
         .order('driver_number');
-      console.log('년도별 드라이버 불러오기', data);
       if (error) {
-        console.log('년도별 드라이버 불러오기 실패:', error);
+        console.error('년도별 드라이버 불러오기 실패:', error);
       }
 
       return data ?? [];

@@ -1,18 +1,14 @@
 import Top3Position from './Top3Position';
 import WeatherSummary from '../WeatherSummary';
 import FastestPitStop from './FastestPS';
-import SafetyCarSummary from './SafetyCarSum';
 import {
   DriverPositionGain,
   PitView,
-  // RaceControl,
   WeatherSessionSummary,
 } from '@/types/raceResult';
 
 export default function Summary({
   weather,
-  // SafetyCarNumber,
-  // raceControl,
   totalLaps,
   setSelectedTab,
   positionGain,
@@ -21,14 +17,11 @@ export default function Summary({
 }: {
   pit: PitView[];
   weather?: WeatherSessionSummary | null;
-  // SafetyCarNumber: number;
-  // raceControl: RaceControl[];
   totalLaps: number;
   setSelectedTab: (tab: string) => void;
   positionGain: DriverPositionGain[];
   year: number;
 }) {
-  console.log('3번 year :', year);
   return (
     <>
       <div className="px-5 md:px-0">
@@ -54,12 +47,6 @@ export default function Summary({
             pit={pit}
             setSelectedTab={setSelectedTab}
           />
-          {/* <SafetyCarSummary
-            SafetyCarNumber={SafetyCarNumber}
-            raceControl={raceControl}
-            totalLaps={totalLaps}
-            setSelectedTab={setSelectedTab}
-          /> */}
         </div>
       </div>
     </>

@@ -1,45 +1,23 @@
 'use client';
 
 import { StintsWithDriver } from '@/types/raceResult';
-import Image from 'next/image';
+import { COMPOUND_COLOR, COMPOUND_LABEL, TooltipState } from '@/types/stints';
+import { findHeadshot } from '@/utils/findHeadShot';
 import { useMemo, useState } from 'react';
+import DriverProfile from '../DriverProfile';
+import DefaultDriverProfile from '../DefaultDriverProfile';
 
 interface TireStrategyProps {
   stints: StintsWithDriver[];
   totalLaps: number;
+  year: number;
 }
 
-// F1 공식 컴파운드 색상
-const COMPOUND_COLOR: Record<string, string> = {
-  SOFT: '#e8002d',
-  MEDIUM: '#ffd906',
-  HARD: '#f0f0ec',
-  INTERMEDIATE: '#39b54a',
-  WET: '#0067ff',
-  UNKNOWN: '#666666',
-};
-
-const COMPOUND_LABEL: Record<string, string> = {
-  SOFT: 'S',
-  MEDIUM: 'M',
-  HARD: 'H',
-  INTERMEDIATE: 'I',
-  WET: 'W',
-  UNKNOWN: '?',
-};
-
-interface TooltipState {
-  visible: boolean;
-  x: number;
-  y: number;
-  compound: string;
-  lapStart: number;
-  lapEnd: number;
-  tyreAge: number;
-  driverName: string;
-}
-
-export default function TireStrategy({ stints, totalLaps }: TireStrategyProps) {
+export default function TireStrategy({
+  stints,
+  totalLaps,
+  year,
+}: TireStrategyProps) {
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0,
@@ -93,14 +71,14 @@ export default function TireStrategy({ stints, totalLaps }: TireStrategyProps) {
 
   if (!stints || stints.length === 0) {
     return (
-      <div className="flex h-40 items-center justify-center text-sm text-white/40">
+      <div className="flex h-40 items-center justify-center text-sm">
         타이어 데이터가 없습니다.
       </div>
     );
   }
 
   return (
-    <div className="relative mt-4 select-none px-2 sm:px-0">
+    <div className="relative mt-4 bg-(--color-table-bg) px-2 py-4 select-none sm:px-0">
       {/* 범례 */}
       <div className="mb-4 flex flex-wrap items-center gap-3">
         {Object.entries(COMPOUND_COLOR).map(([compound, color]) => {
@@ -113,50 +91,72 @@ export default function TireStrategy({ stints, totalLaps }: TireStrategyProps) {
                 className="h-3 w-3 rounded-sm"
                 style={{ backgroundColor: color }}
               />
-              <span className="text-xs text-white/60">{compound}</span>
+              <span className="text-xs">{compound}</span>
             </div>
           );
         })}
       </div>
 
       {/* 랩 눈금 헤더 */}
-      <div className="mb-1 ml-[90px] flex text-[10px] text-white/30 sm:ml-[120px]">
-        {[1, Math.round(laps * 0.25), Math.round(laps * 0.5), Math.round(laps * 0.75), laps].map(
-          (lap) => (
-            <span
-              key={lap}
-              className="text-center"
-              style={{ width: `${(1 / laps) * 100}%`, position: 'relative', left: `${((lap - 1) / laps) * 100}%` }}
-            >
-              {lap}
-            </span>
-          ),
-        )}
+      <div className="relative mb-1 ml-27.5 h-4 text-[12px] sm:ml-35 sm:text-[15px]">
+        {[
+          1,
+          Math.round(laps * 0.25),
+          Math.round(laps * 0.5),
+          Math.round(laps * 0.75),
+          laps,
+        ].map((lap, i) => (
+          <span
+            key={lap}
+            className="absolute"
+            style={{
+              left: `${((lap - 1) / laps) * 100}%`,
+              // 첫 번째는 왼쪽 정렬, 마지막은 오른쪽 정렬, 나머지는 중앙 정렬
+              transform:
+                i === 0
+                  ? 'none'
+                  : i === 4
+                    ? 'translateX(-100%)'
+                    : 'translateX(-50%)',
+            }}
+          >
+            {lap}
+          </span>
+        ))}
       </div>
 
       {/* 드라이버 행 */}
-      <div className="space-y-1.5">
+      <div className="space-y-5">
         {driverGroups.map(([driverNumber, driverStints]) => {
           const info = driverStints[0];
           return (
             <div key={driverNumber} className="flex items-center gap-2">
               {/* 드라이버 정보 */}
-              <div className="flex w-[90px] shrink-0 items-center gap-1.5 sm:w-[120px]">
+              <div className="flex w-28 shrink-0 items-center gap-3 sm:w-35">
                 <div
                   className="h-5 w-1 rounded-full sm:h-6"
                   style={{ backgroundColor: info.team_colour || '#666' }}
                 />
-                {info.headshot_url && (
+                {findHeadshot(info.full_name, year) ? (
+                  <DriverProfile
+                    className="shrink-0 duration-200 group-hover:scale-110"
+                    headshot={findHeadshot(info.full_name, year)}
+                    teamColor={info.team_colour}
+                  />
+                ) : (
+                  <DefaultDriverProfile />
+                )}
+                {/* {info.headshot_url && (
                   <Image
                     src={info.headshot_url}
                     alt={info.full_name}
-                    width={24}
-                    height={24}
+                    width={36}
+                    height={36}
                     sizes="24px"
-                    className="h-5 w-5 rounded-full object-cover sm:h-6 sm:w-6"
+                    className="h-10 w-10 rounded-full object-cover sm:h-15 sm:w-15"
                   />
-                )}
-                <span className="truncate text-[11px] font-medium text-white/80 sm:text-xs">
+                )} */}
+                <span className="truncate text-[15px] font-medium sm:text-[20px]">
                   {info.name_acronym || info.broadcast_name}
                 </span>
               </div>
@@ -180,7 +180,12 @@ export default function TireStrategy({ stints, totalLaps }: TireStrategyProps) {
                         left: `${leftPct}%`,
                         width: `${widthPct}%`,
                         backgroundColor: color,
-                        color: stint.compound === 'HARD' ? '#000' : stint.compound === 'MEDIUM' ? '#000' : '#fff',
+                        color:
+                          stint.compound === 'HARD'
+                            ? '#000'
+                            : stint.compound === 'MEDIUM'
+                              ? '#000'
+                              : '#fff',
                         borderRight: '1px solid rgba(0,0,0,0.25)',
                       }}
                       onMouseEnter={(e) => handleMouseEnter(e, stint)}
@@ -199,21 +204,21 @@ export default function TireStrategy({ stints, totalLaps }: TireStrategyProps) {
       {/* 툴팁 */}
       {tooltip.visible && (
         <div
-          className="pointer-events-none fixed z-50 -translate-x-1/2 -translate-y-full rounded-lg border border-white/10 bg-[#1a1a1a] px-3 py-2 text-xs shadow-xl"
+          className="pointer-events-none fixed z-50 -translate-x-1/2 -translate-y-full rounded-lg border border-white/10 bg-[#1a1a1a] px-3 py-2 text-xs text-white shadow-xl"
           style={{ left: tooltip.x, top: tooltip.y }}
         >
-          <p className="font-semibold text-white">{tooltip.driverName}</p>
-          <p className="text-white/70">
+          <p className="font-semibold">{tooltip.driverName}</p>
+          <p className="">
             컴파운드:{' '}
             <span style={{ color: COMPOUND_COLOR[tooltip.compound] }}>
               {tooltip.compound}
             </span>
           </p>
-          <p className="text-white/70">
+          <p className="">
             {tooltip.lapStart}랩 → {tooltip.lapEnd}랩 (
             {tooltip.lapEnd - tooltip.lapStart + 1}랩)
           </p>
-          <p className="text-white/50">타이어 나이: {tooltip.tyreAge}랩</p>
+          <p className="">타이어 나이: {tooltip.tyreAge}랩</p>
         </div>
       )}
     </div>

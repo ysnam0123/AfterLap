@@ -17,29 +17,26 @@ export default function Page() {
   const setSelectedYear = useYearStore((s) => s.setSelectedYear);
   const { data: meetings, isPending: pageLoading } =
     useSeasonData(selectedYear);
+  // const sortedMeetings = [...(meetings ?? [])].sort((a, b) => {
+  //   const isAUpcoming = a.meeting_problem === null && a.status === 'scheduled';
+  //   const isBUpcoming = b.meeting_problem === null && b.status === 'scheduled';
+  //   if (isAUpcoming && !isBUpcoming) return -1;
+  //   if (!isAUpcoming && isBUpcoming) return 1;
 
-  console.log('meetings:', meetings);
-
-  const sortedMeetings = [...(meetings ?? [])].sort((a, b) => {
-    const isAUpcoming = a.meeting_problem === null && a.status === 'scheduled';
-    const isBUpcoming = b.meeting_problem === null && b.status === 'scheduled';
-    if (isAUpcoming && !isBUpcoming) return -1;
-    if (!isAUpcoming && isBUpcoming) return 1;
-
-    return a.round - b.round;
-  });
+  //   return a.round - b.round;
+  // });
   return (
     <>
       <main className="min-h-screen px-5 lg:px-10">
         <section className="mx-auto w-full max-w-350">
           {pageLoading && (
             <>
-              <div className="flex h-100 items-center justify-center md:h-200">
-                <F1Loading loadingText="시즌 불러오는중..." />
+              <div className="flex h-100 items-center justify-center font-bold md:h-200">
+                <F1Loading loadingText="시즌 불러오는 중..." />
               </div>
             </>
           )}
-          {!pageLoading && sortedMeetings && (
+          {!pageLoading && meetings && (
             <>
               <SeasonChangeButton
                 opened={opened}
@@ -49,7 +46,7 @@ export default function Page() {
                 setSelectedYearAction={setSelectedYear}
               />
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-7">
-                {sortedMeetings.map((meeting) =>
+                {meetings.map((meeting) =>
                   meeting.meeting_problem === 'cancelled' ? (
                     <AnimatedContent
                       key={meeting.meeting_key}

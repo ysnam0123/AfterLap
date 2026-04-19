@@ -15,11 +15,10 @@ export default function SeasonHeroBox({
     return null;
   }
   const flagSrc = countryCodeFlags[meetingInfo!.country_code];
-  console.log('전송방은 서킷 정보:', circuitInfo);
   const circuitSrc = circuitInfo.circuit_img;
   return (
     <>
-      <section className="relative mb-1 pt-30 select-none sm:mb-12.5 sm:pt-60 md:pt-80 lg:pt-85">
+      <section className="relative mb-1 pt-30 text-white select-none sm:mb-12.5 sm:pt-60 md:pt-80 lg:pt-85">
         <div className="absolute inset-0 z-0 h-30 w-full sm:h-60 md:h-80 lg:h-85">
           <Image
             src={circuitInfo.circuit_bg}

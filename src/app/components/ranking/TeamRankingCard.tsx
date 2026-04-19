@@ -14,15 +14,18 @@ export default function TeamRankingCard({ data, year }: CardProps) {
   const router = useRouter();
   return (
     <>
-      <div className="font-ria flex w-full flex-col rounded-4xl border border-[#5f5f5f] bg-[#0C0C0B] p-3.75 font-medium">
+      <div
+        style={{ backgroundColor: data.team_colour }}
+        className="font-ria flex w-full flex-col rounded-4xl border p-3.75 font-semibold"
+      >
         <div className="flex items-center justify-between">
           <div
             style={{ borderLeftColor: data.team_colour }}
             className="border-l-4 pl-4"
           >
-            <p className="text-[20px]">{data.rank}</p>
+            <p className="text-[20px] text-[#545454]">{data.rank}</p>
           </div>
-          <div className="flex flex-col gap-1 text-[18px]">
+          <div className="flex flex-col gap-1 text-[18px] text-[#373737]">
             <p className="text-[18px] font-semibold">{data.team_kr_name}</p>
             <p className="text-[15px] font-medium">{data.team_name}</p>
           </div>
@@ -35,13 +38,14 @@ export default function TeamRankingCard({ data, year }: CardProps) {
               <div
                 key={driver.driver_id}
                 onClick={() => router}
-                className="flex h-16.5 w-16.5 items-center justify-center rounded-[5px] bg-[#222222]"
+                style={{ backgroundColor: data.team_colour }}
+                className="flex h-16.5 w-16.5 items-center justify-center rounded-[5px]"
               >
                 <Image
                   src={findHeadshot(driver.full_name, year)}
                   alt="driver"
-                  width={50}
-                  height={50}
+                  width={66}
+                  height={66}
                   priority
                 />
               </div>
@@ -49,7 +53,7 @@ export default function TeamRankingCard({ data, year }: CardProps) {
           </div>
         </div>
         {/* 정보 박스 */}
-        <div className="flex flex-col items-center rounded-[10px] border border-[#5f5f5f] bg-[#0C0C0B] py-3.75">
+        <div className="flex flex-col items-center rounded-[10px] border border-(--color-box-border) bg-(--color-box-bg) py-3.75">
           <div className="flex w-full items-center border-b border-[#5f5f5f] pb-3.75">
             <div className="flex w-full flex-col items-center gap-2 border-r border-[#5F5F5F] px-2.5">
               <div className="flex items-center gap-2">
@@ -85,7 +89,7 @@ export default function TeamRankingCard({ data, year }: CardProps) {
                   {data.avg_finish}
                 </span>
               </div>
-              <p className="text-[14px] text-[#8B8B8B]">평균 등수</p>
+              <p className="text-[12px] text-[#8B8B8B]">평균순위</p>
             </div>
           </div>
           <p className="pt-3.75">

@@ -18,7 +18,6 @@ export default function ResultStatstics({
   weather,
   pit,
   stints,
-  raceControl,
   positionGain,
   tabs,
   selectedTab,
@@ -62,11 +61,6 @@ export default function ResultStatstics({
         return null;
     }
   };
-
-  const deployCount = raceControl.filter(
-    (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
-  ).length;
-  console.log(deployCount);
 
   return (
     <>

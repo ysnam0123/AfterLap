@@ -25,7 +25,6 @@ export default function RaceResultSection({
     { label: '포지션 변동', icon: '/icons/graph.webp' },
     { label: '피트 스탑', icon: '/icons/pitstop.webp' },
     { label: '타이어 전략', icon: '/icons/retirement.webp' },
-    // { label: '이벤트', icon: '/icons/retirement.webp' },
   ];
   const [selectedTab, setSelectedTab] = useState('레이스 결과');
 
@@ -38,43 +37,11 @@ export default function RaceResultSection({
 
   if (!raceResultData) return null;
 
-  const {
-    driverPitData,
-    // teamPitData,
-    positionData,
-    weatherData,
-    // raceControlData,
-    stintsData,
-  } = raceResultData;
+  const { driverPitData, positionData, weatherData, stintsData } =
+    raceResultData;
 
-  // const deployCount = raceControlData?.filter(
-  //   (e) => e.category === 'SafetyCar' && e.message === 'SAFETY CAR DEPLOYED',
-  // ).length;
-
-  // groupby를 아직 안해서 못씀
-  // const {
-  //   data: teamPitData,
-  //   isLoading: teamPitLoading,
-  //   isError: teamPitError,
-  // } = useTeamPitData(sessionKey);
-  if (positionData) {
-    console.log('드라이버 별 포지션:', positionData);
-  }
-  // 테스트
   if (stintsData) {
     console.log('sessionStints 불러옴:', stintsData);
-  }
-  // if (raceControlData) {
-  //   console.log('raceControlData 불러옴:', raceControlData);
-  // }
-  if (driverPitData) {
-    console.log('driverPitData 불러옴:', driverPitData);
-  }
-  // if (teamPitData) {
-  //   console.log('teamPitData 불러옴:', teamPitData);
-  // }
-  if (weatherData) {
-    console.log('weatherData 불러옴:', weatherData);
   }
   const renderMap: Record<string, React.ReactNode> = {
     '레이스 결과': <RaceResultTable year={year} results={sessionResults} />,
@@ -85,8 +52,6 @@ export default function RaceResultSection({
         pit={driverPitData ?? []}
         totalLaps={totalLaps ?? 0}
         weather={weatherData}
-        // SafetyCarNumber={deployCount ?? 0}
-        // raceControl={raceControlData ?? []}
         setSelectedTab={setSelectedTab}
         positionGain={positionData ?? []}
       />
@@ -94,7 +59,11 @@ export default function RaceResultSection({
     '포지션 변동': <Position year={year} positionGain={positionData ?? []} />,
     '피트 스탑': <PitStop year={year} pit={driverPitData ?? []} />,
     '타이어 전략': (
-      <TireStrategy stints={stintsData ?? []} totalLaps={totalLaps ?? 0} />
+      <TireStrategy
+        stints={stintsData ?? []}
+        totalLaps={totalLaps ?? 0}
+        year={year}
+      />
     ),
   };
 

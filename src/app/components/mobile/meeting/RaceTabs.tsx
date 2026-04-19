@@ -17,7 +17,7 @@ export default function RaceTabs({
             <li
               key={tab.label}
               onClick={() => setSelectedTabAction(tab.label)}
-              className={`${selectedTab === tab.label ? 'border-b-2 border-[#D80003] sm:bg-[#4B4B4B]' : 'bg-[#212121]'} flex h-10 cursor-pointer items-center justify-center truncate rounded-[5px] px-4 text-[13px] font-semibold hover:bg-[#4B4B4B] sm:h-12 sm:rounded-[6px] sm:text-[18px]`}
+              className={`${selectedTab === tab.label ? 'border-b-4 border-[#D80003] bg-(--color-box-selected)' : 'border-(--color-card-border bg-(--color-button-bg)'} flex h-10 cursor-pointer items-center justify-center truncate rounded-[5px] px-4 text-[13px] font-semibold hover:bg-(--color-button-hover) active:bg-(--color-button-active) sm:h-12 sm:rounded-[6px] sm:text-[18px]`}
             >
               {tab.label}
             </li>

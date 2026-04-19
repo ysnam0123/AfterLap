@@ -24,9 +24,9 @@ export default function PitStop({
 
   return (
     <>
-      <table className="w-full table-fixed border-collapse whitespace-nowrap select-none sm:text-left">
+      <table className="w-full table-fixed border-collapse bg-(--color-table-bg) whitespace-nowrap select-none sm:text-left">
         <thead>
-          <tr className="border-b border-white text-[14px] text-[#8B8B8B] sm:text-[20px]">
+          <tr className="border-b border-(--color-table-border) text-[14px] sm:text-[20px]">
             <th className="w-[10%] py-3 text-center sm:w-[12%]">번호</th>
             <th className="w-[45%] py-3 pl-5 text-left sm:w-[30%]">드라이버</th>
             <th className="hidden w-[20%] py-3 text-center md:table-cell">
@@ -53,9 +53,9 @@ export default function PitStop({
             return (
               <tr
                 key={`${p.pit_duration}-${p.driver_number}`}
-                className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
+                className="border-b border-(--color-table-border) text-[16px] hover:bg-(--color-table-hover)"
               >
-                <td className="font-pretendard py-3 text-center text-[14px] font-bold font-semibold sm:text-[20px]">
+                <td className="font-pretendard py-3 text-center text-[14px] font-bold sm:text-[20px]">
                   {p.driver_number}
                 </td>
 
@@ -72,7 +72,7 @@ export default function PitStop({
                     )}
                     <div className="relative flex min-w-0 flex-col md:flex-row">
                       <div className="text-[13px] md:text-[18px]">
-                        <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                        <span className="inline-flex gap-1 truncate text-sm font-medium sm:text-base">
                           {p.kr_name}
                           {favoriteDrivers.includes(p.driver_id) && (
                             <Favorite />

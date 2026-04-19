@@ -8,7 +8,6 @@ import {
   ensurePositionData,
   getPosition,
 } from '@/lib/server/race_result/position';
-import { ensureRaceControlData } from '@/lib/server/race_result/raceControl';
 import { ensureStintsData } from '@/lib/server/race_result/stints';
 import {
   ensureWeatherData,

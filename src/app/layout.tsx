@@ -5,13 +5,6 @@ import Provider from './Provider';
 import LayoutWrapper from './components/common/ui/LayoutWrapper';
 import localFont from 'next/font/local';
 
-// 900 - font-black
-// 700 - font-bold
-// 600 - font-semibold
-// 500 - font-medium
-// 400 - font-normal
-// 300 - font-light
-
 const riaSans = localFont({
   src: [
     {

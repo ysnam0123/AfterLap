@@ -48,7 +48,7 @@ export default function PodiumCard({
           priority
         />
         <div className="absolute bottom-0 z-20 flex h-14 w-full items-center justify-between border-t border-(--color-box-border) bg-(--color-box-bg)/95 px-3.75 backdrop-blur">
-          <div className="flex w-full items-center justify-between text-white">
+          <div className="flex w-full items-center justify-between">
             <span className="text-[19px] font-bold">{result.kr_name}</span>
             <div className="flex items-center gap-3">
               <p className="font-pretendard text-[16px] font-semibold">

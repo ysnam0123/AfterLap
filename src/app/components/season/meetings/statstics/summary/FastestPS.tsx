@@ -14,7 +14,6 @@ export default function FastestPitStop({
 }) {
   const fastest = pit[0];
   const stopDurationOffered = pit[0]?.stop_duration !== null ? true : false;
-  console.log('stopDurationOffered', stopDurationOffered);
   return (
     <>
       <div className="flex flex-col gap-3 rounded-[5px] border border-(--color-card-border) bg-(--color-card-bg) px-3 py-3.75 pl-5 shadow-(--shadow-soft) sm:rounded-4xl sm:py-5">
@@ -22,7 +21,7 @@ export default function FastestPitStop({
           <div className="mb-2 flex items-center justify-between">
             <h1 className="text-gray-420 flex items-center gap-1">
               <Image
-                src="/icons/pitstop.svg"
+                src="/icons/pitstop.webp"
                 alt="icon"
                 width={28}
                 height={28}
@@ -30,7 +29,7 @@ export default function FastestPitStop({
                 priority
               />
               <Image
-                src="/icons/pitstop.svg"
+                src="/icons/pitstop.webp"
                 alt="icon"
                 width={20}
                 height={20}
@@ -73,19 +72,21 @@ export default function FastestPitStop({
           <div className="font-pretendard flex items-center justify-between px-4 font-semibold">
             <div className="flex flex-col items-center">
               <Image
+                style={{ backgroundColor: fastest.team_colour }}
                 src={fastest.main_logo}
                 alt="teamLogo"
                 width={100}
                 height={70}
-                className="desktop"
+                className="desktop rounded-[5px]"
                 priority
               />
               <Image
                 src={fastest.main_logo}
+                style={{ backgroundColor: fastest.team_colour }}
                 alt="teamLogo"
                 width={70}
                 height={50}
-                className="mobile"
+                className="mobile rounded-[5px]"
                 priority
               />
               <p className="text-[14px] md:text-[20px]">

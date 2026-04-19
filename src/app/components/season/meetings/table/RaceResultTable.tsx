@@ -70,11 +70,11 @@ export default function RaceResultTable({
             <th className="hidden w-[10%] py-3 md:table-cell">포인트</th>
           </tr>
         </thead>
-        <tbody className="bg-[#000000]">
+        <tbody className="bg-(--color-table-bg)">
           {processedResults.map((result) => (
             <tr
               key={`${result.session_key}-${result.driver_number}`}
-              className="border-b border-[#2A2A2A] text-[16px] hover:bg-[#232323]"
+              className="border-b border-(--color-table-border) text-[16px] hover:bg-(--color-table-hover)"
             >
               <td className="font-pretendard px-2 py-3 text-center text-[14px] font-semibold sm:text-[20px]">
                 {result.displayPosition}
@@ -92,7 +92,7 @@ export default function RaceResultTable({
                   )}
                   <div className="relative flex min-w-0 flex-col md:flex-row">
                     <div className="flex gap-2 text-[13px] md:text-[18px]">
-                      <span className="inline-flex gap-1 truncate text-sm font-medium text-white sm:text-base">
+                      <span className="inline-flex gap-1 truncate text-sm font-medium sm:text-base">
                         {result.kr_name}
                         {favoriteDrivers.includes(result.driver_id) && (
                           <Favorite />

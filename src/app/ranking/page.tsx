@@ -33,6 +33,7 @@ export default function Page() {
 
   return (
     <>
+      {/* px-5 sm:px-10 lg:px-15 */}
       <section className="min-h-screen w-full px-5 sm:px-10 lg:px-15">
         <SeasonChangeButton
           opened={opened}
@@ -46,7 +47,7 @@ export default function Page() {
             <button
               key={tab}
               onClick={() => setIsSelected(tab)}
-              className={`${isSelected === tab ? 'bg-[#252525]' : 'bg-[#111111]'} rounded-none ${idx === 0 ? 'rounded-l-xl' : ''} ${idx === tabs.length - 1 ? 'rounded-r-xl' : ''} w-full cursor-pointer rounded-none border border-(--color-button-border) bg-(--color-button-bg) px-4 py-2 hover:bg-(--color-box-hover) active:bg-(--color-box-active) sm:rounded-[10px] sm:px-5`}
+              className={`${isSelected === tab ? 'bg-(--color-button-selected)' : 'bg-(--color-button-bg)'} rounded-none ${idx === 0 ? 'rounded-l-xl' : ''} ${idx === tabs.length - 1 ? 'rounded-r-xl' : ''} w-full cursor-pointer rounded-none border border-(--color-button-border) bg-(--color-button-bg) px-4 py-2 hover:bg-(--color-box-hover) active:bg-(--color-box-active) sm:rounded-[10px] sm:px-5`}
             >
               {tab}
             </button>

@@ -15,7 +15,7 @@ export default function MobileFooter() {
   ];
 
   return (
-    <footer className="fixed right-0 bottom-0 left-0 z-50 border-t border-white/10 bg-black/30 backdrop-blur-md">
+    <footer className="fixed right-0 bottom-0 left-0 z-50 border-t border-white/10 bg-(--color-bg-primary)/30 backdrop-blur-md">
       <div className="flex h-17.5 items-center justify-around px-3">
         {menus.map(({ label, icon: Icon, path }) => {
           const isActive =
@@ -29,19 +29,23 @@ export default function MobileFooter() {
             >
               {/* active indicator */}
               {isActive && (
-                <span className="absolute -top-1.5 h-0.75 w-6 rounded-full bg-white" />
+                <span className="absolute -top-1.5 h-0.75 w-10 rounded-full bg-[#d80003]" />
               )}
 
               <Icon
                 size={label === '홈' ? 26 : 22}
                 className={`transition-colors duration-200 ${
-                  isActive ? 'text-white' : 'text-[#4A4A4A]'
+                  isActive
+                    ? 'text-(--color-mobile-selected)'
+                    : 'text-(--color-mobile)'
                 }`}
               />
 
               <p
                 className={`text-[11px] font-medium transition-colors duration-200 ${
-                  isActive ? 'text-white' : 'text-[#4A4A4A]'
+                  isActive
+                    ? 'text-(--color-mobile-selected)'
+                    : 'text-(--color-mobile)'
                 }`}
               >
                 {label}

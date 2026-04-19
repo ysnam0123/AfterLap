@@ -15,7 +15,7 @@ import { useTeamDetailData } from '@/hooks/detailPage/TeamDetail';
 import { teams2026 } from '@/images/team';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export default function Page() {
   const params = useParams<{ slug: string }>();
@@ -29,9 +29,6 @@ export default function Page() {
   );
   const [opened, setOpened] = useState(false);
   const [selectedYear, setSelectedYear] = useState(2026);
-  useEffect(() => {
-    console.log(seasonYears[seasonYears.length - 1]);
-  }, [seasonYears]);
   const team = teams2026.find((t) => t.team_slug === params.slug);
   const seasonData = teamDetailData?.seasons.find(
     (data) => data.year === selectedYear,
@@ -54,7 +51,6 @@ export default function Page() {
     });
   }, [seasonData?.performance]);
 
-  console.log(teamDetailData);
   return (
     <div className="min-h-screen">
       {teamDetailLoading && (

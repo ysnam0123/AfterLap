@@ -14,7 +14,6 @@ export const fetchPitDataFromAPI = async (
   const response = await axiosInstance.get('/pit', {
     params: { session_key: sessionKey },
   });
-  console.log('피트스탑 api 호출:', response.data);
   return response.data;
 };
 
@@ -24,7 +23,6 @@ export const fetchPositionDataFromAPI = async (
   const response = await axiosInstance.get('/position', {
     params: { session_key: sessionKey },
   });
-  console.log('API:', response.data);
   return response.data;
 };
 
@@ -36,7 +34,6 @@ export const fetchRaceControlDataFromAPI = async (
       params: { session_key: sessionKey },
     });
 
-    console.log(`세션 ${sessionKey} 데이터 호출 성공!`);
     return response.data;
   } catch (error) {
     // ✅ axios.isAxiosError를 사용해 타입을 좁힙니다.

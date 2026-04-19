@@ -7,6 +7,5 @@ export const fetchMeetingsFromAPI = async (
   const response = await axiosInstance.get('/meetings', {
     params: { year: year },
   });
-  console.log(response.data);
   return response.data ?? [];
 };
