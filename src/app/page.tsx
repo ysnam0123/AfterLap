@@ -3,16 +3,21 @@ import { getNextMeeting } from '@/lib/server/nextMeeting';
 import { getDriverRanking } from '@/lib/server/driverRanking';
 import { getTeamSeasonRanking } from '@/lib/server/teamRanking';
 import { fetchCircuits } from '@/lib/server/circuit';
+import { ensureSessions } from '@/lib/server/sessions';
 import HomeClient from './components/home/HomeClient';
 
 export default async function Page() {
-  const [liveSession, nextMeeting, driverRanking, teamRanking, circuits] =
+  const nextMeeting = await getNextMeeting();
+
+  const [liveSession, driverRanking, teamRanking, circuits, initialSessions] =
     await Promise.all([
       getLiveSession(),
-      getNextMeeting(),
       getDriverRanking(2026),
       getTeamSeasonRanking(2026),
       fetchCircuits(),
+      nextMeeting?.meeting_key
+        ? ensureSessions(nextMeeting.meeting_key)
+        : Promise.resolve([]),
     ]);
 
   return (
@@ -20,6 +25,7 @@ export default async function Page() {
       <HomeClient
         initialData={{ liveSession, nextMeeting, driverRanking, teamRanking }}
         initialCircuits={circuits}
+        initialSessions={initialSessions}
       />
     </>
   );

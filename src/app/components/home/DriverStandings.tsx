@@ -54,8 +54,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
                     width={46}
                     height={46}
                     sizes="46px"
-                    className="w-full object-cover"
-                    style={{ height: 'auto' }}
+                    className="object-cover"
                     alt="driver"
                     priority
                     quality={65}

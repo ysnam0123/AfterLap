@@ -19,12 +19,14 @@ import { useAuth } from '@/context/useAuth';
 import { useFavorites } from '@/hooks/favorite';
 import { useUserStore } from '@/store/useUserFavoriteStore';
 import { CircuitView } from '@/types/circuit';
+import { Session } from '@/types/meeting';
 
 interface Data {
   initialData: HomeData;
   initialCircuits: CircuitView[];
+  initialSessions: Session[];
 }
-export default function HomeClient({ initialData, initialCircuits }: Data) {
+export default function HomeClient({ initialData, initialCircuits, initialSessions }: Data) {
   const { data: homeData } = useHomeData({ initialData });
   const { liveSession, nextMeeting, driverRanking, teamRanking } =
     homeData ?? {};
@@ -59,7 +61,7 @@ export default function HomeClient({ initialData, initialCircuits }: Data) {
           </h1>
           {/* !pageLoading */}
           {!pageLoading ? (
-            <NextSession data={nextMeeting} liveSession={liveSession} />
+            <NextSession data={nextMeeting} liveSession={liveSession} initialSessions={initialSessions} />
           ) : (
             <NextSessionSkeleton />
           )}

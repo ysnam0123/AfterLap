@@ -2,7 +2,7 @@
 
 import LiveSessionBox from './LiveSessionBox';
 import SessionBox from './SessionBox';
-import { LiveSession, NextMeeting } from '@/types/meeting';
+import { LiveSession, NextMeeting, Session } from '@/types/meeting';
 import { useSessionData } from '@/hooks/sessions';
 import { getSessionStatus } from '@/utils/time';
 import { useState } from 'react';
@@ -12,10 +12,11 @@ import CSSAnimatedContent from '@/components/CSSAnimatedContent';
 interface PageProps {
   data: NextMeeting;
   liveSession: LiveSession;
+  initialSessions?: Session[];
 }
-export default function NextSession({ data, liveSession }: PageProps) {
+export default function NextSession({ data, liveSession, initialSessions }: PageProps) {
   const meetingKey = data?.meeting_key ?? null;
-  const { data: nextSessions = [] } = useSessionData(meetingKey, !!meetingKey);
+  const { data: nextSessions = [] } = useSessionData(meetingKey, !!meetingKey, initialSessions);
   const [seeAll, setSeeAll] = useState(false);
   const upcomingSession = nextSessions.find(
     (session) =>

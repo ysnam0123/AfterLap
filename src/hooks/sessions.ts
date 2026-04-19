@@ -5,11 +5,13 @@ import { Session } from '@/types/meeting';
 export function useSessionData(
   meetingKey: number | null,
   sessionFetchable?: boolean,
+  initialData?: Session[],
 ) {
   return useQuery<Session[]>({
     queryKey: ['sessions', meetingKey],
     enabled: sessionFetchable,
     staleTime: 1000 * 60 * 10,
+    initialData,
     queryFn: () => fetchSessions(meetingKey!),
   });
 }

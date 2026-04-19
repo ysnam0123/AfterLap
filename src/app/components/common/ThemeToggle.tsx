@@ -3,7 +3,6 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 /**
  * 다크/라이트 모드 토글 버튼.
@@ -25,22 +24,15 @@ export default function ThemeToggle() {
   const isDark = theme === 'dark';
 
   return (
-    <motion.button
+    <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-(--color-box-border) bg-(--color-box-bg) text-(--color-title) transition-colors hover:bg-(--color-box-hover)"
-      whileTap={{ scale: 0.88 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-(--color-box-border) bg-(--color-box-bg) text-(--color-title) transition-all duration-150 hover:bg-(--color-box-hover) active:scale-[0.88]"
       aria-label={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
       title={isDark ? '라이트 모드' : '다크 모드'}
     >
-      <motion.div
-        key={theme}
-        initial={{ rotate: -30, opacity: 0 }}
-        animate={{ rotate: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
-      >
+      <div key={theme} className="animate-theme-icon">
         {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-      </motion.div>
-    </motion.button>
+      </div>
+    </button>
   );
 }

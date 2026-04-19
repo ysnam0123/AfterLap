@@ -1,4 +1,6 @@
 import type { NextConfig } from 'next';
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
@@ -35,4 +37,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withPWA(nextConfig);
+const withAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default withAnalyzer(withPWA(nextConfig));
