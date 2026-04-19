@@ -51,15 +51,16 @@ export default function SessionBox({ data }: PageProps) {
               {data.session_name}
             </h1>
           </div>
-          <span className="font-ria text-[14px] font-medium">
+          <span suppressHydrationWarning className="font-ria text-[14px] font-medium">
             {formatDateTime(data.date_start)}
           </span>
         </div>
-        <div className="flex flex-col gap-2.75">
+        <div suppressHydrationWarning className="flex flex-col gap-2.75">
           {krStatus()}
           <button
             onClick={() => router.push(`/season/${data.meeting_key}`)}
             className="flex h-8 cursor-pointer items-center justify-center rounded-[5px] border border-(--color-button-border) bg-(--color-button-bg) px-3 py-1.25 text-[14px] hover:bg-(--color-button-hover) active:bg-(--color-button-active) sm:h-10 sm:py-2 sm:text-[16px]"
+            suppressHydrationWarning
           >
             {isFinished() ? '결과보기' : '일정보기'}
           </button>
