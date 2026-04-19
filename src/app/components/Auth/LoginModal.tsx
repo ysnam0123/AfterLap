@@ -36,7 +36,7 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           {/* backdrop */}
           <motion.div
-            className="absolute inset-0 bg-black/60"
+            className="absolute inset-0 bg-(--color-bg-primary)/60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -57,15 +57,15 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
                 {/* close */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white"
+                  className="absolute top-4 right-4 hover:text-white"
                 >
                   <X size={20} />
                 </button>
 
                 {/* brand */}
                 <div className="text-center">
-                  <h1 className="text-2xl font-bold text-white">AfterLap</h1>
-                  <p className="mt-2 text-sm text-gray-400">
+                  <h1 className="text-2xl font-bold">AfterLap</h1>
+                  <p className="mt-2 text-sm">
                     로그인하고 F1 레이스 데이터를 확인하세요
                   </p>
                 </div>
