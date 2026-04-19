@@ -65,15 +65,17 @@ export default function HomeClient({
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
             <ConstructorHeader />
-            <ConstructorStandings data={TData} />
+            {teamRanking && <ConstructorStandings data={TData} />}
           </div>
           <div>
             <DriverStandingsHeader />
-            <DriverStandings
-              data={seeAll ? driverRanking! : driverRanking!.slice(0, 5)}
-              seeAll={seeAll}
-              setSeeAll={setSeeAll}
-            />
+            {driverRanking && (
+              <DriverStandings
+                data={seeAll ? driverRanking : driverRanking.slice(0, 5)}
+                seeAll={seeAll}
+                setSeeAll={setSeeAll}
+              />
+            )}
           </div>
         </div>
         <TeamList />
