@@ -1,15 +1,11 @@
 'use client';
 
-import { useHomeData } from '@/hooks/page/home';
 import { HomeData } from '@/types/home';
 import NextSession from './NextSession';
-import NextSessionSkeleton from './skeleton/NextSessionSkeleton';
 import ConstructorHeader from './sectionHeader/ConstructorHeader';
 import ConstructorStandings from './ConstructorStandings';
-import ConstructorStandingsSkeleton from './skeleton/ConstructorStandingsSkeleton';
 import DriverStandingsHeader from './sectionHeader/DriverStandingsHeader';
 import DriverStandings from './DriverStandings';
-import DriverStandingsSkeleton from './skeleton/DriverStandingsSkeleton';
 import TeamList from './TeamList';
 import DriverList from './DriverList';
 import CircuitGrid from './CircuitGrid';
@@ -26,21 +22,21 @@ interface Data {
   initialCircuits: CircuitView[];
   initialSessions: Session[];
 }
-export default function HomeClient({ initialData, initialCircuits, initialSessions }: Data) {
-  const { data: homeData } = useHomeData({ initialData });
-  const { liveSession, nextMeeting, driverRanking, teamRanking } =
-    homeData ?? {};
+
+export default function HomeClient({
+  initialData,
+  initialCircuits,
+  initialSessions,
+}: Data) {
+  const { liveSession, nextMeeting, driverRanking, teamRanking } = initialData;
   const [seeAll, setSeeAll] = useState(false);
   const TData = useMemo(() => {
     if (!teamRanking) return [];
     return groupTeamSeasonRanking(teamRanking).slice(0, 5);
   }, [teamRanking]);
 
-  const pageLoading = !initialData;
-
   const { user } = useAuth();
   const { data: userFavorite } = useFavorites(user?.id);
-
   const { setFavorites, clearFavorites } = useUserStore();
 
   useEffect(() => {
@@ -59,35 +55,25 @@ export default function HomeClient({ initialData, initialCircuits, initialSessio
           <h1 className="font-ria text-[18px] font-black text-(--color-title) sm:text-[30px] sm:text-(--color-title)">
             Next
           </h1>
-          {/* !pageLoading */}
-          {!pageLoading ? (
-            <NextSession data={nextMeeting} liveSession={liveSession} initialSessions={initialSessions} />
-          ) : (
-            <NextSessionSkeleton />
-          )}
+          <NextSession
+            data={nextMeeting}
+            liveSession={liveSession}
+            initialSessions={initialSessions}
+          />
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
             <ConstructorHeader />
-            {/* teamRanking */}
-            {teamRanking ? (
-              <ConstructorStandings data={TData!} />
-            ) : (
-              <ConstructorStandingsSkeleton />
-            )}
+            <ConstructorStandings data={TData} />
           </div>
           <div>
             <DriverStandingsHeader />
-            {driverRanking ? (
-              <DriverStandings
-                data={seeAll ? driverRanking! : driverRanking!.slice(0, 5)}
-                seeAll={seeAll}
-                setSeeAll={setSeeAll}
-              />
-            ) : (
-              <DriverStandingsSkeleton />
-            )}
+            <DriverStandings
+              data={seeAll ? driverRanking! : driverRanking!.slice(0, 5)}
+              seeAll={seeAll}
+              setSeeAll={setSeeAll}
+            />
           </div>
         </div>
         <TeamList />

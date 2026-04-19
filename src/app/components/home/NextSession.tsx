@@ -10,13 +10,21 @@ import NextSessionTitle from './NextSessionTitle';
 import CSSAnimatedContent from '@/components/CSSAnimatedContent';
 
 interface PageProps {
-  data: NextMeeting;
-  liveSession: LiveSession;
+  data: NextMeeting | null;
+  liveSession: LiveSession | null;
   initialSessions?: Session[];
 }
-export default function NextSession({ data, liveSession, initialSessions }: PageProps) {
+export default function NextSession({
+  data,
+  liveSession,
+  initialSessions,
+}: PageProps) {
   const meetingKey = data?.meeting_key ?? null;
-  const { data: nextSessions = [] } = useSessionData(meetingKey, !!meetingKey, initialSessions);
+  const { data: nextSessions = [] } = useSessionData(
+    meetingKey,
+    !!meetingKey,
+    initialSessions,
+  );
   const [seeAll, setSeeAll] = useState(false);
   const upcomingSession = nextSessions.find(
     (session) =>
