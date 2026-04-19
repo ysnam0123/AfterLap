@@ -7,6 +7,6 @@ export function useHomeData(options?: { initialData?: HomeData }) {
     queryKey: ['home'],
     queryFn: fetchHomeData,
     initialData: options?.initialData,
-    refetchInterval: 1000 * 30,
+    refetchInterval: 1000 * 120,
   });
 }

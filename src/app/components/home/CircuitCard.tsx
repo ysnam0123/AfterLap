@@ -37,6 +37,7 @@ export function CircuitCard({ data, idx }: CircuitProps) {
           height={80}
           className="h-auto w-14 sm:w-20"
           priority={idx === 0}
+          loading={idx === 0 ? 'eager' : 'lazy'}
         />
       </div>
     </div>

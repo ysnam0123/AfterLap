@@ -28,7 +28,7 @@ export default function SeasonDriverCard({
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <Image
-        src="/cardBg.png"
+        src="/cardBg.webp"
         alt="bg"
         fill
         sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"

@@ -24,7 +24,7 @@ export default function PodiumCard({
         className={`relative hidden w-full min-w-50 overflow-hidden rounded-br-2xl border border-(--color-card-border) bg-(--color-card-bg) whitespace-nowrap shadow-(--shadow-soft) transition-all duration-300 select-none sm:block ${podiumStyle}`}
       >
         <Image
-          src="/cardBg.png"
+          src="/cardBg.webp"
           alt="bg"
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"

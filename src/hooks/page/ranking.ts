@@ -6,6 +6,6 @@ export function useRankingData() {
   return useQuery<RankingResponse>({
     queryKey: ['ranking'],
     queryFn: fetchRankingData,
-    refetchInterval: 1000 * 30,
+    refetchInterval: 1000 * 120,
   });
 }

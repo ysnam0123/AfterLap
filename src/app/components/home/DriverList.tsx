@@ -12,8 +12,9 @@ export default function DriverList() {
       </h2>
 
       <section className="hide-scrollbar flex w-full gap-4 overflow-x-auto px-2">
-        {teams2026.map((team) =>
-          team.drivers.map((driver) => {
+        {teams2026.map((team, teamIdx) =>
+          team.drivers.map((driver, driverIdx) => {
+            const isEager = teamIdx === 0 && driverIdx < 3;
             return (
               <div
                 key={driver.driver_id}
@@ -31,6 +32,7 @@ export default function DriverList() {
                     height={80}
                     sizes="80px"
                     quality={65}
+                    loading={isEager ? 'eager' : 'lazy'}
                   />
                 </div>
 

@@ -8,15 +8,15 @@ export default function MobileSplash() {
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    // 2.5초 후 페이드아웃 시작
+    // 페이드아웃 시작
     const exitTimer = setTimeout(() => {
       setExiting(true);
-    }, 2500);
+    }, 0);
 
-    // 3초 후 제거
+    // 500ms 후 제거
     const removeTimer = setTimeout(() => {
       setVisible(false);
-    }, 3000);
+    }, 500);
 
     return () => {
       clearTimeout(exitTimer);

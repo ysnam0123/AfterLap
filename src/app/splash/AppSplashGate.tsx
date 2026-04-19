@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import MobileSplash from '../components/mobile/MobileSplash';
 
-const SPLASH_MIN_TIME = 3000;
+const SPLASH_MIN_TIME = 500;
 const SPLASH_KEY = 'afterlap:splash:seen';
 const FADE_DURATION = 500;
 
