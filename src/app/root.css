@@ -45,6 +45,7 @@
   --color-button-border: #2e2e2e;
   --color-button-hover: #23232a;
   --color-button-active: #1c1c22;
+  --color-button-disabled: #2a2a2a;
 
   /* 텍스트 */
   --color-title: rgba(255, 255, 255, 0.92);
@@ -120,6 +121,7 @@
   --color-button-border: #d4d4d8;
   --color-button-hover: #f4f4f5;
   --color-button-active: #e4e4e7;
+  --color-button-disabled: #cacaca;
 
   /* 텍스트 */
   --color-title: rgba(0, 0, 0, 0.9);

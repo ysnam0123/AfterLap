@@ -197,7 +197,7 @@
 }
 
 .btn-interaction:hover {
-  @apply -translate-y-px bg-white/10 text-white;
+  @apply -translate-y-px bg-(--color-button-hover);
 }
 
 .btn-interaction:active {

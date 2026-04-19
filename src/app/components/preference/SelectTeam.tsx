@@ -32,12 +32,12 @@ export default function SelectTeam() {
               <div className="flex flex-col items-center gap-2">
                 <div
                   onClick={() => toggleTeam(team.team_slug)}
-                  className="flex w-full cursor-pointer flex-col items-center justify-center rounded-[6px] border p-2.5 transition"
+                  className="flex w-full cursor-pointer flex-col items-center justify-center rounded-[6px] border-4 p-2.5 transition"
                   style={{
                     borderColor: isSelected
                       ? team.team_colour
                       : 'var(--color-card-border)',
-                    background: 'var(--color-card-bg)',
+                    background: 'var(--color-card-dark-bg)',
                   }}
                 >
                   <Image
@@ -58,14 +58,14 @@ export default function SelectTeam() {
         })}
       </section>
 
-      <div className="fixed bottom-0 left-0 w-full border-t border-[#2E2E30] bg-[#121214] p-4">
+      <div className="fixed bottom-0 left-0 w-full border-t-2 border-(--color-box-border) bg-(--color-bg-primary) p-4">
         <button
           disabled={selectedTeams.length === 0}
           onClick={() => setStep(2)}
           className={`btn-interaction w-full cursor-pointer rounded-lg py-3 text-sm font-semibold transition ${
             selectedTeams.length > 0
-              ? 'bg-white text-black'
-              : 'cursor-not-allowed bg-[#2a2a2a] text-gray-500'
+              ? 'bg-(--color-button-bg)'
+              : 'cursor-not-allowed bg-(--color-button-disabled) text-gray-500'
           }`}
         >
           다음
