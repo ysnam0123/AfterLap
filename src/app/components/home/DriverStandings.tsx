@@ -3,16 +3,18 @@ import { useUserStore } from '@/store/useUserFavoriteStore';
 import { DriverSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import Favorite from '../Auth/Favorite';
 
 interface DS {
   data: DriverSeasonRankingView[];
-  seeAll: boolean;
-  setSeeAll: (see: boolean) => void;
 }
-export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
+export default function DriverStandings({ data }: DS) {
   const router = useRouter();
   const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
+  const [seeAll, setSeeAll] = useState(false);
+  const displayData = seeAll ? data : data.slice(0, 5);
+
   return (
     <section className="w-full">
       <div className="w-full">
@@ -29,7 +31,7 @@ export default function DriverStandings({ data, seeAll, setSeeAll }: DS) {
 
         {/* Body */}
         <div className="mb-1 space-y-1">
-          {data.map((item, idx) => (
+          {displayData.map((item, idx) => (
             <div
               key={item.rank}
               onClick={() => router.push(`/driver/${item.driver_id}`)}

@@ -1,10 +1,8 @@
-'use client';
 import { teams2026 } from '@/images/team';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function TeamList() {
-  const router = useRouter();
   return (
     <>
       <h2 className="font-paper text-[18px] font-semibold text-(--color-title)">
@@ -15,7 +13,6 @@ export default function TeamList() {
         {teams2026.map((team, teamIdx) => {
           return (
             <div
-              // onClick={() => router.push(`/team/${team.team_slug}`)}
               key={team.team_slug}
               className="flex shrink-0 flex-col items-center gap-2 transition active:scale-95 active:opacity-80"
             >
@@ -40,12 +37,12 @@ export default function TeamList() {
         })}
       </section>
       <div className="mobile">
-        <button
-          onClick={() => router.push('/team')}
+        <Link
+          href="/team"
           className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
         >
           <p className="font-ria text-[12px] font-semibold">팀 전체보기</p>
-        </button>
+        </Link>
       </div>
     </>
   );

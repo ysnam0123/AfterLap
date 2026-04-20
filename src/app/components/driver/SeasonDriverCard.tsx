@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { findHeadshot } from '@/utils/findHeadShot';
 import { Team2026, teamDriver } from '@/images/team';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function SeasonDriverCard({
   driver,

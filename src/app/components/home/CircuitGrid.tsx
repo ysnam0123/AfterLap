@@ -1,13 +1,11 @@
-'use client';
 import { CircuitView } from '@/types/circuit';
 import { CircuitCard } from './CircuitCard';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface CircuitProps {
   data: CircuitView[];
 }
 export default function CircuitGrid({ data }: CircuitProps) {
-  const router = useRouter();
   return (
     <section className="w-full">
       <div className="mb-3 flex items-center justify-between pr-3">
@@ -15,14 +13,14 @@ export default function CircuitGrid({ data }: CircuitProps) {
           서킷 둘러보기
         </h2>
         <div className="desktop">
-          <button
-            onClick={() => router.push('/circuit')}
+          <Link
+            href="/circuit"
             className="flex h-8 cursor-pointer items-center justify-center rounded-[10px] border border-(--color-button-border) bg-(--color-button-bg) px-3 py-1.75 shadow-(--shadow-soft) transition-all duration-120 hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active) md:h-10"
           >
             <p className="font-ria text-[12px] font-semibold text-[#F8F8F8] sm:text-[16px]">
               서킷 더보기
             </p>
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -32,12 +30,12 @@ export default function CircuitGrid({ data }: CircuitProps) {
         ))}
       </div>
       <div className="mobile">
-        <button
-          onClick={() => router.push('/circuit')}
+        <Link
+          href="/circuit"
           className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
         >
           <p className="font-ria text-[12px] font-semibold">서킷 구경하기</p>
-        </button>
+        </Link>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 import { ChevronDown } from 'lucide-react';
 import AnimatedContent from '@/components/AnimatedContent';
 import { twMerge } from 'tailwind-merge';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function SeasonChangeButton({
   opened,

@@ -21,6 +21,7 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 });
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   reactStrictMode: true,
   images: {
     qualities: [25, 65, 80, 90],

@@ -139,7 +139,7 @@ export default function Header() {
         )}
       </div>
 
-      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+      {loginOpen && <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />}
     </>
   );
 }

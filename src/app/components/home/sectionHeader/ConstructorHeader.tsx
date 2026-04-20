@@ -1,9 +1,6 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function ConstructorHeader() {
-  const router = useRouter();
   return (
     <>
       <header className="mb-3 flex items-center justify-between sm:mb-5">
@@ -11,14 +8,14 @@ export default function ConstructorHeader() {
           2026 시즌 팀 랭킹
         </h2>
         <div className="desktop">
-          <button
-            onClick={() => router.push('/ranking')}
+          <Link
+            href="/ranking"
             className="flex h-8 cursor-pointer items-center justify-center md:h-10"
           >
             <p className="font-paper text-[12px] font-semibold text-[#F8F8F8] sm:text-[16px]">
               더보기
             </p>
-          </button>
+          </Link>
         </div>
       </header>
     </>
