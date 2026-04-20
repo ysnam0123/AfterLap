@@ -21,12 +21,13 @@ export default function NextSessionTitle({ data }: PageProps) {
                 src={data.countries.flag}
                 alt="flag"
                 fill
+                priority
                 sizes="24px"
                 className="object-contain"
               />
             </div>
           </h1>
-          <h1 className="mt-0 text-[14px] font-medium text-[#787575] sm:mt-1 sm:text-[14px] lg:text-[18px]">
+          <h1 className="lcp-text mt-0 text-[14px] font-medium text-[#787575] sm:mt-1 sm:text-[14px] lg:text-[18px]">
             {data.meeting_official_name}
           </h1>
         </div>

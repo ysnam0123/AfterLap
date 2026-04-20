@@ -68,6 +68,24 @@
 }
 
 :root {
+  --font-default: var(--font-pretendard);
+}
+
+body {
+  font-family:
+    var(--font-default),
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.lcp-text {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+:root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
