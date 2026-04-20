@@ -14,6 +14,7 @@ import DriverStandings from './components/home/DriverStandings';
 import TeamList from './components/home/TeamList';
 import DriverList from './components/home/DriverList';
 import CircuitGrid from './components/home/CircuitGrid';
+import { getSessionStatus } from '@/utils/time';
 
 export default async function Page() {
   const nextMeeting = await getNextMeeting();
@@ -29,12 +30,18 @@ export default async function Page() {
         : Promise.resolve([]),
     ]);
 
-  const TData = teamRanking ? groupTeamSeasonRanking(teamRanking).slice(0, 5) : [];
+  const upcomingSession = initialSessions?.find(
+    (session) =>
+      getSessionStatus(session.date_start, session.date_end) === 'upcoming',
+  );
+  console.log('upcomingSession:', upcomingSession);
+
+  const TData = teamRanking
+    ? groupTeamSeasonRanking(teamRanking).slice(0, 5)
+    : [];
 
   return (
     <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
-      <FavoritesSync />
-
       <div>
         <h1 className="font-ria text-[18px] font-black text-(--color-title) sm:text-[30px] sm:text-(--color-title)">
           Next
@@ -43,6 +50,8 @@ export default async function Page() {
           data={nextMeeting}
           liveSession={liveSession}
           initialSessions={initialSessions}
+          upcomingSession={upcomingSession}
+          upcomingSessionKey={upcomingSession.session_key}
         />
       </div>
 
@@ -60,6 +69,7 @@ export default async function Page() {
       <TeamList />
       <DriverList />
       <CircuitGrid data={circuits.slice(0, 6)} />
+      <FavoritesSync />
     </section>
   );
 }
