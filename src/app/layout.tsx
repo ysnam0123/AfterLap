@@ -29,12 +29,11 @@ const riaSans = localFont({
 
 const paperlogy = localFont({
   src: [
-    { path: '../../public/fonts/Paperlogy-3Light.woff2', weight: '300' },
-    { path: '../../public/fonts/Paperlogy-4Regular.woff2', weight: '400' },
     { path: '../../public/fonts/Paperlogy-6SemiBold.woff2', weight: '600' },
   ],
   variable: '--font-paperlogy',
   display: 'swap',
+  preload: false, // LCP 요소 아님 — 초기 preload 제외
 });
 
 const pretendard = localFont({
@@ -92,14 +91,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link
-          rel="preconnect"
-          href="https://axykebsdqztifmbbluzg.supabase.co"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://axykebsdqztifmbbluzg.supabase.co"
-        />
+        {/* Supabase 쿼리는 서버에서 실행되므로 브라우저 preconnect 불필요 */}
         {/* 안드로아드/크롬 계열 브라우저에서 pwa를 허용 */}
         <meta name="mobile-web-app-capable" content="yes" />
         {/* ios safari에서 pwa를 허용 */}
