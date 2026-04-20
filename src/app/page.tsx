@@ -1,10 +1,6 @@
 import { getLiveSession } from '@/lib/server/liveSession';
 import { getNextMeeting } from '@/lib/server/nextMeeting';
-import { getDriverRanking } from '@/lib/server/driverRanking';
-import { getTeamSeasonRanking } from '@/lib/server/teamRanking';
-import { fetchCircuits } from '@/lib/server/circuit';
 import { ensureSessions } from '@/lib/server/sessions';
-import { groupTeamSeasonRanking } from '@/utils/groupTeamSeasonRanking';
 import FavoritesSync from './components/home/FavoritesSync';
 import NextSession from './components/home/NextSession/NextSession';
 import TeamList from './components/home/List/TeamList';
@@ -15,6 +11,7 @@ import CircuitGridSkeleton from './components/home/skeleton/CircuitGridSkeleton'
 import CircuitGrid from './components/home/homeCircuit/CircuitGrid';
 import RankingSection from './components/home/RankingSection/RankingSection';
 import RankingSkeleton from './components/home/skeleton/RankingSkeleton';
+import TeamListSkeleton from './components/home/skeleton/TeamListSkeleton';
 
 export default async function Page() {
   const nextMeeting = await getNextMeeting();
@@ -32,7 +29,7 @@ export default async function Page() {
   );
 
   return (
-    <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
+    <section className="mx-auto flex max-w-full flex-col gap-5 px-5 pt-4 select-none sm:gap-8 lg:px-15 xl:px-35">
       <div>
         <h1 className="font-ria text-[18px] font-black text-(--color-title) sm:text-[30px] sm:text-(--color-title)">
           Next
@@ -49,10 +46,10 @@ export default async function Page() {
         <RankingSection />
       </Suspense>
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<TeamListSkeleton />}>
         <TeamList />
       </Suspense>
-      <Suspense fallback={null}>
+      <Suspense fallback={<TeamListSkeleton />}>
         <DriverList />
       </Suspense>
       <Suspense fallback={<CircuitGridSkeleton />}>
