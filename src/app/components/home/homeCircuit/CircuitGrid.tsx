@@ -1,11 +1,13 @@
-import { CircuitView } from '@/types/circuit';
 import { CircuitCard } from './CircuitCard';
 import Link from 'next/link';
+import { fetchCircuits } from '@/lib/server/circuit';
 
-interface CircuitProps {
-  data: CircuitView[];
-}
-export default function CircuitGrid({ data }: CircuitProps) {
+// interface CircuitProps {
+//   data: CircuitView[];
+// }
+export default async function CircuitGrid() {
+  const circuits = await fetchCircuits();
+  const CData = circuits.slice(0, 6);
   return (
     <section className="w-full">
       <div className="mb-3 flex items-center justify-between pr-3">
@@ -25,7 +27,7 @@ export default function CircuitGrid({ data }: CircuitProps) {
       </div>
 
       <div className="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-5">
-        {data.map((c, idx) => (
+        {CData.map((c, idx) => (
           <CircuitCard key={c.circuit_key} data={c} idx={idx} />
         ))}
       </div>

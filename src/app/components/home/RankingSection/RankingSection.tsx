@@ -1,24 +1,18 @@
+import { getDriverRanking } from '@/lib/server/driverRanking';
 import ConstructorHeader from '../sectionHeader/ConstructorHeader';
 import DriverStandingsHeader from '../sectionHeader/DriverStandingsHeader';
 import ConstructorStandings from './ConstructorStandings';
 import DriverStandings from './DriverStandings';
+import { getTeamSeasonRanking } from '@/lib/server/teamRanking';
+import { groupTeamSeasonRanking } from '@/utils/groupTeamSeasonRanking';
 
-import {
-  DriverSeasonRankingView,
-  TeamSeasonRankingRow,
-  TeamSeasonRankingView,
-} from '@/types/Ranking';
+export default async function RankingSection() {
+  const [driverRanking, teamRanking] = await Promise.all([
+    getDriverRanking(2026),
+    getTeamSeasonRanking(2026),
+  ]);
 
-interface pageProps {
-  driverRanking: DriverSeasonRankingView[];
-  teamRanking: TeamSeasonRankingRow[];
-  TData: TeamSeasonRankingView[];
-}
-export default function RankingSection({
-  driverRanking,
-  teamRanking,
-  TData,
-}: pageProps) {
+  const TData = groupTeamSeasonRanking(teamRanking).slice(0, 5);
   return (
     <>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

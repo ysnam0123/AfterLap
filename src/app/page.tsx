@@ -19,26 +19,17 @@ import RankingSkeleton from './components/home/skeleton/RankingSkeleton';
 export default async function Page() {
   const nextMeeting = await getNextMeeting();
 
-  const [liveSession, driverRanking, teamRanking, circuits, initialSessions] =
-    await Promise.all([
-      getLiveSession(),
-      getDriverRanking(2026),
-      getTeamSeasonRanking(2026),
-      fetchCircuits(),
-      nextMeeting?.meeting_key
-        ? ensureSessions(nextMeeting.meeting_key)
-        : Promise.resolve([]),
-    ]);
+  const [liveSession, initialSessions] = await Promise.all([
+    getLiveSession(),
+    nextMeeting?.meeting_key
+      ? ensureSessions(nextMeeting.meeting_key)
+      : Promise.resolve([]),
+  ]);
 
   const upcomingSession = initialSessions?.find(
     (session) =>
       getSessionStatus(session.date_start, session.date_end) === 'upcoming',
   );
-  console.log('upcomingSession:', upcomingSession);
-
-  const TData = teamRanking
-    ? groupTeamSeasonRanking(teamRanking).slice(0, 5)
-    : [];
 
   return (
     <section className="mx-auto flex max-w-full flex-col gap-5 px-5 select-none sm:gap-8 lg:px-15 xl:px-35">
@@ -55,11 +46,7 @@ export default async function Page() {
         />
       </div>
       <Suspense fallback={<RankingSkeleton />}>
-        <RankingSection
-          driverRanking={driverRanking}
-          teamRanking={teamRanking}
-          TData={TData}
-        />
+        <RankingSection />
       </Suspense>
 
       <Suspense fallback={null}>
@@ -69,7 +56,7 @@ export default async function Page() {
         <DriverList />
       </Suspense>
       <Suspense fallback={<CircuitGridSkeleton />}>
-        <CircuitGrid data={circuits.slice(0, 6)} />
+        <CircuitGrid />
       </Suspense>
       <FavoritesSync />
     </section>
