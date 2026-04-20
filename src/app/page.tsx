@@ -32,15 +32,13 @@ export default async function Page() {
   return (
     <section className="mx-auto flex max-w-full flex-col gap-5 px-5 pt-4 select-none sm:gap-8 lg:px-15 xl:px-35">
       <div className="min-h-48">
-        <Suspense fallback={<NextSessionSkeleton />}>
-          <NextSession
-            data={nextMeeting}
-            liveSession={liveSession}
-            initialSessions={initialSessions}
-            upcomingSession={upcomingSession}
-            upcomingSessionKey={upcomingSession.session_key}
-          />
-        </Suspense>
+        <NextSession
+          data={nextMeeting}
+          liveSession={liveSession}
+          initialSessions={initialSessions}
+          upcomingSession={upcomingSession}
+          upcomingSessionKey={upcomingSession.session_key}
+        />
       </div>
       <Suspense fallback={<RankingSkeleton />}>
         <RankingSection />
