@@ -71,6 +71,9 @@
   /* 아티클 */
   --article-title: #3b3b3b;
   --article-content: #777777;
+
+  /* 스켈레톤 */
+  --color-skeleton: #252525;
 }
 
 /* ── Light Mode ──────────────────────────────────────────── */
@@ -140,6 +143,9 @@
   /* 아티클 */
   --article-title: #d4d4d8;
   --article-content: #a1a1aa;
+
+  /* 스켈레톤 */
+  --color-skeleton: #d5d5d5;
 }
 
 /* ── Dark Mode (기본값 유지) ───────────────────────────────── */

@@ -6,15 +6,15 @@ import { fetchCircuits } from '@/lib/server/circuit';
 import { ensureSessions } from '@/lib/server/sessions';
 import { groupTeamSeasonRanking } from '@/utils/groupTeamSeasonRanking';
 import FavoritesSync from './components/home/FavoritesSync';
-import NextSession from './components/home/NextSession';
-import ConstructorHeader from './components/home/sectionHeader/ConstructorHeader';
-import ConstructorStandings from './components/home/ConstructorStandings';
-import DriverStandingsHeader from './components/home/sectionHeader/DriverStandingsHeader';
-import DriverStandings from './components/home/DriverStandings';
-import TeamList from './components/home/TeamList';
-import DriverList from './components/home/DriverList';
-import CircuitGrid from './components/home/CircuitGrid';
+import NextSession from './components/home/NextSession/NextSession';
+import TeamList from './components/home/List/TeamList';
+import DriverList from './components/home/List/DriverList';
 import { getSessionStatus } from '@/utils/time';
+import { Suspense } from 'react';
+import CircuitGridSkeleton from './components/home/skeleton/CircuitGridSkeleton';
+import CircuitGrid from './components/home/homeCircuit/CircuitGrid';
+import RankingSection from './components/home/RankingSection/RankingSection';
+import RankingSkeleton from './components/home/skeleton/RankingSkeleton';
 
 export default async function Page() {
   const nextMeeting = await getNextMeeting();
@@ -54,21 +54,23 @@ export default async function Page() {
           upcomingSessionKey={upcomingSession.session_key}
         />
       </div>
+      <Suspense fallback={<RankingSkeleton />}>
+        <RankingSection
+          driverRanking={driverRanking}
+          teamRanking={teamRanking}
+          TData={TData}
+        />
+      </Suspense>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div>
-          <ConstructorHeader />
-          {teamRanking && <ConstructorStandings data={TData} />}
-        </div>
-        <div>
-          <DriverStandingsHeader />
-          {driverRanking && <DriverStandings data={driverRanking} />}
-        </div>
-      </div>
-
-      <TeamList />
-      <DriverList />
-      <CircuitGrid data={circuits.slice(0, 6)} />
+      <Suspense fallback={null}>
+        <TeamList />
+      </Suspense>
+      <Suspense fallback={null}>
+        <DriverList />
+      </Suspense>
+      <Suspense fallback={<CircuitGridSkeleton />}>
+        <CircuitGrid data={circuits.slice(0, 6)} />
+      </Suspense>
       <FavoritesSync />
     </section>
   );

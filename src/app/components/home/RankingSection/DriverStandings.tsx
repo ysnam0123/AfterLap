@@ -1,20 +1,12 @@
-'use client';
-import { useUserStore } from '@/store/useUserFavoriteStore';
 import { DriverSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import Favorite from '../Auth/Favorite';
+import FavoriteDriver from './FavoriteDriver';
+import Link from 'next/link';
 
 interface DS {
   data: DriverSeasonRankingView[];
 }
 export default function DriverStandings({ data }: DS) {
-  const router = useRouter();
-  const favoriteDrivers = useUserStore((state) => state.favoriteDrivers);
-  const [seeAll, setSeeAll] = useState(false);
-  const displayData = seeAll ? data : data.slice(0, 5);
-
   return (
     <section className="w-full">
       <div className="w-full">
@@ -31,10 +23,10 @@ export default function DriverStandings({ data }: DS) {
 
         {/* Body */}
         <div className="mb-1 space-y-1">
-          {displayData.map((item, idx) => (
-            <div
+          {data.map((item, idx) => (
+            <Link
+              href={`/driver/${item.driver_id}`}
               key={item.rank}
-              onClick={() => router.push(`/driver/${item.driver_id}`)}
               className="grid h-14 cursor-pointer grid-cols-[6px_50px_2fr_1fr] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) sm:h-16 sm:grid-cols-[6px_60px_1fr_1fr_80px]"
             >
               {/* Team Color Bar */}
@@ -66,7 +58,7 @@ export default function DriverStandings({ data }: DS) {
                   <div className="flex gap-2 text-[13px] md:text-[18px]">
                     <span className="inline-flex gap-1 truncate text-sm font-medium sm:text-base">
                       {item.kr_name}
-                      {favoriteDrivers.includes(item.driver_id) && <Favorite />}
+                      <FavoriteDriver driverId={item.driver_id} />
                     </span>
                   </div>
                   <div
@@ -87,18 +79,16 @@ export default function DriverStandings({ data }: DS) {
               <div className="pr-3 text-right text-sm font-semibold sm:text-base">
                 {item.total_points}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="mobile">
-          <button
-            onClick={() => setSeeAll(!seeAll)}
+          <Link
+            href={'/ranking'}
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
-            <p className="font-ria text-[12px] font-medium">
-              {seeAll ? '접기' : '펼치기'}
-            </p>
-          </button>
+            <p className="font-ria text-[12px] font-semibold">전체보기</p>
+          </Link>
         </div>
       </div>
     </section>

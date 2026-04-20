@@ -1,16 +1,12 @@
-'use client';
-import { useUserStore } from '@/store/useUserFavoriteStore';
 import { TeamSeasonRankingView } from '@/types/Ranking';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import Favorite from '../Auth/Favorite';
+import Link from 'next/link';
+import FavoriteConstructor from './FavoriteConstructor';
 
 interface TS {
   data: TeamSeasonRankingView[];
 }
 export default function ConstructorStandings({ data }: TS) {
-  const router = useRouter();
-  const favoriteTeams = useUserStore((state) => state.favoriteTeams);
   return (
     <>
       <section className="w-full">
@@ -25,9 +21,9 @@ export default function ConstructorStandings({ data }: TS) {
         {/* Table Body */}
         <div className="mb-1 space-y-1">
           {data.map((item) => (
-            <div
+            <Link
+              href={`/team/${item.team_slug}`}
               key={item.rank}
-              onClick={() => router.push(`/team/${item.team_slug}`)}
               className="grid h-14 cursor-pointer grid-cols-[6px_40px_1fr_80px] items-center border-y border-r border-(--color-table-border) bg-(--color-table-bg) transition hover:bg-(--color-table-hover) active:bg-[#848484] sm:h-16 sm:grid-cols-[6px_60px_1fr_80px]"
             >
               {/* Team Color Bar */}
@@ -54,7 +50,7 @@ export default function ConstructorStandings({ data }: TS) {
                 </div>
                 <span className="relative inline-flex items-center gap-1 truncate text-sm font-medium sm:text-base">
                   {item.team_kr_name}
-                  {favoriteTeams.includes(item.team_slug) && <Favorite />}
+                  <FavoriteConstructor teamSlug="item.team_slug" />
                 </span>
               </div>
 
@@ -62,16 +58,16 @@ export default function ConstructorStandings({ data }: TS) {
               <div className="pr-3 text-right text-sm font-semibold sm:text-base">
                 {item.team_total_points}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="mobile">
-          <button
-            onClick={() => router.push('/ranking')}
+          <Link
+            href={'/ranking'}
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border border-(--color-button-border) bg-(--color-button-bg) py-2.5 shadow-(--shadow-soft) transition hover:bg-(--color-button-hover) hover:shadow-(--shadow-strong) active:bg-(--color-button-active)"
           >
             <p className="font-ria text-[12px] font-semibold">전체보기</p>
-          </button>
+          </Link>
         </div>
       </section>
     </>

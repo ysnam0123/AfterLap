@@ -1,7 +1,7 @@
 import { LiveSession, NextMeeting, Session } from '@/types/meeting';
-import NextSessionTitle from '../NextSessionTitle';
-import LiveSessionBox from '../LiveSessionBox';
-import SessionBox from '../SessionBox';
+import NextSessionTitle from '../sectionHeader/NextSessionTitle';
+import LiveSessionBox from './LiveSessionBox';
+import SessionBox from './SessionBox';
 
 interface PageProps {
   data: NextMeeting | null;

@@ -3,7 +3,7 @@
 import { Session } from '@/types/meeting';
 import { useState } from 'react';
 import CSSAnimatedContent from '@/components/CSSAnimatedContent';
-import SessionBox from '../SessionBox';
+import SessionBox from './SessionBox';
 
 interface PageProps {
   initialSessions?: Session[];

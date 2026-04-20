@@ -3,9 +3,9 @@ import { Session } from '@/types/meeting';
 import { formatDateTime, getSessionStatus } from '@/utils/time';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import FinishedButton from '../common/buttons/FinishedButton';
-import OngoingButton from '../common/buttons/OngoingButton';
-import UpcomingButton from '../common/buttons/UpcomingButton';
+import FinishedButton from '../../common/buttons/FinishedButton';
+import OngoingButton from '../../common/buttons/OngoingButton';
+import UpcomingButton from '../../common/buttons/UpcomingButton';
 
 interface PageProps {
   data: Session;
@@ -51,7 +51,10 @@ export default function SessionBox({ data }: PageProps) {
               {data.session_name}
             </h1>
           </div>
-          <span suppressHydrationWarning className="font-ria text-[14px] font-medium">
+          <span
+            suppressHydrationWarning
+            className="font-ria text-[14px] font-medium"
+          >
             {formatDateTime(data.date_start)}
           </span>
         </div>

@@ -1,6 +1,6 @@
 import { LiveSession, NextMeeting, Session } from '@/types/meeting';
-import NextSessionServer from './NextSession/NextSessionServer';
-import NextSessionClient from './NextSession/NextSessionClient';
+import NextSessionServer from './NextSessionServer';
+import NextSessionClient from './NextSessionClient';
 
 interface PageProps {
   data: NextMeeting | null;
