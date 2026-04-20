@@ -27,7 +27,7 @@ export default function TeamList() {
                   height={80}
                   sizes="80px"
                   quality={65}
-                  loading={teamIdx < 3 ? 'eager' : 'lazy'}
+                  loading={teamIdx === 0 ? 'eager' : 'lazy'}
                 />
               </div>
 

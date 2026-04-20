@@ -12,6 +12,7 @@ import CircuitGrid from './components/home/homeCircuit/CircuitGrid';
 import RankingSection from './components/home/RankingSection/RankingSection';
 import RankingSkeleton from './components/home/skeleton/RankingSkeleton';
 import TeamListSkeleton from './components/home/skeleton/TeamListSkeleton';
+import NextSessionSkeleton from './components/home/skeleton/NextSessionSkeleton';
 
 export default async function Page() {
   const nextMeeting = await getNextMeeting();
@@ -30,17 +31,16 @@ export default async function Page() {
 
   return (
     <section className="mx-auto flex max-w-full flex-col gap-5 px-5 pt-4 select-none sm:gap-8 lg:px-15 xl:px-35">
-      <div>
-        <h1 className="font-ria text-[18px] font-black text-(--color-title) sm:text-[30px] sm:text-(--color-title)">
-          Next
-        </h1>
-        <NextSession
-          data={nextMeeting}
-          liveSession={liveSession}
-          initialSessions={initialSessions}
-          upcomingSession={upcomingSession}
-          upcomingSessionKey={upcomingSession.session_key}
-        />
+      <div className="min-h-48">
+        <Suspense fallback={<NextSessionSkeleton />}>
+          <NextSession
+            data={nextMeeting}
+            liveSession={liveSession}
+            initialSessions={initialSessions}
+            upcomingSession={upcomingSession}
+            upcomingSessionKey={upcomingSession.session_key}
+          />
+        </Suspense>
       </div>
       <Suspense fallback={<RankingSkeleton />}>
         <RankingSection />

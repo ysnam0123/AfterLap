@@ -12,7 +12,7 @@ export default function DriverList() {
       <section className="hide-scrollbar flex w-full gap-4 overflow-x-auto px-2">
         {teams2026.map((team, teamIdx) =>
           team.drivers.map((driver, driverIdx) => {
-            const isEager = teamIdx === 0 && driverIdx < 3;
+            const isEager = teamIdx === 0 && driverIdx === 0;
             return (
               <Link
                 key={driver.driver_id}

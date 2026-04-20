@@ -22,6 +22,9 @@ export default function NextSession({
 
   return (
     <>
+      <h1 className="font-ria text-[18px] font-black text-(--color-title) sm:text-[30px] sm:text-(--color-title)">
+        Next
+      </h1>
       <div className="flex flex-col gap-2">
         <NextSessionServer
           data={data}
