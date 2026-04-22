@@ -12,7 +12,6 @@ import CircuitGrid from './components/home/homeCircuit/CircuitGrid';
 import RankingSection from './components/home/RankingSection/RankingSection';
 import RankingSkeleton from './components/home/skeleton/RankingSkeleton';
 import TeamListSkeleton from './components/home/skeleton/TeamListSkeleton';
-import NextSessionSkeleton from './components/home/skeleton/NextSessionSkeleton';
 
 export default async function Page() {
   const nextMeeting = await getNextMeeting();

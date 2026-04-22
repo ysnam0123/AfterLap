@@ -7,7 +7,7 @@ export function useDriverData(sessionKey: number | null, isFetchable: boolean) {
     queryKey: ['drivers', sessionKey],
     staleTime: 1000 * 60 * 60,
     enabled: isFetchable,
-
+    retry: 3,
     queryFn: () => fetchDrivers(sessionKey!),
   });
 }

@@ -7,5 +7,6 @@ export function useRaceResultData(sessionKey: number, isFinished: boolean) {
     queryKey: ['raceResult', sessionKey],
     queryFn: () => fetchRaceResultData(sessionKey),
     enabled: isFinished,
+    retry: 3,
   });
 }

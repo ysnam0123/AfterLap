@@ -11,6 +11,7 @@ export function useSessionData(
     queryKey: ['sessions', meetingKey],
     enabled: sessionFetchable,
     staleTime: 1000 * 60 * 10,
+    retry: 3,
     initialData,
     queryFn: () => fetchSessions(meetingKey!),
   });
