@@ -29,7 +29,7 @@ export default function MobileFooter() {
             >
               {/* active indicator */}
               {isActive && (
-                <span className="absolute -top-1.5 h-0.75 w-10 rounded-full bg-[#d80003]" />
+                <span className="absolute -top-1.5 h-0.75 w-10 rounded-full bg-(--color-accent)" />
               )}
 
               <Icon
