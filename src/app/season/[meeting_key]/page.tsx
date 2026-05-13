@@ -108,12 +108,16 @@ export default function Page() {
     }
   }, [sessions, selectedSessionKey, finishedSessions, upcomingSessions]);
 
-  const isLoading = meetingDetailLoading || circuitDataLoading || driverLoading;
+  // 페이지 초기 로딩(미팅·서킷·세션 목록) — 전체 화면 로더가 가려야 하는 범위
+  const isPageLoading = meetingDetailLoading || circuitDataLoading;
+
+  // 세션 전환 시 발생하는 부분 로딩 — SessionNav 아래만 가린다
+  const isSessionAreaLoading = driverLoading || sessionResultLoading;
 
   const hasRequiredData =
     !!meetingDetail && !!circuitData && sessions && sessions.length > 0;
 
-  const isPageReady = !isLoading && hasRequiredData && !!year;
+  const isPageReady = !isPageLoading && hasRequiredData && !!year;
 
   useEffect(() => {
     console.log('--- 페칭 상태 체크 ---');
@@ -163,14 +167,12 @@ export default function Page() {
                     )}
                     {isSelectedSessionFinished && (
                       <>
-                        {sessionResultLoading && (
-                          <>
-                            <div className="flex h-100 items-center justify-center sm:h-100">
-                              <F1Loading loadingText="로딩 중..." />
-                            </div>
-                          </>
+                        {isSessionAreaLoading && (
+                          <div className="flex h-100 items-center justify-center sm:h-100">
+                            <F1Loading loadingText="로딩 중..." />
+                          </div>
                         )}
-                        {!sessionResultLoading &&
+                        {!isSessionAreaLoading &&
                         selectedSession?.session_name === 'Race' &&
                         raceSession &&
                         startingGridData ? (
@@ -182,6 +184,7 @@ export default function Page() {
                             startingGrid={startingGridData}
                           />
                         ) : (
+                          !isSessionAreaLoading &&
                           selectedSessionKey && (
                             <SessionResultSection
                               year={year}

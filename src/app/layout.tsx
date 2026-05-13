@@ -55,10 +55,10 @@ export const metadata: Metadata = {
       ? 'https://afterlap.vercel.app'
       : 'http://localhost:3000',
   ),
-  title: 'AfterLap',
+  title: 'AfterLap | F1 경기 흐름 분석',
   description: 'F1의 결과를 한눈에 확인하세요.',
   openGraph: {
-    title: 'AfterLap',
+    title: 'AfterLap | F1 경기 흐름 분석',
     description: 'F1의 결과를 한눈에 확인하세요.',
     images: [
       {

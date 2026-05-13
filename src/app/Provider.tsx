@@ -9,12 +9,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="dark"
-      enableSystem={false}
-      themes={['light', 'dark', 'red_bull', 'ferrari']}
-    >
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <AppSplashGate>{children}</AppSplashGate>
