@@ -36,7 +36,7 @@ export default function LiveSessionBox({ data }: PageProps) {
           </div>
           <span className="font-ria flex items-center gap-1 text-[14px] font-semibold">
             <p>세션 진행중</p>
-            <div className="h-4 w-4 animate-pulse rounded-full bg-[#E10600]"></div>
+            <div className="h-4 w-4 animate-pulse rounded-full bg-(--color-accent)"></div>
           </span>
         </div>
         <button

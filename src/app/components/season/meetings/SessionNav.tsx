@@ -34,7 +34,7 @@ export default function SessionNav({
                   }}
                   className={`btn-interaction flex h-10 items-center justify-center gap-1 truncate rounded-[10px] px-4 text-[13px] font-semibold transition sm:h-12 sm:text-[18px] ${
                     isActive
-                      ? 'border-b-4 border-[#D80003] bg-(--color-box-selected) shadow-(--shadow-soft)'
+                      ? 'border-b-4 border-(--color-accent) bg-(--color-box-selected) shadow-(--shadow-soft)'
                       : 'border border-(--color-box-border) bg-(--color-button-bg) hover:bg-(--color-button-hover)'
                   } ${!isFinished ? 'opacity-70' : ''} cursor-pointer`}
                 >
@@ -45,7 +45,7 @@ export default function SessionNav({
                     </span>
                   )}
                   {!isFinished && status === 'ongoing' && (
-                    <span className="ml-1 text-[10px] text-[#E10600] sm:text-[12px]">
+                    <span className="ml-1 text-[10px] text-(--color-accent) sm:text-[12px]">
                       진행 중
                     </span>
                   )}

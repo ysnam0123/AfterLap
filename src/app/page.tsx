@@ -12,6 +12,7 @@ import CircuitGrid from './components/home/homeCircuit/CircuitGrid';
 import RankingSection from './components/home/RankingSection/RankingSection';
 import RankingSkeleton from './components/home/skeleton/RankingSkeleton';
 import TeamListSkeleton from './components/home/skeleton/TeamListSkeleton';
+import PredictionCTA from './components/home/PredictionCTA';
 
 export default async function Page() {
   const nextMeeting = await getNextMeeting();
@@ -39,6 +40,7 @@ export default async function Page() {
           upcomingSessionKey={upcomingSession.session_key}
         />
       </div>
+      <PredictionCTA nextMeeting={nextMeeting} />
       <Suspense fallback={<RankingSkeleton />}>
         <RankingSection />
       </Suspense>
