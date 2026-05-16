@@ -22,7 +22,7 @@ export default function LayoutWrapper({
   return (
     <>
       {showHeader && <Header />}
-      <div className="lg:pb-0">{children}</div>
+      <div className={showFooter ? 'pb-17.5 lg:pb-0' : ''}>{children}</div>
       <Analytics />
       {showFooter && (
         <>
