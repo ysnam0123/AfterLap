@@ -148,7 +148,7 @@ export default function Page() {
                 meetingInfo={meetingDetail}
                 circuitInfo={circuitData}
               />
-              <section className="mx-auto min-h-screen w-full px-0 md:px-10 lg:px-20 xl:px-35">
+              <section className="page-container px-0 md:px-10">
                 <>
                   {selectedSessionKey && (
                     <SessionNav

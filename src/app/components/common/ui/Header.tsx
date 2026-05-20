@@ -26,8 +26,8 @@ export default function Header() {
 
   return (
     <>
-      <div className="sticky top-0 z-50 flex w-full flex-col gap-3 border-b border-(--color-box-border) bg-(--color-bg-primary)/90 px-5 py-2.5 backdrop-blur lg:h-22">
-        <div className="flex items-center gap-17.5 select-none lg:px-17.5 xl:px-35">
+      <div className="sticky top-0 z-50 flex w-full flex-col gap-3 border-b border-(--color-box-border) bg-(--color-bg-primary)/90 px-5 py-2.5 backdrop-blur lg:h-22 lg:px-0">
+        <div className="mx-auto flex w-full max-w-[1536px] items-center gap-17.5 select-none lg:px-17.5 xl:px-35">
           <Image
             src={'/AfterLapLogo.webp'}
             alt="logo"

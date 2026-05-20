@@ -26,6 +26,13 @@
   }
 }
 
+@layer components {
+  /* 전 페이지 공용 spine — lg+에서만 horizontal padding 부여 (mobile/sm는 각 페이지 기존 값 유지) */
+  .page-container {
+    @apply mx-auto w-full max-w-[1536px] lg:px-17.5 xl:px-35;
+  }
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

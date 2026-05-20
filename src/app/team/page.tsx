@@ -5,7 +5,7 @@ import Team from '../components/team/Team';
 export default function Page() {
   return (
     <>
-      <div className="mx-auto flex min-h-screen w-full flex-col px-5 select-none md:px-10 lg:px-20">
+      <div className="page-container flex flex-col px-5 select-none md:px-10">
         <h1 className="font-paper mb-5 text-[20px] font-semibold sm:mb-10 sm:text-[30px]">
           2026 Season
         </h1>

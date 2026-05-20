@@ -20,9 +20,11 @@ export default function LayoutWrapper({
   const showFooter = !hiddenFooterRoutes.includes(pathname);
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       {showHeader && <Header />}
-      <div className={showFooter ? 'pb-17.5 lg:pb-0' : ''}>{children}</div>
+      <main className={`flex-1 ${showFooter ? 'pb-17.5 lg:pb-0' : ''}`}>
+        {children}
+      </main>
       <Analytics />
       {showFooter && (
         <>
@@ -34,6 +36,6 @@ export default function LayoutWrapper({
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }

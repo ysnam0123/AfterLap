@@ -27,8 +27,8 @@ export default function Page() {
   // });
   return (
     <>
-      <main className="min-h-screen px-5 lg:px-10">
-        <section className="mx-auto w-full max-w-350">
+      <main className="px-5">
+        <section className="page-container">
           {pageLoading && (
             <>
               <div className="flex h-100 items-center justify-center font-bold md:h-200">

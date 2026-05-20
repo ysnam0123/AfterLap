@@ -34,7 +34,7 @@ export default function Page() {
   return (
     <>
       {/* px-5 sm:px-10 lg:px-15 */}
-      <section className="min-h-screen w-full px-5 sm:px-10 lg:px-15">
+      <section className="page-container px-5 sm:px-10">
         <SeasonChangeButton
           opened={opened}
           setOpenedAction={setOpened}

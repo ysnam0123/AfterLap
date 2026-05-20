@@ -7,8 +7,8 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <footer className="mt-10 w-full border-t border-(--color-box-border) bg-(--color-box-bg) px-4 pt-6 pb-20 select-none sm:mt-20 sm:px-12 sm:py-10">
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start">
+    <footer className="mt-10 w-full border-t border-(--color-box-border) bg-(--color-box-bg) px-4 pt-6 pb-20 select-none sm:mt-20 sm:px-12 sm:py-6 lg:px-0">
+      <div className="page-container flex flex-col gap-10 lg:flex-row lg:items-start">
         {/* Left */}
         <div className="flex flex-col items-start gap-4 lg:w-100 lg:border-r lg:border-(--color-box-border) lg:pr-10">
           <Image

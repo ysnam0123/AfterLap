@@ -30,7 +30,7 @@ export default async function Page() {
   );
 
   return (
-    <section className="mx-auto flex max-w-full flex-col gap-5 px-5 pt-4 select-none sm:gap-8 lg:px-15 xl:px-35">
+    <section className="page-container flex flex-col gap-5 px-5 pt-4 select-none sm:gap-8">
       <div className="min-h-48">
         <NextSession
           data={nextMeeting}
