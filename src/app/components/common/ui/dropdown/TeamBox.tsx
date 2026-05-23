@@ -13,7 +13,7 @@ export default function TeamBox({
   const router = useRouter();
   return (
     <div
-      className="absolute top-22 left-0 z-500 flex min-h-120 w-screen justify-center bg-[#1a1a1a] px-12.5 py-12.5 select-none"
+      className="absolute top-22 left-0 z-500 flex min-h-120 w-screen justify-center border-t border-(--color-box-border) bg-(--color-bg-primary)/95 px-12.5 py-12.5 backdrop-blur select-none"
       onMouseLeave={onMouseLeave}
     >
       <div className="grid max-w-400 grid-cols-5 gap-8">
@@ -32,7 +32,7 @@ export default function TeamBox({
               className="object-contain transition-transform duration-200 ease-out group-hover:scale-105"
               priority
             />
-            <h1 className="font-ria mb-3 text-[20px] font-medium text-[#b5b5b5] transition-colors duration-200 group-hover:text-white">
+            <h1 className="font-ria mb-3 text-[20px] font-medium text-(--color-sub-text) transition-colors duration-200 group-hover:text-(--color-title-hover)">
               {team.team_kr_name}
             </h1>
           </div>

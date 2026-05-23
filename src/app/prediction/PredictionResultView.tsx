@@ -17,30 +17,36 @@ function findDriver(drivers: PredictionDriver[], n: number) {
   return drivers.find((d) => d.driver_number === n) ?? null;
 }
 
-function DriverCell({ driver }: { driver: PredictionDriver | null }) {
+function DriverCell({
+  driver,
+  emptyText,
+}: {
+  driver: PredictionDriver | null;
+  emptyText: string;
+}) {
   if (!driver)
     return (
-      <div className="flex h-12 items-center text-(--color-placeholder) text-sm">
-        예측 없음
+      <div className="flex h-12 items-center text-(--color-placeholder) text-xs sm:text-sm">
+        {emptyText}
       </div>
     );
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex min-w-0 items-center gap-2">
       {driver.headshot_url && (
         <Image
           src={driver.headshot_url}
           alt={driver.full_name}
           width={32}
           height={32}
-          className="h-8 w-8 rounded-full object-cover"
+          className="h-8 w-8 shrink-0 rounded-full object-cover"
         />
       )}
-      <div className="flex flex-col">
-        <span className="text-(--color-title) text-sm font-semibold">
+      <div className="flex min-w-0 flex-col">
+        <span className="text-(--color-title) truncate text-xs font-semibold sm:text-sm">
           {driver.kr_name || driver.full_name}
         </span>
         <span
-          className="text-[11px]"
+          className="text-[10px] sm:text-[11px]"
           style={{ color: driver.team_colour ?? 'var(--color-sub-text)' }}
         >
           #{driver.driver_number}
@@ -78,7 +84,7 @@ export default function PredictionResultView({
       </div>
 
       <div className="overflow-hidden rounded-xl border border-(--color-card-border) bg-(--color-card-bg)">
-        <div className="grid grid-cols-[60px_1fr_1fr_60px] items-center bg-(--color-table-head-bg) px-3 py-2 text-xs font-semibold text-(--color-sub-text)">
+        <div className="grid grid-cols-[44px_1fr_1fr_44px] items-center gap-1 bg-(--color-table-head-bg) px-2 py-2 text-[11px] font-semibold text-(--color-sub-text) sm:grid-cols-[60px_1fr_1fr_60px] sm:gap-2 sm:px-3 sm:text-xs">
           <span>슬롯</span>
           <span>내 예측</span>
           <span>실제 결과</span>
@@ -96,14 +102,17 @@ export default function PredictionResultView({
           return (
             <div
               key={r.label}
-              className="grid grid-cols-[60px_1fr_1fr_60px] items-center border-t border-(--color-card-border) px-3 py-3"
+              className="grid grid-cols-[44px_1fr_1fr_44px] items-center gap-1 border-t border-(--color-card-border) px-2 py-3 sm:grid-cols-[60px_1fr_1fr_60px] sm:gap-2 sm:px-3"
             >
-              <span className="text-(--color-accent) font-ria text-lg font-black">
+              <span className="text-(--color-accent) font-ria text-base font-black sm:text-lg">
                 {r.label}
               </span>
-              <DriverCell driver={r.mine} />
-              <DriverCell driver={r.actual} />
-              <div className="flex items-center justify-end gap-1 text-sm font-semibold">
+              <DriverCell driver={r.mine} emptyText="예측 없음" />
+              <DriverCell
+                driver={r.actual}
+                emptyText={podium ? '데이터 없음' : '결과 대기 중'}
+              />
+              <div className="flex items-center justify-end gap-1 text-xs font-semibold sm:text-sm">
                 {podium && r.mine ? (
                   isCorrect ? (
                     <>

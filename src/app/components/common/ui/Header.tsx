@@ -46,18 +46,18 @@ export default function Header() {
             <ul className="flex gap-14">
               <li
                 onClick={() => router.push('/season')}
-                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
+                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-(--color-title-hover) hover:text-(--color-title-hover)"
               >
                 시즌
               </li>
               <li
                 onClick={() => router.push('/ranking')}
-                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
+                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-(--color-title-hover) hover:text-(--color-title-hover)"
               >
                 순위
               </li>
               <li
-                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
+                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-(--color-title-hover) hover:text-(--color-title-hover)"
                 onClick={() => {
                   router.push('/team');
                   setOpenTeam(false);
@@ -71,7 +71,7 @@ export default function Header() {
                 <ChevronDown />
               </li>
               <li
-                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
+                className="flex cursor-pointer gap-0 border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-(--color-title-hover) hover:text-(--color-title-hover)"
                 onClick={() => {
                   router.push('/driver');
                   setOpenDriver(false);
@@ -86,7 +86,7 @@ export default function Header() {
               </li>
               <li
                 onClick={() => router.push('/circuit')}
-                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-white hover:text-white"
+                className="cursor-pointer border-b-2 border-transparent py-6.25 text-(--color-title) hover:border-(--color-title-hover) hover:text-(--color-title-hover)"
               >
                 서킷
               </li>
