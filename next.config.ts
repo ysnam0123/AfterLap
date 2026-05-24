@@ -26,6 +26,8 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [25, 65, 80, 90],
     formats: ['image/avif', 'image/webp'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 
     remotePatterns: [
       { protocol: 'https', hostname: 'i.ytimg.com' },
