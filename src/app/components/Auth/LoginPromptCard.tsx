@@ -4,9 +4,15 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { LogIn } from 'lucide-react';
 
-const LoginModal = dynamic(() => import('../components/Auth/LoginModal'));
+const LoginModal = dynamic(() => import('./LoginModal'));
 
-export default function LoginPromptCard() {
+interface Props {
+  description?: string;
+}
+
+export default function LoginPromptCard({
+  description = '이 기능을 사용하려면 로그인해주세요.',
+}: Props) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -16,9 +22,7 @@ export default function LoginPromptCard() {
           <h2 className="text-(--color-title) text-lg font-semibold">
             로그인이 필요해요
           </h2>
-          <p className="text-(--color-sub-text) mt-1 text-sm">
-            예측 게임에 참여하려면 로그인해주세요.
-          </p>
+          <p className="text-(--color-sub-text) mt-1 text-sm">{description}</p>
         </div>
         <button
           onClick={() => setOpen(true)}

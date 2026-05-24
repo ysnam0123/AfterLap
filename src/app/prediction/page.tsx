@@ -11,7 +11,7 @@ import {
 } from '@/lib/server/predictions';
 import PredictionForm from './PredictionForm';
 import PredictionResultView from './PredictionResultView';
-import LoginPromptCard from './LoginPromptCard';
+import LoginPromptCard from '../components/Auth/LoginPromptCard';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,7 +25,7 @@ export default async function PredictionPage() {
     return (
       <section className="mx-auto flex max-w-3xl flex-col gap-6 px-5 pt-6 pb-20 lg:px-10">
         <Header />
-        <LoginPromptCard />
+        <LoginPromptCard description="예측 게임에 참여하려면 로그인해주세요." />
       </section>
     );
   }

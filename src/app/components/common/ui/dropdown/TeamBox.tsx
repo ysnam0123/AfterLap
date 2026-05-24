@@ -13,7 +13,7 @@ export default function TeamBox({
   const router = useRouter();
   return (
     <div
-      className="absolute top-22 left-0 z-500 flex min-h-120 w-screen justify-center border-t border-[#2e2e2e] bg-[#0f0f10]/97 px-12.5 py-12.5 backdrop-blur select-none"
+      className="absolute top-22 left-0 z-500 flex min-h-120 w-screen justify-center border-t border-(--color-dropdown-border) bg-(--color-dropdown-bg)/97 px-12.5 py-12.5 backdrop-blur select-none"
       onMouseLeave={onMouseLeave}
     >
       <div className="grid max-w-400 grid-cols-5 gap-8">
@@ -21,7 +21,7 @@ export default function TeamBox({
           <div
             key={team.team_slug}
             onClick={() => router.push(`/team/${team.team_slug}`)}
-            className="group flex w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-[6px] border border-[#2a2a2a] bg-[#1a1a1d] px-4 pt-3 transition-all duration-200 ease-out hover:-translate-y-1 hover:border-(--team-color) hover:shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+            className="group flex w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-[6px] border border-(--color-dropdown-border) bg-(--color-dropdown-card) px-4 pt-3 transition-[transform,border-color,box-shadow] duration-150 ease-out hover:-translate-y-1 hover:border-(--team-color) hover:shadow-[0_6px_18px_rgba(0,0,0,0.35)]"
             style={{ '--team-color': team.team_colour } as React.CSSProperties}
           >
             <Image

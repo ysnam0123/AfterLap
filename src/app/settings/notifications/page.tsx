@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
 import { Bell, BellOff } from 'lucide-react';
 import { supabase } from '@/supabase/client';
 import { useAuth } from '@/context/useAuth';
+import LoginPromptCard from '@/app/components/Auth/LoginPromptCard';
 import {
   subscribeUserToPush,
   unsubscribeUserFromPush,
@@ -25,7 +25,6 @@ const DEFAULT_PREFS: Prefs = {
 };
 
 export default function NotificationSettingsPage() {
-  const router = useRouter();
   const { user, isLoading } = useAuth();
   const [subState, setSubState] = useState<SubState>('idle');
   const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS);
@@ -33,11 +32,7 @@ export default function NotificationSettingsPage() {
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isLoading) return;
-    if (!user) {
-      router.replace('/');
-      return;
-    }
+    if (isLoading || !user) return;
     (async () => {
       const s = await getCurrentSubscriptionState();
       setSubState(s);
@@ -49,7 +44,7 @@ export default function NotificationSettingsPage() {
         .maybeSingle();
       if (data) setPrefs(data);
     })();
-  }, [user, isLoading, router]);
+  }, [user, isLoading]);
 
   const isOn = subState === 'subscribed';
   const isUnsupported = subState === 'unsupported';
@@ -113,6 +108,20 @@ export default function NotificationSettingsPage() {
     return (
       <section className="page-container px-5 pt-6 pb-20">
         <p className="text-(--color-sub-text)">로딩 중...</p>
+      </section>
+    );
+  }
+
+  if (!user) {
+    return (
+      <section className="page-container max-w-2xl px-5 pt-6 pb-20">
+        <div className="mb-6 flex items-center gap-3">
+          <Bell className="text-(--color-accent) h-6 w-6" />
+          <h1 className="font-ria text-(--color-title) text-2xl font-black sm:text-3xl">
+            알림 설정
+          </h1>
+        </div>
+        <LoginPromptCard description="레이스 알림을 받으려면 로그인해주세요." />
       </section>
     );
   }

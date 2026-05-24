@@ -24,6 +24,12 @@
   --color-box-active: #141418;
   --color-box-border: #2e2e2e;
 
+  /* 드롭다운(흰색 로고 표시용) — 라이트/다크 둘 다 어두운 surface */
+  --color-dropdown-bg: #0f0f10;
+  --color-dropdown-card: #1a1a1d;
+  --color-dropdown-hover: #26262a;
+  --color-dropdown-border: #2e2e2e;
+
   /* strokes */
   --color-border: rgba(255, 255, 255, 0.14);
   --color-placeholder: rgba(255, 255, 255, 0.48);
@@ -102,6 +108,12 @@
   --color-box-active: #e8e8ec;
   --color-box-border: #d4d4d8;
   --color-box-dark-bg: #cecece;
+
+  /* 드롭다운 라이트모드: 흰 로고가 보이는 중간 다크 톤 */
+  --color-dropdown-bg: #2a2a2e;
+  --color-dropdown-card: #3a3a3e;
+  --color-dropdown-hover: #46464a;
+  --color-dropdown-border: #4a4a4e;
 
   /* strokes */
   --color-border: rgba(0, 0, 0, 0.12);
