@@ -1,0 +1,20 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="alp-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0a0e1a"/>
+    </linearGradient>
+  </defs>
+  <!-- 배경 원 -->
+  <circle cx="32" cy="32" r="32" fill="url(#alp-bg)"/>
+  <!-- 헬멧 외형 -->
+  <path d="M32 14 C20 14, 13 22, 13 33 L13 42 C13 46, 16 49, 20 49 L44 49 C48 49, 51 46, 51 42 L51 33 C51 22, 44 14, 32 14 Z"
+        fill="#e2e8f0"/>
+  <!-- 바이저 -->
+  <rect x="17" y="27" width="30" height="11" rx="3" fill="#0a0e1a"/>
+  <!-- 바이저 하이라이트 -->
+  <rect x="19" y="29" width="14" height="2" rx="1" fill="#64748b" opacity="0.6"/>
+  <!-- 액센트 스트라이프 -->
+  <rect x="17" y="40" width="30" height="2.5" fill="#d80003"/>
+  <rect x="17" y="43.5" width="30" height="1" fill="#d80003" opacity="0.5"/>
+</svg>

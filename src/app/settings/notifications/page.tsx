@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { Bell, BellOff, ChevronLeft, Check } from 'lucide-react';
+import { Bell, BellOff } from 'lucide-react';
 import { supabase } from '@/supabase/client';
 import { useAuth } from '@/context/useAuth';
 import {
@@ -119,14 +119,6 @@ export default function NotificationSettingsPage() {
 
   return (
     <section className="page-container max-w-2xl px-5 pt-6 pb-20">
-      <button
-        onClick={() => router.back()}
-        className="text-(--color-sub-text) hover:text-(--color-title) mb-4 flex items-center gap-1 text-sm"
-      >
-        <ChevronLeft className="h-4 w-4" />
-        뒤로가기
-      </button>
-
       <div className="mb-6 flex items-center gap-3">
         <Bell className="text-(--color-accent) h-6 w-6" />
         <h1 className="font-ria text-(--color-title) text-2xl font-black sm:text-3xl">
@@ -252,19 +244,13 @@ function PrefToggle({
         disabled={disabled}
         onClick={() => onChange(!checked)}
         className={`relative h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors ${
-          checked
-            ? 'bg-(--color-accent)'
-            : 'bg-(--color-box-selected)'
+          checked ? 'bg-(--color-accent)' : 'bg-(--color-box-selected)'
         } disabled:cursor-not-allowed`}
       >
         <span
-          className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
-            checked ? 'translate-x-5.5' : 'translate-x-0.5'
-          }`}
+          className="absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-white shadow transition-all"
+          style={{ left: checked ? 'calc(100% - 22px)' : '2px' }}
         />
-        {checked && (
-          <Check className="absolute top-1 left-1 h-3.5 w-3.5 text-(--color-accent)" />
-        )}
       </button>
     </label>
   );
