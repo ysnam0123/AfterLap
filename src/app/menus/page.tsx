@@ -33,7 +33,7 @@ export default function Page() {
     {
       label: '알림 설정하기',
       icon: Bell,
-      path: '',
+      path: '/settings/notifications',
       authRequired: true,
     },
     {

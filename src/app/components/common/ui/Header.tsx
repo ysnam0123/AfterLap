@@ -10,6 +10,7 @@ import { ChevronDown, ChevronLeft } from 'lucide-react';
 import { useAuth } from '@/context/useAuth';
 import UserProfile from '../../Auth/UserProfile';
 import ThemeToggle from '../../common/ThemeToggle';
+import NotificationBell from '../../Notification/NotificationBell';
 
 const LoginModal = dynamic(() => import('../../Auth/LoginModal'));
 export default function Header() {
@@ -100,6 +101,9 @@ export default function Header() {
           </div>
           <div className="ml-auto flex items-center gap-2">
             <ThemeToggle />
+            <div className="desktop">
+              <NotificationBell />
+            </div>
             {isLoading ? (
               <div className="h-6.5 w-6.5 animate-pulse rounded-full bg-gray-700" />
             ) : !user ? (
