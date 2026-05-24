@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   reactStrictMode: true,
   images: {
-    qualities: [25, 65, 80, 90],
+    qualities: [25, 65, 75, 80, 90],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
